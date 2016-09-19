@@ -22,9 +22,12 @@ function GetUserList(selectType, departmentId) {
 	if (departmentId) {
 		key = departmentId;
 	}
+	var uID=getUserInfo().ID;
+	//alert(uID)
 	var data = {
 		keyword: key,
-		ID: uType 
+		ID:uID
+		,url:ApiUrl
 	};
 	var db = common.openDatabase();
 	if (!common.isNetWork()) {
@@ -33,31 +36,32 @@ function GetUserList(selectType, departmentId) {
 	} else {
 		common.postApi("GetCustomerList", data, function(response) {
 			dataArray = eval(response.data);
+		//alert(response.data)
 			createTable(db);
 			deleteTable(db);
 			for (var i = 0; i < dataArray.length; i++) {
 				var temp; //临时变量
 				var obj = dataArray[i];
 				//创建websql 表
-				if (headLetter != obj.Customer) { //没有此头字母,插入头
-					headLetter = obj.Customer;
+				if (headLetter != obj.header) { //没有此头字母,插入头
+					headLetter = obj.header;
 					//列表右侧字母列表
-					document.getElementById("headerList").innerHTML += "<a>" + obj.Customer + "</a>";
+					document.getElementById("headerList").innerHTML += "<a>" + obj.header + "</a>";
 					//主列表字母头
 					temp = temHead;
-					document.getElementById("UserList").innerHTML += temp.replace("@headLetter", obj.Customer).replace("@headLetter", obj.Customer);
+					document.getElementById("UserList").innerHTML += temp.replace("@headLetter", obj.header).replace("@headLetter", obj.header);
 				}
 				temp = temBody;
 				temp = temp.replace("@id", obj.id);
-				temp = temp.replace("@Header", obj.Serialnumber);
+				temp = temp.replace("@Header", obj.header + obj.tel);
 				temp = temp.replace("@Mobilecall", obj.tel);
 				temp = temp.replace("@Mobilemsg", obj.tel);
-				temp = temp.replace("@titleimg", obj.id);
+				temp = temp.replace("@titleimg", obj.Avatar);
 				temp = temp.replace("@UserName", obj.Customer);
 				temp = temp.replace("@DepartmentName", obj.address);
 				document.getElementById("UserList").innerHTML += temp;
 				//插入表
-				insertTable(db, obj.Serialnumber, obj.id, obj.tel, obj.id, obj.Customer, obj.address)
+				insertTable(db, obj.header, obj.id, obj.tel, obj.id, obj.Customer, obj.address)
 			}
 			//duangduang();    
 			list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
@@ -106,20 +110,20 @@ function selectTable(db) {
 			for (i = 0; i < len; i++) {
 				var obj = results.rows.item(i);
 				var temp; //临时变量
-				if (headLetter != obj.Header) { //没有此头字母,插入头
-					headLetter = obj.Header;
+				if (headLetter != obj.header) { //没有此头字母,插入头
+					headLetter = obj.header;
 					//列表右侧字母列表
-					document.getElementById("headerList").innerHTML += "<a>" + obj.Header + "</a>";
+					document.getElementById("headerList").innerHTML += "<a>" + obj.header + "</a>";
 					//主列表字母头
 					temp = temHead;
-					document.getElementById("UserList").innerHTML += temp.replace("@headLetter", obj.Header).replace("@headLetter", obj.Header);
+					document.getElementById("UserList").innerHTML += temp.replace("@headLetter", obj.header).replace("@headLetter", obj.header);
 				}
 				temp = temBody;
 				temp = temp.replace("@id", obj.id);
-				temp = temp.replace("@Header", obj.Serialnumber);
+				temp = temp.replace("@Header", obj.header + obj.tel);
 				temp = temp.replace("@Mobilecall", obj.tel);
 				temp = temp.replace("@Mobilemsg", obj.tel);
-				temp = temp.replace("@titleimg", obj.id);
+				temp = temp.replace("@titleimg", obj.Avatar);
 				temp = temp.replace("@UserName", obj.Customer);
 				temp = temp.replace("@DepartmentName", obj.address);
 				document.getElementById("UserList").innerHTML += temp;

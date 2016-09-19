@@ -66,22 +66,20 @@
 		function getuser() {
 			var userid = getUserInfo().UserId;
 			var data = {
-				selectkey: userid,
-				uType: 'GetUserDetialByString',
-				statrCount: '',
-				showCount: ''
-			};
+					url: ApiUrl,
+					token: userid
+				};
 			var avatar = document.getElementById("avatar");
 			var username = document.getElementById("username");
 			var mobile = document.getElementById("mobile");
-			common.postApi('GetUsersBySelectKey', data, function(response) {
+			common.postApi('GetUserClientId', data, function(response) {
 				dataArray = eval(response.data);
 				//alert(dataArray.length)
 				for (var i = 0; i < dataArray.length; i++) {
 					var obj = dataArray[i];
 					avatar.src = obj.Avatar;
-					username.innerText = obj.UserName;
-					mobile.innerText = obj.Mobile;
+					username.innerText = obj.name;
+					mobile.innerText = obj.tel;
 				}
 			}, 'json');
 		}

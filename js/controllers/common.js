@@ -1,4 +1,5 @@
 //全局变量 接口地址
+var  ApiUrl = "http://mb.xczs.co/";
 var interfaceUrl = "http://mb.xczs.co/webserver/Appapi.asmx/";
 var UploadImageUrl="http://mb.xczs.co/Data/uploadbbs.ashx";
 var UploadAudioUrl="http://app.go-mobile.cn/HandlersAuthFrame/H_UploadVideo.ashx";

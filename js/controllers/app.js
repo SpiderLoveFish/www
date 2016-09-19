@@ -1,19 +1,20 @@
 (function($, owner) {
 	owner.login = function(loginname, pwd, clientid,version, callback) {
 			common.postApi("UpdateUserClientId", {
-				url:interfaceUrl,
+				url:ApiUrl,
 				user: loginname,
 				pwd: pwd,
-				clienid: clientid,
-				ver:version
+				ClientId: clientid
+				,version:version
 			}, function(response) {
+//				alert(JSON.stringify(response))
 				if (response.data.length > 0) {
 					for (var i = 0; i < response.data.length; i++) {
 						var obj = response.data[i];
 						var userinfo = new Object();
 						userinfo.ID = obj.ID;
-						userinfo.token = obj.token;
-						userinfo.UserId = obj.UserId;
+						userinfo.token = obj.token; //
+						userinfo.UserId = obj.UserId;// token
 						userinfo.CorpId = obj.CorpId;
 						userinfo.ClientId = clientid;
 						userinfo.UserName = obj.UserName;

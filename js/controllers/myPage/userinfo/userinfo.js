@@ -121,9 +121,10 @@ function uploadimg(imgurl) {
 function getuser() {
 	common.showWaiting(true);
 	var user = getUserInfo();
+// 	alert(JSON.stringify(user))
 	var data = {
-		url: interfaceUrl,
-		token: user.token
+		url: ApiUrl,
+		token: user.UserId
 	};
 
 	var username = document.getElementById("username");
@@ -135,7 +136,7 @@ function getuser() {
 	common.postApi('GetUserClientId', data, function(response) {
 
 		dataArray = eval(response.data);
-		//alert(dataArray.length)
+//		alert(JSON.stringify(response))
 		for (var i = 0; i < dataArray.length; i++) {
 			var obj = dataArray[i];
 			Avatar.src = obj.Avatar;

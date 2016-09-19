@@ -14,10 +14,10 @@ mui.plusReady(function() {
 		currentWebViewHide();
 		var template = common.getTemplate('page2', 'im_chat.html?id=' + id);
 	});
-	document.getElementById("btn_post_activ").addEventListener('tap', function() {
-		currentWebViewHide();
-		var template = common.getTemplate('page2', 'im_chat.html?id=' + id);
-	});
+//	document.getElementById("btn_post_activ").addEventListener('tap', function() {
+//		currentWebViewHide();
+//		var template = common.getTemplate('page2', 'im_chat.html?id=' + id);
+//	});
 	//window.addEventListener('dataInit', function(event) {
 	//获取从父页面传过来的数据
 	//id = event.detail.id;
