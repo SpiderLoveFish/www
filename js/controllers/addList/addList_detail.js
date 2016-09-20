@@ -12,7 +12,7 @@ mui.plusReady(function() {
 	id = common.getQueryString("id");
 	document.getElementById("sendMessage").addEventListener('tap', function() {
 		currentWebViewHide();
-		var template = common.getTemplate('page2', 'im_chat.html?id=' + id);
+		var template = common.getTemplate('page2', 'addfollow.html?id=' + id);
 	});
 //	document.getElementById("btn_post_activ").addEventListener('tap', function() {
 //		currentWebViewHide();
