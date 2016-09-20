@@ -7,6 +7,7 @@ mui.plusReady(function() {
 		common.postApi('GetAppVersion', {
 			version: wgtinfo.version
 		}, function(response) {
+		
 			var updateUrl = response.data; 
 			if (updateUrl != 'no') {
 				//获取到更新地址  

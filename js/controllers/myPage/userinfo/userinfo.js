@@ -105,12 +105,13 @@ mui.plusReady(function() {
 
 function uploadimg(imgurl) {
 	var data = {
-		imgurl: imgurl
+		imgurl: imgurl,
+		token:getUserInfo().token
 	};
 	common.postApi('UpdateUserAvatar', data, function(response) {
 		if (response.data == "success") {
 			common.closeWaiting();
-			Avatar.src = imgurl;
+			Avatar.src = ApiUrl+'images/upload/portrait/'+ imgurl;
 			common.initMine();
 			common.initAddList();
 			common.alert('修改成功');

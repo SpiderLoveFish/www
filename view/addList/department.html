@@ -28,18 +28,19 @@
 		mui.init();
 		mui.plusReady(function() {
 			common.showWaiting(true);
-			var temp = '<li id="@id" class="mui-table-view-cell"><a class="mui-navigate-right">@name</a></li>';
+			var temp = '<li id="@id" class="mui-table-view-cell"><a class="mui-navigate-right">@name<img src="@titleimg"></a></li>';
 			var ul = document.getElementById("ulList");
 			//所有:id传入all
 			ul.innerHTML += temp.replace("@id", 'all').replace("@name", '所有');
 			var data = {
-				//'deptype': 'GetDepartmentList'
+				 //'deptype': 'GetDepartmentList'
+				 url:ApiUrl
 			};
 			common.postApi("GetCustomerType",data , function(res) {
 				var dataArray = eval(res.data);
 				for (var i = 0; i < dataArray.length; i++) {
 					var obj = dataArray[i];
-					ul.innerHTML += temp.replace("@id", obj.cid).replace("@name", obj.CustomerType);
+					ul.innerHTML += temp.replace("@id", obj.cid).replace("@name", obj.CustomerType).replace("@titleimg", obj.Avatar);
 				}
 				common.closeWaiting();
 			}, 'json');
