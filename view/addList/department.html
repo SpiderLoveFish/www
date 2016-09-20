@@ -31,7 +31,7 @@
 			var temp = '<li id="@id" class="mui-table-view-cell"><a class="mui-navigate-right">@name<img src="@titleimg"></a></li>';
 			var ul = document.getElementById("ulList");
 			//所有:id传入all
-			ul.innerHTML += temp.replace("@id", 'all').replace("@name", '所有');
+			ul.innerHTML += temp.replace("@id", 'all').replace("@name", '所有').replace("@titleimg", "");
 			var data = {
 				 //'deptype': 'GetDepartmentList'
 				 url:ApiUrl

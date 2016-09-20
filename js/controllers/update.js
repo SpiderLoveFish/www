@@ -3,9 +3,8 @@ mui.plusReady(function() {
 	var wgtinfoVersion = null;
 	plus.runtime.getProperty(plus.runtime.appid, function(wgtinfo) {
 		//wgtinfoVersion = wgtinfo.version;
-
 		common.postApi('GetAppVersion', {
-			version: wgtinfo.version
+			ver: wgtinfo.version
 		}, function(response) {
 		
 			var updateUrl = response.data; 

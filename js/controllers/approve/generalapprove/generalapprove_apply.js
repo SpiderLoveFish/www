@@ -285,6 +285,7 @@ mui.plusReady(function() {
 							rotate: 0,
 							format: 'jpg',
 							callback: function(data, width, height) {
+							
 								f1 = data;
 								upload();
 

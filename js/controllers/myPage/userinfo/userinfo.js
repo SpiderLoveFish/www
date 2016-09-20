@@ -62,7 +62,7 @@ mui.plusReady(function() {
 							format: 'jpg',
 							callback: function(data, width, height) {
 								f1 = data;
-								upload();
+								upload(url); 
 							}
 						});
 					});
@@ -74,7 +74,7 @@ mui.plusReady(function() {
 	};
 
 	function upload(path) {
-		var task = plus.uploader.createUpload(UploadImageUrl, {
+		var task = plus.uploader.createUpload(UploadImageUrl+'?Action=uploadhead', {
 				method: "POST",
 				blocksize: 204800,
 				priority: 1000
@@ -93,8 +93,14 @@ mui.plusReady(function() {
 		task.addData('base64', f1);
 		task.start();
 	}
+	
+	var fail= function(response) {
+			common.closeWaiting();
+			alert(JSON.stringify(response))
+	}
 	//成功响应的回调函数
 	var success = function(response) {
+		// alert(JSON.stringify(response))
 			var array = response.responseText.split('|');
 			if (array[0] == '0') {
 				uploadimg(array[1]);
@@ -109,13 +115,14 @@ function uploadimg(imgurl) {
 		token:getUserInfo().token
 	};
 	common.postApi('UpdateUserAvatar', data, function(response) {
+		alert(JSON.stringify(ApiUrl+'images/upload/portrait/'+ imgurl))
 		if (response.data == "success") {
 			common.closeWaiting();
 			Avatar.src = ApiUrl+'images/upload/portrait/'+ imgurl;
 			common.initMine();
 			common.initAddList();
 			common.alert('修改成功');
-		}
+		}else if(response.data =="faile")common.alert('修改失败');
 	}, 'json');
 }
 

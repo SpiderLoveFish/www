@@ -1,7 +1,7 @@
 //全局变量 接口地址
 var  ApiUrl = "http://mb.xczs.co/";
 var interfaceUrl = "http://mb.xczs.co/webserver/Appapi.asmx/";
-var UploadImageUrl="http://mb.xczs.co/Data/uploadbbs.ashx";
+var UploadImageUrl="http://mb.xczs.co/Data/uploadapp.ashx";
 var UploadAudioUrl="http://app.go-mobile.cn/HandlersAuthFrame/H_UploadVideo.ashx";
 //http://192.168.10.12:8888/ScFamilyAPI/v1.1/
 var aniShow = "pop-in"; //fade-in,zoom-out,slide-in-right,pop-in
@@ -555,6 +555,7 @@ var CommonTop = '101px';
 	getUserInfo = function() {
 			return JSON.parse(localStorage.getItem('$users') || '[]');
 		}
+	
 		//推送跳转
 	common.pushTransfer = function(type, status, url, id) {
 		var listWebview = plus.webview.getWebviewById(id);
@@ -610,8 +611,10 @@ var CommonTop = '101px';
 		options.type = 'POST';
 		var headers = {};
 		var userinfo = getUserInfo();
-		headers["sc_api"] = base64_encode(userinfo.CorpId + '/' + userinfo.UserId + '/' + userinfo.ClientId + '/' + Math.round(new Date().getTime() / 1000));
+		//headers["sc_api"] = base64_encode(userinfo.CorpId + '/' + userinfo.UserId + '/' + userinfo.ClientId + '/' + Math.round(new Date().getTime() / 1000));
 		options.headers = headers;
+		//if(interfaceName=='GetAppVersion')
+		//alert(JSON.stringify(options))
 		var result = mui.ajax(options); //接口调用完成前不允许请求接口(防重复提交,低端机,网卡等连续点击请求接口)
 		return result;
 
@@ -697,6 +700,8 @@ var CommonTop = '101px';
 		return mui.ajax(options);
 	};
 }(mui, window.common = {}));
+
+
 
 function base64_encode(str) {
 	var c1, c2, c3;

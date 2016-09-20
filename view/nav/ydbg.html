@@ -40,7 +40,7 @@
 								<p>活动报名</p>
 							</div>
 						</a>
-						<a>
+						<!--<a>
 							<div id="calendar" class="approve_list workstand_list5">
 								<p>日程管理</p>
 							</div>
@@ -49,7 +49,7 @@
 							<div id="payment" class="approve_list workstand_list6">
 								<p>爱心捐赠</p>
 							</div>
-						</a>
+						</a>-->
 						<!--<a>
 							<div id="test" class="approve_list workstand_list6">
 								<p>新增</p>
@@ -69,7 +69,10 @@
 		<script type="text/javascript" src="../../js/controllers/common.js"></script>
 		<script type="text/javascript">
 			document.getElementById("shenpi").addEventListener('tap', function() {
+			 
+				if(getUserInfo().Level=="1")
 				common.loadUrl('../approve/approve_nav.html');
+					else common.toast('此功能为收费功能！');
 			});
 			document.getElementById("news").addEventListener('tap', function() {
 				common.loadUrl('../news/newlist.html');
@@ -80,19 +83,20 @@
 			document.getElementById("activity").addEventListener('tap', function() {
 				common.loadUrl('../activity/activity_list.html');
 			});
-			document.getElementById("calendar").addEventListener('tap', function() {
-				//common.loadUrl('../calendar/calendar_list.html');
-				common.getTemplate('page2', '../calendar/calendar_list.html');
-			});
-			document.getElementById("payment").addEventListener('tap', function() {
-				common.loadUrl('../payment/payment.html');
-			});
+//			document.getElementById("calendar").addEventListener('tap', function() {
+//				//common.loadUrl('../calendar/calendar_list.html');
+//				common.getTemplate('page2', '../calendar/calendar_list.html');
+//			});
+//			document.getElementById("payment").addEventListener('tap', function() {
+//				common.loadUrl('../payment/payment.html');
+//			});
 //			document.getElementById("test").addEventListener('tap', function() {
 //				common.loadUrl('test.html');
 //			});
 			document.getElementById("more").addEventListener('tap', function() {
 				common.toast('更多功能请联系服务提供商');
 			});
+			 
 		</script>
 	</body>
 
