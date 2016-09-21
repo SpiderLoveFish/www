@@ -93,15 +93,16 @@ mui.plusReady(function() {
 		}
 		commitPinglunLock = false;
 		var param = {
-			id:common.getQueryString("id")
-		};
+			id:common.getQueryString("id"),
+			url:ApiUrl
+		}; 
 
 		common.postApi('GetCRM_Follow', param, function(response) {	
 			//alert(JSON.stringify(response))
 			var data =  eval(response.data);//eval(response.data)[0];
-			if (data[0]) {
+			if (data) {
 
-				allCount =10;// data[0].TotalCount;
+				allCount =data.length;// data[0].TotalCount;
 				document.getElementsByClassName('comment_title')[0].innerHTML = '跟进 (' + allCount + '条)';
 				var oddCount = allCount - (CommstartIndex + 5); //没显示的评论数
 				if (oddCount > 0) {
@@ -112,20 +113,22 @@ mui.plusReady(function() {
 				}
 			} else {
 				document.getElementById("comment_hint").innerHTML = '暂无评论';
+					common.closeWaiting();
+			commitPinglunLock = true; return;
 			}
      //alert(data.length)
 			//输出列表
 			for (var i = 0; i < data.length; i++) {
 				
 				var temp = CommtempHtml;
-				var titleimg = '';//data[i].Avatar;
+				var titleimg = data[i].Avatar;
 				if (titleimg == '') {
 					titleimg = '../images/testImg.png';
 				}
 
 				temp = temp.replace("@headImage", titleimg);
 				temp = temp.replace("@commentUser", data[i].Customer_name);
-				//temp = temp.replace("@commentTime", getDateDiff(getDateTimeStamp(data[i].CommentTime)));
+				temp = temp.replace("@commentTime", getDateDiff(getDateTimeStamp(data[i].Follow_date)));
 				temp = temp.replace("@commentContent", data[i].Follow);
 
 				document.getElementById("comments").innerHTML += temp;

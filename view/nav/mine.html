@@ -71,7 +71,7 @@
 			var data = {
 				url: ApiUrl,
 				token: userid
-			};
+			}; 
 			var avatar = document.getElementById("avatar");
 			var username = document.getElementById("username");
 			var mobile = document.getElementById("mobile");
@@ -84,7 +84,7 @@
 					username.innerText = obj.name;
 					mobile.innerText = obj.tel;
 				}
-			}, 'json');
+			}, 'json'); 
 		}
 		mui.plusReady(function() {
 			getuser();

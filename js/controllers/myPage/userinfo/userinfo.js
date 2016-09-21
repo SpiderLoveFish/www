@@ -16,14 +16,53 @@ mui.plusReady(function() {
 		// 从相册中选择图片
 		plus.gallery.pick(function(path) {
 			common.showWaiting('正在上传');
-
-			GetBase64(path);
+			getimgfiles(path);
+			//GetBase64(path);
 		}, function(e) {
 
 		}, {
 			filter: "image"
 		});
 	}
+	var pathfiles='';
+	var newUrlAfterCompress; 
+   function getimgfiles(url)
+   {
+   	if (0 != url.toString().indexOf("file://")) {
+			url = "file://" + url;
+		}
+		 	var strs = url.split("/"); 
+		 var dstname= url.replace(strs[strs.length-1],'')+getUid()+".jpg";//设置压缩后图片的路径
+   		 compressImage(url,dstname);
+   		
+   }
+   // 产生一个随机数  
+function getUid() {  
+    return Math.floor(Math.random() * 100000000 + 10000000).toString();  
+} 
+//压缩图片，这个比较变态的方法，无法return  
+function compressImage(src,dstname) {  
+    //var dstname="_downloads/"+getUid()+".jpg";  
+    plus.zip.compressImage({  
+            src: src,  
+            dst: dstname,  
+            overwrite:true,  
+            quality: 10 
+        },  
+        function(event) {  
+         //   console.log("Compress success:"+event.target);  
+        //  alert(event.target) 
+   		upload(event.target); //不能返回，只能这里执行上传
+            return event.target;  
+        
+        },  
+        function(error) {  
+            console.log(error);  
+            return src;  
+            //alert("Compress error!");  
+        });  
+      
+} 
 
 	function GetBase64(url) {
 		// 兼容以“file:”开头的情况
@@ -62,7 +101,7 @@ mui.plusReady(function() {
 							format: 'jpg',
 							callback: function(data, width, height) {
 								f1 = data;
-								upload(url); 
+								upload(); 
 							}
 						});
 					});
@@ -90,7 +129,8 @@ mui.plusReady(function() {
 		task.addFile(path, {
 			key: 'file'
 		});
-		task.addData('base64', f1);
+		//alert(f1)
+		task.addData('base64', 'f1');
 		task.start();
 	}
 	
@@ -100,7 +140,7 @@ mui.plusReady(function() {
 	}
 	//成功响应的回调函数
 	var success = function(response) {
-		// alert(JSON.stringify(response))
+		 // alert(JSON.stringify(response)) 
 			var array = response.responseText.split('|');
 			if (array[0] == '0') {
 				uploadimg(array[1]);
@@ -115,7 +155,7 @@ function uploadimg(imgurl) {
 		token:getUserInfo().token
 	};
 	common.postApi('UpdateUserAvatar', data, function(response) {
-		alert(JSON.stringify(ApiUrl+'images/upload/portrait/'+ imgurl))
+	//	alert(JSON.stringify(ApiUrl+'images/upload/portrait/'+ imgurl))
 		if (response.data == "success") {
 			common.closeWaiting();
 			Avatar.src = ApiUrl+'images/upload/portrait/'+ imgurl;

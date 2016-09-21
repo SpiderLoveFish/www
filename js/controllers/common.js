@@ -1,4 +1,5 @@
 //全局变量 接口地址
+var globalUrl = "http://mb.xczs.co/webserver/Appapi.asmx/";
 var  ApiUrl = "http://mb.xczs.co/";
 var interfaceUrl = "http://mb.xczs.co/webserver/Appapi.asmx/";
 var UploadImageUrl="http://mb.xczs.co/Data/uploadapp.ashx";
@@ -11,6 +12,13 @@ var CommonTop = '101px';
 
 (function(mui, common) {
 	mui.plusReady(function() {
+		
+		if(JSON.stringify(getServerUrls('$ServerUrls'))!='[]'){
+			//alert(JSON.stringify(getServerUrls('$ServerUrls')))
+		ApiUrl=getServerUrls('$ServerUrls').ApiUrl;
+		interfaceUrl=getServerUrls('$ServerUrls').interfaceUrl;
+		UploadImageUrl=getServerUrls('$ServerUrls').UploadImageUrl;
+		}
 		//初始化首页信息
 		common.initMessage = function() {
 				plus.webview.getWebviewById('view/nav/message.html').evalJS('getData();');
@@ -118,7 +126,13 @@ var CommonTop = '101px';
 		}
 		return true;
 	}
-
+		//获取服务器地址
+		function getServerUrls(setName) {
+			//获取快捷键
+			var shortcuts = JSON.parse(localStorage.getItem(setName) || "[]");
+			return shortcuts;
+		}
+				
 	//创建或打开websql数据库
 	common.openDatabase = function() {
 		var db = openDatabase('XCZSDB', '1.0', 'XCZSDB', 5 * 1024 * 1024);
@@ -619,6 +633,31 @@ var CommonTop = '101px';
 		return result;
 
 	};
+	
+	common.postglobalUrlApi = function(interfaceName, data, success, dataType) {
+		if (!dataType) {
+			//默认json格式
+			dataType = 'json';
+		}
+		var options = {
+			url: globalUrl + interfaceName,
+			data: data,
+			success: success,
+			dataType: dataType
+		};
+		options.type = 'POST';
+		var headers = {};
+		var userinfo = getUserInfo();
+		//headers["sc_api"] = base64_encode(userinfo.CorpId + '/' + userinfo.UserId + '/' + userinfo.ClientId + '/' + Math.round(new Date().getTime() / 1000));
+		options.headers = headers;
+		//if(interfaceName=='GetAppVersion')
+		//alert(JSON.stringify(options))
+		var result = mui.ajax(options); //接口调用完成前不允许请求接口(防重复提交,低端机,网卡等连续点击请求接口)
+		return result;
+
+	};
+	
+	
 	common.postApipayment = function(interfaceName, data, success, dataType) {
 		if (!dataType) {
 			//默认json格式

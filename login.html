@@ -55,7 +55,7 @@
 		<DIV class="container_login">
 			<div class="login_logo">
 				<div class="login_logo_img">
-					<img src="images/ScApp/login/s-cloud-15.png" style="">
+					<img  id="logo" src="images/ScApp/login/s-cloud-15.png" style="">
 				</div>
 			</div>
 			<div class="mui-content" style="background-color:white;">
@@ -71,11 +71,12 @@
 				</div>
 				<div class="mui-content-padded" style="margin-top: 40px;">
 					<button id='login' class="mui-btn mui-btn-block mui-btn-primary">登录</button>
-					<div class="link-area"><a id='reg'>注册账号</a>
+					<div class="link-area"><a id='reg'>选择你的服务器</a>
+						<!--注册账号-->
 					</div>
 				</div>
 				<div class="login_footer login_footer_add">
-					<p>www.go-mobile.cn</p>
+					<p id="idwww">www.xczs.co</p>
 				</div>
 			</div>
 		</div>
@@ -90,6 +91,12 @@
 					if (internetType == 1) {
 						common.toast('检测到您尚未联网,请联网后重试..');
 					}
+						if(JSON.stringify(getServerUrls('$ServerUrls'))!='[]'){
+				document.getElementById("reg").innerHTML=getServerUrls('$ServerUrls').Name;
+				document.getElementById("idwww").innerHTML=getServerUrls('$ServerUrls').ApiUrl;
+					document.getElementById("logo").src=getServerUrls('$ServerUrls').Logo;
+			}
+				//alert(JSON.stringify(getServerUrls('$ServerUrls')))
 					//common.alert('如果您还没有登录账号,请联系客服 手机号:18512260364 微信号:go_mobile');
 					//登录
 					common.click("login", function() {
@@ -129,7 +136,10 @@
 					//双击后退退出登录
 					appQuit();
 					common.click('reg', function() {
-						common.loadUrl('reg.html');
+						//common.loadUrl('reg.html');
+//						common.loadUrl('view/myPage/userinfo/servers_apply.html');
+							common.getTemplate('serverapply','view/myPage/userinfo/servers_apply.html' )
+							//'shortcuts_apply.html?type=' + id);
 					});
 					//开启快捷键
 					localStorage.setItem('$shortcuts_switch', true);
@@ -151,6 +161,13 @@
 					shortcuts.openUrl = '../calendar/calendar_list.html';
 					setShortcuts("$shortcuts_four", shortcuts);
 				});
+				//获取服务器地址
+				function getServerUrls(setName) {
+					//获取快捷键
+					var shortcuts = JSON.parse(localStorage.getItem(setName) || "[]");
+					return shortcuts;
+				}
+				
 				//设置快捷键
 				function getShortcuts(setName) {
 					//获取快捷键
