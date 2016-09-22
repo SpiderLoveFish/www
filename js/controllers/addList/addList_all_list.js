@@ -28,6 +28,7 @@ function GetUserList(selectType, departmentId) {
 		keyword: key,
 		ID:uID
 		,url:ApiUrl
+		,topnumber:100
 	};
 	var db = common.openDatabase();
 	if (!common.isNetWork()) {

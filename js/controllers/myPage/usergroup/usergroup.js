@@ -46,15 +46,13 @@ mui.plusReady(function() {
 		var templet = '<div class="common_usergroup" id="@id">' + '<div class="common_usergroup_title">' + '<label>@GroupName</label>' + '<i class="usergroup_edit" ></i>' + '<i class="usergroup_delete" ></i>' + '</div>' + '<div class="group_person commongroup_person">' + '<div class="ques_option_per">' + '<ul  class="UsersList">' + '</ul>' + '</div>' + '</div>' + '</div>';
 		var templet1 = '<li class="alapply_name">' + '<img src="@Avatar">' + '<label>@UserName</label>' + '</li>';
 		var data = {
-			ID: '',
-			type: 'getGroupList_All',
-			strWhere: '',
-			starIndex: statrCount,
-			endIndex: showCount
+			url:ApiUrl,
+			CorpID:'',
+			UserId:''
 		};
 		common.showWaiting(true);
 		document.getElementById("divTem").innerHTML = '';
-		common.postApi('GetUsergroup', data, function(response) {
+		common.postApi('GetApp_Group', data, function(response) {
 			dataArray = eval(response.data);
 			for (var i = 0; i < dataArray[0].length; i++) {
 				var obj = dataArray[0][i];

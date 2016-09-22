@@ -277,13 +277,11 @@ var CommonTop = '101px';
 
 		//常用群组 
 		var data = {
-			ID: '',
-			type: 'getGroupList_All',
-			strWhere: '',
-			starIndex: '',
-			endIndex: ''
+			url:ApiUrl,
+			CorpID:'',
+			UserId:''
 		};
-		common.postApi('GetUsergroup', data, function(response) {
+		common.postApi('GetApp_Group', data, function(response) {
 			dataArray = eval(response.data);
 			//列表右侧字母列表
 			if (dataArray[0].length > 0) {
@@ -311,8 +309,8 @@ var CommonTop = '101px';
 			}
 			//加载完群组再加载人员
 			//用户列表
-			common.postApi("GetUsersBySelectKey", {
-				uType: 'ToOrCcUserList'
+			common.postApi("GetUserList", {
+				url: ApiUrl 
 			}, function(response) {
 				dataArray = eval(response.data);
 				for (var i = 0; i < dataArray.length; i++) {
