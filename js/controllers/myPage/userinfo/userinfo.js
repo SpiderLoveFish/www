@@ -16,8 +16,8 @@ mui.plusReady(function() {
 		// 从相册中选择图片
 		plus.gallery.pick(function(path) {
 			common.showWaiting('正在上传');
-			//getimgfiles(path);
-			GetBase64(path);
+			getimgfiles(path); 
+			//GetBase64(path);
 		}, function(e) {
 
 		}, {
@@ -131,7 +131,7 @@ function compressImage(src,dstname) {
 			key: 'file'
 		});
 		//alert(f1)
-		task.addData('base64', 'f1');
+		task.addData('base64', f1);
 		//alert(JSON.stringify(task))
 		task.start();
 	}

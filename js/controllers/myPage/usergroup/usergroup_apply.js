@@ -27,27 +27,37 @@ mui.plusReady(function() {
 			getUser();
 		}
 	}
-
+   // 产生一个随机数  
+function getUid() {  
+    return Math.floor(Math.random() * 100000000 + 10000000).toString();  
+} 
 	function getUser() {
 		
 		var data = {
-			ID: ID,
-			type: 'getGroupList_ByID',
-			strWhere: '',
-			starIndex: '',
-			endIndex: ''
+			
+			url:ApiUrl,
+			CorpID:'',
+			UserId:'', //这里是OR A.GroupID='"+UserId+"' 
+			GroupID:ID
+//			
+//			ID: ID,
+//			type: 'getGroupList_ByID',
+//			strWhere: '',
+//			starIndex: '',
+//			endIndex: ''
 		};
 		common.showWaiting(true);
-
-		common.postApi('GetUsergroup', data, function(response) {
+        
+		common.postApi('GetApp_Group', data, function(response) {
 			dataArray = eval(response.data);
+			//alert(JSON.stringify(response))
 			var User = document.getElementById("toUser");
 			User.innerHTML = '';
 			document.getElementById("txtGroupName").value = dataArray[0][0].GroupName;
 			for (var i = 0; i < dataArray[1].length; i++) {
 				var obj = dataArray[1][i];
 				User.innerHTML += template.replace("@name", obj.UserName);
-				UserArray.push(obj.UserId);
+				UserArray.push(obj.GroupUserID);
 				UserList += obj.UserId + ",";
 			}
 			User.innerHTML += templateAdd;
@@ -77,13 +87,15 @@ mui.plusReady(function() {
 			return;
 		} else {
 			var data = {
-				id: ID,
-				groupname: groupname,
-				type: 'Insert',
-				ChooseHeadList: UserList
+				GroupID:getUid(),
+				UserId: getUserInfo().UserId,
+				GroupName: groupname, 
+				UserList: UserList
 			};
-			common.showWaiting();
-			common.postApi('UsergroupManage', data, function(response) {
+			common.showWaiting(); 
+			//alert(JSON.stringify(data)) 
+			common.postApi('AddApp_Group', data, function(response) {
+				//alert(JSON.stringify(response)) 
 				if (response.data == "success") {
 					common.toast("提交成功..");
 					mui.back();

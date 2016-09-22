@@ -279,7 +279,8 @@ var CommonTop = '101px';
 		var data = {
 			url:ApiUrl,
 			CorpID:'',
-			UserId:''
+			UserId:'',
+			GroupID:''
 		};
 		common.postApi('GetApp_Group', data, function(response) {
 			dataArray = eval(response.data);
@@ -297,8 +298,8 @@ var CommonTop = '101px';
 				//获取群组中人员userid
 				for (var n = 0; n < dataArray[1].length; n++) {
 					var obj1 = dataArray[1][n];
-					if (obj.ID == obj1.GroupID) {
-						userIdList.push(obj1.UserId);
+					if (obj.GroupID == obj1.GroupID) {
+						userIdList.push(obj1.GroupUserID);
 						userNameList.push(obj1.UserName);
 					}
 				}

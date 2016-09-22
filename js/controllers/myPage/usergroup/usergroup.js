@@ -19,13 +19,11 @@ mui.plusReady(function() {
 			if (e.index == 0) {
 				//执行删除操作
 				var data = {
-					id: id,
-					groupname: '',
-					type: 'Delete',
-					ChooseHeadList: ''
+					ID: id 
 				};
-				common.showWaiting();
-				common.postApi("UsergroupManage", data, function(response) {
+				//common.showWaiting();
+				//alert(id)
+				common.postApi("DeleteApp_Group", data, function(response) {
 					if (response.data == "success") {
 						common.toast("删除成功");
 						common.initUserList();
@@ -48,20 +46,23 @@ mui.plusReady(function() {
 		var data = {
 			url:ApiUrl,
 			CorpID:'',
-			UserId:''
+			UserId:getUserInfo().UserId,
+			GroupID:''
 		};
-		common.showWaiting(true);
+		
+		common.showWaiting(true); 
 		document.getElementById("divTem").innerHTML = '';
 		common.postApi('GetApp_Group', data, function(response) {
 			dataArray = eval(response.data);
+			//alert(JSON.stringify(response))
 			for (var i = 0; i < dataArray[0].length; i++) {
 				var obj = dataArray[0][i];
-				document.getElementById("divTem").innerHTML += templet.replace('@id', obj.ID).replace('@GroupName', obj.GroupName);
+				document.getElementById("divTem").innerHTML += templet.replace('@id', obj.GroupID).replace('@GroupName', obj.GroupName);
 				//添加一个组
 				for (var n = 0; n < dataArray[1].length; n++) {
 					var obj1 = dataArray[1][n];
-					if (obj.ID == obj1.GroupID) {
-						document.getElementById(obj.ID).childNodes[1].childNodes[0].childNodes[0].innerHTML += templet1.replace('@UserName', obj1.UserName).replace('@Avatar', obj1.Avatar);
+					if (obj.GroupID == obj1.GroupID) {
+						document.getElementById(obj.GroupID).childNodes[1].childNodes[0].childNodes[0].innerHTML += templet1.replace('@UserName', obj1.UserName).replace('@Avatar', obj1.Avatar);
 						//						$(obj.ID).find("ul").html() += templet1.replace('@UserName', obj1.UserName).replace('@Avatar', obj1.Avatar);
 						//document.getElementById("UsersList").innerHTML += templet1.replace('@UserName', obj1.UserName).replace('@Avatar', obj1.Avatar);
 					}

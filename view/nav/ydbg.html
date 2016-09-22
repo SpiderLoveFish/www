@@ -75,13 +75,18 @@
 					else common.toast('此功能为收费功能！');
 			});
 			document.getElementById("news").addEventListener('tap', function() {
+				if(getUserInfo().Level=="1")
 				common.loadUrl('../news/newlist.html');
+				else common.toast('此功能为收费功能！');
 			});
 			document.getElementById("questionnaire").addEventListener('tap', function() {
-				common.loadUrl('../questionnaire/questionnairelist.html');
+			if(getUserInfo().Level=="1")
+			common.loadUrl('../questionnaire/questionnairelist.html');
+			 common.toast('此功能为收费功能！');
 			});
 			document.getElementById("activity").addEventListener('tap', function() {
-				common.loadUrl('../activity/activity_list.html');
+			if(getUserInfo().Level=="1")	common.loadUrl('../activity/activity_list.html');
+				 common.toast('此功能为收费功能！');
 			});
 //			document.getElementById("calendar").addEventListener('tap', function() {
 //				//common.loadUrl('../calendar/calendar_list.html');

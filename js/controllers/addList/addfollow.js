@@ -42,7 +42,7 @@ mui.plusReady(function() {
 
 	//提交评论
 	function commitComment_BtnPinglUN(commenttype) {
-			alert(commitPinglunLock)
+			//alert(commitPinglunLock)
 		if (!commitPinglunLock) {
 			return;
 		}
@@ -68,8 +68,8 @@ mui.plusReady(function() {
 		};
 		commitPinglunLock = false;
 		common.postApi('AddCRM_Follow', param, function(msg) {
-			//alert(JSON.stringify(msg))
-			//if (msg.data == "success")
+			//alert(msg.data ) 
+			if (msg.data == "success")
 			{
 				commitPinglunLock = true;
 				CommstartIndex = 0;
@@ -82,7 +82,7 @@ mui.plusReady(function() {
 //				common.closeWaiting();
 //				commitPinglunLock = true;
 //			}
-		}, "text");
+		}, "json");
 	}
 
 	//获取评论列表
@@ -94,17 +94,18 @@ mui.plusReady(function() {
 		commitPinglunLock = false;
 		var param = {
 			id:common.getQueryString("id"),
-			url:ApiUrl
+			url:ApiUrl,
+			nowindex:CommstartIndex+10
 		}; 
-
+//alert(JSON.stringify(param))
 		common.postApi('GetCRM_Follow', param, function(response) {	
 			//alert(JSON.stringify(response))
 			var data =  eval(response.data);//eval(response.data)[0];
 			if (data) {
 
-				allCount =data.length;// data[0].TotalCount;
+				allCount = data[0].TotalCount;
 				document.getElementsByClassName('comment_title')[0].innerHTML = '跟进 (' + allCount + '条)';
-				var oddCount = allCount - (CommstartIndex + 5); //没显示的评论数
+				var oddCount = allCount - (CommstartIndex + 10); //没显示的评论数
 				if (oddCount > 0) {
 					document.getElementById("comment_hint").style.display = 'block';
 					document.getElementById("comment_hint").innerHTML = '默认加载10条，其余隐藏<i>显示更多(' + oddCount + '条)';

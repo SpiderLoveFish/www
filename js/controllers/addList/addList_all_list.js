@@ -9,7 +9,8 @@ var temHead = '<li data-group="@headLetter" class="mui-table-view-divider mui-in
 //数据体
 var temBody = '<li data-tags="@Header" class="mui-table-view-cell mui-indexed-list-item addlist_stafflist"><div data-value="@id" class="divClick"><img src="@titleimg"><div class="addlist_staffname"><div class="addlist_name">@UserName</div><span class="addlist_post">@DepartmentName</span></div></div><div class="addlist_makemass" data-mobile="@Mobilemsg"></div><div class="addlist_makecall" data-mobile="@Mobilecall"></div></li>';
 //获取数据
-function GetUserList(selectType, departmentId) {
+//还可以加入收藏优先，限制收藏数量比如100个
+function GetUserList(selectType, departmentId,searchkey) {
 
 	document.getElementById("UserList").innerHTML = "";
 	document.getElementById("headerList").innerHTML = "";
@@ -17,6 +18,10 @@ function GetUserList(selectType, departmentId) {
 	var uType = 'ToOrCcUserList';
 	if (selectType) {
 		uType = selectType;
+	}
+	var sk=''
+	if (searchkey) {
+		sk = searchkey;
 	}
 	var key = '';
 	if (departmentId) {
@@ -28,8 +33,10 @@ function GetUserList(selectType, departmentId) {
 		keyword: key,
 		ID:uID
 		,url:ApiUrl
-		,topnumber:100
+		,topnumber:50,
+		searchkey:sk
 	};
+	//alert(JSON.stringify(data))
 	var db = common.openDatabase();
 	if (!common.isNetWork()) {
 		//未联网
@@ -229,6 +236,12 @@ mui.plusReady(function() {
 		var id = this.getAttribute('data-value');
 		detailPage.loadURL('addList_detail.html?id=' + id);
 		openMenu();
+	});
+	refresh
+	document.getElementById('refresh').addEventListener('tap', function() {
+	var rf = document.getElementById('search');
+	// alert(rf.value)
+	 GetUserList('','',rf.value);
 	});
 	mui('#UserList').on('tap', '.addlist_makecall', function(e) {
 		//移除焦点,为了隐藏软键盘

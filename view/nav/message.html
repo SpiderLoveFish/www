@@ -201,7 +201,9 @@
 					var openUrl = document.getElementById("shortcuts1").querySelector("input").value;
 					//alert(openUrl);
 					$(".menu_4_menu span").click();
+					if(getUserInfo().Level=="1")
 					common.getTemplate('page2', openUrl);
+					else common.toast('此功能为收费功能！');
 				});
 			}
 			if (shortcuts_two == '[]' || shortcuts_two == '' || shortcuts_two == null || shortcuts_two == undefined) {
@@ -214,7 +216,9 @@
 					var openUrl = document.getElementById("shortcuts2").querySelector("input").value;
 					//alert(openUrl);
 					$(".menu_4_menu span").click();
+				if(getUserInfo().Level=="1")
 					common.getTemplate('page2', openUrl);
+					else common.toast('此功能为收费功能！');
 					//common.loadUrl(openUrl);
 				});
 			}
@@ -228,7 +232,9 @@
 					var openUrl = document.getElementById("shortcuts3").querySelector("input").value;
 					//alert(openUrl);
 					$(".menu_4_menu span").click();
+				if(getUserInfo().Level=="1")
 					common.getTemplate('page2', openUrl);
+					else common.toast('此功能为收费功能！');
 					//common.loadUrl(openUrl);
 				});
 			}
@@ -242,7 +248,9 @@
 					var openUrl = document.getElementById("shortcuts4").querySelector("input").value;
 					//alert(openUrl);
 					$(".menu_4_menu span").click();
+					if(getUserInfo().Level=="1")
 					common.getTemplate('page2', openUrl);
+					else common.toast('此功能为收费功能！');
 					//common.loadUrl(openUrl);
 				});
 			}
@@ -261,16 +269,24 @@
 		}
 		mui.plusReady(function() {
 			common.click('approve', function() {
+				if(getUserInfo().Level=="1")
 				common.getTemplate('page2', '../approve/list/list_waitforme.html');
+			else common.toast('此功能为收费功能！');
 			});
 			common.click('new', function() {
+				if(getUserInfo().Level=="1")
 				common.loadUrl('../news/newlist.html');
+				else common.toast('此功能为收费功能！');
 			});
 			common.click('survey', function() {
+				if(getUserInfo().Level=="1")
 				common.loadUrl('../questionnaire/questionnairelist.html');
+				else common.toast('此功能为收费功能！');
 			});
 			common.click('activity', function() {
+				if(getUserInfo().Level=="1")
 				common.loadUrl('../activity/activity_list.html');
+				else common.toast('此功能为收费功能！');
 			});
 			getData();
 			showButton();
@@ -279,11 +295,17 @@
 				var id = this.getAttribute("id");
 				var type = this.getAttribute('listtype');
 				if (type == "news") {
+						if(getUserInfo().Level=="1")
 					common.loadUrl("../news/newdetail.html?id=" + id);
+					else common.toast('此功能为收费功能！');
 				} else if (type == "activity") {
+						if(getUserInfo().Level=="1")
 					common.loadUrl("../activity/activity_detail.html?id=" + id);
+					else common.toast('此功能为收费功能！');
 				} else if (type == "surveys") {
-					common.loadUrl("../questionnaire/questionnairedetail.html?id=" + id);
+				if(getUserInfo().Level=="1")
+				common.loadUrl("../questionnaire/questionnairedetail.html?id=" + id);
+				else common.toast('此功能为收费功能！');
 				}
 				//如果点击未读的热点 更新BadgeNumber
 				setTimeout(function() {

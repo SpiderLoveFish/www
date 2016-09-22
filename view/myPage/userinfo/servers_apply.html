@@ -138,15 +138,16 @@
 		mui('.mui-content').on("tap", 'li', function() {
 			getServerUrls()
 			var	 code=	this.querySelector('input').title;
+			var name = this.querySelector('span').innerText;
+			var openUrl = this.querySelector('input').value;
+			var imgUrl = this.querySelector('input').getAttribute("imgUrl");
+			var logo = this.querySelector('input').name;
 			alert(code)
 			var btnArray = ['确定', '取消'];
 		mui.prompt('请输入你的Code代码：', 'code!', '输入密码', btnArray, function(e) {
 			if (e.index == 0 && code == e.value) {
 			//跳转页面
-			var name = this.querySelector('span').innerText;
-			var openUrl = this.querySelector('input').value;
-			var imgUrl = this.querySelector('input').getAttribute("imgUrl");
-			var logo = this.querySelector('input').name;
+			
 			var ServerUrls = new Object();
 			ServerUrls.Name = name;
 			ServerUrls.UploadImageUrl = imgUrl;
