@@ -16,8 +16,8 @@ mui.plusReady(function() {
 		// 从相册中选择图片
 		plus.gallery.pick(function(path) {
 			common.showWaiting('正在上传');
-			getimgfiles(path); 
-			//GetBase64(path);
+			//getimgfiles(path); 
+			GetBase64(path);
 		}, function(e) {
 
 		}, {
@@ -96,7 +96,7 @@ function compressImage(src,dstname) {
 							width: tmpw,
 							height: tmph,
 							crop: false,
-							quality: 50, //压缩质量
+							quality: 0.5, //压缩质量
 							rotate: 0,
 							format: 'jpg',
 							callback: function(data, width, height) {
@@ -142,7 +142,7 @@ function compressImage(src,dstname) {
 	}
 	//成功响应的回调函数
 	var success = function(response) {
-		   alert(JSON.stringify(response)) 
+		   //alert(JSON.stringify(response)) 
 			var array = response.responseText.split('|');
 			if (array[0] == '0') {
 				uploadimg(array[1]);

@@ -142,7 +142,7 @@
 			var openUrl = this.querySelector('input').value;
 			var imgUrl = this.querySelector('input').getAttribute("imgUrl");
 			var logo = this.querySelector('input').name;
-			alert(code)
+		
 			var btnArray = ['确定', '取消'];
 		mui.prompt('请输入你的Code代码：', 'code!', '输入密码', btnArray, function(e) {
 			if (e.index == 0 && code == e.value) {
@@ -160,8 +160,7 @@
 //			common.loadUrl('../../../login.html');
 			plus.runtime.restart();
 			}
-			alert(e.index)
-			alert(e.value)
+		 
 		});
 		
 		});
