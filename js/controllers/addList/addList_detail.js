@@ -4,6 +4,8 @@ mui.init({
 	//		longtap: true //长按事件 默认为false
 	//	}
 });
+var isCollect = '0';
+	// 1收藏，0没收藏
 mui.plusReady(function() {
 	mui.previewImage();
 	//	mui('.mine_container_body').on('longtap', '.flexItem', function() {
@@ -13,6 +15,49 @@ mui.plusReady(function() {
 	document.getElementById("sendMessage").addEventListener('tap', function() {
 		currentWebViewHide();
 		var template = common.getTemplate('page2', 'addfollow.html?id=' + id);
+	});
+	document.getElementById("collect_star").addEventListener('tap', function() {
+		var ustyle='';
+		 
+		if(isCollect=='0')
+		ustyle='Insert';
+		else if(isCollect=='1')
+		ustyle='Delete';
+		var data= {
+		customerid: id,
+		userid:getUserInfo().ID,
+		UStyle:ustyle
+	};
+	//alert(JSON.stringify(data))
+		if(isCollect=='1')
+		{
+			common.showWaiting(true);
+			common.postApi('UpdateCustomerFavorite', data, function(response) {			
+				if(response.data=="success")
+				{
+				isCollect='0';
+					document.getElementById("collect_star").style.color="#D3D3D3";//灰色
+					common.toast('取消客户收藏成功！')
+				}				
+			common.closeWaiting();
+		}, 'json');
+		
+		}
+		else if(isCollect=='0')
+		{
+			 
+			common.showWaiting(true);
+			common.postApi('UpdateCustomerFavorite', data, function(response) {	 
+				if(response.data=="success")
+				{
+				isCollect='1';
+				document.getElementById("collect_star").style.color="#008B45";//绿色
+				common.toast('客户收藏成功！')
+				}
+				
+			common.closeWaiting();
+		}, 'json');
+		}
 	});
 //	document.getElementById("btn_post_activ").addEventListener('tap', function() {
 //		currentWebViewHide();
@@ -24,7 +69,8 @@ mui.plusReady(function() {
 
 	common.showWaiting(true);
 	var data = {
-		id: id 
+		id: id ,
+		userid:getUserInfo().ID
 	};
 	common.postApi('GetCustomerDetail', data, function(response) {
 		dataArray = eval(response.data);
@@ -33,6 +79,12 @@ mui.plusReady(function() {
 //			document.getElementById("Avatar").src = obj.Avatar;
 //			document.getElementById("UserName").innerText = obj.UserName;
 //			document.getElementById("mobeil").innerText = obj.Mobile;
+			isCollect=obj.isstart;
+			if(isCollect=='1')//是否收藏 #FF00FF 紫红色
+			document.getElementById("collect_star").style.color="#008B45";//绿色
+	 		else	 
+	 		document.getElementById("collect_star").style.color="#D3D3D3";//灰色
+	
 			document.getElementById("Customer").innerText = obj.Customer;
 			document.getElementById("address").innerText = obj.address;
 			document.getElementById("tel").innerText = obj.tel;

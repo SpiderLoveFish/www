@@ -97,6 +97,7 @@
 	<script src="../../js/nav/message.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../js/controllers/common.js" type="text/javascript" charset="utf-8"></script>
 	<script>
+	
 		function getData() {
 			//开始：zjl 2016-02-25 修改代码
 			if (plus.networkinfo.getCurrentType() == 1) {
@@ -268,6 +269,8 @@
 			}
 		}
 		mui.plusReady(function() {
+			//var a= plus.push.getClientInfo().token;
+	      // alert(plus.push.getClientInfo().token);
 			common.click('approve', function() {
 				if(getUserInfo().Level=="1")
 				common.getTemplate('page2', '../approve/list/list_waitforme.html');

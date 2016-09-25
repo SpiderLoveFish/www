@@ -97,10 +97,11 @@ mui.plusReady(function() {
 			url:ApiUrl,
 			nowindex:CommstartIndex+10
 		}; 
-//alert(JSON.stringify(param))
+   //alert(JSON.stringify(param))
 		common.postApi('GetCRM_Follow', param, function(response) {	
-			//alert(JSON.stringify(response))
+			
 			var data =  eval(response.data);//eval(response.data)[0];
+			//alert(JSON.stringify(data))
 			if (data) {
 
 				allCount = data[0].TotalCount;
@@ -113,7 +114,7 @@ mui.plusReady(function() {
 					document.getElementById("comment_hint").style.display = 'none';
 				}
 			} else {
-				document.getElementById("comment_hint").innerHTML = '暂无评论';
+				document.getElementById("comment_hint").innerHTML = '暂无跟进';
 					common.closeWaiting();
 			commitPinglunLock = true; return;
 			}

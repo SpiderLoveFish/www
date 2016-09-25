@@ -8,8 +8,10 @@ mui.plusReady(function() {
 		if (feedback != '') {
 			var data = {
 				contexts: feedback,
+				url:ApiUrl,
+				name:getUserInfo().UserName
 			};
-			common.postApi('FeedbackManage', data, function(response) {
+			common.postglobalUrlApi('UpdateFeedback', data, function(response) {
 				if (response.data == "success") {
 					common.closeWaiting();
 					common.alert('提交成功');

@@ -59,4 +59,18 @@ unpackage/release/H523E4193.wgt
 
 *.wgt
 
+unpackage/*
+
+/unpackage
+
 unpackage/release/H523E4193.wgt
+
+unpackage/release/1.vfs.bak
+
+unpackage/release/1.vfs
+
+unpackage/.confirmed_dependencies
+
+unpackage/release/1.vfs
+
+unpackage/release/H523E4193_0919143552.ipa

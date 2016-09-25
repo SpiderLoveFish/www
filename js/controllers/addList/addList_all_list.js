@@ -34,7 +34,7 @@ function GetUserList(selectType, departmentId,searchkey) {
 		ID:uID
 		,url:ApiUrl
 		,topnumber:50,
-		searchkey:sk
+		searchkey:sk 
 	};
 	//alert(JSON.stringify(data))
 	var db = common.openDatabase();
@@ -44,7 +44,7 @@ function GetUserList(selectType, departmentId,searchkey) {
 	} else {
 		common.postApi("GetCustomerList", data, function(response) {
 			dataArray = eval(response.data);
-		//alert(response.data)
+		//alert(JSON.stringify(response))
 			createTable(db);
 			deleteTable(db);
 			for (var i = 0; i < dataArray.length; i++) {
@@ -61,7 +61,7 @@ function GetUserList(selectType, departmentId,searchkey) {
 				}
 				temp = temBody;
 				temp = temp.replace("@id", obj.id);
-				temp = temp.replace("@Header", obj.header + obj.tel);
+				temp = temp.replace("@Header", obj.header +obj.Customer+ obj.tel+obj.address);
 				temp = temp.replace("@Mobilecall", obj.tel);
 				temp = temp.replace("@Mobilemsg", obj.tel);
 				temp = temp.replace("@titleimg", obj.Avatar);
@@ -297,7 +297,11 @@ mui.plusReady(function() {
 			if (id) {
 				if (id == "all") {
 					GetUserList();
-				} else {
+				}  
+				else if (id == "fav") {
+					GetUserList('','fav','');
+				} 
+				else {
 					GetUserList("GetUserListByDepartment", id);
 				}
 
