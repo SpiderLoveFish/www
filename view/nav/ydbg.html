@@ -20,11 +20,11 @@
 			<div class="list_news">
 				<div class="approve_nav">
 					<div class="approve_module">
-						<a>
+						 <a>
 							<div id="shenpi" class="approve_list workstand_list1">
 								<p>审批</p>
 							</div>
-						</a>
+						</a> 
 						<a>
 							<div id="news" class="approve_list workstand_list2">
 								<p>企业公告</p>
@@ -32,12 +32,12 @@
 						</a>
 						<a>
 							<div id="questionnaire" class="approve_list workstand_list3">
-								<p>调查问卷</p>
+								<p>生日管理</p>
 							</div>
 						</a>
 						<a>
 							<div id="activity" class="approve_list workstand_list4">
-								<p>活动报名</p>
+								<p>积分管理</p>
 							</div>
 						</a>
 						<!--<a>
@@ -70,23 +70,24 @@
 		<script type="text/javascript">
 			document.getElementById("shenpi").addEventListener('tap', function() {
 			 
-				if(getUserInfo().Level=="1")
+				//if(getUserInfo().Level=="1")
 				common.loadUrl('../approve/approve_nav.html');
-					else common.toast('此功能为收费功能！');
+					//else common.toast('此功能待完善！');
 			});
 			document.getElementById("news").addEventListener('tap', function() {
-				if(getUserInfo().Level=="1")
+				//if(getUserInfo().Level=="1")
 				common.loadUrl('../news/newlist.html');
-				else common.toast('此功能为收费功能！');
+				//else common.toast('此功能待完善！');
 			});
 			document.getElementById("questionnaire").addEventListener('tap', function() {
-			if(getUserInfo().Level=="1")
+			//if(getUserInfo().Level=="1")
 			common.loadUrl('../questionnaire/questionnairelist.html');
-			 common.toast('此功能为收费功能！');
+			// common.toast('此功能待完善！');
 			});
 			document.getElementById("activity").addEventListener('tap', function() {
-			if(getUserInfo().Level=="1")	common.loadUrl('../activity/activity_list.html');
-				 common.toast('此功能为收费功能！');
+			//if(getUserInfo().Level=="1")	
+			common.loadUrl('../activity/activity_list.html');
+				// common.toast('此功能待完善！');
 			});
 //			document.getElementById("calendar").addEventListener('tap', function() {
 //				//common.loadUrl('../calendar/calendar_list.html');

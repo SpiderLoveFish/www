@@ -1,1 +1,1600 @@
-null
+{
+  "view/activity/activity_detail.html": {
+    "href": "view/activity/activity_detail.html",
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/controllers/extension.js",
+      "js/mui/mui.zoom.js",
+      "js/mui/mui.previewimage.js",
+      "js/controllers/common.js",
+      "js/common/zepto.min.js",
+      "js/controllers/activity/activity_detail.js",
+      "css/mui.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css",
+      "css/font-awesome.min.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view/addList/addfollow.html": {
+    "href": "view/addList/addfollow.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css",
+      "js/mui/mui.min.js",
+      "js/controllers/extension.js",
+      "js/mui/mui.zoom.js",
+      "js/mui/mui.previewimage.js",
+      "js/controllers/common.js",
+      "js/controllers/addList/addfollow.js",
+      "js/common/zepto.min.js",
+      "js/common/app_gqe.js"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view/addList/addList_detail.html": {
+    "href": "view/addList/addList_detail.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css",
+      "js/mui/mui.js",
+      "js/controllers/extension.js",
+      "js/mui/mui.zoom.js",
+      "js/mui/mui.previewimage.js",
+      "js/controllers/common.js",
+      "js/controllers/addList/addList_detail.js"
+    ],
+    "refer": [
+      "view/addList/addfollow.html"
+    ],
+    "priority": 0
+  },
+  "view/addList/department.html": {
+    "href": "view/addList/department.html",
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/controllers/common.js",
+      "css/mui.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view/addList/addList_all_list.html": {
+    "href": "view/addList/addList_all_list.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/mui.indexedlist.css",
+      "css/reset.css",
+      "css/style_sc.css",
+      "js/mui/mui.min.js",
+      "js/controllers/common.js",
+      "js/mui/mui.indexedlist.js",
+      "js/controllers/addList/addList_all_list.js"
+    ],
+    "refer": [
+      "view/addList/addList_detail.html",
+      "view/addList/department.html"
+    ],
+    "priority": 0
+  },
+  "view/approve/leave/leave_detail.html": {
+    "href": "view/approve/leave/leave_detail.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css",
+      "js/mui/mui.min.js",
+      "js/controllers/extension.js",
+      "js/mui/mui.zoom.js",
+      "js/mui/mui.previewimage.js",
+      "js/common/zepto.min.js",
+      "js/common/app_gqe.js",
+      "js/controllers/common.js",
+      "js/controllers/approve/leave/leave_detail.js"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view/approve/generalapprove/generalapprove_detail.html": {
+    "href": "view/approve/generalapprove/generalapprove_detail.html",
+    "resources": [
+      "js/common/zepto.min.js",
+      "js/common/app_gqe.js",
+      "js/mui/mui.min.js",
+      "js/controllers/extension.js",
+      "js/mui/mui.zoom.js",
+      "js/mui/mui.previewimage.js",
+      "js/controllers/common.js",
+      "js/controllers/approve/generalapprove/generalapprove_detail.js",
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view/approve/projecthour/projecthour_detail.html": {
+    "href": "view/approve/projecthour/projecthour_detail.html",
+    "resources": [
+      "js/common/zepto.min.js",
+      "js/common/app_gqe.js",
+      "js/mui/mui.min.js",
+      "js/controllers/common.js",
+      "js/controllers/approve/projecthour/projecthour_detail.js",
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view/approve/work/work_detail.html": {
+    "href": "view/approve/work/work_detail.html",
+    "resources": [
+      "js/common/zepto.min.js",
+      "js/common/app_gqe.js",
+      "js/mui/mui.min.js",
+      "js/controllers/common.js",
+      "js/controllers/approve/work/work_detail.js",
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view/approve/list/list_waitforme.html": {
+    "href": "view/approve/list/list_waitforme.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "js/common/zepto.min.js",
+      "js/common/app_gqe.js",
+      "js/mui/mui.js",
+      "js/controllers/common.js",
+      "js/controllers/approve/list/list_waitforme.js"
+    ],
+    "refer": [
+      "view/approve/leave/leave_detail.html",
+      "view/approve/generalapprove/generalapprove_detail.html",
+      "view/approve/projecthour/projecthour_detail.html",
+      "view/approve/work/work_detail.html"
+    ],
+    "priority": 0
+  },
+  "view/news/newdetail.html": {
+    "href": "view/news/newdetail.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css",
+      "js/mui/mui.min.js",
+      "js/controllers/extension.js",
+      "js/mui/mui.zoom.js",
+      "js/mui/mui.previewimage.js",
+      "js/controllers/common.js",
+      "js/news/newdetail.js",
+      "js/common/zepto.min.js",
+      "js/common/app_gqe.js"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view/questionnaire/answer2.html": {
+    "href": "view/questionnaire/answer2.html",
+    "resources": [
+      "js/mui/mui.js",
+      "js/mui/mui.zoom.js",
+      "js/mui/mui.previewimage.js",
+      "js/controllers/common.js",
+      "js/questionnaire/answer2.js",
+      "css/mui.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view/questionnaire/answer3.html": {
+    "href": "view/questionnaire/answer3.html",
+    "resources": [
+      "js/mui/mui.js",
+      "js/mui/mui.zoom.js",
+      "js/mui/mui.previewimage.js",
+      "js/controllers/common.js",
+      "js/questionnaire/answer3.js",
+      "css/mui.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view/questionnaire/answer1.html": {
+    "href": "view/questionnaire/answer1.html",
+    "resources": [
+      "js/mui/mui.js",
+      "js/mui/mui.zoom.js",
+      "js/mui/mui.previewimage.js",
+      "js/controllers/common.js",
+      "js/questionnaire/answer1.js",
+      "images/ScApp/general/placeholdimg/UploadImage.png",
+      "css/mui.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view/questionnaire/questionlist.html": {
+    "href": "view/questionnaire/questionlist.html",
+    "resources": [
+      "js/controllers/common.js",
+      "js/mui/mui.min.js",
+      "js/questionnaire/questionlist.js",
+      "css/mui.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "js/mui/mui.js"
+    ],
+    "refer": [
+      "view/questionnaire/answer2.html",
+      "view/questionnaire/answer3.html",
+      "view/questionnaire/answer1.html"
+    ],
+    "priority": 0
+  },
+  "view/questionnaire/questionnairedetail.html": {
+    "href": "view/questionnaire/questionnairedetail.html",
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/mui/mui.zoom.js",
+      "js/mui/mui.previewimage.js",
+      "js/controllers/common.js",
+      "js/common/zepto.min.js",
+      "js/questionnaire/questionnairedetail.js",
+      "js/common/app_gqe.js",
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view/calendar/calendar_edit.html": {
+    "href": "view/calendar/calendar_edit.html",
+    "resources": [
+      "css/mui.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css",
+      "images/ScApp/icon/RichengZt.png",
+      "images/ScApp/icon/Sfchaosong.png",
+      "images/ScApp/icon/SfGongkai.png",
+      "images/ScApp/icon/SfQuantian.png",
+      "images/ScApp/icon/SfTixing.png",
+      "js/mui/mui.min.js",
+      "js/controllers/common.js",
+      "js/calendar/calendar_edit.js"
+    ],
+    "refer": [
+      "view/calendar/calendar_list.html"
+    ],
+    "priority": 0
+  },
+  "view/calendar/calendar_list.html": {
+    "href": "view/calendar/calendar_list.html",
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/controllers/common.js",
+      "js/calendar/calendar_list.js",
+      "js/common/jquery-1.4.1.min.js",
+      "css/mui.css",
+      "css/list.css",
+      "css/reset.css",
+      "css/style_sc.css",
+      "images/ScApp/mypage/GroupAdd.png"
+    ],
+    "refer": [
+      "view/calendar/calendar_edit.html"
+    ],
+    "priority": 0
+  },
+  "view/myPage/userinfo/userinfo.html": {
+    "href": "view/myPage/userinfo/userinfo.html",
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/mui/mui.zoom.js",
+      "js/mui/mui.previewimage.js",
+      "js/common/binaryajax.js",
+      "js/common/exif.js",
+      "js/common/canvasResize.js",
+      "js/controllers/common.js",
+      "js/controllers/myPage/userinfo/userinfo.js",
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css",
+      "images/ScApp/general/placeholdimg/UploadImage.png"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view/common/user_list.html": {
+    "href": "view/common/user_list.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/mui.indexedlist.css",
+      "css/style_sc.css",
+      "js/mui/mui.min.js",
+      "js/mui/mui.indexedlist.js",
+      "js/controllers/common.js"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view/myPage/usergroup/usergroup_apply.html": {
+    "href": "view/myPage/usergroup/usergroup_apply.html",
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/common/zepto.min.js",
+      "js/controllers/common.js",
+      "js/controllers/myPage/usergroup/usergroup_apply.js",
+      "images/ScApp/mypage/addUser.png",
+      "images/ScApp/icon/Fuze.png",
+      "css/mui.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css"
+    ],
+    "refer": [
+      "view/common/user_list.html"
+    ],
+    "priority": 0
+  },
+  "view/myPage/usergroup/usergroup.html": {
+    "href": "view/myPage/usergroup/usergroup.html",
+    "resources": [
+      "css/mui.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "js/mui/mui.min.js",
+      "js/controllers/common.js",
+      "js/common/zepto.min.js",
+      "js/controllers/myPage/usergroup/usergroup.js"
+    ],
+    "refer": [
+      "view/myPage/usergroup/usergroup_apply.html"
+    ],
+    "priority": 0
+  },
+  "view/myPage/feedback/feedbackadd.html": {
+    "href": "view/myPage/feedback/feedbackadd.html",
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/controllers/common.js",
+      "js/feedback/feedbackadd.js",
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view/common/progress.html": {
+    "href": "view/common/progress.html",
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/common/zepto.min.js",
+      "js/controllers/common.js",
+      "css/custom-bars.css",
+      "css/component.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view/myPage/shortcuts/shortcuts_apply.html": {
+    "href": "view/myPage/shortcuts/shortcuts_apply.html",
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/controllers/common.js",
+      "js/controllers/myPage/shortcuts/shortcuts_apply.js",
+      "css/mui.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "images/ScApp/approve/aprvLeave.png",
+      "images/ScApp/approve/aprvOvertime.png",
+      "images/ScApp/approve/aprvTime.png",
+      "images/ScApp/approve/aprvUniversal.png",
+      "images/ScApp/nav/Shenpi-02.png",
+      "images/ScApp/nav/Shenpi-04.png",
+      "images/ScApp/nav/Shenpi-03.png",
+      "images/ScApp/nav/appsGg.png",
+      "images/ScApp/nav/appsHd.png",
+      "images/ScApp/nav/appsWj.png",
+      "images/ScApp/nav/RichengGuanli.png"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view/myPage/shortcuts/shortcuts.html": {
+    "href": "view/myPage/shortcuts/shortcuts.html",
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/controllers/common.js",
+      "js/controllers/myPage/shortcuts/shortcuts.js",
+      "css/mui.css",
+      "css/reset.css",
+      "css/list.css",
+      "css/style_sc.css"
+    ],
+    "refer": [
+      "view/myPage/shortcuts/shortcuts_apply.html"
+    ],
+    "priority": 0
+  },
+  "view/nav/mine.html": {
+    "href": "view/nav/mine.html",
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/controllers/common.js",
+      "js/controllers/app.js",
+      "images/vip.png",
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "images/ScApp/general/placeholdimg/UploadImage.png"
+    ],
+    "refer": [
+      "view/myPage/userinfo/userinfo.html",
+      "view/myPage/usergroup/usergroup.html",
+      "view/myPage/feedback/feedbackadd.html",
+      "view/common/progress.html",
+      "view/myPage/shortcuts/shortcuts.html"
+    ],
+    "priority": 0
+  },
+  "view/activity/activity_apply.html": {
+    "href": "view/activity/activity_apply.html",
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/mui/mui.zoom.js",
+      "js/mui/mui.previewimage.js",
+      "js/common/zepto.min.js",
+      "js/controllers/common.js",
+      "js/common/canvasResize.js",
+      "js/common/binaryajax.js",
+      "js/common/exif.js",
+      "js/controllers/activity/activity_apply.js",
+      "css/mui.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css"
+    ],
+    "refer": [
+      "view/activity/activity_list.html"
+    ],
+    "priority": 0
+  },
+  "view/activity/activity_list.html": {
+    "href": "view/activity/activity_list.html",
+    "resources": [
+      "js/mui/mui.js",
+      "js/common/zepto.min.js",
+      "js/controllers/common.js",
+      "js/controllers/activity/activity_list.js",
+      "css/mui.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css"
+    ],
+    "refer": [
+      "view/activity/activity_apply.html",
+      "view/activity/activity_detail.html"
+    ],
+    "priority": 0
+  },
+  "view/news/newlist.html": {
+    "href": "view/news/newlist.html",
+    "resources": [
+      "css/mui.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "js/common/zepto.min.js",
+      "js/common/app_gqe.js",
+      "js/mui/mui.js",
+      "js/controllers/common.js",
+      "js/news/newlist.js"
+    ],
+    "refer": [
+      "view/news/newdetail.html"
+    ],
+    "priority": 0
+  },
+  "view/questionnaire/questionnairelist.html": {
+    "href": "view/questionnaire/questionnairelist.html",
+    "resources": [
+      "js/common/zepto.min.js",
+      "js/mui/mui.js",
+      "js/controllers/common.js",
+      "js/questionnaire/questionnairelist.js",
+      "js/common/app_gqe.js",
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css"
+    ],
+    "refer": [
+      "view/questionnaire/questionnairedetail.html"
+    ],
+    "priority": 0
+  },
+  "view/nav/message.html": {
+    "href": "view/nav/message.html",
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/common/zepto.min.js",
+      "js/nav/message.js",
+      "js/controllers/common.js",
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css"
+    ],
+    "refer": [
+      "view/news/newdetail.html",
+      "view/questionnaire/questionnairedetail.html",
+      "view/activity/activity_list.html",
+      "view/news/newlist.html",
+      "view/approve/list/list_waitforme.html",
+      "view/activity/activity_detail.html",
+      "view/questionnaire/questionnairelist.html"
+    ],
+    "priority": 0
+  },
+  "view/approve/list/list_launched.html": {
+    "href": "view/approve/list/list_launched.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "js/common/zepto.min.js",
+      "js/common/app_gqe.js",
+      "js/mui/mui.js",
+      "js/controllers/common.js",
+      "js/controllers/approve/list/list_launched.js"
+    ],
+    "refer": [
+      "view/approve/leave/leave_detail.html",
+      "view/approve/generalapprove/generalapprove_detail.html",
+      "view/approve/projecthour/projecthour_detail.html",
+      "view/approve/work/work_detail.html"
+    ],
+    "priority": 0
+  },
+  "view/approve/list/list_sendme.html": {
+    "href": "view/approve/list/list_sendme.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "js/common/zepto.min.js",
+      "js/common/app_gqe.js",
+      "js/mui/mui.js",
+      "js/controllers/common.js",
+      "js/controllers/approve/list/list_sendme.js"
+    ],
+    "refer": [
+      "view/approve/leave/leave_detail.html",
+      "view/approve/generalapprove/generalapprove_detail.html",
+      "view/approve/projecthour/projecthour_detail.html",
+      "view/approve/work/work_detail.html"
+    ],
+    "priority": 0
+  },
+  "view/myPage/userinfo/servers_apply.html": {
+    "href": "view/myPage/userinfo/servers_apply.html",
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/controllers/common.js",
+      "images/ScApp/icon/duration.png",
+      "css/mui.css",
+      "css/style_sc.css",
+      "css/reset.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view/approve/projecthour/projecthour_apply.html": {
+    "href": "view/approve/projecthour/projecthour_apply.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "js/mui/mui.min.js",
+      "js/common/zepto.min.js",
+      "js/common/app_gqe.js",
+      "js/controllers/common.js",
+      "js/controllers/approve/projecthour/projecthour_apply.js"
+    ],
+    "refer": [
+      "view/approve/list/list_launched.html"
+    ],
+    "priority": 0
+  },
+  "view/approve/leave/leave_apply.html": {
+    "href": "view/approve/leave/leave_apply.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css",
+      "js/mui/mui.min.js",
+      "js/mui/mui.zoom.js",
+      "js/mui/mui.previewimage.js",
+      "js/common/zepto.min.js",
+      "js/common/app_gqe.js",
+      "js/controllers/common.js",
+      "js/common/canvasResize.js",
+      "js/common/binaryajax.js",
+      "js/common/exif.js",
+      "js/controllers/approve/leave/leave_apply.js"
+    ],
+    "refer": [
+      "view/approve/list/list_launched.html"
+    ],
+    "priority": 0
+  },
+  "view/approve/generalapprove/generalapprove_apply.html": {
+    "href": "view/approve/generalapprove/generalapprove_apply.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css",
+      "js/mui/mui.min.js",
+      "js/mui/mui.zoom.js",
+      "js/mui/mui.previewimage.js",
+      "js/common/zepto.min.js",
+      "js/common/app_gqe.js",
+      "js/controllers/common.js",
+      "js/common/canvasResize.js",
+      "js/common/binaryajax.js",
+      "js/common/exif.js",
+      "js/controllers/approve/generalapprove/generalapprove_apply.js"
+    ],
+    "refer": [
+      "view/approve/list/list_launched.html"
+    ],
+    "priority": 0
+  },
+  "view/approve/work/work_apply.html": {
+    "href": "view/approve/work/work_apply.html",
+    "resources": [
+      "js/common/zepto.min.js",
+      "js/common/app_gqe.js",
+      "js/mui/mui.min.js",
+      "js/controllers/common.js",
+      "js/controllers/approve/work/work_apply.js",
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css"
+    ],
+    "refer": [
+      "view/approve/list/list_launched.html"
+    ],
+    "priority": 0
+  },
+  "view/approve/approve_nav.html": {
+    "href": "view/approve/approve_nav.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "js/mui/mui.min.js",
+      "js/controllers/common.js",
+      "js/common/zepto.min.js"
+    ],
+    "refer": [
+      "view/approve/list/list_waitforme.html",
+      "view/approve/list/list_launched.html",
+      "view/approve/projecthour/projecthour_apply.html",
+      "view/approve/leave/leave_apply.html",
+      "view/approve/list/list_sendme.html",
+      "view/approve/generalapprove/generalapprove_apply.html",
+      "view/approve/work/work_apply.html"
+    ],
+    "priority": 0
+  },
+  "view/nav/ydbg.html": {
+    "href": "view/nav/ydbg.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "js/mui/mui.min.js",
+      "js/common/zepto.min.js",
+      "js/controllers/common.js"
+    ],
+    "refer": [
+      "view/activity/activity_list.html",
+      "view/approve/approve_nav.html",
+      "view/news/newlist.html",
+      "view/questionnaire/questionnairelist.html"
+    ],
+    "priority": 0
+  },
+  "index.html": {
+    "href": "index.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/custom-bars.css",
+      "css/component.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "js/mui/mui.min.js",
+      "js/controllers/common.js",
+      "js/controllers/app.js",
+      "js/controllers/update.js"
+    ],
+    "refer": [
+      "view/common/progress.html",
+      "view/nav/ydbg.html",
+      "view/nav/mine.html",
+      "login.html",
+      "view/nav/message.html",
+      "view/addList/addList_all_list.html"
+    ],
+    "priority": 0
+  },
+  "login.html": {
+    "href": "login.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/my.css",
+      "js/mui/mui.min.js",
+      "js/controllers/common.js",
+      "js/controllers/app.js",
+      "images/ScApp/login/s-cloud-15.png",
+      "images/ScApp/login/sign-16.png",
+      "images/ScApp/login/sign-17.png"
+    ],
+    "refer": [
+      "view/myPage/userinfo/servers_apply.html",
+      "index.html"
+    ],
+    "priority": 0
+  },
+  "view_style_two/addList/im_chat.html": {
+    "href": "view_style_two/addList/im_chat.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/reset.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/mui.imageviewer.css",
+      "css/preview_image.css",
+      "images/ScApp/addlist/smile-1.png",
+      "images/ScApp/addlist/smile-01.png",
+      "images/ScApp/addlist/img-01.png",
+      "images/ScApp/addlist/img-02.png",
+      "images/ScApp/addlist/talk-01.png",
+      "images/ScApp/addlist/talk-02.png",
+      "images/ScApp/addlist/voice.png",
+      "images/ScApp/addlist/keyboard-1.png",
+      "images/ScApp/addlist/keyboard-2.png",
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/common/zepto.min.js",
+      "js_style_two/mui/mui.zoom.js",
+      "js_style_two/mui/mui.previewimage.js",
+      "js_style_two/common/canvasResize.js",
+      "js_style_two/common/binaryajax.js",
+      "js_style_two/common/exif.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/controllers/addList/im_chat.js"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view_style_two/addList/addList_detail.html": {
+    "href": "view_style_two/addList/addList_detail.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css",
+      "js_style_two/mui/mui.js",
+      "js_style_two/controllers/extension.js",
+      "js_style_two/mui/mui.zoom.js",
+      "js_style_two/mui/mui.previewimage.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/controllers/addList/addList_detail.js",
+      "images/ScApp/general/placeholdimg/UploadImage.png"
+    ],
+    "refer": [
+      "view_style_two/addList/im_chat.html"
+    ],
+    "priority": 0
+  },
+  "view_style_two/addList/department.html": {
+    "href": "view_style_two/addList/department.html",
+    "resources": [
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/controllers/common.js",
+      "css/mui.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view_style_two/addList/addList_all_list.html": {
+    "href": "view_style_two/addList/addList_all_list.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/mui.indexedlist.css",
+      "css/reset.css",
+      "css/style_sc.css",
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/mui/mui.indexedlist.js",
+      "js_style_two/controllers/addList/addList_all_list.js"
+    ],
+    "refer": [
+      "view_style_two/addList/addList_detail.html",
+      "view_style_two/addList/department.html"
+    ],
+    "priority": 0
+  },
+  "view_style_two/news/newdetail.html": {
+    "href": "view_style_two/news/newdetail.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css",
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/controllers/extension.js",
+      "js_style_two/mui/mui.zoom.js",
+      "js_style_two/mui/mui.previewimage.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/news/newdetail.js",
+      "js_style_two/common/zepto.min.js",
+      "js_style_two/common/app_gqe.js"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view_style_two/payment/payment.html": {
+    "href": "view_style_two/payment/payment.html",
+    "resources": [
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/payment/payment.js",
+      "css/mui.min.css",
+      "css/common.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view_style_two/questionnaire/answer2.html": {
+    "href": "view_style_two/questionnaire/answer2.html",
+    "resources": [
+      "js_style_two/mui/mui.js",
+      "js_style_two/mui/mui.zoom.js",
+      "js_style_two/mui/mui.previewimage.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/questionnaire/answer2.js",
+      "css/mui.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view_style_two/questionnaire/answer3.html": {
+    "href": "view_style_two/questionnaire/answer3.html",
+    "resources": [
+      "js_style_two/mui/mui.js",
+      "js_style_two/mui/mui.zoom.js",
+      "js_style_two/mui/mui.previewimage.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/questionnaire/answer3.js",
+      "css/mui.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view_style_two/questionnaire/answer1.html": {
+    "href": "view_style_two/questionnaire/answer1.html",
+    "resources": [
+      "js_style_two/mui/mui.js",
+      "js_style_two/mui/mui.zoom.js",
+      "js_style_two/mui/mui.previewimage.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/questionnaire/answer1.js",
+      "images/ScApp/general/placeholdimg/UploadImage.png",
+      "css/mui.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view_style_two/questionnaire/questionlist.html": {
+    "href": "view_style_two/questionnaire/questionlist.html",
+    "resources": [
+      "js_style_two/controllers/common.js",
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/questionnaire/questionlist.js",
+      "css/mui.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "js_style_two/mui/mui.js"
+    ],
+    "refer": [
+      "view_style_two/questionnaire/answer2.html",
+      "view_style_two/questionnaire/answer3.html",
+      "view_style_two/questionnaire/answer1.html"
+    ],
+    "priority": 0
+  },
+  "view_style_two/questionnaire/questionnairedetail.html": {
+    "href": "view_style_two/questionnaire/questionnairedetail.html",
+    "resources": [
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/mui/mui.zoom.js",
+      "js_style_two/mui/mui.previewimage.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/common/zepto.min.js",
+      "js_style_two/questionnaire/questionnairedetail.js",
+      "js_style_two/common/app_gqe.js",
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view_style_two/activity/activity_apply.html": {
+    "href": "view_style_two/activity/activity_apply.html",
+    "resources": [
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/mui/mui.zoom.js",
+      "js_style_two/mui/mui.previewimage.js",
+      "js_style_two/common/zepto.min.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/common/canvasResize.js",
+      "js_style_two/common/binaryajax.js",
+      "js_style_two/common/exif.js",
+      "js_style_two/controllers/activity/activity_apply.js",
+      "css/mui.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css"
+    ],
+    "refer": [
+      "view_style_two/activity/activity_list.html"
+    ],
+    "priority": 0
+  },
+  "view_style_two/activity/activity_detail.html": {
+    "href": "view_style_two/activity/activity_detail.html",
+    "resources": [
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/controllers/extension.js",
+      "js_style_two/mui/mui.zoom.js",
+      "js_style_two/mui/mui.previewimage.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/common/zepto.min.js",
+      "js_style_two/controllers/activity/activity_detail.js",
+      "css/mui.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css",
+      "css/font-awesome.min.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view_style_two/activity/activity_list.html": {
+    "href": "view_style_two/activity/activity_list.html",
+    "resources": [
+      "js_style_two/mui/mui.js",
+      "js_style_two/common/zepto.min.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/controllers/activity/activity_list.js",
+      "css/mui.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css"
+    ],
+    "refer": [
+      "view_style_two/activity/activity_apply.html",
+      "view_style_two/activity/activity_detail.html"
+    ],
+    "priority": 0
+  },
+  "view_style_two/news/newlist.html": {
+    "href": "view_style_two/news/newlist.html",
+    "resources": [
+      "css/mui.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "js_style_two/common/zepto.min.js",
+      "js_style_two/common/app_gqe.js",
+      "js_style_two/mui/mui.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/news/newlist.js"
+    ],
+    "refer": [
+      "view_style_two/news/newdetail.html"
+    ],
+    "priority": 0
+  },
+  "view_style_two/approve/leave/leave_detail.html": {
+    "href": "view_style_two/approve/leave/leave_detail.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css",
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/controllers/extension.js",
+      "js_style_two/mui/mui.zoom.js",
+      "js_style_two/mui/mui.previewimage.js",
+      "js_style_two/common/zepto.min.js",
+      "js_style_two/common/app_gqe.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/controllers/approve/leave/leave_detail.js"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view_style_two/approve/generalapprove/generalapprove_detail.html": {
+    "href": "view_style_two/approve/generalapprove/generalapprove_detail.html",
+    "resources": [
+      "js_style_two/common/zepto.min.js",
+      "js_style_two/common/app_gqe.js",
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/controllers/extension.js",
+      "js_style_two/mui/mui.zoom.js",
+      "js_style_two/mui/mui.previewimage.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/controllers/approve/generalapprove/generalapprove_detail.js",
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view_style_two/approve/projecthour/projecthour_detail.html": {
+    "href": "view_style_two/approve/projecthour/projecthour_detail.html",
+    "resources": [
+      "js_style_two/common/zepto.min.js",
+      "js_style_two/common/app_gqe.js",
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/controllers/approve/projecthour/projecthour_detail.js",
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view_style_two/approve/work/work_detail.html": {
+    "href": "view_style_two/approve/work/work_detail.html",
+    "resources": [
+      "js_style_two/common/zepto.min.js",
+      "js_style_two/common/app_gqe.js",
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/controllers/approve/work/work_detail.js",
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view_style_two/approve/list/list_waitforme.html": {
+    "href": "view_style_two/approve/list/list_waitforme.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "js_style_two/common/zepto.min.js",
+      "js_style_two/common/app_gqe.js",
+      "js_style_two/mui/mui.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/controllers/approve/list/list_waitforme.js"
+    ],
+    "refer": [
+      "view_style_two/approve/leave/leave_detail.html",
+      "view_style_two/approve/generalapprove/generalapprove_detail.html",
+      "view_style_two/approve/projecthour/projecthour_detail.html",
+      "view_style_two/approve/work/work_detail.html"
+    ],
+    "priority": 0
+  },
+  "view_style_two/approve/list/list_launched.html": {
+    "href": "view_style_two/approve/list/list_launched.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "js_style_two/common/zepto.min.js",
+      "js_style_two/common/app_gqe.js",
+      "js_style_two/mui/mui.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/controllers/approve/list/list_launched.js"
+    ],
+    "refer": [
+      "view_style_two/approve/leave/leave_detail.html",
+      "view_style_two/approve/generalapprove/generalapprove_detail.html",
+      "view_style_two/approve/projecthour/projecthour_detail.html",
+      "view_style_two/approve/work/work_detail.html"
+    ],
+    "priority": 0
+  },
+  "view_style_two/approve/projecthour/projecthour_apply.html": {
+    "href": "view_style_two/approve/projecthour/projecthour_apply.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/common/zepto.min.js",
+      "js_style_two/common/app_gqe.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/controllers/approve/projecthour/projecthour_apply.js"
+    ],
+    "refer": [
+      "view_style_two/approve/list/list_launched.html"
+    ],
+    "priority": 0
+  },
+  "view_style_two/approve/leave/leave_apply.html": {
+    "href": "view_style_two/approve/leave/leave_apply.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css",
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/mui/mui.zoom.js",
+      "js_style_two/mui/mui.previewimage.js",
+      "js_style_two/common/zepto.min.js",
+      "js_style_two/common/app_gqe.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/common/canvasResize.js",
+      "js_style_two/common/binaryajax.js",
+      "js_style_two/common/exif.js",
+      "js_style_two/controllers/approve/leave/leave_apply.js"
+    ],
+    "refer": [
+      "view_style_two/approve/list/list_launched.html"
+    ],
+    "priority": 0
+  },
+  "view_style_two/approve/list/list_sendme.html": {
+    "href": "view_style_two/approve/list/list_sendme.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "js_style_two/common/zepto.min.js",
+      "js_style_two/common/app_gqe.js",
+      "js_style_two/mui/mui.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/controllers/approve/list/list_sendme.js"
+    ],
+    "refer": [
+      "view_style_two/approve/leave/leave_detail.html",
+      "view_style_two/approve/generalapprove/generalapprove_detail.html",
+      "view_style_two/approve/projecthour/projecthour_detail.html",
+      "view_style_two/approve/work/work_detail.html"
+    ],
+    "priority": 0
+  },
+  "view_style_two/approve/generalapprove/generalapprove_apply.html": {
+    "href": "view_style_two/approve/generalapprove/generalapprove_apply.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css",
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/mui/mui.zoom.js",
+      "js_style_two/mui/mui.previewimage.js",
+      "js_style_two/common/zepto.min.js",
+      "js_style_two/common/app_gqe.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/common/canvasResize.js",
+      "js_style_two/common/binaryajax.js",
+      "js_style_two/common/exif.js",
+      "js_style_two/controllers/approve/generalapprove/generalapprove_apply.js"
+    ],
+    "refer": [
+      "view_style_two/approve/list/list_launched.html"
+    ],
+    "priority": 0
+  },
+  "view_style_two/approve/work/work_apply.html": {
+    "href": "view_style_two/approve/work/work_apply.html",
+    "resources": [
+      "js_style_two/common/zepto.min.js",
+      "js_style_two/common/app_gqe.js",
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/controllers/approve/work/work_apply.js",
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css"
+    ],
+    "refer": [
+      "view_style_two/approve/list/list_launched.html"
+    ],
+    "priority": 0
+  },
+  "view_style_two/approve/approve_nav.html": {
+    "href": "view_style_two/approve/approve_nav.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/common/zepto.min.js"
+    ],
+    "refer": [
+      "view_style_two/approve/list/list_waitforme.html",
+      "view_style_two/approve/list/list_launched.html",
+      "view_style_two/approve/projecthour/projecthour_apply.html",
+      "view_style_two/approve/leave/leave_apply.html",
+      "view_style_two/approve/list/list_sendme.html",
+      "view_style_two/approve/generalapprove/generalapprove_apply.html",
+      "view_style_two/approve/work/work_apply.html"
+    ],
+    "priority": 0
+  },
+  "view_style_two/questionnaire/questionnairelist.html": {
+    "href": "view_style_two/questionnaire/questionnairelist.html",
+    "resources": [
+      "js_style_two/common/zepto.min.js",
+      "js_style_two/mui/mui.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/questionnaire/questionnairelist.js",
+      "js_style_two/common/app_gqe.js",
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css"
+    ],
+    "refer": [
+      "view_style_two/questionnaire/questionnairedetail.html"
+    ],
+    "priority": 0
+  },
+  "view_style_two/nav/message.html": {
+    "href": "view_style_two/nav/message.html",
+    "resources": [
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/common/zepto.min.js",
+      "js_style_two/nav/message.js",
+      "js_style_two/controllers/common.js",
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css"
+    ],
+    "refer": [
+      "view_style_two/news/newdetail.html",
+      "view_style_two/payment/payment.html",
+      "view_style_two/questionnaire/questionnairedetail.html",
+      "view_style_two/activity/activity_list.html",
+      "view_style_two/news/newlist.html",
+      "view_style_two/approve/list/list_waitforme.html",
+      "view_style_two/activity/activity_detail.html",
+      "view_style_two/approve/approve_nav.html",
+      "view_style_two/questionnaire/questionnairelist.html"
+    ],
+    "priority": 0
+  },
+  "view_style_two/calendar/calendar_edit.html": {
+    "href": "view_style_two/calendar/calendar_edit.html",
+    "resources": [
+      "css/mui.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css",
+      "images/ScApp/icon/RichengZt.png",
+      "images/ScApp/icon/Sfchaosong.png",
+      "images/ScApp/icon/SfGongkai.png",
+      "images/ScApp/icon/SfQuantian.png",
+      "images/ScApp/icon/SfTixing.png",
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/calendar/calendar_edit.js"
+    ],
+    "refer": [
+      "view_style_two/calendar/calendar_list.html"
+    ],
+    "priority": 0
+  },
+  "view_style_two/calendar/calendar_list.html": {
+    "href": "view_style_two/calendar/calendar_list.html",
+    "resources": [
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/calendar/calendar_list.js",
+      "js_style_two/common/jquery-1.4.1.min.js",
+      "css/mui.css",
+      "css/list.css",
+      "css/reset.css",
+      "css/style_sc.css",
+      "images/ScApp/mypage/GroupAdd.png"
+    ],
+    "refer": [
+      "view_style_two/calendar/calendar_edit.html"
+    ],
+    "priority": 0
+  },
+  "view_style_two/myPage/feedback/feedbackadd.html": {
+    "href": "view_style_two/myPage/feedback/feedbackadd.html",
+    "resources": [
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/feedback/feedbackadd.js",
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view_style_two/myPage/newstyle/change_style.html": {
+    "href": "view_style_two/myPage/newstyle/change_style.html",
+    "resources": [
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/controllers/common.js",
+      "css/mui.css",
+      "css/style_sc.css",
+      "css/reset.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view_style_two/myPage/userinfo/userinfo.html": {
+    "href": "view_style_two/myPage/userinfo/userinfo.html",
+    "resources": [
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/mui/mui.zoom.js",
+      "js_style_two/mui/mui.previewimage.js",
+      "js_style_two/common/binaryajax.js",
+      "js_style_two/common/exif.js",
+      "js_style_two/common/canvasResize.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/controllers/myPage/userinfo/userinfo.js",
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "css/preview_image.css",
+      "images/ScApp/general/placeholdimg/UploadImage.png"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view_style_two/common/user_list.html": {
+    "href": "view_style_two/common/user_list.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/mui.indexedlist.css",
+      "css/style_sc.css",
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/mui/mui.indexedlist.js",
+      "js_style_two/controllers/common.js"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view_style_two/myPage/usergroup/usergroup_apply.html": {
+    "href": "view_style_two/myPage/usergroup/usergroup_apply.html",
+    "resources": [
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/common/zepto.min.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/controllers/myPage/usergroup/usergroup_apply.js",
+      "images/ScApp/mypage/addUser.png",
+      "images/ScApp/icon/Fuze.png",
+      "css/mui.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css"
+    ],
+    "refer": [
+      "view_style_two/common/user_list.html"
+    ],
+    "priority": 0
+  },
+  "view_style_two/myPage/usergroup/usergroup.html": {
+    "href": "view_style_two/myPage/usergroup/usergroup.html",
+    "resources": [
+      "css/mui.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/common/zepto.min.js",
+      "js_style_two/controllers/myPage/usergroup/usergroup.js"
+    ],
+    "refer": [
+      "view_style_two/myPage/usergroup/usergroup_apply.html"
+    ],
+    "priority": 0
+  },
+  "view_style_two/nav/mine.html": {
+    "href": "view_style_two/nav/mine.html",
+    "resources": [
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/controllers/app.js",
+      "css/mui.min.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "images/ScApp/general/placeholdimg/UploadImage.png"
+    ],
+    "refer": [
+      "view_style_two/myPage/feedback/feedbackadd.html",
+      "view_style_two/myPage/newstyle/change_style.html",
+      "view_style_two/myPage/userinfo/userinfo.html",
+      "view_style_two/myPage/usergroup/usergroup.html"
+    ],
+    "priority": 0
+  },
+  "view_style_two/common/progress.html": {
+    "href": "view_style_two/common/progress.html",
+    "resources": [
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/common/zepto.min.js",
+      "js_style_two/controllers/common.js",
+      "css/custom-bars.css",
+      "css/component.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "index_style_two.html": {
+    "href": "index_style_two.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/custom-bars.css",
+      "css/component.css",
+      "css/list.css",
+      "css/style_sc.css",
+      "css/reset.css",
+      "js_style_two/mui/mui.min.js",
+      "js_style_two/controllers/common.js",
+      "js_style_two/controllers/app.js",
+      "js_style_two/controllers/update.js"
+    ],
+    "refer": [
+      "view_style_two/addList/addList_all_list.html",
+      "view_style_two/nav/message.html",
+      "view_style_two/news/newdetail.html",
+      "view_style_two/approve/list/list_waitforme.html",
+      "view_style_two/approve/list/list_sendme.html",
+      "view_style_two/questionnaire/questionnairedetail.html",
+      "view_style_two/calendar/calendar_list.html",
+      "view_style_two/approve/list/list_launched.html",
+      "view_style_two/activity/activity_detail.html",
+      "view_style_two/nav/mine.html",
+      "view_style_two/common/progress.html",
+      "login.html"
+    ],
+    "priority": 0
+  },
+  "loading.html": {
+    "href": "loading.html",
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/controllers/common.js",
+      "js/controllers/app.js"
+    ],
+    "refer": [
+      "view/activity/activity_detail.html",
+      "view/addList/addList_all_list.html",
+      "view/approve/list/list_waitforme.html",
+      "view/news/newdetail.html",
+      "view/questionnaire/questionnairedetail.html",
+      "view/calendar/calendar_list.html",
+      "view/nav/mine.html",
+      "view/nav/message.html",
+      "view/approve/list/list_launched.html",
+      "view/approve/list/list_sendme.html",
+      "login.html",
+      "index_style_two.html",
+      "index.html"
+    ],
+    "priority": 0
+  }
+}

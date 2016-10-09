@@ -7,7 +7,7 @@ var header = document.querySelector('header.mui-bar');
 var headLetter;
 var temHead = '<li data-group="@headLetter" class="mui-table-view-divider mui-indexed-list-group">@headLetter</li>';
 //数据体
-var temBody = '<li data-tags="@Header" class="mui-table-view-cell mui-indexed-list-item addlist_stafflist"><div data-value="@id" class="divClick"><img src="@titleimg"><div class="addlist_staffname"><div class="addlist_name">@UserName</div><span class="addlist_post">@DepartmentName</span></div></div><div class="addlist_makemass" data-mobile="@Mobilemsg"></div><div class="addlist_makecall" data-mobile="@Mobilecall"></div></li>';
+var temBody = '<li data-tags="@Header" class="mui-table-view-cell mui-indexed-list-item addlist_stafflist"><div data-value="@id" class="divClick"><img src="@titleimg"><div class="addlist_staffname"><div class="addlist_name">@UserName</div><span class="addlist_post">@DepartmentName</span></div></div><div class="addlist_makecall" data-mobile="@Mobilemsg"></div><div class="addlist_makemass" data-mobile="@Mobilecall"></div></li>';
 //获取数据
 //还可以加入收藏优先，限制收藏数量比如100个
 function GetUserList(selectType, departmentId,searchkey) {
@@ -256,6 +256,11 @@ mui.plusReady(function() {
 		var msg = "";
 		var href = this.getAttribute('data-mobile');
 		smsTest(href, msg);
+		//	document.getElementById("sendMessage").addEventListener('tap', function() {
+//		currentWebViewHide();
+	var id = this.getAttribute('data-value');
+	var template = common.getTemplate('page2', 'addfollow.html?id=' + id);
+//	});
 	});
 
 

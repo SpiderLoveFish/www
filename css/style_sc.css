@@ -2151,8 +2151,9 @@ select option {
     float: right;
     height: 36px;
     width: 44px;
-    background: url(../images/ScApp/nav/msg.png) center no-repeat;
+    background: url(../images/ScApp/nav/appsWj.png) center no-repeat;
     background-size: 26px 26px;
+    /*//msg.png*/
 }
 .address_list .addlist_makecall {
     background: url(../images/ScApp/nav/call.png) center no-repeat;

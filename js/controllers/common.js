@@ -134,7 +134,7 @@ var CommonTop = '101px';
 		}
 				
 	//创建或打开websql数据库
-	common.openDatabase = function() {
+	common.openDatabase = function() { 
 		var db = openDatabase('XCZSDB', '1.0', 'XCZSDB', 5 * 1024 * 1024);
 		return db;
 	}

@@ -72,7 +72,7 @@ function getquestionnairelist() {
 		endIndex: endIndex,
 		type: selecttype,
 	};
-	common.postApi('GetSurveys', data, function(response) {
+	common.postApi('Getquertions', data, function(response) {
 		dataArray = eval(response.data);
 		for (var i = 0; i < dataArray[0].length; i++) {
 			var obj = dataArray[0][i];

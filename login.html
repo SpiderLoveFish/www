@@ -71,8 +71,12 @@
 				</div>
 				<div class="mui-content-padded" style="margin-top: 40px;">
 					<button id='login' class="mui-btn mui-btn-block mui-btn-primary">登录</button>
-					<div class="link-area"><a id='reg'>选择你的服务器</a>
-						<!--注册账号-->
+					
+					<div class="link-area">
+						<!--<p>登陆帐号请联系it管理员</p>-->
+					 	<a id='reg'>
+						选择你的服务器
+					</a>			
 					</div>
 				</div>
 				<div class="login_footer login_footer_add">
@@ -87,6 +91,7 @@
 			(function($, doc) {
 				$.init();
 				$.plusReady(function() {
+					
 					var internetType = plus.networkinfo.getCurrentType();
 					if (internetType == 1) {
 						common.toast('检测到您尚未联网,请联网后重试..');
@@ -118,7 +123,7 @@
 							version=version+'/Don`t Found Clientid';
 							clientid = 'Don`t Found Clientid';
 						}
-						//common.showWaiting(true);
+						common.showWaiting(true);
 						app.login(loginname, pwd, clientid, version, function(result) {
 							if (result) {
 								common.closeWaiting();

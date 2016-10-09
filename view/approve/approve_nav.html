@@ -40,24 +40,24 @@
 					<div class="approve_module">
 						<a>
 							<div id="gongshi" class="approve_list approve_list3">
-								<p>工时填报</p>
+								<p>预算管理</p>
 							</div>
 						</a>
-						<a>
+						<!--<a>
 							<div id="jiaban" class="approve_list approve_list4">
 								<p>加班申请</p>
 							</div>
-						</a>
-						<a>
+						</a>-->
+						<!--<a> 
 							<div id="qingjia" class="approve_list approve_list5">
 								<p>请假申请</p>
 							</div>
-						</a>
-						<a>
+						</a>-->
+						<!--<a>
 							<div id="tongyong" class="approve_list approve_list6">
 								<p>通用审批</p>
 							</div>
-						</a>
+						</a>-->
 						<a>
 							<div id="more" class="approve_list approve_list7">
 								<p class="approve_addmore">添加更多</p>
@@ -104,22 +104,22 @@
 			common.click('my', function() {
 				var webview = common.getTemplate('page2', 'list/list_launched.html'); //第二层webview
 			});
-			//请假
-			common.click('qingjia', function() {
-				var webview = common.getTemplate('page2', 'leave/leave_apply.html'); //第二层webview
-			});
+//			//请假
+//			common.click('qingjia', function() {
+//				var webview = common.getTemplate('page2', 'leave/leave_apply.html'); //第二层webview
+//			});
 			//加班
-			common.click('jiaban', function() {
-				var webview = common.getTemplate('page2', 'work/work_apply.html'); //第二层webview
-			});
-			//工时
+//			common.click('jiaban', function() {
+//				var webview = common.getTemplate('page2', 'work/work_apply.html'); //第二层webview
+//			});
+//			//工时
 			common.click('gongshi', function() {
 				var webview = common.getTemplate('page2', 'projecthour/projecthour_apply.html'); //第二层webview
 			});
-			//通用
-			common.click('tongyong', function() {
-				var webview = common.getTemplate('page2', 'generalapprove/generalapprove_apply.html'); //第二层webview
-			});
+//			//通用
+//			common.click('tongyong', function() {
+//				var webview = common.getTemplate('page2', 'generalapprove/generalapprove_apply.html'); //第二层webview
+//			});
 			//更多
 			common.click('more', function() {
 				common.toast('更多应用请联系提供商..');

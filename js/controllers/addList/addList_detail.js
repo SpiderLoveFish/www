@@ -12,10 +12,10 @@ mui.plusReady(function() {
 	//		alert(this.innerText);
 	//	});
 	id = common.getQueryString("id");
-	document.getElementById("sendMessage").addEventListener('tap', function() {
-		currentWebViewHide();
-		var template = common.getTemplate('page2', 'addfollow.html?id=' + id);
-	});
+//	document.getElementById("sendMessage").addEventListener('tap', function() {
+//		currentWebViewHide();
+//		var template = common.getTemplate('page2', 'addfollow.html?id=' + id);
+//	});
 	document.getElementById("collect_star").addEventListener('tap', function() {
 		var ustyle='';
 		 
