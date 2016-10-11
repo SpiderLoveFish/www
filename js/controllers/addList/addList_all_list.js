@@ -237,7 +237,6 @@ mui.plusReady(function() {
 		detailPage.loadURL('addList_detail.html?id=' + id);
 		openMenu();
 	});
-	refresh
 	document.getElementById('refresh').addEventListener('tap', function() {
 	var rf = document.getElementById('search');
 	// alert(rf.value)

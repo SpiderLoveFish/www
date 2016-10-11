@@ -1,7 +1,7 @@
 var list = document.getElementById("list");
 var starIndex = 0;
 var endIndex = 1000;
-var selecttype = 'getActivityList_NoRead';
+var selecttype = 'N';
 var news_hint = document.getElementsByClassName("news_hint");
 
 function getpullupRefresh() {
@@ -11,32 +11,40 @@ function getpullupRefresh() {
 }
 
 function getActivityList() {
-	var html = '<a id="@id" class="sc_cell sc_padding mui-table-view-cell">' + '<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' + '<div class="sc_cell_bd sc_cell_primary">' + '<p>@Title</p>' + '<p class="label_describe_2">@Description</p>' + '<span class="sc_comment">@ReleaseDateTime</span>' + '</div>' + '<div class="sc_cell_data">@flag</div></a>';
+	//'<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' +
+	var html = // '<li data-tags="@id" class="mui-table-view-cell mui-indexed-list-item addlist_stafflist"><div data-value="@id" class="divClick"><img src="@IsHostPic"><div class="addlist_staffname"><div class="addlist_name">@Title</div><span class="addlist_post">@Description</span></div></div><div class="addlist_makecall" data-mobile="@Mobilemsg"></div><div class="addlist_makemass" data-mobile="@Mobilecall"></div></li>';
+	'<a id="@id" name="@score" class="sc_cell sc_padding mui-table-view-cell">' +'<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' +  '<div class="sc_cell_bd sc_cell_primary">' + '<p>@Title</p>' + '<p class="label_describe_2">@Description</p>' + '<span class="sc_comment">@ReleaseDateTime</span>' + '</div>' + '<div class="sc_cell_data">@flag</div></a>';
 	var data = {
-		ID: '',
-		type: selecttype,
-		strWhere: '',
-		starIndex: starIndex,
-		endIndex: endIndex,
+		strwhere: '',
+		sfkh: selecttype,
+		nowindex:  10
 	};
-	common.postApi('GetActivity', data, function(response) {
+	common.postApi('GetScore', data, function(response) {
+		//alert(JSON.stringify(response))
 		dataArray = eval(response.data);
-		for (var i = 0; i < dataArray[0].length; i++) {
-			var obj = dataArray[0][i];
-			if (selecttype == "getActivityList_All") {
-				var itemhtml = html.replace('@id', obj.ID).replace('@Title', substringAddPoint(obj.ATheme, 15)).replace('@Description', substringAddPoint(obj.AAdress, 20)).replace('@ReleaseDateTime', obj.ReleaseDateTime.substring(0, 10)).replace('@IsHostPic', obj.IsHostPic);
-				if (obj.Flag == "2") {
-					itemhtml = itemhtml.replace('@flag', '未参与');
-				} else {
-					itemhtml = itemhtml.replace('@flag', '我已参与');
-				}
+		
+		for (var i = 0; i < dataArray.length; i++) {
+			var obj = dataArray[i];
+			var jf='总积分:'+obj.Jf+'</br> 已发积分:'+obj.Jf1+' 已用积分:'+obj.Jf2;
+			 var img='../../images/ScApp/general/headimg/headimg_01.png';
+	      if(obj.Sex=="女")img='../../images/ScApp/general/headimg/headimg_02.png';
+ 				
+			if (selecttype == "N") {
+				var itemhtml = html.replace('@id', obj.ID).replace('@Title', substringAddPoint(obj.Name, 15)).replace('@Description',jf ).replace('@score',obj.Jf );
+				//.replace('@ReleaseDateTime', obj.ReleaseDateTime.substring(0, 10)).replace('@IsHostPic', obj.Sex);
+//				if (obj.Flag == "2") {
+	     	itemhtml = itemhtml.replace('@flag', '员工').replace('@ReleaseDateTime', obj.Tel).replace('@IsHostPic', img);
+//				} else {
+//					itemhtml = itemhtml.replace('@flag', '我已参与');
+//				}
 				list.innerHTML += itemhtml;
 			} else {
-				list.innerHTML += html.replace('@id', obj.ID).replace('@Title', substringAddPoint(obj.ATheme, 15)).replace('@Description', substringAddPoint(obj.AAdress, 20)).replace('@ReleaseDateTime', obj.ReleaseDateTime.substring(0, 10)).replace('@IsHostPic', obj.IsHostPic).replace('@flag', '');
+				list.innerHTML += html.replace('@id', obj.ID).replace('@Title', substringAddPoint(obj.Name, 15)).replace('@Description', jf).replace('@IsHostPic', img).replace('@flag', '客户').replace('@ReleaseDateTime', obj.Tel).replace('@score',obj.Jf );
+//				.replace('@ReleaseDateTime', obj.ReleaseDateTime.substring(0, 10)).replace('@IsHostPic', obj.IsHostPic).replace('@flag', '');		 
 			}
 		}
 		starIndex = starIndex + 10;
-		if (selecttype == "getActivityList_NoRead") {
+		if (selecttype == "N") {
 
 			if (dataArray[0].length > 0) {
 				news_hint[0].style.display = "block";
@@ -46,7 +54,7 @@ function getActivityList() {
 			}
 			mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
 		} else {
-			mui('#pullrefresh').pullRefresh().endPullupToRefresh((dataArray[0].length < 10)); //参数为true代表没有更多数据了。
+			mui('#pullrefresh').pullRefresh().endPullupToRefresh((dataArray.length < 10)); //参数为true代表没有更多数据了。
 		}
 	}, 'json');
 }
@@ -57,30 +65,30 @@ $(function() {
 			if (i == 0) {
 				starIndex = 0;
 				endIndex = 1000;
-				if (selecttype != "getActivityList_NoRead") {
+				if (selecttype != "N") {
 					list.innerHTML = "";
 				} else {
 					return;
 				}
-				selecttype = 'getActivityList_NoRead';
+				selecttype = 'N';
 			} else if (i == 1) {
 				starIndex = 0;
 				endIndex = 10;
-				if (selecttype != "getActivityList_All") {
+				if (selecttype != "Y") {
 					list.innerHTML = "";
 				} else {
 					return;
 				}
-				selecttype = 'getActivityList_All';
+				selecttype = 'Y';
 			} else {
 				starIndex = 0;
 				endIndex = 10;
-				if (selecttype != "getActivityList_My") {
+				if (selecttype != "Y") {
 					list.innerHTML = "";
 				} else {
 					return;
 				}
-				selecttype = 'getActivityList_My';
+				selecttype = 'Y';
 			}
 			setTimeout(function() {
 				mui('#pullrefresh').pullRefresh().pullupLoading();
@@ -92,7 +100,8 @@ $(function() {
 mui.plusReady(function() {
 	mui('.container').on('tap', 'a', function(e) {
 		var id = this.getAttribute('id');
-		var template = common.getTemplate('page2', 'activity_detail.html?id=' + id);
+		var score= this.getAttribute('name');
+		var template = common.getTemplate('page2', 'activity_detail.html?id=' + id+'&sfkh='+selecttype+'&score='+score);
 
 	});
 	mui('.mui-bar-nav').on('tap', '.btn_post_activ', function(e) {
@@ -125,7 +134,7 @@ mui.plusReady(function() {
 	}
 	window.addEventListener('refresh1', function() {
 
-		if (selecttype == "getActivityList_NoRead") {
+		if (selecttype == "N") {
 			list.innerHTML = "";
 			starIndex = 0;
 			endIndex = 1000;

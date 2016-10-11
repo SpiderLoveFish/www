@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../../css/list.css" />
+		<link rel="stylesheet" href="../../../css/style_sc.css" />
+		<link rel="stylesheet" href="../../../css/reset.css" />
+		<title>工时详情</title>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">预算明细</h1>
+			<!--<i class="btn_post_activ">发布活动</i>-->
+		</header>
+		<div class="mui-content container">
+			<div class="work_details">
+				<div class="work_details_title bs">
+			 
+					<div class="work_details_content">
+						<label>部件：</label>
+						<p id="project">部件</p>
+						 
+						<label>总金额：</label>
+						<p id="Workzje">总金额</p>
+						<label>主材小计：</label>
+						<p id="WorkzcSum">主材小计</p>
+						<label>辅材小计：</label>
+						<p id="WorkfcSum">辅材小计</p>
+						<label>人工小计：</label>
+						<p id="WorkrgSum">人工小计</p>
+						
+					</div>
+				</div>
+				<div class="approve_process bs">
+					<div class="approve_process_title">明细</div>
+					<div class="approve_process_content">
+						<div class="approve_state">
+							<!--<ul id="approveProcess">
+
+							</ul>-->
+						 
+  <TABLE   class="table1 table-striped table-bordered table-condensed"border=1 cellSpacing=0 cellPadding=1 width="100%" style="border-collapse:collapse;font-size:9px" bordercolor="#333333">
+<thead>
+  <TR>
+  
+    <TD width="20%">
+      <DIV align=center><b>项目名称</b></DIV></TD>
+  
+       <TD width="7%">
+      <DIV align=center><b>主材￥</b></DIV></TD>
+             <TD width="7%">
+      <DIV align=center><b>辅材￥</b></DIV></TD>
+             <TD width="7%">
+      <DIV align=center><b>人工￥</b></DIV></TD>
+             <TD width="7%">
+      <DIV align=center><b>小计￥</b></DIV></TD>
+    <TD width="7%">
+      <DIV align=center><b>数量</b></DIV></TD>
+    
+    <TD width="7%">
+      <DIV align=center><b>金额￥</b></DIV></TD>
+      <TD width="7%">
+
+      <DIV align=center><b>单位</b></DIV></TD>
+      <!-- <TD width="31%">-->
+      <!--<DIV align=center><b>材料及工艺说明</b></DIV></TD>-->
+     </TR>
+</thead>      
+  <TBODY>      
+ 
+  <tfoot>
+  
+      
+  </tfoot>
+</TABLE>
+ 
+ 
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="approve_footer h">
+				<div id="btnState" class="btn_appr_agree h">同意</div>
+				<div id="btnNopass" class="btn_appr_refuse h">拒绝</div>
+				<div id="btnBreak" class="btn_appr_revoke h">作废单据</div>
+			</div>
+		</div>
+	</body>
+	<script src="../../../js/common/zepto.min.js"></script>
+	<script src="../../../js/common/app_gqe.js"></script>
+	<script type="text/javascript" src="../../../js/mui/mui.min.js"></script>
+	<script type="text/javascript" src="../../../js/controllers/common.js"></script>
+	<script src="../../../js/controllers/approve/projecthour/ysdetail.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

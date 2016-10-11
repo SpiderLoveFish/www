@@ -2,107 +2,95 @@
 <html>
 
 	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-		<title>活动报名</title>
-		<link rel="stylesheet" type="text/css" href="../../css/mui.css" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
 		<link rel="stylesheet" href="../../css/list.css" />
 		<link rel="stylesheet" href="../../css/style_sc.css" />
 		<link rel="stylesheet" href="../../css/reset.css" />
 		<link rel="stylesheet" href="../../css/preview_image.css" />
-		<link rel="stylesheet" href="../../css/font-awesome.min.css" />
-
+		<title>加班详情</title>
+		<style>
+			.leave_uploadimg {
+				height: auto;
+				overflow: hidden;
+			}
+			
+			.leave_uploadimg img {
+				width: 40px;
+				height: 40px;
+				float: left;
+				margin: 10px 10px;
+			}
+		</style>
 	</head>
-
+		
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">活动报名</h1>
+			<h1 class="mui-title">积分详情</h1>
 		</header>
-
-		<div class="mui-content ">
-			<div class="mui-scroll">
-				<div class="container">
-					<div class="news_container">
-						<div class="news_container_1 bs">
-							<div class="news_container_detial">
-								<div class="head_top">
-									<span class="left" id="ReleaseDateTime"></span>
-									<span class="icon_book right" id="ReadCount"></span>
-								</div>
-								<div class="news_detial">
-									<h4 id="ATheme"> </h4>
-									<div class="apply_deadline" id="SignUpEndTime"></div>
-									<p>发布人：
-										<label id="ReleaseName"> </label>
-									</p>
-									<div class="clear_float"></div>
-								</div>
-								<div class="news_body" id="AContext">
-								</div>
-								<div class="activ_lable">
-									<i>活动时间：</i><span id="Start_end_Time"></span>
-								</div>
-								<div class="activ_lable">
-									<i>活动地点：</i><span id="AAdress"></span>
-								</div>
-
-							</div>
-							<div class="activ_apply">
-								<div class="activ_apply_alr">
-									<div class="activ_apply_title" id="userCount"></div>
-									<div class="activ_apply_list" id="UserHeight">
-										<ul id="UserList">
-										</ul>
-										<!--<div class="showall_name">查看所有</div>-->
-									</div>
-									<div class="active_apply_btn">
-										<div class="btn_cnacelpub h" id="cancel">结束活动</div>
-										<div class="btn_woapply h" id="signUp">我要报名</div>
-										<div class="btn_activend h" id="gameOver">活动已结束</div>
-									</div>
+		<div class="mui-content container">
+			<div class="work_details">
+				<div class="work_details_title bs">
+					<div class="sc_cells sc_cells_access approve_overtime">
+						<!--<a href="javascript:;" class="sc_cell">
+							<div class="approve_left">
+								<div class="sc_cell_hd"><img id="avatar" src=""></div>
+								<div class="sc_cell_bd sc_cell_primary">
+									<p id="userName">姓名</p>
+									<p id="ReleaseTime" class="label_describe">时间</p>
 								</div>
 							</div>
+							<div class="approve_right">
+								<div id="approveState" class=""></div>
+							</div>
+						</a>-->
+					</div>
+					<div style="padding-left: 0px;" class="work_details_content">
+						 
+						<div class="activ_content_edit">
+								<textarea style="height: 50px;" type="" class="" name="" id="Remark" value="" placeholder="请输入备注"></textarea>
+							</div>
+						
+						<li class="activ_input_list app_general_label flexbox">
+								<input class="activ_input_label14 " type="text" name="" id="txtscore" value="" placeholder="请填写积分" />
+							</li>
+ 
+						 
+					</div>
+					<!--<div class="leave_uploadimg">
+						<div id="imglist">
+							<img src="http://shp.qpic.cn/bizmp/ibqxmticiaNq4HALuKiavZkfxun63icnjefpsP9Ja8mIYVCa4cTk3mFZdcw/" data-preview-src="" data-preview-group="1">
 						</div>
-						<div class="pub_comment bs">
-							<div class="comment_title" id="comment_title">
-								回复 (0条)
-							</div>
-							<div class="comment_lists">
-								<ul id="comments">
+					</div>-->
+				</div>
+				<div class="approve_process bs">
+					<div id='approve_process_title' class="approve_process_title">积分使用过程</div>
+					<div class="approve_process_content">
+						<div class="approve_state">
+							<ul id="approveProcess">
 
-								</ul>
-							</div>
-							<p class="comment_hint" id="comment_hint">已没有更多</i>
-							</p>
+							</ul>
 						</div>
 					</div>
-
 				</div>
 
 			</div>
-			<div class="pub_inputbox">
-			<div class="inputbox_foot flexbox" style="z-index:19;">
-				<!--<div class="inputbox_append">
-
-				</div>-->
-				<div class="inputbox_input flexItem">
-					<textarea type="text" id="CommentText" data-selected="true" name="" rows="" cols="" placeholder="发表你的意见或者建议"></textarea>
-				</div>
-				<div class="inputbox_send" id="fabiao"></div>
+			<div class="approve_footer h">
+				<div id="btnState" class="btn_appr_agree h">添加</div>
+				<div id="btnNopass" class="btn_appr_refuse h">消除</div>
+				<div id="btnBreak" class="btn_appr_revoke h">作废</div>
 			</div>
 		</div>
-		</div>
-		
 	</body>
-
+	<script src="../../js/common/zepto.min.js"></script>
+	<script src="/../../js/common/app_gqe.js"></script>
 	<script type="text/javascript" src="../../js/mui/mui.min.js"></script>
-	<script type="text/javascript" src="../../js/controllers/extension.js" ></script>
+	<script type="text/javascript" src="../../js/controllers/extension.js"></script>
 	<script type="text/javascript" src="../../js/mui/mui.zoom.js"></script>
 	<script type="text/javascript" src="../../js/mui/mui.previewimage.js"></script>
 	<script type="text/javascript" src="../../js/controllers/common.js"></script>
-	<script type="text/javascript" src="../../js/common/zepto.min.js"></script>
-	<script type="text/javascript" src="../../js/controllers/activity/activity_detail.js"></script>
-	</body>
+	<script src="../../js/controllers/activity/activpprove_detail.js" type="text/javascript" charset="utf-8"></script>
 
 </html>
