@@ -126,9 +126,9 @@ getApproveOrderBussiness = function(obj, toData, ccData) {
 //					approveProcessHtml += '<li class="state_icon_wait"><div class="approve_state_list"><div class="sc_cell_hd"><img src="' + item.Avatar + '"></div><div class="sc_cell_bd sc_cell_primary"><p>' + item.InEmpName + '</p><p class="label_describe"></p></div><div class="sc_cell_data"></div></div></li>'
 //				} else
 				if (item.Jflx == '发放积分') {
-					approveProcessHtml += '<li class="state_icon_pass"><div class="approve_state_list"><div class="sc_cell_hd"> <div class="sc_cell_bd sc_cell_primary"><p>' + item.InEmpName + '</p><p class="label_describe">' + item.Content + '</p></div><div class="sc_cell_data">' +  (item.InDate) + '</div></div></li>';
+					approveProcessHtml += '<li class="state_icon_pass"><div class="approve_state_list"><div class="sc_cell_hd"> <div class="sc_cell_bd sc_cell_primary"><p>' + item.InEmpName + '('+item.Jf+')</p><p class="label_describe">' + item.Content + '</p></div><div class="sc_cell_data">' +  (item.InDate) + '</div></div></li>';
 				} else {
-					approveProcessHtml += '<li class="state_icon_notpass"><div class="approve_state_list"><div class="sc_cell_hd"> <div class="sc_cell_bd sc_cell_primary"><p>' + item.InEmpName + '</p><p class="label_describe">' + item.Content + '</p></div><div class="sc_cell_data">' +  (item.InDate) + '</div></div></li>';
+					approveProcessHtml += '<li class="state_icon_notpass"><div class="approve_state_list"><div class="sc_cell_hd"> <div class="sc_cell_bd sc_cell_primary"><p>' + item.InEmpName + '('+item.Jf+')</p><p class="label_describe">' + item.Content + '</p></div><div class="sc_cell_data">' +  (item.InDate) + '</div></div></li>';
 				}
 //				if (currentUserId == item.UserId) {
 //					creator = 1; //负责人
