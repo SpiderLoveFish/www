@@ -1,25 +1,28 @@
 var list = document.getElementById("list");
 var starIndex = 0;
 var endIndex = 1000;
-var selecttype = 'getSurveysList_NoRead';
+var selecttype = 'dqr';
 var news_hint = document.getElementsByClassName("news_hint");
 var html_No = '<a href="javascript:;" class="sc_cell sc_padding  mui-table-view-cell"  id="@ID">' +
 //	'		<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' +
 	'		<div class="sc_cell_bd sc_cell_primary">' +
-	'			<p>@STheme</p>' +
+	'			<p>@STheme</p>(<p>@djbh</p>)' +
 	'			<p class="label_describe_2">@SContext</p>' +
 	'			<span class="sc_comment">@ReleaseTime</span>' +
+	'		</div>' +
+		'		<div class="sc_cell_data">' +
+	'			<p>@flag</p>' +
 	'		</div>' +
 	'	</a>';
 var html_CanYu = '<a href="javascript:;"  class="sc_cell sc_padding mui-table-view-cell" id="@ID">' +
 //	'		<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' +
 	'		<div class="sc_cell_bd sc_cell_primary">' +
-	'			<p>@STheme</p>' +
+	'			<p>@STheme</p>(<p>@djbh</p>)' +
 	'			<p class="label_describe_2">@SContext</p>' +
 	'			<span class="sc_comment">@ReleaseTime</span>' +
 	'		</div>' +
 	'		<div class="sc_cell_data">' +
-	'			我发起' +
+	'			<p>@flag</p>' +
 	'		</div>' +
 	'	</a>';
 $(function() {
@@ -31,21 +34,21 @@ $(function() {
 				if (i == 0) {
 					starIndex = 0;
 					endIndex = 1000;
-					if (selecttype != "getSurveysList_NoRead") {
+					if (selecttype != "dqr") {//待确认
 						list.innerHTML = "";
 					} else {
 						return;
 					}
-					selecttype = 'getSurveysList_NoRead';
+					selecttype = 'dqr';
 				} else {
 					starIndex = 0;
 					endIndex = 10;
-					if (selecttype != "getSurveysList_All") {
+					if (selecttype != "yqr") {//已确认
 						list.innerHTML = "";
 					} else {
 						return;
 					}
-					selecttype = 'getSurveysList_All';
+					selecttype = 'yqr';
 				}
 				setTimeout(function() {
 					mui('#pullrefresh').pullRefresh().refresh(true);
@@ -90,6 +93,7 @@ function ChangeDateFormat(jsondate) {
 function getquestionnairelist() {
 	var data = {
 		strWhere: '',
+		lx:selecttype,
 		uid: getUserInfo().ID
 //		starIndex: starIndex,
 //		endIndex: endIndex,
@@ -99,14 +103,15 @@ function getquestionnairelist() {
 		dataArray = eval(response.data);
 		for (var i = 0; i < dataArray.length; i++) {
 			var obj = dataArray[i];
-			if (obj.DoPerson == getUserInfo().ID) {
-				list.innerHTML += html_CanYu.replace('@IsHostPic', obj.IsHostPic).replace('@ID', obj.id).replace('@STheme', obj.BudgetName).replace('@SContext', substringAddPoint(obj.address, 15)).replace('@ReleaseTime', ChangeDateFormat(obj.DoTime));
-			} else {
-				list.innerHTML += html_No.replace('@IsHostPic', obj.IsHostPic).replace('@ID', obj.id).replace('@STheme', obj.BudgetName).replace('@SContext', substringAddPoint(obj.address, 15)).replace('@ReleaseTime', ChangeDateFormat(obj.DoTime));
-			}
+			//if (obj.DoPerson == getUserInfo().ID) {
+				list.innerHTML += html_CanYu.replace('@IsHostPic', obj.IsHostPic).replace('@ID', obj.id).replace('@STheme', obj.BudgetName).replace('@SContext', substringAddPoint(obj.address, 15)).replace('@ReleaseTime', ChangeDateFormat(obj.DoTime))
+				.replace('@flag', obj.zt).replace('@djbh', obj.id);
+//			} else {
+//				list.innerHTML += html_No.replace('@IsHostPic', obj.IsHostPic).replace('@ID', obj.id).replace('@STheme', obj.BudgetName).replace('@SContext', substringAddPoint(obj.address, 15)).replace('@ReleaseTime', ChangeDateFormat(obj.DoTime));
+//			}
 		}
 		starIndex = starIndex + 10;
-		if (selecttype == "getSurveysList_NoRead") {
+		if (selecttype == "dqr") {
 			mui('#pullrefresh').pullRefresh().refresh(true);
 			if (dataArray.length > 0) {
 				news_hint[0].style.display = "block";
@@ -152,7 +157,7 @@ mui.plusReady(function() {
 		});
 	}
 	window.addEventListener('refresh1', function() {
-		if (selecttype == "getSurveysList_NoRead") {
+		if (selecttype == "dqr") {
 			list.innerHTML = "";
 			starIndex = 0;
 			endIndex = 1000;

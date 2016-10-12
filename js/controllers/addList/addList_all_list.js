@@ -254,7 +254,7 @@ mui.plusReady(function() {
 		search.blur();
 		var msg = "";
 		var href = this.getAttribute('data-mobile');
-		smsTest(href, msg);
+		//smsTest(href, msg);
 		//	document.getElementById("sendMessage").addEventListener('tap', function() {
 //		currentWebViewHide();
 	var id = this.getAttribute('data-value');

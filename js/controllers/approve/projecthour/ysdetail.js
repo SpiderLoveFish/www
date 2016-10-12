@@ -33,11 +33,11 @@ mui.plusReady(function() {
 		var	obj=s.jhdata;
  	//业务数据
 	 // alert(obj[0].ComponentName)
-		$('#project').text(obj[0].ComponentName);
-		$('#WorkzcSum').text(obj[0].zc_zje);
-		$('#WorkfcSum').text(obj[0].fc_zje);
-		$('#Workzje').text(obj[0].zje);
-		$('#WorkrgSum').text(obj[0].rg_zje);
+		//$('#project').text(obj[0].ComponentName);
+		$('#Workzje').text(obj[0].DiscountAmount);
+		$('#Workjjje').text(obj[0].JJAmount);
+		$('#Workzcje').text(obj[0].ZCAmount);
+		$('#Workfjje').text(obj[0].FJAmount);
 		
 		      var data = s.detaildata;
 		   // alert(JSON.stringify(data))
