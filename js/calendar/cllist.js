@@ -118,12 +118,12 @@ function getquestionnairelist() {
 		starIndex = starIndex + 10;
 		if(selecttype == "dqr") {
 			mui('#pullrefresh').pullRefresh().refresh(true);
-			if(dataArray.length > 0) {
-				news_hint[0].style.display = "block";
-				news_hint[0].innerText = dataArray.length;
-			} else {
-				news_hint[0].style.display = "none";
-			}
+//			if(dataArray.length > 0) {
+//				news_hint[0].style.display = "block";
+//				news_hint[0].innerText = dataArray.length;
+//			} else {
+//				news_hint[0].style.display = "none";
+//			}
 			mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
 		} else {
 			mui('#pullrefresh').pullRefresh().endPullupToRefresh((dataArray.length < 10)); //参数为true代表没有更多数据了。
@@ -134,8 +134,9 @@ var detailPage = null;
 mui.plusReady(function() {
 	mui('#list').on('tap', '.sc_cell', function(e) {
 		var id = this.getAttribute('id');
-		var webview = common.getTemplate('page1');
-		webview.loadURL('ysdetail.html?id=' + id);
+		mui.alert('暂无')
+		//var webview = common.getTemplate('page1');
+		//webview.loadURL('ysdetail.html?id=' + id);
 	});
 	if(plus.os.name != "Android") {
 		var pullrefresh = document.getElementById("pullrefresh");

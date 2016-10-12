@@ -19,8 +19,10 @@
 				$.plusReady(function() {
 					var settings = app.getSettings();
 					var userInfo = app.getUserInfo();
-					setTimeout(function() {
-						if (!settings.autoLogin || !userInfo.UserId || !userInfo.CorpId || !userInfo.ClientId) {
+//					alert(JSON.stringify(settings))
+//						alert(JSON.stringify(userInfo))
+					setTimeout(function() {//!userInfo.CorpId ||
+						if (!settings.autoLogin || !userInfo.UserId ||  !userInfo.ClientId) {
 							plus.webview.currentWebview().loadURL("login.html");
 						} else {
 							var st = localStorage.getItem('$style');

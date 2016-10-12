@@ -47,7 +47,7 @@
 						<li id="approve" class="flexbox index_right mui-table-view-cell">
 							<div class="index_mess_appr index_mess_1">
 								<i id="approveCount" class="newsremind_badge h"></i>
-								<lable class="index_mess_label">审批</lable>
+								<lable class="index_mess_label">单据管理</lable>
 								<span class="index_mess_span">包含预算，出入库等单据以及通用审批</span>
 							</div>
 						</li>
@@ -61,15 +61,15 @@
 						<li id="survey" class="flexbox index_right  mui-table-view-cell">
 							<div class="index_mess_appr index_mess_3">
 								<i id="surveyCount" class="newsremind_badge h"></i>
-								<lable class="index_mess_label">调查问卷</lable>
-								<span class="index_mess_span">在线参与企业问卷</span>
+								<lable class="index_mess_label">生日管理</lable>
+								<span class="index_mess_span">客户和员工生日管理</span>
 							</div>
 						</li>
 						<li id="activity" class="flexbox index_right  mui-table-view-cell">
 							<div class="index_mess_appr index_mess_4">
 								<i id="activityCount" class="newsremind_badge h"></i>
-								<lable class="index_mess_label">活动报名</lable>
-								<span class="index_mess_span">随时随地发布、参与活动</span>
+								<lable class="index_mess_label">积分管理</lable>
+								<span class="index_mess_span">员工和客户积分管理</span>
 							</div>
 						</li>
 					</ul>
@@ -178,7 +178,7 @@
 			//设置快捷键
 			localStorage.setItem(setName, JSON.stringify(shortcuts_Name));
 		}
-
+	 
 		function showButton() {
 			var isShortcuts = localStorage.getItem('$shortcuts_switch');
 			if (isShortcuts == "true") {
@@ -202,9 +202,9 @@
 					var openUrl = document.getElementById("shortcuts1").querySelector("input").value;
 					//alert(openUrl);
 					$(".menu_4_menu span").click();
-					if(getUserInfo().Level=="1")
+					//if(getUserInfo().Level=="1")
 					common.getTemplate('page2', openUrl);
-					else common.toast('此功能待完善！');
+					//else common.toast('此功能待完善！');
 				});
 			}
 			if (shortcuts_two == '[]' || shortcuts_two == '' || shortcuts_two == null || shortcuts_two == undefined) {
@@ -217,9 +217,9 @@
 					var openUrl = document.getElementById("shortcuts2").querySelector("input").value;
 					//alert(openUrl);
 					$(".menu_4_menu span").click();
-				if(getUserInfo().Level=="1")
+				//if(getUserInfo().Level=="1")
 					common.getTemplate('page2', openUrl);
-					else common.toast('此功能待完善！');
+				//	else common.toast('此功能待完善！');
 					//common.loadUrl(openUrl);
 				});
 			}
@@ -233,9 +233,9 @@
 					var openUrl = document.getElementById("shortcuts3").querySelector("input").value;
 					//alert(openUrl);
 					$(".menu_4_menu span").click();
-				if(getUserInfo().Level=="1")
+				//if(getUserInfo().Level=="1")
 					common.getTemplate('page2', openUrl);
-					else common.toast('此功能待完善！');
+					//else common.toast('此功能待完善！');
 					//common.loadUrl(openUrl);
 				});
 			}
@@ -249,9 +249,9 @@
 					var openUrl = document.getElementById("shortcuts4").querySelector("input").value;
 					//alert(openUrl);
 					$(".menu_4_menu span").click();
-					if(getUserInfo().Level=="1")
+					//if(getUserInfo().Level=="1")
 					common.getTemplate('page2', openUrl);
-					else common.toast('此功能待完善！');
+					//else common.toast('此功能待完善！');
 					//common.loadUrl(openUrl);
 				});
 			}
@@ -272,9 +272,9 @@
 			//var a= plus.push.getClientInfo().token;
 	      // alert(plus.push.getClientInfo().token);
 			common.click('approve', function() {
-				if(getUserInfo().Level=="1")
-				common.getTemplate('page2', '../approve/list/list_waitforme.html');
-			else common.toast('此功能待完善！');
+				//if(getUserInfo().Level=="1")'../approve/list/list_waitforme.html'
+				common.getTemplate('page2', '../approve/approve_nav.html');
+			//else common.toast('此功能待完善！');
 			});
 			common.click('new', function() {
 				//if(getUserInfo().Level=="1")
@@ -287,9 +287,9 @@
 				//else common.toast('此功能待完善！');
 			});
 			common.click('activity', function() {
-				if(getUserInfo().Level=="1")
+				//if(getUserInfo().Level=="1")
 				common.loadUrl('../activity/activity_list.html');
-				else common.toast('此功能待完善！');
+				//else common.toast('此功能待完善！');
 			});
 			getData();
 			showButton();

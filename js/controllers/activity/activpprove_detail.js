@@ -271,6 +271,7 @@ getApproveOrderBussiness = function(obj, toData, ccData) {
 			if (!txtscore) {
 				return;
 			}	
+		if(sfadd=="N")txtscore=-txtscore;
 		var data = {
 			sfadd: sfadd,
 			sfkh: sfkh,

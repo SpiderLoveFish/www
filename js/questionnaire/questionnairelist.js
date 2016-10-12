@@ -15,11 +15,11 @@ var html_CanYu = '<a href="javascript:;"  class="sc_cell sc_padding mui-table-vi
 	'		<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' +
 	'		<div class="sc_cell_bd sc_cell_primary">' +
 	'			<p>@STheme</p>' +
-	'			<p class="label_describe_2">@SContext</p>' +
+	'			<p class="label_describe_2">@SContext 生日：@sr</p>' +
 	'			<span class="sc_comment">@ReleaseTime</span>' +
 	'		</div>' +
 	'		<div class="sc_cell_data">' +
-	'			我已参与' +
+	'			<p style="color:red">还有天数：@ts</p>' +
 	'		</div>' +
 	'	</a>';
 $(function() {
@@ -66,34 +66,56 @@ function getpullupRefresh() {
 
 function getquestionnairelist() {
 	var data = {
-		ID: '',
-		strWhere: '',
-		starIndex: starIndex,
-		endIndex: endIndex,
-		type: selecttype,
+		url:ApiUrl
+//		strWhere: '',
+//		starIndex: starIndex,
+//		endIndex: endIndex,
+//		type: selecttype,
 	};
-	common.postApi('Getquertions', data, function(response) {
+//+---------------------------------------------------  
+//| 求两个时间的天数差 日期格式为 YYYY-MM-dd   
+//+---------------------------------------------------  
+function daysBetween(DateOne,DateTwo)  
+{   
+    var OneMonth = DateOne.substring(5,DateOne.lastIndexOf ('-'));  
+    var OneDay = DateOne.substring(DateOne.length,DateOne.lastIndexOf ('-')+1);  
+    var OneYear = DateOne.substring(0,DateOne.indexOf ('-'));  
+  
+    var TwoMonth = DateTwo.substring(5,DateTwo.lastIndexOf ('-'));  
+    var TwoDay = DateTwo.substring(DateTwo.length,DateTwo.lastIndexOf ('-')+1);  
+    var TwoYear = DateTwo.substring(0,DateTwo.indexOf ('-'));  
+  
+    var cha=((Date.parse(OneMonth+'/'+OneDay+'/'+OneYear)- Date.parse(TwoMonth+'/'+TwoDay+'/'+TwoYear))/86400000);   
+    return Math.abs(cha);  
+}  
+	common.postApi('GetUserList', data, function(response) {
 		dataArray = eval(response.data);
-		for (var i = 0; i < dataArray[0].length; i++) {
-			var obj = dataArray[0][i];
-			if (obj.Flag == '3') {
-				list.innerHTML += html_CanYu.replace('@IsHostPic', obj.IsHostPic).replace('@ID', obj.ID).replace('@STheme', obj.STheme).replace('@SContext', substringAddPoint(obj.SContext, 15)).replace('@ReleaseTime', obj.ReleaseTime.substring(0, 10));
-			} else {
-				list.innerHTML += html_No.replace('@IsHostPic', obj.IsHostPic).replace('@ID', obj.ID).replace('@STheme', obj.STheme).replace('@SContext', substringAddPoint(obj.SContext, 15)).replace('@ReleaseTime', obj.ReleaseTime.substring(0, 10));
-			}
+		for (var i = 0; i < dataArray.length; i++) {
+			var obj = dataArray[i];
+			
+			var bsr='2016-10-22';
+		 var myDate = new Date();
+//		  var aP = document.getElementsByClassName('label_describe_2');
+//		  aP.style.color = 'red';
+			var bts=daysBetween(bsr,myDate.getFullYear()+'-'+myDate.getMonth()+'-'+myDate.getDate());
+		//	if (obj.Flag == '3') {
+				list.innerHTML += html_CanYu.replace('@IsHostPic', obj.Avatar).replace('@ID', obj.UserId).replace('@STheme', obj.UserName).replace('@SContext', (obj.DepartmentName)).replace('@ReleaseTime', obj.tel).replace('@ts', bts).replace('@sr',bsr);
+//			} else {
+//				list.innerHTML += html_No.replace('@IsHostPic', obj.IsHostPic).replace('@ID', obj.ID).replace('@STheme', obj.STheme).replace('@SContext', substringAddPoint(obj.SContext, 15)).replace('@ReleaseTime', obj.ReleaseTime.substring(0, 10));
+//			}
 		}
 		starIndex = starIndex + 10;
 		if (selecttype == "getSurveysList_NoRead") {
 			mui('#pullrefresh').pullRefresh().refresh(true);
-			if (dataArray[0].length > 0) {
+			if (dataArray.length > 0) {
 				news_hint[0].style.display = "block";
-				news_hint[0].innerText = dataArray[0].length;
+				news_hint[0].innerText = dataArray.length;
 			} else {
 				news_hint[0].style.display = "none";
 			}
 			mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
 		} else {
-			mui('#pullrefresh').pullRefresh().endPullupToRefresh((dataArray[0].length < 10)); //参数为true代表没有更多数据了。
+			mui('#pullrefresh').pullRefresh().endPullupToRefresh((dataArray.length < 10)); //参数为true代表没有更多数据了。
 		}
 	}, 'json');
 }

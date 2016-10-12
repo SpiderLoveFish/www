@@ -40,12 +40,12 @@
 								<p>积分管理</p>
 							</div>
 						</a>
-						<!--<a>
+						<a>
 							<div id="calendar" class="approve_list workstand_list5">
-								<p>日程管理</p>
+								<p>材料查询</p>
 							</div>
 						</a>
-						<a>
+						<!--<a>
 							<div id="payment" class="approve_list workstand_list6">
 								<p>爱心捐赠</p>
 							</div>
@@ -89,10 +89,10 @@
 			common.loadUrl('../activity/activity_list.html');
 				// common.toast('此功能待完善！');
 			});
-//			document.getElementById("calendar").addEventListener('tap', function() {
-//				//common.loadUrl('../calendar/calendar_list.html');
-//				common.getTemplate('page2', '../calendar/calendar_list.html');
-//			});
+			document.getElementById("calendar").addEventListener('tap', function() {
+				//common.loadUrl('../calendar/calendar_list.html');
+				common.getTemplate('page2', '../calendar/cllist.html');
+			});
 //			document.getElementById("payment").addEventListener('tap', function() {
 //				common.loadUrl('../payment/payment.html');
 //			});

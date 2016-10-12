@@ -55,7 +55,7 @@
 		<DIV class="container_login">
 			<div class="login_logo">
 				<div class="login_logo_img">
-					<img  id="logo" src="images/ScApp/login/s-cloud-15.png" style="">
+					<img id="logo" src="images/ScApp/login/s-cloud-15.png" style="">
 				</div>
 			</div>
 			<div class="mui-content" style="background-color:white;">
@@ -71,12 +71,12 @@
 				</div>
 				<div class="mui-content-padded" style="margin-top: 40px;">
 					<button id='login' class="mui-btn mui-btn-block mui-btn-primary">登录</button>
-					
+
 					<div class="link-area">
 						<!--<p>登陆帐号请联系it管理员</p>-->
-					 	<a id='reg'>
-						选择你的服务器
-					</a>			
+						<a id='reg'>
+							选择你的服务器
+						</a>
 					</div>
 				</div>
 				<div class="login_footer login_footer_add">
@@ -91,41 +91,41 @@
 			(function($, doc) {
 				$.init();
 				$.plusReady(function() {
-					
+
 					var internetType = plus.networkinfo.getCurrentType();
-					if (internetType == 1) {
+					if(internetType == 1) {
 						common.toast('检测到您尚未联网,请联网后重试..');
 					}
-						if(JSON.stringify(getServerUrls('$ServerUrls'))!='[]'){
-				document.getElementById("reg").innerHTML=getServerUrls('$ServerUrls').Name;
-				document.getElementById("idwww").innerHTML=getServerUrls('$ServerUrls').ApiUrl;
-					document.getElementById("logo").src=getServerUrls('$ServerUrls').Logo;
-			}
-				//alert(JSON.stringify(getServerUrls('$ServerUrls')))
+					if(JSON.stringify(getServerUrls('$ServerUrls')) != '[]') {
+						document.getElementById("reg").innerHTML = getServerUrls('$ServerUrls').Name;
+						document.getElementById("idwww").innerHTML = getServerUrls('$ServerUrls').ApiUrl;
+						document.getElementById("logo").src = getServerUrls('$ServerUrls').Logo;
+					}
+					//alert(JSON.stringify(getServerUrls('$ServerUrls')))
 					//common.alert('如果您还没有登录账号,请联系客服 手机号:18512260364 微信号:go_mobile');
 					//登录
 					common.click("login", function() {
 						var clientid = plus.push.getClientInfo().clientid;
 						var version = "android";
-						if (mui.os.ios) {
+						if(mui.os.ios) {
 							version = "ios";
 							clientid = plus.push.getClientInfo().token;
 						}
 						var loginname = common.textValiAlert(document.getElementById("account").value, "用户名不能为空..");
-						if (!loginname) {
+						if(!loginname) {
 							return;
 						}
 						var pwd = common.textValiAlert(document.getElementById("password").value, "密码不能为空..");
-						if (!pwd) {
+						if(!pwd) {
 							return;
 						}
-						if (!clientid) {
-							version=version+'/Don`t Found Clientid';
+						if(!clientid) {
+							version = version + '/Don`t Found Clientid';
 							clientid = 'Don`t Found Clientid';
 						}
 						common.showWaiting(true);
 						app.login(loginname, pwd, clientid, version, function(result) {
-							if (result) {
+							if(result) {
 								common.closeWaiting();
 								plus.webview.currentWebview().loadURL("index.html");
 							} else {
@@ -135,7 +135,8 @@
 						})
 					});
 					//自动登录切换
-					var settings = app.getSettings();
+					//var settings = app.getSettings();					
+					var settings = new Object();
 					settings.autoLogin = true;
 					app.setSettings(settings);
 					//双击后退退出登录
@@ -143,27 +144,27 @@
 					common.click('reg', function() {
 						//common.loadUrl('reg.html');
 						common.loadUrl('view/myPage/userinfo/servers_apply.html');
-//							common.getTemplate('serverapply','view/myPage/userinfo/servers_apply.html' )
-							//'shortcuts_apply.html?type=' + id);
+						//							common.getTemplate('serverapply','view/myPage/userinfo/servers_apply.html' )
+						//'shortcuts_apply.html?type=' + id);
 					});
 					//开启快捷键
 					localStorage.setItem('$shortcuts_switch', true);
 					var shortcuts = new Object();
-					shortcuts.Name = '请假填报';
+					shortcuts.Name = '我的预算';
 					shortcuts.imgUrl = '../../images/ScApp/shortcutsicon/kuaijiejian_14.png';
-					shortcuts.openUrl = '../approve/leave/leave_apply.html';
+					shortcuts.openUrl = '../approve/projecthour/yslist.html';
 					setShortcuts("$shortcuts_one", shortcuts);
-					shortcuts.Name = '加班填报';
+					shortcuts.Name = '积分管理';
 					shortcuts.imgUrl = '../../images/ScApp/shortcutsicon/kuaijiejian_08.png';
-					shortcuts.openUrl = '../approve/work/work_apply.html';
+					shortcuts.openUrl = '../activity/activity_list.html';
 					setShortcuts("$shortcuts_two", shortcuts);
-					shortcuts.Name = '待我审批';
+					shortcuts.Name = '生日管理';
 					shortcuts.imgUrl = '../../images/ScApp/shortcutsicon/kuaijiejian_10.png';
-					shortcuts.openUrl = '../approve/list/list_waitforme.html';
+					shortcuts.openUrl = '../questionnaire/questionnairelist.html';
 					setShortcuts("$shortcuts_three", shortcuts);
-					shortcuts.Name = '日程管理';
+					shortcuts.Name = '企业公告';
 					shortcuts.imgUrl = '../../images/ScApp/shortcutsicon/KjjRicheng.png';
-					shortcuts.openUrl = '../calendar/calendar_list.html';
+					shortcuts.openUrl = '../news/newlist.html';
 					setShortcuts("$shortcuts_four", shortcuts);
 				});
 				//获取服务器地址
@@ -172,7 +173,7 @@
 					var shortcuts = JSON.parse(localStorage.getItem(setName) || "[]");
 					return shortcuts;
 				}
-				
+
 				//设置快捷键
 				function getShortcuts(setName) {
 					//获取快捷键

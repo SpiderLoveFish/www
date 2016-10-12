@@ -1,9 +1,9 @@
 //全局变量 接口地址
 var globalUrl = "http://mb.xczs.co/webserver/Appapi.asmx/";
-var  ApiUrl = "http://mb.xczs.co/";
+var ApiUrl = "http://mb.xczs.co/";
 var interfaceUrl = "http://mb.xczs.co/webserver/Appapi.asmx/";
-var UploadImageUrl="http://mb.xczs.co/Data/uploadapp.ashx";
-var UploadAudioUrl="http://app.go-mobile.cn/HandlersAuthFrame/H_UploadVideo.ashx";
+var UploadImageUrl = "http://mb.xczs.co/Data/uploadapp.ashx";
+var UploadAudioUrl = "http://app.go-mobile.cn/HandlersAuthFrame/H_UploadVideo.ashx";
 //http://192.168.10.12:8888/ScFamilyAPI/v1.1/
 var aniShow = "pop-in"; //fade-in,zoom-out,slide-in-right,pop-in
 var aniHide = "auto"; //fade-out,zoom-in,slide-out-right,pop-out
@@ -12,12 +12,12 @@ var CommonTop = '101px';
 
 (function(mui, common) {
 	mui.plusReady(function() {
-		
-		if(JSON.stringify(getServerUrls('$ServerUrls'))!='[]'){
+
+		if(JSON.stringify(getServerUrls('$ServerUrls')) != '[]') {
 			//alert(JSON.stringify(getServerUrls('$ServerUrls')))
-		ApiUrl=getServerUrls('$ServerUrls').ApiUrl;
-		interfaceUrl=getServerUrls('$ServerUrls').interfaceUrl;
-		UploadImageUrl=getServerUrls('$ServerUrls').UploadImageUrl;
+			ApiUrl = getServerUrls('$ServerUrls').ApiUrl;
+			interfaceUrl = getServerUrls('$ServerUrls').interfaceUrl;
+			UploadImageUrl = getServerUrls('$ServerUrls').UploadImageUrl;
 		}
 		//初始化首页信息
 		common.initMessage = function() {
@@ -40,7 +40,7 @@ var CommonTop = '101px';
 		//初始化公共选人信息
 		common.initUserList = function() {
 			var webview = plus.webview.getWebviewById('user_list');
-			if (webview) {
+			if(webview) {
 				webview.evalJS('getData();');
 			}
 		}
@@ -51,12 +51,12 @@ var CommonTop = '101px';
 		var templates = {};
 		//根据指定模板名称获取模板 封装共用webview
 		common.getTemplate = function(name, url) {
-			if (!name) {
+			if(!name) {
 				name = "default";
 			}
 			var template = plus.webview.getWebviewById(name + "-template");
 
-			if (!template) {
+			if(!template) {
 				//预加载共用子webview
 				var subWebview = mui.preload({
 					url: '',
@@ -91,7 +91,7 @@ var CommonTop = '101px';
 		//侧滑详情界面专用webview
 		common.getWebviewDetailById = function(detailId) {
 			var template = plus.webview.getWebviewById(detailId);
-			if (!template) {
+			if(!template) {
 				//预加载共用子webview
 				var subWebview = mui.preload({
 					id: detailId,
@@ -113,28 +113,28 @@ var CommonTop = '101px';
 			//获得共用子webview
 			var contentWebview = common.getTemplate('', url);
 			//contentWebview.loadURL(url);
-			if (typeof callback == 'function') {
+			if(typeof callback == 'function') {
 				callback();
 			}
 		}
 	});
-		//是否联网
+	//是否联网
 	common.isNetWork = function() {
-		var internetType = plus.networkinfo.getCurrentType();
-		if (internetType == 1) {
-			return false;
+			var internetType = plus.networkinfo.getCurrentType();
+			if(internetType == 1) {
+				return false;
+			}
+			return true;
 		}
-		return true;
-	}
 		//获取服务器地址
-		function getServerUrls(setName) {
-			//获取快捷键
-			var shortcuts = JSON.parse(localStorage.getItem(setName) || "[]");
-			return shortcuts;
-		}
-				
+	function getServerUrls(setName) {
+		//获取快捷键
+		var shortcuts = JSON.parse(localStorage.getItem(setName) || "[]");
+		return shortcuts;
+	}
+
 	//创建或打开websql数据库
-	common.openDatabase = function() { 
+	common.openDatabase = function() {
 		var db = openDatabase('XCZSDB', '1.0', 'XCZSDB', 5 * 1024 * 1024);
 		return db;
 	}
@@ -143,7 +143,7 @@ var CommonTop = '101px';
 	common.getQueryString = function(name) {
 		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
 		var r = window.location.search.substr(1).match(reg);
-		if (r != null) return unescape(r[2]);
+		if(r != null) return unescape(r[2]);
 		return null;
 	}
 
@@ -158,7 +158,7 @@ var CommonTop = '101px';
 	common.jump = function(url, id, params, callback) {
 		var webview = plus.webview.create(url, id, {}, params);
 		webview.show(aniShow, aniSecond, function() {
-			if (callback) {
+			if(callback) {
 				callback();
 			}
 		});
@@ -191,11 +191,10 @@ var CommonTop = '101px';
 		plus.webview.currentWebview().hide(aniHide, aniSecond);
 	};
 
-
 	//显示loading
 	common.showWaiting = function(autoClose) {
 		//开始：zjl 2016-02-25 修改代码
-		if (!common.isNetWork()) {
+		if(!common.isNetWork()) {
 			common.toast('检测到您尚未联网,请检查网络链接..');
 			return;
 		}
@@ -228,7 +227,7 @@ var CommonTop = '101px';
 	//重写后退 隐藏当前webview
 	common.backOfHideCurrentWebview = function(callback) {
 		mui.back = function() {
-			if (callback) {
+			if(callback) {
 				callback();
 			}
 			common.currentWebviewHide();
@@ -259,7 +258,7 @@ var CommonTop = '101px';
 			'DType': typeId
 		}, function(response) {
 			dataArray = eval(response.data);
-			for (var i = 0; i < dataArray.length; i++) {
+			for(var i = 0; i < dataArray.length; i++) {
 				var obj = dataArray[i];
 				document.getElementById(id).options.add(new Option(obj.DictionaryName, obj.ID));
 			}
@@ -277,28 +276,27 @@ var CommonTop = '101px';
 
 		//常用群组 
 		var data = {
-			url:ApiUrl,
-			CorpID:'',
-			UserId:'',
-			GroupID:''
+			url: ApiUrl,
+			CorpID: '',
+			UserId: '',
+			GroupID: ''
 		};
 		common.postApi('GetApp_Group', data, function(response) {
 			dataArray = eval(response.data);
 			//列表右侧字母列表
-			if (dataArray[0].length > 0) {
+			if(dataArray[0].length > 0) {
 				document.getElementById("headerList").innerHTML += "<a>常</a>";
 				document.getElementById("ulUserList").innerHTML += temHead.replace("@headLetter", '常').replace("@headLetter", '常用群组');
 			}
-			for (var i = 0; i < dataArray[0].length; i++) {
+			for(var i = 0; i < dataArray[0].length; i++) {
 				var obj = dataArray[0][i];
-
 
 				var userIdList = new Array();
 				var userNameList = new Array();
 				//获取群组中人员userid
-				for (var n = 0; n < dataArray[1].length; n++) {
+				for(var n = 0; n < dataArray[1].length; n++) {
 					var obj1 = dataArray[1][n];
-					if (obj.GroupID == obj1.GroupID) {
+					if(obj.GroupID == obj1.GroupID) {
 						userIdList.push(obj1.GroupUserID);
 						userNameList.push(obj1.UserName);
 					}
@@ -311,13 +309,13 @@ var CommonTop = '101px';
 			//加载完群组再加载人员
 			//用户列表
 			common.postApi("GetUserList", {
-				url: ApiUrl 
+				url: ApiUrl
 			}, function(response) {
 				dataArray = eval(response.data);
-				for (var i = 0; i < dataArray.length; i++) {
+				for(var i = 0; i < dataArray.length; i++) {
 					var temp; //临时变量
 					var obj = dataArray[i];
-					if (headLetter != obj.Header) { //没有此头字母,插入头
+					if(headLetter != obj.Header) { //没有此头字母,插入头
 						headLetter = obj.Header;
 						//列表右侧字母列表
 						document.getElementById("headerList").innerHTML += "<a>" + obj.Header + "</a>";
@@ -334,10 +332,8 @@ var CommonTop = '101px';
 
 		}, 'json');
 
-
 		//mui.getJSON
 	};
-
 
 	/**
 	 * @description 获取审批流逻辑信息
@@ -354,28 +350,28 @@ var CommonTop = '101px';
 		var currentUserId = getUserInfo().UserId;
 		approveProcessHtml += '<li class="state_icon_pass"><div class="approve_state_list"><div class="sc_cell_hd"><img src="' + obj.Avatar + '"></div><div class="sc_cell_bd sc_cell_primary"><p>' + obj.UserName + '</p><p class="label_describe">发起申请</p></div><div class="sc_cell_data">' + dateToWithoutYearSecond(obj.ReleaseTime) + '</div></div></li>';
 		//obj.UserName + '发起申请' + obj.ReleaseTime + '<br/>';
-		if (obj.UserId == currentUserId) {
+		if(obj.UserId == currentUserId) {
 			//当前人是发起人
 			creator = 0;
 		}
-		if (toData) {
-			for (var i = 0; i < toData.length; i++) {
+		if(toData) {
+			for(var i = 0; i < toData.length; i++) {
 				var item = toData[i];
-				if (item.ApproveFlag == '0') {
+				if(item.ApproveFlag == '0') {
 					approveProcessHtml += '<li class="state_icon_wait"><div class="approve_state_list"><div class="sc_cell_hd"><img src="' + item.Avatar + '"></div><div class="sc_cell_bd sc_cell_primary"><p>' + item.UserName + '</p><p class="label_describe">等待审批</p></div><div class="sc_cell_data"></div></div></li>'
-				} else if (item.ApproveFlag == '1') {
+				} else if(item.ApproveFlag == '1') {
 					approveProcessHtml += '<li class="state_icon_pass"><div class="approve_state_list"><div class="sc_cell_hd"><img src="' + item.Avatar + '"></div><div class="sc_cell_bd sc_cell_primary"><p>' + item.UserName + '</p><p class="label_describe">' + item.ApproveOpinion + '</p></div><div class="sc_cell_data">' + dateToWithoutYearSecond(item.ApproveTime) + '</div></div></li>';
 				} else {
 					approveProcessHtml += '<li class="state_icon_notpass"><div class="approve_state_list"><div class="sc_cell_hd"><img src="' + item.Avatar + '"></div><div class="sc_cell_bd sc_cell_primary"><p>' + item.UserName + '</p><p class="label_describe">' + item.ApproveOpinion + '</p></div><div class="sc_cell_data">' + dateToWithoutYearSecond(item.ApproveTime) + '</div></div></li>';
 				}
-				if (currentUserId == item.UserId) {
+				if(currentUserId == item.UserId) {
 					creator = 1; //负责人
-					if (obj.ApproveOrder == item.ApproveOrder) {
-						if (item.ApproveFlag == '0') { //未审批
+					if(obj.ApproveOrder == item.ApproveOrder) {
+						if(item.ApproveFlag == '0') { //未审批
 							canApprove = true;
 						}
 						//审批流对应
-						if (i == (toData.length - 1)) { //负责人是按approveorder升序查询,所以最后一条数据为最后审批人
+						if(i == (toData.length - 1)) { //负责人是按approveorder升序查询,所以最后一条数据为最后审批人
 							isLastApprover = true;
 						} else {
 
@@ -384,10 +380,10 @@ var CommonTop = '101px';
 				}
 			}
 		}
-		if (ccData) {
-			for (var i = 0; i < ccData.length; i++) {
+		if(ccData) {
+			for(var i = 0; i < ccData.length; i++) {
 				var item = ccData[i];
-				if (currentUserId == item.UserId) {
+				if(currentUserId == item.UserId) {
 					creator = 2; //相关人
 					break;
 				}
@@ -418,7 +414,7 @@ var CommonTop = '101px';
 		};
 		common.postApi(interfaceUrl + 'EnterpriseApp/v1.0/GetAComment', data, function(response) {
 			dataArray = eval(response.data);
-			for (var i = 0; i < dataArray.length; i++) {
+			for(var i = 0; i < dataArray.length; i++) {
 				var obj = dataArray[i];
 				//alert(obj.MasterID + obj.Avatar)
 			}
@@ -455,7 +451,7 @@ var CommonTop = '101px';
 	 * @example common.textValiAlert('张三','请填写姓名')
 	 */
 	common.textValiAlert = function(text, alertMsg) {
-		if (!text.trim()) {
+		if(!text.trim()) {
 			common.alert(alertMsg);
 			return '';
 		} else {
@@ -473,7 +469,7 @@ var CommonTop = '101px';
 	common.numValiAlert = function(num, alertMsg) {
 		var pattern = /^[0-9]*[0-9][0-9]*$/;
 		var flag = pattern.test(num);
-		if (!flag) {
+		if(!flag) {
 			common.alert(alertMsg);
 			return false;
 		} else {
@@ -489,13 +485,13 @@ var CommonTop = '101px';
 	 */
 	common.floatValiAlert = function(num, alertMsg, type) {
 		var pattern;
-		if (!type || type == 1) {
+		if(!type || type == 1) {
 			pattern = /^-?\d+[\.\d]?\d{0,1}$/; //保留一位小数
 		} else {
 			pattern = /^-?\d+[\.\d]?\d{0,2}$/; //保留二位小数
 		}
 		var flag = pattern.test(num);
-		if (!flag) {
+		if(!flag) {
 			common.alert(alertMsg);
 			return false;
 		} else {
@@ -511,7 +507,7 @@ var CommonTop = '101px';
 	//原生吐司 避免连续点击后持续吐司的情况
 	common.toast = function(msg) {
 		var now = new Date().getTime();
-		if (now - time > 2000) {
+		if(now - time > 2000) {
 			time = now;
 			mui.toast(msg);
 		}
@@ -524,7 +520,7 @@ var CommonTop = '101px';
 	 * @example common.textValiAlert('张三','请填写姓名')
 	 */
 	substringAddPoint = function(text, length) {
-		if (text.length > length) {
+		if(text.length > length) {
 			return text.substring(0, length) + "..";
 		} else {
 			return text;
@@ -543,7 +539,7 @@ var CommonTop = '101px';
 	appQuit = function() {
 			var timeCompleteState = localStorage.getItem('$timeCompleteState'); //结束状态
 			var pauseState = localStorage.getItem('$timeStopState'); //暂停状态
-			if (timeCompleteState == "false" && pauseState == "false") {
+			if(timeCompleteState == "false" && pauseState == "false") {
 				//没有结束也没有暂停就双击退出了
 				localStorage.setItem('$processKillState', true); //杀死进程记录状态
 			} else {
@@ -553,7 +549,7 @@ var CommonTop = '101px';
 			var preTime = 0;
 			mui.back = function() {
 				var now = new Date().getTime();
-				if (now - preTime > 2000) {
+				if(now - preTime > 2000) {
 					preTime = now;
 					mui.toast('再按一次退出应用');
 				} else {
@@ -566,18 +562,18 @@ var CommonTop = '101px';
 		 * @example getUserInfo().UserId;
 		 */
 	getUserInfo = function() {
-			return JSON.parse(localStorage.getItem('$users') || '[]');
-		}
-	
-		//推送跳转
+		return JSON.parse(localStorage.getItem('$users') || '[]');
+	}
+
+	//推送跳转
 	common.pushTransfer = function(type, status, url, id) {
 		var listWebview = plus.webview.getWebviewById(id);
-		if (listWebview) {
+		if(listWebview) {
 			//如果已存在webview,则传参,数据初始化 不再创建webview
-			if (type && status) {
+			if(type && status) {
 				//2个参数
 				listWebview.evalJS("dataLoad('" + type + "','" + status + "');");
-			} else if (status) {
+			} else if(status) {
 				//1个参数
 				listWebview.evalJS("dataLoad('" + status + "');");
 			}
@@ -591,27 +587,27 @@ var CommonTop = '101px';
 		}
 	}
 	common.toPage = function(ViewID, PageID) {
-		if (ViewID == "News") {
+		if(ViewID == "News") {
 			common.getTemplate('pushMsgPage', 'view/news/newdetail.html?id=' + PageID);
-		} else if (ViewID == "Activity") {
+		} else if(ViewID == "Activity") {
 			common.getTemplate('pushMsgPage', 'view/activity/activity_detail.html?id=' + PageID);
-		} else if (ViewID == "Surveys") {
+		} else if(ViewID == "Surveys") {
 			common.getTemplate('pushMsgPage', 'view/questionnaire/questionnairedetail.html?id=' + PageID);
-		} else if (ViewID == "calendar") {
+		} else if(ViewID == "calendar") {
 			common.getTemplate('pushMsgPage', 'view/calendar/calendar_list.html');
-		} else if (PageID == "0") {
+		} else if(PageID == "0") {
 			//跳转发起
 			common.getTemplate('pushMsgPage', 'view/approve/list/list_launched.html');
-		} else if (PageID == "1") {
+		} else if(PageID == "1") {
 			//跳转该我审批
 			common.getTemplate('pushMsgPage', 'view/approve/list/list_waitforme.html');
-		} else if (PageID == "2") {
+		} else if(PageID == "2") {
 			//跳转相关
 			common.getTemplate('pushMsgPage', 'view/approve/list/list_sendme.html');
 		}
 	}
 	common.postApi = function(interfaceName, data, success, dataType) {
-		if (!dataType) {
+		if(!dataType) {
 			//默认json格式
 			dataType = 'json';
 		}
@@ -632,9 +628,9 @@ var CommonTop = '101px';
 		return result;
 
 	};
-	
+
 	common.postglobalUrlApi = function(interfaceName, data, success, dataType) {
-		if (!dataType) {
+		if(!dataType) {
 			//默认json格式
 			dataType = 'json';
 		}
@@ -655,10 +651,9 @@ var CommonTop = '101px';
 		return result;
 
 	};
-	
-	
+
 	common.postApipayment = function(interfaceName, data, success, dataType) {
-		if (!dataType) {
+		if(!dataType) {
 			//默认json格式
 			dataType = 'json';
 		}
@@ -690,7 +685,6 @@ var CommonTop = '101px';
 	//---------------------------------------------------  
 	common.DateFormat = function(mDate, formatStr) {
 
-
 		var myDate = new Date(mDate); //正确
 
 		//alert(date.getFullYear());
@@ -720,7 +714,7 @@ var CommonTop = '101px';
 	}
 
 	common.getApi = function(url, data, success, dataType) {
-		if (!dataType) {
+		if(!dataType) {
 			//默认json格式
 			dataType = 'json';
 		}
@@ -739,8 +733,6 @@ var CommonTop = '101px';
 	};
 }(mui, window.common = {}));
 
-
-
 function base64_encode(str) {
 	var c1, c2, c3;
 	var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
@@ -748,16 +740,16 @@ function base64_encode(str) {
 		len = str.length,
 		string = '';
 
-	while (i < len) {
+	while(i < len) {
 		c1 = str.charCodeAt(i++) & 0xff;
-		if (i == len) {
+		if(i == len) {
 			string += base64EncodeChars.charAt(c1 >> 2);
 			string += base64EncodeChars.charAt((c1 & 0x3) << 4);
 			string += "==";
 			break;
 		}
 		c2 = str.charCodeAt(i++);
-		if (i == len) {
+		if(i == len) {
 			string += base64EncodeChars.charAt(c1 >> 2);
 			string += base64EncodeChars.charAt(((c1 & 0x3) << 4) | ((c2 & 0xF0) >> 4));
 			string += base64EncodeChars.charAt((c2 & 0xF) << 2);
@@ -782,7 +774,7 @@ function trimLR(sendComment) {
 }
 
 String.prototype.replaceAll = function(reallyDo, replaceWith, ignoreCase) {
-	if (!RegExp.prototype.isPrototypeOf(reallyDo)) {
+	if(!RegExp.prototype.isPrototypeOf(reallyDo)) {
 		return this.replace(new RegExp(reallyDo, (ignoreCase ? "gi" : "g")), replaceWith);
 	} else {
 		return this.replace(reallyDo, replaceWith);
@@ -790,14 +782,14 @@ String.prototype.replaceAll = function(reallyDo, replaceWith, ignoreCase) {
 }
 Array.prototype.remove = function(val) {
 	var index = this.indexOf(val);
-	if (index > -1) {
+	if(index > -1) {
 		this.splice(index, 1);
 	}
 };
 Array.prototype.contains = function(element) { //利用Array的原型prototype点出一个我想要封装的方法名contains 
 
-	for (var i = 0; i < this.length; i++) {
-		if (this[i] == element) { //如果数组中某个元素和你想要测试的元素对象element相等，则证明数组中包含这个元素，返回true 
+	for(var i = 0; i < this.length; i++) {
+		if(this[i] == element) { //如果数组中某个元素和你想要测试的元素对象element相等，则证明数组中包含这个元素，返回true 
 			return true;
 		}
 	}
@@ -812,10 +804,10 @@ Date.prototype.format = function(fmt) { //author: meizz
 		"q+": Math.floor((this.getMonth() + 3) / 3), //季度   
 		"S": this.getMilliseconds() //毫秒   
 	};
-	if (/(y+)/.test(fmt))
+	if(/(y+)/.test(fmt))
 		fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-	for (var k in o)
-		if (new RegExp("(" + k + ")").test(fmt))
+	for(var k in o)
+		if(new RegExp("(" + k + ")").test(fmt))
 			fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
 	return fmt;
 }
@@ -833,15 +825,15 @@ function getDateDiff(dateTimeStamp) {
 	var dayC = diffValue / day;
 	var hourC = diffValue / hour;
 	var minC = diffValue / minute;
-	if (monthC >= 1 || weekC >= 1) {
+	if(monthC >= 1 || weekC >= 1) {
 		var d = new Date(dateTimeStamp);
 		//result = d.toDateString();
 		result = d.format('yyyy-MM-dd');
-	} else if (dayC >= 1) {
+	} else if(dayC >= 1) {
 		result = parseInt(dayC) + "天前";
-	} else if (hourC >= 1) {
+	} else if(hourC >= 1) {
 		result = parseInt(hourC) + "个小时前";
-	} else if (minC >= 1) {
+	} else if(minC >= 1) {
 		result = parseInt(minC) + "分钟前";
 	} else
 		result = "刚刚发表";
@@ -853,14 +845,14 @@ function getDateTimeStamp(dateStr) {
 }
 var ws = null;
 back = function(hide) {
-	if (window.plus) {
+	if(window.plus) {
 		ws || (ws = plus.webview.currentWebview());
-		if (hide || ws.preate) {
+		if(hide || ws.preate) {
 			ws.hide('auto');
 		} else {
 			ws.close('auto');
 		}
-	} else if (history.length > 1) {
+	} else if(history.length > 1) {
 		history.back();
 	} else {
 		window.close();
@@ -869,7 +861,7 @@ back = function(hide) {
 
 // 格式化日期时间字符串，格式为"YYYY-MM-DD HH:MM:SS"
 dateToStr = function(d) {
-	return (d.getFullYear() + "-" + ultZeroize(d.getMonth() + 1) + "-" + ultZeroize(d.getDate()) + " " + ultZeroize(d.getHours()) + ":" + ultZeroize(d.getMinutes()) + ":" + ultZeroize(d.getSeconds()));
+	return(d.getFullYear() + "-" + ultZeroize(d.getMonth() + 1) + "-" + ultZeroize(d.getDate()) + " " + ultZeroize(d.getHours()) + ":" + ultZeroize(d.getMinutes()) + ":" + ultZeroize(d.getSeconds()));
 };
 
 // 格式为"YYYY-MM-DD HH:MM:SS" 截取为 格式为"MM-DD HH:MM"
@@ -879,18 +871,18 @@ dateToWithoutYearSecond = function(d) {
 
 // 格式化日期时间字符串，格式为"YYYY-MM-DD"
 dayToStr = function(d) {
-	return (d.getFullYear() + "-" + ultZeroize(d.getMonth() + 1) + "-" + ultZeroize(d.getDate()));
+	return(d.getFullYear() + "-" + ultZeroize(d.getMonth() + 1) + "-" + ultZeroize(d.getDate()));
 };
 // 格式化日期时间字符串，格式为"YYYY-MM-DD"
 noneToStr = function(d) {
-	return (d.getFullYear() + ultZeroize(d.getMonth() + 1) + ultZeroize(d.getDate()));
+	return(d.getFullYear() + ultZeroize(d.getMonth() + 1) + ultZeroize(d.getDate()));
 };
 
 ultZeroize = function(v, l) {
 	var z = "";
 	l = l || 2;
 	v = String(v);
-	for (var i = 0; i < l - v.length; i++) {
+	for(var i = 0; i < l - v.length; i++) {
 		z += "0";
 	}
 	return z + v;
@@ -908,7 +900,7 @@ function bluetooth_list() {
 	console.log(len);
 	var iterator = lists.iterator();
 	plus.android.importClass(iterator);
-	while (iterator.hasNext()) {
+	while(iterator.hasNext()) {
 		var d = iterator.next();
 		plus.android.importClass(d);
 		console.log(d.getName());

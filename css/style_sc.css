@@ -960,7 +960,7 @@ header{
 	line-height: 16px;
 }
 .list_news{
-	padding-top: 10px;
+	padding-top: 1px;
 }
 .list_news .activ_content .sc_cell:active{
 	background-color: #eee;
