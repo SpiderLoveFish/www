@@ -90,9 +90,10 @@ function ChangeDateFormat(jsondate) {
 //  + ":"
 //  + date.getMinutes();
 }
+var search = document.getElementById("search");
 function getquestionnairelist() {
 	var data = {
-		strWhere: '',
+		strWhere: search,
 		lx:selecttype,
 		uid: getUserInfo().ID
 //		starIndex: starIndex,
