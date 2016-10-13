@@ -66,7 +66,8 @@ function getpullupRefresh() {
 
 function getquestionnairelist() {
 	var data = {
-		url:ApiUrl
+		strWhere:'',
+		lx:'yg'
 //		strWhere: '',
 //		starIndex: starIndex,
 //		endIndex: endIndex,
@@ -88,16 +89,20 @@ function daysBetween(DateOne,DateTwo)
     var cha=((Date.parse(OneMonth+'/'+OneDay+'/'+OneYear)- Date.parse(TwoMonth+'/'+TwoDay+'/'+TwoYear))/86400000);   
     return Math.abs(cha);  
 }  
-	common.postApi('GetUserList', data, function(response) {
+	common.postApi('GetUserBirthday', data, function(response) {
 		dataArray = eval(response.data);
 		for (var i = 0; i < dataArray.length; i++) {
 			var obj = dataArray[i];
 			
-			var bsr='2016-10-22';
+			var bsr=obj.nearbir;
 		 var myDate = new Date();
 //		  var aP = document.getElementsByClassName('label_describe_2');
 //		  aP.style.color = 'red';
-			var bts=daysBetween(bsr,myDate.getFullYear()+'-'+myDate.getMonth()+'-'+myDate.getDate());
+			var bts=obj.ts;
+			var	 Avatar= '../../images/ScApp/general/headimg/headimg_01.png';
+			if(obj.Avatar!='')
+			 	 Avatar= ApiUrl+'images/upload/portrait/'+obj.Avatar;
+			//daysBetween(bsr,myDate.getFullYear()+'-'+myDate.getMonth()+'-'+myDate.getDate());
 		//	if (obj.Flag == '3') {
 				list.innerHTML += html_CanYu.replace('@IsHostPic', obj.Avatar).replace('@ID', obj.UserId).replace('@STheme', obj.UserName).replace('@SContext', (obj.DepartmentName)).replace('@ReleaseTime', obj.tel).replace('@ts', bts).replace('@sr',bsr);
 //			} else {

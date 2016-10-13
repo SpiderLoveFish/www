@@ -241,6 +241,7 @@ mui.plusReady(function() {
 	var rf = document.getElementById('search');
 	// alert(rf.value)
 	 GetUserList('','',rf.value);
+	 rf.value='';
 	});
 	mui('#UserList').on('tap', '.addlist_makecall', function(e) {
 		//移除焦点,为了隐藏软键盘

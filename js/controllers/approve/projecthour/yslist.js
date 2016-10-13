@@ -92,6 +92,7 @@ function ChangeDateFormat(jsondate) {
 }
 var search = document.getElementById("search");
 document.getElementById('search').addEventListener('input', function() {
+		list.innerHTML = "";
 	getquestionnairelist();
 	});
 function getquestionnairelist() {

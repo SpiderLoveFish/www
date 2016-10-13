@@ -28,8 +28,10 @@ function getActivityList() {
 			var jf='总积分:'+obj.Jf+'</br> 已发积分:'+obj.Jf1+' 已用积分:'+obj.Jf2;
 			 var img='../../images/ScApp/general/headimg/headimg_01.png';
 	      if(obj.Sex=="女")img='../../images/ScApp/general/headimg/headimg_02.png';
- 				
+ 			 
 			if (selecttype == "N") {
+				if(obj.title!='')
+				img=ApiUrl+'images/upload/portrait/'+obj.title;
 				var itemhtml = html.replace('@id', obj.ID).replace('@Title', substringAddPoint(obj.Name, 15)).replace('@Description',jf ).replace('@score',obj.Jf );
 				//.replace('@ReleaseDateTime', obj.ReleaseDateTime.substring(0, 10)).replace('@IsHostPic', obj.Sex);
 //				if (obj.Flag == "2") {
@@ -46,9 +48,9 @@ function getActivityList() {
 		starIndex = starIndex + 10;
 		if (selecttype == "N") {
 
-			if (dataArray[0].length > 0) {
+			if (dataArray.length > 0) {
 				news_hint[0].style.display = "block";
-				news_hint[0].innerText = dataArray[0].length;
+				news_hint[0].innerText = dataArray.length;
 			} else {
 				news_hint[0].style.display = "none";
 			}
