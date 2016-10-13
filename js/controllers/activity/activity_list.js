@@ -25,17 +25,19 @@ function getActivityList() {
 		
 		for (var i = 0; i < dataArray.length; i++) {
 			var obj = dataArray[i];
-			var jf='总积分:'+obj.Jf+'</br> 已发积分:'+obj.Jf1+' 已用积分:'+obj.Jf2;
+			var jf='总积分:'+obj.Jf+'</br> 已发:'+obj.Jf1+' 已用:'+obj.Jf2;
 			 var img='../../images/ScApp/general/headimg/headimg_01.png';
 	      if(obj.Sex=="女")img='../../images/ScApp/general/headimg/headimg_02.png';
- 			 
-			if (selecttype == "N") {
-				if(obj.title!='')
+ 			
+ 			
+			if (selecttype == "N") {	
+				if(obj.title==''){}else
 				img=ApiUrl+'images/upload/portrait/'+obj.title;
-				var itemhtml = html.replace('@id', obj.ID).replace('@Title', substringAddPoint(obj.Name, 15)).replace('@Description',jf ).replace('@score',obj.Jf );
+			 
+				var itemhtml = html.replace('@id', obj.ID).replace('@Title', (obj.name)).replace('@Description',jf ).replace('@score',obj.Jf );
 				//.replace('@ReleaseDateTime', obj.ReleaseDateTime.substring(0, 10)).replace('@IsHostPic', obj.Sex);
 //				if (obj.Flag == "2") {
-	     	itemhtml = itemhtml.replace('@flag', '员工').replace('@ReleaseDateTime', obj.Tel).replace('@IsHostPic', img);
+	     	itemhtml = itemhtml.replace('@flag', '员工').replace('@ReleaseDateTime', obj.tel).replace('@IsHostPic', img);
 //				} else {
 //					itemhtml = itemhtml.replace('@flag', '我已参与');
 //				}

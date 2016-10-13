@@ -92,7 +92,7 @@ function ChangeDateFormat(jsondate) {
 }
 var search = document.getElementById("search");
 document.getElementById('search').addEventListener('input', function() {
-		list.innerHTML = "";
+	list.innerHTML = "";
 	getquestionnairelist();
 	});
 function getquestionnairelist() {
@@ -107,7 +107,7 @@ function getquestionnairelist() {
 	///	alert(search)
 	common.postApi('GetBudge', data, function(response) {
 		dataArray = eval(response.data);
-
+//alert(JSON.stringify(response))
 		for(var i = 0; i < dataArray.length; i++) {
 			var obj = dataArray[i];
 			//if (obj.DoPerson == getUserInfo().ID) {

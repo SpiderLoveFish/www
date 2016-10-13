@@ -19,7 +19,7 @@ var html_CanYu = '<a href="javascript:;"  class="sc_cell sc_padding mui-table-vi
 	'			<span class="sc_comment">@ReleaseTime</span>' +
 	'		</div>' +
 	'		<div class="sc_cell_data">' +
-	'			<p style="color:red">还有天数：@ts</p>' +
+	'			<p style="color:red">剩余：@ts天</p>' +
 	'		</div>' +
 	'	</a>';
 $(function() {
@@ -104,7 +104,7 @@ function daysBetween(DateOne,DateTwo)
 			 	 Avatar= ApiUrl+'images/upload/portrait/'+obj.Avatar;
 			//daysBetween(bsr,myDate.getFullYear()+'-'+myDate.getMonth()+'-'+myDate.getDate());
 		//	if (obj.Flag == '3') {
-				list.innerHTML += html_CanYu.replace('@IsHostPic', obj.Avatar).replace('@ID', obj.UserId).replace('@STheme', obj.UserName).replace('@SContext', (obj.DepartmentName)).replace('@ReleaseTime', obj.tel).replace('@ts', bts).replace('@sr',bsr);
+				list.innerHTML += html_CanYu.replace('@IsHostPic', Avatar).replace('@ID', obj.UserId).replace('@STheme', obj.UserName).replace('@SContext', (obj.DepartmentName)).replace('@ReleaseTime', obj.tel).replace('@ts', bts).replace('@sr',bsr);
 //			} else {
 //				list.innerHTML += html_No.replace('@IsHostPic', obj.IsHostPic).replace('@ID', obj.ID).replace('@STheme', obj.STheme).replace('@SContext', substringAddPoint(obj.SContext, 15)).replace('@ReleaseTime', obj.ReleaseTime.substring(0, 10));
 //			}
@@ -127,9 +127,10 @@ function daysBetween(DateOne,DateTwo)
 var detailPage = null;
 mui.plusReady(function() {
 	mui('#list').on('tap', '.sc_cell', function(e) {
-		var id = this.getAttribute('id');
-		var webview = common.getTemplate('page1');
-		webview.loadURL('questionnairedetail.html?id=' + id);
+//		var id = this.getAttribute('id');
+//		var webview = common.getTemplate('page1');
+//		webview.loadURL('questionnairedetail.html?id=' + id);
+mui.alert('无明细')
 	});
 	if (plus.os.name != "Android") {
 		var pullrefresh = document.getElementById("pullrefresh");
