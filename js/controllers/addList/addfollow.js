@@ -129,7 +129,7 @@ mui.plusReady(function() {
 				}
 
 				temp = temp.replace("@headImage", titleimg);
-				temp = temp.replace("@commentUser", data[i].Customer_name);
+				temp = temp.replace("@commentUser", data[i].employee_name);
 				temp = temp.replace("@commentTime", getDateDiff(getDateTimeStamp(data[i].Follow_date)));
 				temp = temp.replace("@commentContent", data[i].Follow);
 
