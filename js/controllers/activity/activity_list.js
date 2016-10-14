@@ -1,5 +1,5 @@
 var list = document.getElementById("list");
-var starIndex = 0;
+var starIndex = 10;
 var endIndex = 1000;
 var selecttype = 'N';
 var news_hint = document.getElementsByClassName("news_hint");
@@ -13,11 +13,11 @@ function getpullupRefresh() {
 function getActivityList() {
 	//'<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' +
 	var html = // '<li data-tags="@id" class="mui-table-view-cell mui-indexed-list-item addlist_stafflist"><div data-value="@id" class="divClick"><img src="@IsHostPic"><div class="addlist_staffname"><div class="addlist_name">@Title</div><span class="addlist_post">@Description</span></div></div><div class="addlist_makecall" data-mobile="@Mobilemsg"></div><div class="addlist_makemass" data-mobile="@Mobilecall"></div></li>';
-	'<a id="@id" name="@score" class="sc_cell sc_padding mui-table-view-cell">' +'<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' +  '<div class="sc_cell_bd sc_cell_primary">' + '<p>@Title</p>' + '<p class="label_describe_2">@Description</p>' + '<span class="sc_comment">@ReleaseDateTime</span>' + '</div>' + '<div class="sc_cell_data">@flag</div></a>';
+	'<a id="@id" name="@score" class="sc_cell sc_padding mui-table-view-cell">' +'<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' +  '<div class="sc_cell_bd sc_cell_primary">' + '<p>@Title</p>' + '<p class="label_describe">@Description</p>' + '<span class="sc_comment">@ReleaseDateTime</span>' + '</div>' + '<div class="sc_cell_data">@flag</div></a>';
 	var data = {
 		strwhere: '',
 		sfkh: selecttype,
-		nowindex:  10
+		nowindex:  starIndex
 	};
 	common.postApi('GetScore', data, function(response) {
 		//alert(JSON.stringify(response))
@@ -48,18 +48,19 @@ function getActivityList() {
 			}
 		}
 		starIndex = starIndex + 10;
-		if (selecttype == "N") {
-
-			if (dataArray.length > 0) {
-				news_hint[0].style.display = "block";
-				news_hint[0].innerText = dataArray.length;
-			} else {
-				news_hint[0].style.display = "none";
-			}
-			mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
-		} else {
-			mui('#pullrefresh').pullRefresh().endPullupToRefresh((dataArray.length < 10)); //参数为true代表没有更多数据了。
-		}
+		mui('#pullrefresh').pullRefresh().endPullupToRefresh((dataArray.length < 10)); //参数为true代表没有更多数据了。
+//		if (selecttype == "N") {
+//
+//			if (dataArray.length > 0) {
+//				news_hint[0].style.display = "block";
+//				news_hint[0].innerText = dataArray.length;
+//			} else {
+//				news_hint[0].style.display = "none";
+//			}
+//			mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
+//		} else {
+//			mui('#pullrefresh').pullRefresh().endPullupToRefresh((dataArray.length < 10)); //参数为true代表没有更多数据了。
+//		}
 	}, 'json');
 }
 $(function() {
@@ -67,7 +68,7 @@ $(function() {
 		$(n).click(function() {
 			$(this).addClass('read_active').siblings().removeClass('read_active');
 			if (i == 0) {
-				starIndex = 0;
+				starIndex = 10;
 				endIndex = 1000;
 				if (selecttype != "N") {
 					list.innerHTML = "";
@@ -76,7 +77,7 @@ $(function() {
 				}
 				selecttype = 'N';
 			} else if (i == 1) {
-				starIndex = 0;
+				starIndex = 10;
 				endIndex = 10;
 				if (selecttype != "Y") {
 					list.innerHTML = "";
@@ -85,7 +86,7 @@ $(function() {
 				}
 				selecttype = 'Y';
 			} else {
-				starIndex = 0;
+				starIndex = 10;
 				endIndex = 10;
 				if (selecttype != "Y") {
 					list.innerHTML = "";
@@ -140,7 +141,7 @@ mui.plusReady(function() {
 
 		if (selecttype == "N") {
 			list.innerHTML = "";
-			starIndex = 0;
+			starIndex = 10;
 			endIndex = 1000;
 			getActivityList();
 		}

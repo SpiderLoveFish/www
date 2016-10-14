@@ -1,5 +1,5 @@
 var list = document.getElementById("list");
-var starIndex = 0;
+var starIndex = 10;
 var endIndex = 1000;
 var selecttype = 'dqr';
 var news_hint = document.getElementsByClassName("news_hint");
@@ -32,7 +32,7 @@ $(function() {
 			$('.container .sc_cells_access').each(function(x, y) {
 
 				if(i == 0) {
-					starIndex = 0;
+					starIndex = 10;
 					endIndex = 1000;
 					if(selecttype != "dqr") { //待确认
 						list.innerHTML = "";
@@ -41,7 +41,7 @@ $(function() {
 					}
 					selecttype = 'dqr';
 				} else {
-					starIndex = 0;
+					starIndex = 10;
 					endIndex = 10;
 					if(selecttype != "yqr") { //已确认
 						list.innerHTML = "";
@@ -93,13 +93,15 @@ function ChangeDateFormat(jsondate) {
 var search = document.getElementById("search");
 document.getElementById('search').addEventListener('input', function() {
 	list.innerHTML = "";
+	starIndex=10;
 	getquestionnairelist();
 	});
 function getquestionnairelist() {
 	var data = {
 		strWhere: search.value,
 		lx: selecttype,
-		uid: getUserInfo().ID
+		uid: getUserInfo().ID,
+		nowindex:starIndex 
 			//		starIndex: starIndex,
 			//		endIndex: endIndex,
 			//type: selecttype,
@@ -117,18 +119,19 @@ function getquestionnairelist() {
 			//			}
 		}
 		starIndex = starIndex + 10;
-		if(selecttype == "dqr") {
-			mui('#pullrefresh').pullRefresh().refresh(true);
-			if(dataArray.length > 0) {
-				news_hint[0].style.display = "block";
-				news_hint[0].innerText = dataArray.length;
-			} else {
-				news_hint[0].style.display = "none";
-			}
-			mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
-		} else {
-			mui('#pullrefresh').pullRefresh().endPullupToRefresh((dataArray.length < 10)); //参数为true代表没有更多数据了。
-		}
+		mui('#pullrefresh').pullRefresh().endPullupToRefresh((dataArray.length < 10)); //参数为true代表没有更多数据了
+//		if(selecttype == "dqr") {
+//			mui('#pullrefresh').pullRefresh().refresh(true);
+//			if(dataArray.length > 0) {
+//				news_hint[0].style.display = "block";
+//				news_hint[0].innerText = dataArray.length;
+//			} else {
+//				news_hint[0].style.display = "none";
+//			}
+//			mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
+//		} else {
+//			mui('#pullrefresh').pullRefresh().endPullupToRefresh((dataArray.length < 10)); //参数为true代表没有更多数据了。
+//		}
 	}, 'json');
 }
 var detailPage = null;
@@ -165,7 +168,7 @@ mui.plusReady(function() {
 	window.addEventListener('refresh1', function() {
 		if(selecttype == "dqr") {
 			list.innerHTML = "";
-			starIndex = 0;
+			starIndex = 10;
 			endIndex = 1000;
 			getquestionnairelist();
 		}

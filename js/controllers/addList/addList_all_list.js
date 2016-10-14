@@ -59,12 +59,15 @@ function GetUserList(selectType, departmentId,searchkey) {
 					temp = temHead;
 					document.getElementById("UserList").innerHTML += temp.replace("@headLetter", obj.header).replace("@headLetter", obj.header);
 				} 
+				var	avatar=obj.Avatar;
+				if(avatar==''||avatar==null||avatar=='null')
+				avatar='../../images/ScApp/icon/deadline.png';
 				temp = temBody;
 				temp = temp.replace("@id", obj.id);
 				temp = temp.replace("@Header", obj.header +obj.Customer+ obj.tel+obj.address);
 				temp = temp.replace("@Mobilecall", obj.tel);
 				temp = temp.replace("@Mobilemsg", obj.id);
-				temp = temp.replace("@titleimg", obj.Avatar);
+				temp = temp.replace("@titleimg", avatar);
 				temp = temp.replace("@UserName", obj.Customer);
 				temp = temp.replace("@DepartmentName", obj.address);
 				document.getElementById("UserList").innerHTML += temp;

@@ -15,7 +15,7 @@ var html_CanYu = '<a href="javascript:;"  class="sc_cell sc_padding mui-table-vi
 	'		<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' +
 	'		<div class="sc_cell_bd sc_cell_primary">' +
 	'			<p>@STheme</p>' +
-	'			<p class="label_describe_2">@SContext 生日：@sr</p>' +
+	'			<p class="label_describe_2"> @sr</p>' +//@SContext
 	'			<span class="sc_comment">@ReleaseTime</span>' +
 	'		</div>' +
 	'		<div class="sc_cell_data">' +
@@ -94,7 +94,7 @@ function daysBetween(DateOne,DateTwo)
 		for (var i = 0; i < dataArray.length; i++) {
 			var obj = dataArray[i];
 			
-			var bsr=obj.nearbir;
+			var bsr=obj.rqlx+':'+obj.birthday+' '+obj.age+'岁';
 		 var myDate = new Date();
 //		  var aP = document.getElementsByClassName('label_describe_2');
 //		  aP.style.color = 'red';
@@ -103,25 +103,27 @@ function daysBetween(DateOne,DateTwo)
 			if(obj.Avatar!='')
 			 	 Avatar= ApiUrl+'images/upload/portrait/'+obj.Avatar;
 			//daysBetween(bsr,myDate.getFullYear()+'-'+myDate.getMonth()+'-'+myDate.getDate());
-		//	if (obj.Flag == '3') {
-				list.innerHTML += html_CanYu.replace('@IsHostPic', Avatar).replace('@ID', obj.UserId).replace('@STheme', obj.UserName).replace('@SContext', (obj.DepartmentName)).replace('@ReleaseTime', obj.tel).replace('@ts', bts).replace('@sr',bsr);
+		//	if (obj.Flag == '3') {//.replace('@SContext', (obj.DepartmentName))
+				list.innerHTML += html_CanYu.replace('@IsHostPic', Avatar).replace('@ID', obj.UserId).replace('@STheme', obj.UserName).replace('@ReleaseTime', obj.nearbir).replace('@ts', bts).replace('@sr',bsr);
 //			} else {
 //				list.innerHTML += html_No.replace('@IsHostPic', obj.IsHostPic).replace('@ID', obj.ID).replace('@STheme', obj.STheme).replace('@SContext', substringAddPoint(obj.SContext, 15)).replace('@ReleaseTime', obj.ReleaseTime.substring(0, 10));
 //			}
 		}
 		starIndex = starIndex + 10;
-		if (selecttype == "getSurveysList_NoRead") {
-			mui('#pullrefresh').pullRefresh().refresh(true);
-			if (dataArray.length > 0) {
-				news_hint[0].style.display = "block";
-				news_hint[0].innerText = dataArray.length;
-			} else {
-				news_hint[0].style.display = "none";
-			}
-			mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
-		} else {
-			mui('#pullrefresh').pullRefresh().endPullupToRefresh((dataArray.length < 10)); //参数为true代表没有更多数据了。
-		}
+			mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);//一次性的
+
+//		if (selecttype == "getSurveysList_NoRead") {
+//			mui('#pullrefresh').pullRefresh().refresh(true);
+//			if (dataArray.length > 0) {
+//				news_hint[0].style.display = "block";
+//				news_hint[0].innerText = dataArray.length;
+//			} else {
+//				news_hint[0].style.display = "none";
+//			}
+//			mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
+//		} else {
+//			mui('#pullrefresh').pullRefresh().endPullupToRefresh((dataArray.length < 10)); //参数为true代表没有更多数据了。
+//		}
 	}, 'json');
 }
 var detailPage = null;
