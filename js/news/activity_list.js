@@ -2,7 +2,7 @@ var list = document.getElementById("list");
 var starIndex =10;
 var endIndex = 1000;
 var selecttype = 'getActivityList_NoRead';
-var news_hint = document.getElementsByClassName("news_hint");
+//var news_hint = document.getElementsByClassName("news_hint");
 
 function getpullupRefresh() {
 	setTimeout(function() {
@@ -25,12 +25,16 @@ function getActivityList() {
 				endIndex:starIndex
 			};
 	common.postApi('GetMessage', data, function(response) {
+	
 		dataArray = eval(response.data);
-		//alert(JSON.stringify(response))
+		//alert(dataArray[0].length)
 		for (var i = 0; i < dataArray[0].length; i++) {
 			var obj = dataArray[0][i];
 			//if (selecttype == "getActivityList_All") {
-				var itemhtml = html.replace('@id', obj.ID).replace('@Title', (obj.Title)).replace('@Description', (obj.Title)).replace('@ReleaseDateTime', obj.ReleaseTime).replace('@IsHostPic', ApiUrl+'images/upload/temp/'+obj.IsHostPic);
+				var imgs=obj.news_content.split('.jpg');
+				var desc= substringAddPoint(imgs[imgs.length-1],20).trim().replace('</br>','');
+				//alert(desc)
+				var itemhtml = html.replace('@id', obj.ID).replace('@Title', (obj.Title)).replace('@Description',desc).replace('@ReleaseDateTime', obj.ReleaseTime).replace('@IsHostPic', ApiUrl+'images/upload/temp/'+obj.IsHostPic);
 				if (obj.create_id == getUserInfo().ID) {
 					itemhtml = itemhtml.replace('@flag', '我发布');
 				} 
@@ -44,7 +48,8 @@ function getActivityList() {
 		}
 		starIndex = starIndex + 10;
 		mui('#pullrefresh').pullRefresh().endPullupToRefresh((dataArray[0].length < 10)); //参数为true代表没有更多数据了。
-//		
+	
+//
 //		if (selecttype == "getActivityList_NoRead") {
 //
 //			if (dataArray[0].length > 0) {

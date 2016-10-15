@@ -19,7 +19,7 @@ var html_CanYu = '<a href="javascript:;"  class="sc_cell sc_padding mui-table-vi
 	'			<span class="sc_comment">@ReleaseTime</span>' +
 	'		</div>' +
 	'		<div class="sc_cell_data">' +
-	'			<p style="color:red">剩余：@ts天</p>' +
+	'			<p style="color:red">@ts</p>' +
 	'		</div>' +
 	'	</a>';
 $(function() {
@@ -98,7 +98,8 @@ function daysBetween(DateOne,DateTwo)
 		 var myDate = new Date();
 //		  var aP = document.getElementsByClassName('label_describe_2');
 //		  aP.style.color = 'red';
-			var bts=obj.ts;
+			var bts='剩余：'+obj.ts+'天';
+			if(obj.ts=='0')bts='生日快乐'
 			var	 Avatar= '../../images/ScApp/general/headimg/headimg_01.png';
 			if(obj.Avatar!='')
 			 	 Avatar= ApiUrl+'images/upload/portrait/'+obj.Avatar;

@@ -85,7 +85,7 @@ var data = {
 				var obj = dataArray[0][i];
 				document.getElementById("ReleaseDateTime").innerText = DateFormat(getDateTimeStamp(obj.ReleaseTime.substring(0, 19)), 'yyyy-MM-dd 星期W HH:mm');
 				//document.getElementById("Start_end_Time").innerText = obj.StartTime + '~' + obj.EndTime;
-				document.getElementById("ReleaseName").innerText = obj.create_name;
+				document.getElementById("ReleaseName").innerText = getUserInfo().UserName;
 				document.getElementById("ATheme").innerText = obj.Title;
 				conText = obj.news_content;
 //				document.getElementById("SignUpEndTime").innerText = '报名截至：' + obj.SignUpEndTime.substring(0, 10);
@@ -117,7 +117,7 @@ if(imgs.length>1)
 for (var t = 0; t < imgs.length-1; t++)
 {
 	//alert(imgs[t])
-				document.getElementById("AContext").innerHTML += '<img src="' + imgs[t].replace('</br>','')+'.jpg' + '" data-preview-src="" data-preview-group="1"/>';
+				document.getElementById("AContext").innerHTML += '<img src="' + imgs[t].replace('</br>', '') + '.jpg' + '" data-preview-src="" data-preview-group="1"/>';
 	}		
 	//document.getElementById("AContext").innerHTML += '<img src="' + ApiUrl+'images/upload/temp/'+obj.IsHostPic + '" data-preview-src="" data-preview-group="1"/>';
 //			}

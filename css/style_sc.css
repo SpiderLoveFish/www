@@ -677,6 +677,11 @@ header{
 	width: 40px;
 	height: 40px;
 }
+.approve_overtime2 .sc_cell_hd img{
+	border-radius: 6px;
+	width: 55px;
+	height: 60px;
+}
 .approve_overtime .sc_cell_bd p{
 	font-size: 1.5rem;
 }
