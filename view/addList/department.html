@@ -8,51 +8,131 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<!--标准mui.css-->
-		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/list.css" />
+		<link rel="stylesheet" href="../../css/style_sc.css" />
+		<link rel="stylesheet" href="../../css/reset.css" />
 	</head>
 
 	<body>
 		<header class="mui-bar mui-bar-nav">
 
-			<h1 class="mui-title">客户类型</h1>
+			<h1 class="mui-title">查询条件</h1>
 		</header>
-		<div class="mui-content">
-			<ul id="ulList" class="mui-table-view" style="margin-bottom: 35px;">
+	<div class="mui-content container">
+			<div class="news_container">
+				<div class="news_container_1 bs approve_general">
+					<div class="activ_input_edit">
+						<ul>
+							
+						<li class="activ_input_list  flexbox">
+								<span class="activ_input_label6">类型</span>
+								<p class="flexItem join_object leave_type">
+									<select id="sltType" class="" placeholder="请选择">
+										<option value="">请选择</option>
+									</select>
+								</p>
+							</li>
+							<li class="activ_input_list flexbox">
+								<span class="activ_input_label7">地址</span>
+								<p class="flexItem text_right leave_num">
+									<input id="dzTitle" type="text" placeholder="" value="" />
+								</p>
+							</li>
+							
+							<li class="activ_input_list flexbox">
+								<span class="activ_input_label7">设计师</span>
+								<p class="flexItem text_right leave_num">
+									<input id="sjsTitle" type="text" placeholder="" value="" />
+								</p>
+							</li>
+						 <li class="activ_input_list flexbox">
+								<span class="activ_input_label7">监理</span>
+								<p class="flexItem text_right leave_num">
+									<input id="jlTitle" type="text" placeholder="" value="" />
+								</p>
+							</li>
+							 <li class="activ_input_list flexbox">
+								<span class="activ_input_label7">电话</span>
+								<p class="flexItem text_right leave_num">
+									<input id="telTitle" type="text" placeholder="" value="" />
+								</p>
+							</li>
+							 <li class="activ_input_list flexbox">
+								是否收藏客户
+								<div id="isfav"  class="mui-switch mui-switch-mini ">
+								<div class="mui-switch-handle"></div>
+							</div>
+								 
+							</li>
+							<!--<li id="icon-toUser" class="activ_input_list flexbox approve_pri_li">
+								<span class="activ_input_label10  approve_pri">负责人</span>
+								<p id="toUser" class="flexItem join_object text_right approve_per">
+								</p>
+							</li>
+							<li id="icon-ccUser" class="activ_input_list flexbox approve_pri_li">-->
+								<!--<span class="activ_input_label11  approve_pri">相关人</span>
+								<p id="ccUser" class="flexItem join_object text_right approve_per">
+								</p>
+							</li>-->
+						</ul>
+					</div>
 
-			</ul>
+					<div id="btnSubmit" class="btn_woapply">搜索</div>
+				</div>
+			</div>
 		</div>
-	</body>
+			</body>
 	<script type="text/javascript" src="../../js/mui/mui.min.js"></script>
 	<script type="text/javascript" src="../../js/controllers/common.js"></script>
 	<script>
 		mui.init();
 		mui.plusReady(function() {
-			common.showWaiting(true);
-			var temp = '<li id="@id" class="mui-table-view-cell"><a class="mui-navigate-right">@name</a></li>';
-			var ul = document.getElementById("ulList");
-			//所有:id传入all
-			ul.innerHTML += temp.replace("@id", 'all').replace("@name", '所有').replace("@titleimg", "");
-			ul.innerHTML += temp.replace("@id", 'fav').replace("@name", '收藏客户').replace("@titleimg", "");
-			
-			var data = {
-				 //'deptype': 'GetDepartmentList'
-				 url:ApiUrl
-			};
-			common.postApi("GetCustomerType",data , function(res) {
-				var dataArray = eval(res.data);
-				for (var i = 0; i < dataArray.length; i++) {
-					var obj = dataArray[i];
-					ul.innerHTML += temp.replace("@id", obj.cid).replace("@name", obj.CustomerType);
-					//.replace("@titleimg", obj.Avatar);
-				}
-				common.closeWaiting();
-			}, 'json');
+			//common.showWaiting(true);
+			//绑定下拉列表
+		common.postApi("GetCustomerType", {
+			'url': ApiUrl
+		}, function(response) {
+			dataArray = eval(response.data);
+			for(var i = 0; i < dataArray.length; i++) {
+				var obj = dataArray[i];
+				document.getElementById('sltType').options.add(new Option(obj.CustomerType, obj.cid));
+			}
+			common.closeWaiting();
+		}, 'json');
+				//提交
+		common.click("btnSubmit", function() {
+//		var dzTitle = common.textValiAlert(document.getElementById("dzTitle").value, "请填写查询条件");
+//			if (!dzTitle) {
+//				return;
+//			}
+//			var jlTitle = common.textValiAlert(document.getElementById("jlTitle").value, "请填写条件");
+//			if (!leaveTitle) {
+//				return;
+			//}
+			var dzTitle=document.getElementById("dzTitle").value;
+			var jlTitle=document.getElementById("jlTitle").value;
+			var sjsTitle=document.getElementById("sjsTitle").value;
+			var select=document.getElementById("sltType");
+			var sltType=select.options[select.selectedIndex].value;
+				var telTitle=document.getElementById("telTitle").value;
+			var Title=dzTitle+';'+jlTitle+';'+sjsTitle+';'+sltType+';'+telTitle+';'+fav
+				//alert(Title)
+				currentWebViewHide(Title);
+		});
+		        var isfav = document.getElementById("isfav");
+				var fav='';
+				isfav.addEventListener('toggle', function(event) {
+							 var isActive = event.detail.isActive;
+							if(isActive) fav='fav';
+							else fav='';
+						});
 			//部门点击事件
-			mui('#ulList').on('tap', 'li', function(e) {
-				common.showWaiting(true);
-				var id = this.getAttribute('id');
-				currentWebViewHide(id);
-			});
+//			mui('#ulList').on('tap', 'li', function(e) {
+//				common.showWaiting(true);
+//				var id = this.getAttribute('id');
+//				currentWebViewHide(id);
+//			});
 			mui.back = function() {
 				currentWebViewHide();
 			}

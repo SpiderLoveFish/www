@@ -109,7 +109,9 @@ function daysBetween(DateOne,DateTwo)
 //				list.innerHTML += html_No.replace('@IsHostPic', obj.IsHostPic).replace('@ID', obj.ID).replace('@STheme', obj.STheme).replace('@SContext', substringAddPoint(obj.SContext, 15)).replace('@ReleaseTime', obj.ReleaseTime.substring(0, 10));
 //			}
 		}
+		
 		starIndex = starIndex + 10;
+		mui('#pullrefresh').pullRefresh().refresh(true);
 			mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);//一次性的
 
 //		if (selecttype == "getSurveysList_NoRead") {
@@ -159,12 +161,12 @@ mui.alert('无明细')
 		});
 	}
 	window.addEventListener('refresh1', function() {
-		if (selecttype == "getSurveysList_NoRead") {
-			list.innerHTML = "";
-			starIndex = 0;
-			endIndex = 1000;
-			getquestionnairelist();
-		}
+//		if (selecttype == "getSurveysList_NoRead") {
+//			list.innerHTML = "";
+//			starIndex = 0;
+//			endIndex = 1000;
+//			getquestionnairelist();
+//		}
 
 	});
 	//返回

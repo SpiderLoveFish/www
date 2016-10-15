@@ -126,11 +126,11 @@
 				var temp = '<div id="@id" listtype="@listtype" class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="@picurl"><p class="mui-slider-title">@title</p></a></div>';
 				if (dataArray.length > 0) {
 					//额外增加的一个节点(循环轮播：第一个节点是最后一张轮播)
-					document.getElementById("bannerList").innerHTML += temp.replace('@id', dataArray[dataArray.length - 1].ID).replace('@picurl', dataArray[dataArray.length - 1].IsHostPic).replace('@title', dataArray[dataArray.length - 1].ReleaseTime + ' ' + substringAddPoint(dataArray[dataArray.length - 1].Title, 9));
+					document.getElementById("bannerList").innerHTML += temp.replace('@id', dataArray[dataArray.length - 1].ID).replace('@picurl', ApiUrl+'images/upload/temp/'+dataArray[dataArray.length - 1].IsHostPic).replace('@title', dataArray[dataArray.length - 1].ReleaseTime + ' ' + substringAddPoint(dataArray[dataArray.length - 1].Title, 9));
 					//主循环
 					for (var i = 0; i < dataArray.length; i++) {
 						var obj = dataArray[i];
-						document.getElementById("bannerList").innerHTML += temp.replace('@id', obj.ID).replace('@picurl', obj.IsHostPic).replace('@title', obj.ReleaseTime + ' ' + substringAddPoint(obj.Title, 9)).replace('@listtype', obj.ListType);
+						document.getElementById("bannerList").innerHTML += temp.replace('@id', obj.ID).replace('@picurl', ApiUrl+'images/upload/temp/'+obj.IsHostPic).replace('@title', obj.ReleaseTime + ' ' + substringAddPoint(obj.Title, 9)).replace('@listtype', obj.ListType);
 						if (i == 0) {
 							document.getElementById("sliderBtn").innerHTML += '<div class="mui-indicator mui-active"></div>';
 						} else {
@@ -138,7 +138,7 @@
 						}
 					}
 					//额外增加的一个节点(循环轮播：最后一个节点是第一张轮播)
-					document.getElementById("bannerList").innerHTML += temp.replace('@id', dataArray[0].ID).replace('@picurl', dataArray[0].IsHostPic).replace('@title', dataArray[0].ReleaseTime + ' ' + substringAddPoint(dataArray[0].Title, 9));
+					document.getElementById("bannerList").innerHTML += temp.replace('@id', dataArray[0].ID).replace('@picurl', ApiUrl+'images/upload/temp/'+dataArray[0].IsHostPic).replace('@title', dataArray[0].ReleaseTime + ' ' + substringAddPoint(dataArray[0].Title, 9));
 				}
 				//轮播
 				var slider = mui("#slider");
@@ -278,7 +278,7 @@
 			});
 			common.click('new', function() {
 				//if(getUserInfo().Level=="1")
-				common.loadUrl('../news/newlist.html');
+				common.loadUrl('../news/activity_list.html');
 				//else common.toast('此功能待完善！');
 			});
 			common.click('survey', function() {
@@ -299,7 +299,7 @@
 				var type = this.getAttribute('listtype');
 				if (type == "news") {
 						if(getUserInfo().Level=="1")
-					common.loadUrl("../news/newdetail.html?id=" + id);
+					common.loadUrl("../news/activity_detail.html?id=" + id);
 					else common.toast('此功能待完善！');
 				} else if (type == "activity") {
 						if(getUserInfo().Level=="1")

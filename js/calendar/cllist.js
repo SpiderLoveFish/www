@@ -237,12 +237,12 @@ mui.plusReady(function() {
 		});
 	}
 	window.addEventListener('refresh1', function() {
-		if(selecttype == "dqr") {
-			list.innerHTML = "";
-			starIndex = 10;
-			endIndex = 1000;
-			getquestionnairelist();
-		}
+//		if(selecttype == "dqr") {
+//			list.innerHTML = "";
+//			starIndex = 10;
+//			endIndex = 1000;
+//			getquestionnairelist();
+//		}
 
 	});
 	//返回

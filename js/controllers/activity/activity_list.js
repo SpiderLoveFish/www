@@ -34,7 +34,7 @@ function getActivityList() {
 				if(obj.title==''){}else
 				img=ApiUrl+'images/upload/portrait/'+obj.title;
 			 
-				var itemhtml = html.replace('@id', obj.ID).replace('@Title', (obj.name)).replace('@Description',jf ).replace('@score',obj.Jf );
+				var itemhtml = html.replace('@id', obj.ID).replace('@Title', (obj.Name)).replace('@Description',jf ).replace('@score',obj.Jf );
 				//.replace('@ReleaseDateTime', obj.ReleaseDateTime.substring(0, 10)).replace('@IsHostPic', obj.Sex);
 //				if (obj.Flag == "2") {
 	     	itemhtml = itemhtml.replace('@flag', '员工').replace('@ReleaseDateTime', obj.tel).replace('@IsHostPic', img);
@@ -47,6 +47,7 @@ function getActivityList() {
 //				.replace('@ReleaseDateTime', obj.ReleaseDateTime.substring(0, 10)).replace('@IsHostPic', obj.IsHostPic).replace('@flag', '');		 
 			}
 		}
+		//alert(starIndex)
 		starIndex = starIndex + 10;
 		mui('#pullrefresh').pullRefresh().endPullupToRefresh((dataArray.length < 10)); //参数为true代表没有更多数据了。
 //		if (selecttype == "N") {
@@ -139,12 +140,12 @@ mui.plusReady(function() {
 	}
 	window.addEventListener('refresh1', function() {
 
-		if (selecttype == "N") {
-			list.innerHTML = "";
-			starIndex = 10;
-			endIndex = 1000;
-			getActivityList();
-		}
+//		if (selecttype == "N") {
+//			list.innerHTML = "";
+//			starIndex = 10;
+//			endIndex = 1000;
+//			//getActivityList();
+//		}
 
 	});
 	//返回

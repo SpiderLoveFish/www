@@ -23,7 +23,6 @@ mui.plusReady(function() {
 	//window.addEventListener('dataInit', function(event) {
 	//获取从父页面传过来的数据
 	//id = event.detail.id;
-
 	//common.showWaiting(true);
 	var data = {
 		strwhere:'' ,
@@ -46,6 +45,7 @@ mui.plusReady(function() {
 			document.getElementById("sjs").innerText = obj.zc_price;
 			document.getElementById("ywy").innerText = obj.fc_price;
 			document.getElementById("sgjl").innerText = obj.rg_price; 
+			document.getElementById("remark").innerText = obj.remarks; 
 			userName = obj.Customer;
 			//Avatar = obj.Avatar;
 		}

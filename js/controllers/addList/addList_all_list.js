@@ -10,61 +10,61 @@ var temHead = '<li data-group="@headLetter" class="mui-table-view-divider mui-in
 var temBody = '<li data-tags="@Header" class="mui-table-view-cell mui-indexed-list-item addlist_stafflist"><div data-value="@id" class="divClick"><img src="@titleimg"><div class="addlist_staffname"><div class="addlist_name">@UserName</div><span class="addlist_post">@DepartmentName</span></div></div><div class="addlist_makecall" data-mobile="@Mobilecall"></div><div class="addlist_makemass"  data-mobile="@Mobilemsg"></div></li>';
 //获取数据
 //还可以加入收藏优先，限制收藏数量比如100个
-function GetUserList(selectType, departmentId,searchkey) {
+function GetUserList(selectType, departmentId, searchkey) {
 
 	document.getElementById("UserList").innerHTML = "";
 	document.getElementById("headerList").innerHTML = "";
 	//字母头
 	var uType = 'ToOrCcUserList';
-	if (selectType) {
+	if(selectType) {
 		uType = selectType;
 	}
-	var sk=''
-	if (searchkey) {
+	var sk = ''
+	if(searchkey) {
 		sk = searchkey;
 	}
 	var key = '';
-	if (departmentId) {
+	if(departmentId) {
 		key = departmentId;
 	}
-	var uID=getUserInfo().ID;
-	//alert(uID)
+	var uID = getUserInfo().ID;
+	//alert(sk)
 	var data = {
 		keyword: key,
-		ID:uID
-		,url:ApiUrl
-		,topnumber:50,
-		searchkey:sk 
+		ID: uID,
+		url: ApiUrl,
+		topnumber: 50,
+		searchkey: sk
 	};
 	//alert(JSON.stringify(data))
 	var db = common.openDatabase();
-	if (!common.isNetWork()) {
+	if(!common.isNetWork()) {
 		//未联网
 		selectTable(db);
 	} else {
 		common.postApi("GetCustomerList", data, function(response) {
 			dataArray = eval(response.data);
-		//alert(JSON.stringify(response))
+			//alert(JSON.stringify(response))
 			createTable(db);
 			deleteTable(db);
-			for (var i = 0; i < dataArray.length; i++) {
+			for(var i = 0; i < dataArray.length; i++) {
 				var temp; //临时变量
 				var obj = dataArray[i];
 				//创建websql 表
-				if (headLetter != obj.header) { //没有此头字母,插入头
+				if(headLetter != obj.header) { //没有此头字母,插入头
 					headLetter = obj.header;
 					//列表右侧字母列表
 					document.getElementById("headerList").innerHTML += "<a>" + obj.header + "</a>";
 					//主列表字母头
 					temp = temHead;
 					document.getElementById("UserList").innerHTML += temp.replace("@headLetter", obj.header).replace("@headLetter", obj.header);
-				} 
-				var	avatar=obj.Avatar;
-				if(avatar==''||avatar==null||avatar=='null')
-				avatar='../../images/ScApp/icon/deadline.png';
+				}
+				var avatar = obj.Avatar;
+				if(avatar == '' || avatar == null || avatar == 'null')
+					avatar = '../../images/ScApp/icon/deadline.png';
 				temp = temBody;
 				temp = temp.replace("@id", obj.id);
-				temp = temp.replace("@Header", obj.header +obj.Customer+ obj.tel+obj.address);
+				temp = temp.replace("@Header", obj.header + obj.Customer + obj.tel + obj.address);
 				temp = temp.replace("@Mobilecall", obj.tel);
 				temp = temp.replace("@Mobilemsg", obj.id);
 				temp = temp.replace("@titleimg", avatar);
@@ -112,16 +112,15 @@ function insertTable(db, Header, UserId, Mobile, Avatar, UserName, DepartmentNam
 	});
 }
 
-
 function selectTable(db) {
 	db.transaction(function(context) {
 		context.executeSql('SELECT * FROM addListTable', [], function(con, results) {
 			var len = results.rows.length,
 				i;
-			for (i = 0; i < len; i++) {
+			for(i = 0; i < len; i++) {
 				var obj = results.rows.item(i);
 				var temp; //临时变量
-				if (headLetter != obj.header) { //没有此头字母,插入头
+				if(headLetter != obj.header) { //没有此头字母,插入头
 					headLetter = obj.header;
 					//列表右侧字母列表
 					document.getElementById("headerList").innerHTML += "<a>" + obj.header + "</a>";
@@ -175,7 +174,7 @@ mui.plusReady(function() {
 	 */
 	function openMenu() {
 		//解决android 4.4以下版本webview移动时，导致fixed定位元素错乱的bug;
-		if (mui.os.android && parseFloat(mui.os.version) < 4.4) {
+		if(mui.os.android && parseFloat(mui.os.version) < 4.4) {
 			document.querySelector("header.mui-bar").style.position = "static";
 			//同时需要修改以下.mui-contnt的padding-top，否则会多出空白；
 			document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = "0px";
@@ -200,7 +199,7 @@ mui.plusReady(function() {
 
 	function _closeMenu() {
 		//解决android 4.4以下版本webview移动时，导致fixed定位元素错乱的bug;
-		if (mui.os.android && parseFloat(mui.os.version) < 4.4) {
+		if(mui.os.android && parseFloat(mui.os.version) < 4.4) {
 			document.querySelector("header.mui-bar").style.position = "fixed";
 			//同时需要修改以下.mui-contnt的padding-top，否则会多出空白；
 			document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = "44px";
@@ -230,7 +229,7 @@ mui.plusReady(function() {
 	mui('#UserList').on('tap', '.divClick', function(e) {
 		//移除焦点,为了隐藏软键盘
 		search.blur();
-		if (!detailPage) {
+		if(!detailPage) {
 			detailPage.setStyle({
 				left: '100%',
 				zindex: 9999
@@ -240,12 +239,7 @@ mui.plusReady(function() {
 		detailPage.loadURL('addList_detail.html?id=' + id);
 		openMenu();
 	});
-	document.getElementById('refresh').addEventListener('tap', function() {
-	var rf = document.getElementById('search');
-	// alert(rf.value)
-	 GetUserList('','',rf.value);
-	// rf.value='';
-	});
+ 
 	mui('#UserList').on('tap', '.addlist_makecall', function(e) {
 		//移除焦点,为了隐藏软键盘
 		search.blur();
@@ -260,13 +254,12 @@ mui.plusReady(function() {
 		var href = this.getAttribute('data-mobile');
 		//smsTest(href, msg);
 		//	document.getElementById("sendMessage").addEventListener('tap', function() {
-//		currentWebViewHide();
+		//		currentWebViewHide();
 
-	var template = common.getTemplate('page2', 'addfollow.html?id=' + href);
-//	});
+		var template = common.getTemplate('page2', 'addfollow.html?id=' + href);
+		//	});
 	});
-
-
+  
 	/***********************************部门侧滑start*****************************************/
 
 	var maskDepartment = mui.createMask(_closeMenuDepartment);
@@ -275,7 +268,7 @@ mui.plusReady(function() {
 	mui('.mui-bar-nav').on("tap", '#icon-menu', function(e) {
 		//移除焦点,为了隐藏软键盘
 		document.getElementById("search").blur();
-		if (!departmentPage) {
+		if(!departmentPage) {
 			departmentPage = plus.webview.getWebviewById(departmentId);
 			departmentPage.setStyle({
 				right: '100%',
@@ -297,31 +290,34 @@ mui.plusReady(function() {
 				}
 			});
 		}, 150);
+		 
 		//监听部门页面请求关闭
 		window.addEventListener('hidedepartmentPage', function(event) {
 			_closeMenuDepartment();
 			maskDepartment.close();
 			id = event.detail.id;
-			if (id) {
-				if (id == "all") {
-					GetUserList();
-				}  
-				else if (id == "fav") {
-					GetUserList('','fav','');
-				} 
-				else {
-					GetUserList("GetUserListByDepartment", id);
-				}
-
-			}
+			// alert(id)
+			GetUserList("search", 'search', id);
+//			if(id) {
+//				if(id == "all") {
+//					GetUserList();
+//				} else if(id == "fav") {
+//					GetUserList('', 'fav', '');
+//				} else {
+//					GetUserList("GetUserListByDepartment", id);
+//				}
+//
+//			}
 		});
+ 
+
 	});
 	/*
 	 * 显示菜单菜单
 	 */
 	function openMenuDepartment() {
 		//解决android 4.4以下版本webview移动时，导致fixed定位元素错乱的bug;
-		if (mui.os.android && parseFloat(mui.os.version) < 4.4) {
+		if(mui.os.android && parseFloat(mui.os.version) < 4.4) {
 			document.querySelector("header.mui-bar").style.position = "static";
 			//同时需要修改以下.mui-contnt的padding-top，否则会多出空白；
 			document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = "0px";
@@ -343,7 +339,7 @@ mui.plusReady(function() {
 	 */
 	function _closeMenuDepartment() {
 		//解决android 4.4以下版本webview移动时，导致fixed定位元素错乱的bug;
-		if (mui.os.android && parseFloat(mui.os.version) < 4.4) {
+		if(mui.os.android && parseFloat(mui.os.version) < 4.4) {
 			document.querySelector("header.mui-bar").style.position = "fixed";
 			//同时需要修改以下.mui-contnt的padding-top，否则会多出空白；
 			document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = "44px";
