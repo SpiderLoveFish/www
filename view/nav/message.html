@@ -54,7 +54,7 @@
 						<li id="new" class="flexbox index_right mui-table-view-cell">
 							<div class="index_mess_appr index_mess_2">
 								<i id="newCount" class="newsremind_badge h"></i>
-								<lable class="index_mess_label">企业公告</lable>
+								<lable class="index_mess_label">企业新闻</lable>
 								<span class="index_mess_span">企业动态、通知公告、员工动态</span>
 							</div>
 						</li>
@@ -297,18 +297,18 @@
 			mui('#bannerList').on('tap', '.mui-slider-item', function() {
 				var id = this.getAttribute("id");
 				var type = this.getAttribute('listtype');
-				if (type == "news") {
-						if(getUserInfo().Level=="1")
+				if (type == "activity") {
+						//if(getUserInfo().Level=="1")
 					common.loadUrl("../news/activity_detail.html?id=" + id);
-					else common.toast('此功能待完善！');
-				} else if (type == "activity") {
-						if(getUserInfo().Level=="1")
+					//else common.toast('此功能待完善！');
+				} else if (type == "news") {
+						//if(getUserInfo().Level=="1")
 					common.loadUrl("../activity/activity_detail.html?id=" + id);
-					else common.toast('此功能待完善！');
+					//else common.toast('此功能待完善！');
 				} else if (type == "surveys") {
-				if(getUserInfo().Level=="1")
+				//if(getUserInfo().Level=="1")
 				common.loadUrl("../questionnaire/questionnairedetail.html?id=" + id);
-				else common.toast('此功能待完善！');
+				//else common.toast('此功能待完善！');
 				}
 				//如果点击未读的热点 更新BadgeNumber
 				setTimeout(function() {
