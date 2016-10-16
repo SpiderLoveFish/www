@@ -95,7 +95,11 @@ document.getElementById('search').addEventListener('input', function() {
 	list.innerHTML = "";
 	starIndex=10;
 	getquestionnairelist();
-	});
+	}, false);
+search.addEventListener('tap','mui-input-clear', function() {
+	alert(1)
+	}, false);
+	
 function getquestionnairelist() {
 	var data = {
 		strWhere: search.value,

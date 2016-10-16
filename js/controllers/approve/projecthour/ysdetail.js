@@ -51,20 +51,20 @@ mui.plusReady(function() {
 			if(data[i]['SUM'] == null) sum = 0;
 			else sum = data[i]['SUM'];
 			if(data[i]['ComponentName'] != cn) {
-				item = "<tr><td align='left' colspan='9' ><font size='2' ><b>&nbsp;&nbsp;" + data[i]['ComponentName'] + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(合计：" + data[i]['BwSubTotal'] + ")</b></font></td></tr>" +
+				item = "<tr><td background='../../../images/cell-grey.jpg' align='left' colspan='5' ><font size='2' ><b>&nbsp;&nbsp;" + data[i]['ComponentName'] + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(合计：" + data[i]['BwSubTotal'] + ")</b></font></td></tr>" +
 					"<tr><td ><a  class='sc' id='" + data[i]['xmid'] + "'>" + data[i]['brand'] + "</a></td>"
 					//                             +"<td align='right'>"+ data[i]['zc_price'] + "</td><td align='right'>" + data[i]['fc_price'] + "</td><td align='right'>" + data[i]['rg_price']  + "</td>"
 					+
-					"<td align='right'>" + data[i]['TotalPrice'] + "</td><td align='right'>" + sum + "</td> " +
-					" <td align='right'>" + data[i]['je'] + "</td><td>" + data[i]['unit'] + "</td> " //<td>" + data[i]['proremarks'] + "</td>
+					"<td align='right'>" + data[i]['TotalPrice'] + "</td><td align='right'>" + sum + data[i]['unit']+"</td> " +
+					" <td align='right'>" + data[i]['je'] + "</td>"//"<td>" + data[i]['unit'] + "</td> " //<td>" + data[i]['proremarks'] + "</td>
 					+
 					" </tr>";
 			} else {
 				item = "<tr><td><a class='sc' id='" + data[i]['xmid'] + "'>" + data[i]['brand'] + "</a></td>"
 					//                         +"<td align='right'>" + data[i]['zc_price'] + "</td><td align='right'>" + data[i]['fc_price'] + "</td><td align='right'>" + data[i]['rg_price']  + "</td>"
 					+
-					"<td align='right'>" + data[i]['TotalPrice'] + "</td><td align='right'>" + sum + "</td> " +
-					" <td align='right'>" + data[i]['je'] + "</td><td>" + data[i]['unit'] + "</td> " //<td>" + data[i]['proremarks'] + "</td>
+					"<td align='right'>" + data[i]['TotalPrice'] + "</td><td align='right'>" + sum + data[i]['unit']+ "</td> " +
+					" <td align='right'>" + data[i]['je'] + "</td>"//""<td>" + data[i]['unit'] + "</td> " //<td>" + data[i]['proremarks'] + "</td>
 					+
 					" </tr>";
 			}
@@ -78,17 +78,17 @@ mui.plusReady(function() {
 		for(var i = 0; i < fjdetail.length; i++) {
 				if(i==0)
 				{
-				item ="<tr><td align='center' ><font size='2' ><b>&nbsp;&nbsp;附加费名称&nbsp;</b></font></td>"
-				+"<td align='center'  colspan='2' ><font size='2' ><b>&nbsp;&nbsp;费率&nbsp;</b></font></td>"
-				+"<td align='center'  colspan='2' ><font size='2' ><b>&nbsp;&nbsp;金额&nbsp;</b></font></td></tr>"
-				+"<tr><td align='left' >" + fjdetail[i]['RateName'] + "</td>"
-				+"<td align='left'  colspan='2' >" + fjdetail[i]['rate'] + "</td>"
-				+"<td align='left'  colspan='2' >" + fjdetail[i]['RateAmount'] + "</td></tr>";
+				item ="<tr><td style='background:#ccc'; align='center' ><font size='2' ><b>&nbsp;&nbsp;附加费名称&nbsp;</b></font></td>"
+				+"<td style='background:#ccc' align='center'  colspan='1' ><font size='2' ><b>&nbsp;&nbsp;费率&nbsp;</b></font></td>"
+				+"<td style='background:#ccc' align='center'  colspan='2' ><font size='2' ><b>&nbsp;&nbsp;金额&nbsp;</b></font></td></tr>"
+				+"<tr><td  align='left' >" + fjdetail[i]['RateName'] + "</td>"
+				+"<td align='right'  colspan='1' >" + fjdetail[i]['rate'] + "</td>"
+				+"<td align='right'  colspan='2' >" + fjdetail[i]['RateAmount'] + "</td></tr>";
 				
 			} else {
 				item ="<tr><td align='left' >" + fjdetail[i]['RateName'] + "</td>"
-				+"<td align='left'  colspan='2' >" + fjdetail[i]['rate'] + "</td>"
-				+"<td align='left'  colspan='2' >" + fjdetail[i]['RateAmount'] + "</td></tr>";
+				+"<td align='right'  colspan='1' >" + fjdetail[i]['rate'] + "</td>"
+				+"<td align='right'  colspan='2' >" + fjdetail[i]['RateAmount'] + "</td></tr>";
 				
 			}
 						$('.table1').append(item);
