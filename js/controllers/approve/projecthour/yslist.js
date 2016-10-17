@@ -17,12 +17,12 @@ var html_No = '<a href="javascript:;" class="sc_cell sc_padding  mui-table-view-
 var html_CanYu = '<a href="javascript:;"  class="sc_cell sc_padding mui-table-view-cell" id="@ID">' +
 	//	'		<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' +
 	'		<div class="sc_cell_bd sc_cell_primary">' +
-	'			<p>@STheme|@djbh</p>' +
+	'			<p>@STheme</p>' +
 	'			<p class="label_describe_2">@SContext</p>' +
 	'			<span class="sc_comment">@ReleaseTime</span>' +
 	'		</div>' +
 	'		<div class="sc_cell_data">' +
-	'			<p>@flag</p>' +
+	'			<p>@flag</br>@djbh</p>' +
 	'		</div>' +
 	'	</a>';
 $(function() {
