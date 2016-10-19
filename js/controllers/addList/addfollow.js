@@ -51,7 +51,7 @@ mui.plusReady(function() {
 		if (CommentText.trim() == "") {
 			return;
 		}
-		
+		common.Verifauthority(2);//是否有权限发送
 		common.showWaiting();
 		var param = {
 			id:common.getQueryString("id"),	

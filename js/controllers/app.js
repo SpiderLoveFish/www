@@ -20,6 +20,7 @@
 						userinfo.UserName = obj.UserName;
 						userinfo.Avatar = obj.Avatar;
 						userinfo.Level = obj.level;
+					    userinfo.VerTime = obj.vertime;
 						owner.setUserInfo(userinfo);
 					}
 					callback(true);

@@ -265,6 +265,32 @@ var CommonTop = '101px';
 			common.closeWaiting();
 		}, 'json');
 	};
+	
+	common.Verifauthority = function(rightid) {
+		//common.showWaiting();
+		common.postApi("Verifauthority", {
+			userid: getUserInfo().ID,
+			rightid:rightid,
+			vertime:getUserInfo().VerTime
+		}, function(response) {
+		//	dataArray = eval(response.data);
+			 if(response.data=='noperson')//此人不存在，需要重新登录或修改密码
+			 {	setTimeout(function() {
+			 	common.toast('账号过期或者账号不存在，请联系管理员修改密码！');
+			 	}, 100);
+			    //app.setUserInfo(new Object());
+			 	common.jump("../../login.html", "login.html", {}, false, false);
+						return;
+			 }
+			 else  if(response.data=='faile')
+			 {
+			 	common.toast('你没有权限操作此功能！请联系管理员！');
+			 	return;
+			 }
+			//common.closeWaiting();
+		}, 'json');
+	};
+	
 	common.getUserList = function(corpid, fun) {
 		document.getElementById("headerList").innerHTML = '';
 		document.getElementById("ulUserList").innerHTML = '';

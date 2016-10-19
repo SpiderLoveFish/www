@@ -111,6 +111,7 @@ mui.plusReady(function() {
 
 	});
 	mui('.mui-bar-nav').on('tap', '.btn_post_activ', function(e) {
+			common.Verifauthority(4);//新闻发布权限
 		var template = common.getTemplate('page2', 'activity_apply.html?');
 	});
 

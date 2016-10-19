@@ -70,27 +70,31 @@
 		<script type="text/javascript">
 			document.getElementById("shenpi").addEventListener('tap', function() {
 			 
-				//if(getUserInfo().Level=="1")
+			
 				common.loadUrl('../approve/approve_nav.html');
 					//else common.toast('此功能待完善！');
 			});
 			document.getElementById("news").addEventListener('tap', function() {
 				//if(getUserInfo().Level=="1")
+						common.Verifauthority(3);//企业新闻
 				common.loadUrl('../news/activity_list.html');
 				//else common.toast('此功能待完善！');
 			});
 			document.getElementById("questionnaire").addEventListener('tap', function() {
 			//if(getUserInfo().Level=="1")
+				common.Verifauthority(5);//生日
 			common.loadUrl('../questionnaire/questionnairelist.html');
 			// common.toast('此功能待完善！');
 			});
 			document.getElementById("activity").addEventListener('tap', function() {
 			//if(getUserInfo().Level=="1")	
+				common.Verifauthority(6);//积分
 			common.loadUrl('../activity/activity_list.html');
 				// common.toast('此功能待完善！');
 			});
 			document.getElementById("calendar").addEventListener('tap', function() {
 				//common.loadUrl('../calendar/calendar_list.html');
+					common.Verifauthority(7);//材料
 				common.getTemplate('page2', '../calendar/cllist.html');
 			});
 //			document.getElementById("payment").addEventListener('tap', function() {
