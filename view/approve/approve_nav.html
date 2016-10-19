@@ -114,7 +114,11 @@
 //			});
 //			//工时
 			common.click('gongshi', function() {
-				var webview = common.getTemplate('page2', 'projecthour/yslist.html'); //第二层webview
+			 common.Verifauthority(8, function(result) { //我的预算
+				 	if(result)
+			var webview = common.getTemplate('page2', 'projecthour/yslist.html'); //第二层webview
+					});//
+				
 			});
 //			//通用
 //			common.click('tongyong', function() {

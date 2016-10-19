@@ -1,5 +1,14 @@
 (function($, owner) {
 	owner.login = function(loginname, pwd, clientid,version, callback) {
+//		
+//		var data={
+//				url:ApiUrl,
+//				user: loginname,
+//				pwd: pwd,
+//				ClientId: clientid
+//				,version:version
+//		};
+//		alert(JSON.stringify(data))
 			common.postApi("UpdateUserClientId", {
 				url:ApiUrl,
 				user: loginname,
@@ -7,7 +16,7 @@
 				ClientId: clientid
 				,version:version
 			}, function(response) {
-	
+	//alert(JSON.stringify(response))
 				if (response.data.length > 0) {
 					for (var i = 0; i < response.data.length; i++) {
 						var obj = response.data[i];

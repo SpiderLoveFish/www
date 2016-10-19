@@ -51,7 +51,11 @@ mui.plusReady(function() {
 		if (CommentText.trim() == "") {
 			return;
 		}
-		common.Verifauthority(2);//是否有权限发送
+		//if(!common.Verifauthority(2))//是否有权限发送
+		common.Verifauthority(2, function(result) { 
+				 	if(!result)
+		return;
+		});
 		common.showWaiting();
 		var param = {
 			id:common.getQueryString("id"),	

@@ -111,8 +111,11 @@ mui.plusReady(function() {
 
 	});
 	mui('.mui-bar-nav').on('tap', '.btn_post_activ', function(e) {
-			common.Verifauthority(4);//新闻发布权限
-		var template = common.getTemplate('page2', 'activity_apply.html?');
+		 common.Verifauthority(4, function(result) { //生日
+				 	if(result)
+				var template = common.getTemplate('page2', 'activity_apply.html?');
+					});//新闻发布权限
+		
 	});
 
 	if (plus.os.name != "Android") {
@@ -134,10 +137,12 @@ mui.plusReady(function() {
 				mui('#pullrefresh').pullRefresh().pullupLoading();
 			}, 50);
 		});
+			mui('#pullrefresh').pullRefresh().scrollTo(0,0);
 	} else {
 		mui.ready(function() {
 			mui('#pullrefresh').pullRefresh().pullupLoading();
 		});
+		window.scrollTo(0, 0);
 	}
 	window.addEventListener('refresh1', function() {
 

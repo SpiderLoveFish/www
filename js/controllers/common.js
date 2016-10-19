@@ -266,7 +266,7 @@ var CommonTop = '101px';
 		}, 'json');
 	};
 	
-	common.Verifauthority = function(rightid) {
+	common.Verifauthority = function(rightid,callback) {
 		//common.showWaiting();
 		common.postApi("Verifauthority", {
 			userid: getUserInfo().ID,
@@ -278,15 +278,20 @@ var CommonTop = '101px';
 			 {	setTimeout(function() {
 			 	common.toast('账号过期或者账号不存在，请联系管理员修改密码！');
 			 	}, 100);
-			    //app.setUserInfo(new Object());
-			 	common.jump("../../login.html", "login.html", {}, false, false);
-						return;
+			    //app.setUserInfo(new Object());			 	
+			 		common.jump("../../login.html", "login.html", {}, false, false);					
+						callback(false);
 			 }
 			 else  if(response.data=='faile')
 			 {
+			 	setTimeout(function() {
 			 	common.toast('你没有权限操作此功能！请联系管理员！');
-			 	return;
+			 		}, 100);
+			 	callback(false);
 			 }
+			 else
+			 {callback(true);}
+			
 			//common.closeWaiting();
 		}, 'json');
 	};
