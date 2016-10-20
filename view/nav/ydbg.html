@@ -75,7 +75,7 @@
 			});
 			document.getElementById("news").addEventListener('tap', function() {
 				//if(getUserInfo().Level=="1")
-				common.Verifauthority(3, function(result) {  
+				common.Verifauthority(r_cor_news, function(result) {  
 				 	if(result) //企业新闻
 					common.loadUrl('../news/activity_list.html');
 				});
@@ -84,7 +84,7 @@
 			document.getElementById("questionnaire").addEventListener('tap', function() {
 				//if(getUserInfo().Level=="1")
 				
-				 common.Verifauthority(5, function(result) { //生日
+				 common.Verifauthority(r_birthday, function(result) { //生日
 				 	if(result)
 					common.loadUrl('../questionnaire/questionnairelist.html');
 					});
@@ -92,7 +92,7 @@
 			});
 			document.getElementById("activity").addEventListener('tap', function() {
 				//if(getUserInfo().Level=="1")	
-			common.Verifauthority(6, function(result) { //积分
+			common.Verifauthority(r_points, function(result) { //积分
 				 	if(result)
 					common.loadUrl('../activity/activity_list.html');
 			});
@@ -100,7 +100,7 @@
 			});
 			document.getElementById("calendar").addEventListener('tap', function() {
 				//common.loadUrl('../calendar/calendar_list.html');
-				common.Verifauthority(7, function(result) { //材料
+				common.Verifauthority(r_material, function(result) { //材料
 				 	if(result)
 					common.getTemplate('page2', '../calendar/cllist.html');
 				});

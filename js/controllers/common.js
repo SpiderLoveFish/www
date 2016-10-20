@@ -9,6 +9,15 @@ var aniShow = "pop-in"; //fade-in,zoom-out,slide-in-right,pop-in
 var aniHide = "auto"; //fade-out,zoom-in,slide-out-right,pop-out
 var aniSecond = "250";
 var CommonTop = '101px';
+//--开始权限全局变量
+var r_addfollow = 2;
+var r_birthday = 5;
+var r_material = 7;
+var r_points = 6; //积分
+var r_myys = 8;
+var r_cor_news = 3;
+var r_send_cor_news = 4;
+//--结束权限全局变量
 
 (function(mui, common) {
 	mui.plusReady(function() {
@@ -265,37 +274,36 @@ var CommonTop = '101px';
 			common.closeWaiting();
 		}, 'json');
 	};
-	
-	common.Verifauthority = function(rightid,callback) {
+
+	common.Verifauthority = function(rightid, callback) {
 		//common.showWaiting();
 		common.postApi("Verifauthority", {
 			userid: getUserInfo().ID,
-			rightid:rightid,
-			vertime:getUserInfo().VerTime
+			rightid: rightid,
+			vertime: getUserInfo().VerTime
 		}, function(response) {
-		//	dataArray = eval(response.data);
-			 if(response.data=='noperson')//此人不存在，需要重新登录或修改密码
-			 {	setTimeout(function() {
-			 	common.toast('账号过期或者账号不存在，请联系管理员修改密码！');
-			 	}, 100);
-			    //app.setUserInfo(new Object());			 	
-			 		common.jump("../../login.html", "login.html", {}, false, false);					
-						callback(false);
-			 }
-			 else  if(response.data=='faile')
-			 {
-			 	setTimeout(function() {
-			 	common.toast('你没有权限操作此功能！请联系管理员！');
-			 		}, 100);
-			 	callback(false);
-			 }
-			 else
-			 {callback(true);}
-			
+			//	dataArray = eval(response.data);
+			if(response.data == 'noperson') //此人不存在，需要重新登录或修改密码
+			{
+				setTimeout(function() {
+					common.toast('账号过期或者账号不存在，请联系管理员修改密码！');
+				}, 100); 
+				//localStorage.setItem('$users', new Object());//清空登陆
+				common.jump("../../login.html", "login.html", {}, false, false);
+				callback(false);
+			} else if(response.data == 'faile') {
+				setTimeout(function() {
+					common.toast('你没有权限操作此功能！请联系管理员！');
+				}, 100);
+				callback(false);
+			} else {
+				callback(true);
+			}
+
 			//common.closeWaiting();
 		}, 'json');
 	};
-	
+
 	common.getUserList = function(corpid, fun) {
 		document.getElementById("headerList").innerHTML = '';
 		document.getElementById("ulUserList").innerHTML = '';

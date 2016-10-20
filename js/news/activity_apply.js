@@ -221,7 +221,7 @@ mui.plusReady(function() {
 			url:ApiUrl
 //			,status: ''
 		};
-		common.Verifauthority(8, function(result) { //企业新闻发送
+		common.Verifauthority(r_send_cor_news, function(result) { //企业新闻发送
 				 	if(!result)
 						return;
 		});

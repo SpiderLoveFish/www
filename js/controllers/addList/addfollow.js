@@ -52,7 +52,7 @@ mui.plusReady(function() {
 			return;
 		}
 		//if(!common.Verifauthority(2))//是否有权限发送
-		common.Verifauthority(2, function(result) { 
+		common.Verifauthority(r_addfollow, function(result) { 
 				 	if(!result)
 		return;
 		});
