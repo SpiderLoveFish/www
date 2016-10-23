@@ -1,8 +1,8 @@
 //全局变量 接口地址
 var globalUrl = "http://mb.xczs.co/webserver/Appapi.asmx/";
-var ApiUrl = "http://mb.xczs.co/";
-var interfaceUrl = "http://mb.xczs.co/webserver/Appapi.asmx/";
-var UploadImageUrl = "http://mb.xczs.co/Data/uploadapp.ashx";
+var ApiUrl = "http://SY.XCZS.CO/";
+var interfaceUrl = "http://SY.XCZS.CO/webserver/Appapi.asmx/";
+var UploadImageUrl = "http://SY.XCZS.CO/Data/uploadapp.ashx";
 var UploadAudioUrl = "http://app.go-mobile.cn/HandlersAuthFrame/H_UploadVideo.ashx";
 //http://192.168.10.12:8888/ScFamilyAPI/v1.1/
 var aniShow = "pop-in"; //fade-in,zoom-out,slide-in-right,pop-in
