@@ -34,35 +34,64 @@
 								</p>
 							</li>
 							<li class="activ_input_list flexbox">
+								<span class="activ_input_label7">姓名</span>
+								<p class="flexItem text_right leave_num">
+									<input id="xmTitle" type="text" placeholder="" value="" />
+								</p>
+							</li>
+							<li class="activ_input_list flexbox">
 								<span class="activ_input_label7">地址</span>
 								<p class="flexItem text_right leave_num">
 									<input id="dzTitle" type="text" placeholder="" value="" />
 								</p>
 							</li>
-							
-							<li class="activ_input_list flexbox">
+								<li class="activ_input_list  flexbox">
+								<span class="activ_input_label6">设计师</span>
+								<p class="flexItem join_object leave_type">
+									<select id="sjsTitle" class="" placeholder="请选择">
+										<option value="">请选择</option>
+									</select>
+								</p>
+							</li>
+							<!--<li class="activ_input_list flexbox">
 								<span class="activ_input_label7">设计师</span>
 								<p class="flexItem text_right leave_num">
 									<input id="sjsTitle" type="text" placeholder="" value="" />
 								</p>
+							</li>-->
+							<li class="activ_input_list  flexbox">
+								<span class="activ_input_label6">监理</span>
+								<p class="flexItem join_object leave_type">
+									<select id="jlTitle" class="" placeholder="请选择">
+										<option value="">请选择</option>
+									</select>
+								</p>
 							</li>
-						 <li class="activ_input_list flexbox">
+						 <!--<li class="activ_input_list flexbox">
 								<span class="activ_input_label7">监理</span>
 								<p class="flexItem text_right leave_num">
 									<input id="jlTitle" type="text" placeholder="" value="" />
 								</p>
-							</li>
+							</li>-->
 							 <li class="activ_input_list flexbox">
 								<span class="activ_input_label7">电话</span>
 								<p class="flexItem text_right leave_num">
 									<input id="telTitle" type="text" placeholder="" value="" />
 								</p>
 							</li>
-							 <li class="activ_input_list flexbox">
+								<li class="activ_input_list flexbox">
+									<span class="activ_input_label7">是否收藏客户</span>
+									<div class="flexItem">
+										<div id="isfav"  class="mui-switch mui-switch-mini ">
+											<div class="mui-switch-handle"></div>
+										</div>
+									</div>
+								</li>
+							 <!--<li class="activ_input_list flexbox">
 								是否收藏客户
 								<div id="isfav"  class="mui-switch mui-switch-mini ">
 								<div class="mui-switch-handle"></div>
-							</div>
+							</div>-->
 								 
 							</li>
 							<!--<li id="icon-toUser" class="activ_input_list flexbox approve_pri_li">
@@ -100,6 +129,28 @@
 			}
 			common.closeWaiting();
 		}, 'json');
+			//设计师
+			common.postApi("GetCustomerType", {
+			'url': 'sjs'
+		}, function(response) {
+			dataArray = eval(response.data);
+			for(var i = 0; i < dataArray.length; i++) {
+				var obj = dataArray[i];
+				document.getElementById('sjsTitle').options.add(new Option(obj.CustomerType, obj.cid));
+			}
+			common.closeWaiting();
+		}, 'json');
+			//施工监理 
+			common.postApi("GetCustomerType", {
+			'url': 'sgjl'
+		}, function(response) {
+			dataArray = eval(response.data);
+			for(var i = 0; i < dataArray.length; i++) {
+				var obj = dataArray[i];
+				document.getElementById('jlTitle').options.add(new Option(obj.CustomerType, obj.cid));
+			}
+			common.closeWaiting();
+		}, 'json');
 				//提交
 		common.click("btnSubmit", function() {
 //		var dzTitle = common.textValiAlert(document.getElementById("dzTitle").value, "请填写查询条件");
@@ -111,12 +162,17 @@
 //				return;
 			//}
 			var dzTitle=document.getElementById("dzTitle").value;
-			var jlTitle=document.getElementById("jlTitle").value;
-			var sjsTitle=document.getElementById("sjsTitle").value;
+			var selectjl=document.getElementById("jlTitle");
+			var jlTitle=selectjl.options[selectjl.selectedIndex].text;
+			var selectsjs=document.getElementById("sjsTitle");
+			var sjsTitle=selectsjs.options[selectsjs.selectedIndex].text;
+//			var jlTitle=document.getElementById("jlTitle").value;
+//			var sjsTitle=document.getElementById("sjsTitle").value;
 			var select=document.getElementById("sltType");
 			var sltType=select.options[select.selectedIndex].value;
 				var telTitle=document.getElementById("telTitle").value;
-			var Title=dzTitle+';'+jlTitle+';'+sjsTitle+';'+sltType+';'+telTitle+';'+fav
+					var xmTitle=document.getElementById("xmTitle").value;
+			var Title=dzTitle+';'+jlTitle+';'+sjsTitle+';'+sltType+';'+telTitle+';'+fav+';'+xmTitle
 				//alert(Title)
 				currentWebViewHide(Title);
 		});

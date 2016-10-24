@@ -39,20 +39,20 @@
 					</div>-->
 					<div class="approve_module">
 						<a>
-							<div id="gongshi" class="approve_list approve_list3">
+							<div id="gongshi" class="approve_list approve_list4">
 								<p>我的预算</p>
 							</div>
 						</a>
-						<!--<a>
-							<div id="jiaban" class="approve_list approve_list4">
-								<p>加班申请</p>
+						<a>
+							<div id="ysapr" class="approve_list approve_list3">
+								<p>预算审核</p>
 							</div>
-						</a>-->
-						<!--<a> 
-							<div id="qingjia" class="approve_list approve_list5">
-								<p>请假申请</p>
+						</a>
+						<a> 
+							<div id="ysqr" class="approve_list approve_list3">
+								<p>预算确认</p>
 							</div>
-						</a>-->
+						</a>
 						<!--<a>
 							<div id="tongyong" class="approve_list approve_list6">
 								<p>通用审批</p>
@@ -104,17 +104,24 @@
 //			common.click('my', function() {
 //				var webview = common.getTemplate('page2', 'list/list_launched.html'); //第二层webview
 //			});
-//			//请假
-//			common.click('qingjia', function() {
-//				var webview = common.getTemplate('page2', 'leave/leave_apply.html'); //第二层webview
-//			});
-			//加班
-//			common.click('jiaban', function() {
-//				var webview = common.getTemplate('page2', 'work/work_apply.html'); //第二层webview
-//			});
-//			//工时
+//			//审核
+			common.click('ysapr', function() {
+				 common.Verifauthority(r_myys_sh, function(result) { //我的预算		
+				 	if(result)
+			var webview = common.getTemplate('page2', 'projecthour/yslist.html?selecttype=ys_dsh'); //第二层webview
+					});//var webview = common.getTemplate('page2', 'projecthour/yslist.html'); //第二层webview
+			});
+			//确认
+			common.click('ysqr', function() {
+			 common.Verifauthority(r_myys_qr, function(result) { //我的预算		
+				 	if(result)
+			var webview = common.getTemplate('page2', 'projecthour/yslist.html?selecttype=ys_dqr'); //第二层webview
+					});//
+				//var webview = common.getTemplate('page2', 'projecthour/yslist.html'); //第二层webview
+			});
+//			//我的预算
 			common.click('gongshi', function() {
-			 common.Verifauthority(r_myys, function(result) { //我的预算
+			 common.Verifauthority(r_myys, function(result) { //我的预算		
 				 	if(result)
 			var webview = common.getTemplate('page2', 'projecthour/yslist.html'); //第二层webview
 					});//

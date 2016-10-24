@@ -142,8 +142,9 @@ var detailPage = null;
 mui.plusReady(function() {
 	mui('#list').on('tap', '.sc_cell', function(e) {
 		var id = this.getAttribute('id');
+		var	type = common.getQueryString("selecttype");	
 		var webview = common.getTemplate('page1');
-		webview.loadURL('ysdetail.html?id=' + id);
+		webview.loadURL('ysdetail.html?id=' + id+'&selecttype='+type);
 	});
 	if(plus.os.name != "Android") {
 		var pullrefresh = document.getElementById("pullrefresh");
@@ -160,7 +161,22 @@ mui.plusReady(function() {
 	});
 	if(mui.os.plus) {
 		mui.plusReady(function() {
-			setTimeout(function() {
+		
+	var	id = common.getQueryString("id");	
+	if(id!=''&id!=null)
+	{
+		search.style.display = "none";
+		selecttype='search';
+		search.value=id;
+    //document.getElementById("pullrefresh").style.top=110px;
+	}
+	var	type = common.getQueryString("selecttype");	
+	if(type!=''&type!=null)
+	{
+		selecttype=type;
+	}	
+	
+	setTimeout(function() {
 				mui('#pullrefresh').pullRefresh().pullupLoading();
 			}, 50);
 		});
@@ -171,6 +187,8 @@ mui.plusReady(function() {
 		});
 		window.scrollTo(0, 0);
 	}
+
+	
 	window.addEventListener('refresh1', function() {
 //		if(selecttype == "dqr") {
 //			list.innerHTML = "";

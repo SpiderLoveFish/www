@@ -59,10 +59,23 @@ mui.plusReady(function() {
 		}, 'json');
 		}
 	});
-//	document.getElementById("btn_post_activ").addEventListener('tap', function() {
-//		currentWebViewHide();
-//		var template = common.getTemplate('page2', 'im_chat.html?id=' + id);
-//	});
+	//预算信息
+	document.getElementById("ysxx").addEventListener('tap', function() {
+		currentWebViewHide();
+		var template = common.getTemplate('page2', '../approve/projecthour/yslist.html?id=' + id);
+	});
+	//效果图
+		document.getElementById("xgt").addEventListener('tap', function() {
+	alert(1);
+		currentWebViewHide();
+		var template = common.getTemplate('page2', '../approve/projecthour/yslist.html?id=' + id);
+	});
+	//全景tu
+		document.getElementById("qjt").addEventListener('tap', function() {
+	alert(1);
+		currentWebViewHide();
+		var template = common.getTemplate('page2', '../approve/projecthour/yslist.html?id=' + id);
+	});
 	//window.addEventListener('dataInit', function(event) {
 	//获取从父页面传过来的数据
 	//id = event.detail.id;

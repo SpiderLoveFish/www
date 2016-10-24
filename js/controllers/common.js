@@ -15,6 +15,8 @@ var r_birthday = 5;
 var r_material = 7;
 var r_points = 6; //积分
 var r_myys = 8;
+var r_myys_sh = 9;
+var r_myys_qr = 10;
 var r_cor_news = 3;
 var r_send_cor_news = 4;
 //--结束权限全局变量

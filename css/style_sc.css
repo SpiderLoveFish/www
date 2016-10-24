@@ -1913,7 +1913,7 @@ select option {
 	background: url(../images/ScApp/icon/HomeGg.png) no-repeat left center;
 }
 .index_mess_3{
-	background: url(../images/ScApp/icon/HomeWj.png) no-repeat left center;
+	background: url(../images/ScApp/nav/RichengGuanli.png) no-repeat left center;
 }
 .index_mess_4{
 	background: url(../images/ScApp/icon/HomeHd.png) no-repeat left center;
@@ -2069,6 +2069,14 @@ select option {
 	width: 24px;
 	display: block;
 }
+.ScFamily_tab .mui-icon-settings:before{
+    content: "";
+	background: url(../images/ScApp/nav/before_setting.png) no-repeat center;
+	background-size:24px;
+	height:24px;
+	width: 24px;
+	display: block;
+}
 .ScFamily_tab .mui-icon-contact:before{
 	content: "";
 	background: url(../images/ScApp/nav/Apps_02.png) no-repeat center;
@@ -2096,6 +2104,14 @@ select option {
 .ScFamily_tab .mui-tab-item.mui-active .mui-icon-email:before{
 	content: "";
 	background: url(../images/ScApp/nav/Telphone_01.png) no-repeat center;
+	background-size:24px;
+	height:24px;
+	width: 24px;
+	display: block;
+}
+.ScFamily_tab  .mui-tab-item.mui-active .mui-icon-settings:before{
+	content: "";
+	background: url(../images/ScApp/nav/full_setting.png) no-repeat center;
 	background-size:24px;
 	height:24px;
 	width: 24px;

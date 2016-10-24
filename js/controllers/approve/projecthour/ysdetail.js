@@ -1,6 +1,7 @@
 mui.init();
 var commitLock = true;
 var id; //主鍵
+var selecttype;
 var creator;
 var isLastApprover;
 var approveOpinion = ''; //审批意见
@@ -19,7 +20,7 @@ mui.plusReady(function() {
 	//获取从父页面传过来的数据
 	//id = event.detail.id;
 	id = common.getQueryString("id");
-
+	selecttype= common.getQueryString("selecttype");
 	//common.showWaiting(true);
 	var jsn = {
 		strWhere: '',
@@ -144,10 +145,12 @@ mui.plusReady(function() {
 		//		} else if (jsn.creator == "1") {
 		//			//负责人
 		//			if (jsn.canApprove) {
-		//				$('.approve_footer').removeClass('h');
-		//				$('#btnState').removeClass('h');
-		//				$('#btnNopass').removeClass('h');
-		//			}
+		  if (selecttype == 'ys_dsh'||	selecttype == 'ys_dqr' ) 
+			{
+						$('.approve_footer').removeClass('h');
+						$('#btnState').removeClass('h');
+						$('#btnNopass').removeClass('h');
+			}
 		//		}
 		common.closeWaiting();
 	}, 'json');
@@ -244,12 +247,12 @@ mui.plusReady(function() {
 	var btnState = document.getElementById("btnState");
 	//审批通过
 	btnState.addEventListener("tap", function(e) {
-		if(isLastApprover) {
-			//是最后审批人
-			status = "AllPass";
-		} else {
-			status = 'Pass';
-		}
+//		if(isLastApprover) {
+//			//是最后审批人
+//			status = "AllPass";
+//		} else {
+//			status = 'Pass';
+//		}
 		e.detail.gesture.preventDefault(); //修复iOS 8.x平台存在的bug，使用plus.nativeUI.prompt会造成输入法闪一下又没了
 		var btnArray = ['确定', '取消'];
 		mui.prompt('请输入你的审批意见：', '同意!', '审批意见', btnArray, function(e) {
@@ -267,7 +270,7 @@ mui.plusReady(function() {
 	var btnNopass = document.getElementById("btnNopass");
 	//审批不通过
 	btnNopass.addEventListener("tap", function(e) {
-		status = 'NoPass';
+	selecttype= 'NoPass';
 		e.detail.gesture.preventDefault(); //修复iOS 8.x平台存在的bug，使用plus.nativeUI.prompt会造成输入法闪一下又没了
 		var btnArray = ['确定', '取消'];
 		mui.prompt('请输入你的审批意见：', '不同意!', '审批意见', btnArray, function(e) {
@@ -287,37 +290,41 @@ mui.plusReady(function() {
 			return;
 		}
 		var argu;
-		var pushTitle, pushContent;
-		if(status == "Pass") {
-			//流转到下一个审批人,点击消息跳转该我审批
-			argu = "{'vid':'projecthour','pid':'1'}";
-			pushTitle = getUserInfo().UserName + ":工时填报";
-			pushContent = leaveObj.WorkContent;
-		} else {
-			//点击消息跳转我发起的
-			argu = "{'vid':'projecthour','pid':'0'}";
-			pushTitle = "你的:工时填报";
-			pushContent = approveOpinion;
-		}
-
+//		var pushTitle, pushContent;
+//		if(status == "Pass") {
+//			//流转到下一个审批人,点击消息跳转该我审批
+//			argu = "{'vid':'projecthour','pid':'1'}";
+//			pushTitle = getUserInfo().UserName + ":工时填报";
+//			pushContent = leaveObj.WorkContent;
+//		} else {
+//			//点击消息跳转我发起的
+//			argu = "{'vid':'projecthour','pid':'0'}";
+//			pushTitle = "你的:工时填报";
+//			pushContent = approveOpinion;
+//		}
+     
 		var data = {
-			ProjectCode: '',
-			WorkHour: '',
-			WorkContent: approveOpinion,
-			UserName: '',
-			WorkDate: leaveObj.WorkDate,
-			SendState: status,
-			hidToUser: '',
-			hidCcUser: '',
-			AddOrUpdate: 'UpdateAudit',
-			id: id,
-			pushTitle: pushTitle,
-			pushContent: pushContent,
-			param: argu
+		 selecttype:selecttype,
+		 id:id,
+		 remarks:approveOpinion,
+		 username:getUserInfo().UserName
+//			ProjectCode: '',
+//			WorkHour: '',
+//			WorkContent: approveOpinion,
+//			UserName: '',
+//			WorkDate: leaveObj.WorkDate,
+//			SendState: status,
+//			hidToUser: '',
+//			hidCcUser: '',
+//			AddOrUpdate: 'UpdateAudit',
+//			id: id,
+//			pushTitle: pushTitle,
+//			pushContent: pushContent,
+//			param: argu
 		};
 		commitLock = false;
 		//common.showWaiting(); 
-		common.postApi('ProjectHourManage', data, function(response) {
+		common.postApi('UpdateBudge', data, function(response) {
 			if(response.data == "success") {
 				//currentViewHide();
 				common.toast("提交成功");
