@@ -279,6 +279,10 @@ var r_send_cor_news = 4;
 
 	common.Verifauthority = function(rightid, callback) {
 		//common.showWaiting();
+		if(getUserInfo().ID=='1'){
+		callback(true);
+		return;
+		}
 		common.postApi("Verifauthority", {
 			userid: getUserInfo().ID,
 			rightid: rightid,

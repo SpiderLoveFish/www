@@ -263,6 +263,7 @@ mui.plusReady(function() {
 					approveOpinion = '审批意见:同意!';
 				}
 				approve();
+				
 			}
 
 		});
@@ -324,13 +325,11 @@ mui.plusReady(function() {
 		};
 		commitLock = false;
 		//common.showWaiting(); 
-		common.postApi('UpdateBudge', data, function(response) {
-			if(response.data == "success") {
-				//currentViewHide();
+		
+		common.postApi('UpdateBudge', data, function(response) {	
+			if(response.data == "success") {			
 				common.toast("提交成功");
-				var fatherView = plus.webview.currentWebview().opener(); //父页面
-				//closeMenu 是C页面自定义事件的名称
-				mui.fire(fatherView, 'reloadfun', {});
+					currentViewHide();
 			} else {
 				common.toast("服务器异常，请稍候重试..");
 			}
@@ -338,9 +337,15 @@ mui.plusReady(function() {
 			common.closeWaiting();
 		}, 'json');
 	}
+//	function go() {
+//		var listWebview = plus.webview.currentWebview();
+//		listWebview.loadURL('yslist.html');
+//	}
 	//隐藏当前页面
 
 	function currentViewHide() {
+	//alert(2)
+	     plus.webview.currentWebview().back();
 		var fatherView = plus.webview.currentWebview().opener(); //父页面
 		//closeMenu 是C页面自定义事件的名称
 		mui.fire(fatherView, 'hideDetailPage', {});

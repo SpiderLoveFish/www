@@ -143,8 +143,9 @@ mui.plusReady(function() {
 	mui('#list').on('tap', '.sc_cell', function(e) {
 		var id = this.getAttribute('id');
 		var	type = common.getQueryString("selecttype");	
-		var webview = common.getTemplate('page1');
-		webview.loadURL('ysdetail.html?id=' + id+'&selecttype='+type);
+		//var webview = common.getTemplate('page1');
+			var template = common.getTemplate('page2', 'ysdetail.html?id=' + id+'&selecttype='+type);
+//		webview.loadURL('ysdetail.html?id=' + id+'&selecttype='+type);
 	});
 	if(plus.os.name != "Android") {
 		var pullrefresh = document.getElementById("pullrefresh");
@@ -189,6 +190,9 @@ mui.plusReady(function() {
 	}
 
 	
+	window.addEventListener('hideDetailPage', function() {
+	
+	});
 	window.addEventListener('refresh1', function() {
 //		if(selecttype == "dqr") {
 //			list.innerHTML = "";
