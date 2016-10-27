@@ -112,12 +112,12 @@ mui.plusReady(function() {
 				mui('#pullrefresh').pullRefresh().pullupLoading();
 			}, 50);
 		});
-		mui('#pullrefresh').pullRefresh().scrollTo(0,0);
+		 
 	} else {
 		mui.ready(function() {
 			mui('#pullrefresh').pullRefresh().pullupLoading();
 		});
-		window.scrollTo(0, 0);
+	 
 	}
 	window.addEventListener('refresh1', function() {
  

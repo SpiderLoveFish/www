@@ -8,14 +8,22 @@
 		<title>Hello H5+</title>
 			<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
 		<script type="text/javascript" src="../../js/mui/common.js"></script>
-		
+			<script src="../../js/mui/mui.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" charset="utf-8">
-var ws=null,embed=null;
+var ws=null,embed=null;var strurl=null;
 // 扩展API加载完毕，现在可以正常调用扩展API 
 function plusReady(){
 
 	ws=plus.webview.currentWebview();
-	ws.addEventListener('show',createEmbed,false);
+	var fdStart = ws.ID.indexOf("http://");
+		if(fdStart == 0){
+		   strurl=ws.ID;
+			ws.addEventListener('show',createEmbed,false);
+		}else if(fdStart == -1){
+		  strurl='http://www.baidu.com/';
+		  ws.addEventListener('show',createEmbed,false);
+		}
+	 
 }
 // 判断扩展API是否准备，否则监听"plusready"事件
 if(window.plus){
@@ -30,7 +38,8 @@ function createEmbed(){
 		topoffset=(Math.round(plus.navigator.getStatusbarHeight())+45)+'px';
 	}
 	plus.nativeUI.showWaiting('',{style:'black',modal:false,background:'rgba(0,0,0,0)'});
-	embed=plus.webview.create(ws.ID,'embed',{top:topoffset,bottom:'0px',position:'dock',dock:'bottom',bounce:'vertical'});
+//	 mui.openWindow(strurl,'embed',{})
+	embed=plus.webview.create(strurl,'embed',{top:topoffset,bottom:'0px',position:'dock',dock:'bottom',bounce:'vertical'});
 	ws.append(embed);
 	embed.addEventListener('loaded',function(){
 		plus.nativeUI.closeWaiting();
@@ -45,9 +54,9 @@ function openBrowser() {
 }
 // 打开网址
 function openUrl(){
-	var url=document.getElementById("url");
-	embed.loadURL(url.value);
-	url.blur();
+//	var url=document.getElementById("url");
+//	embed.loadURL(url.value);
+//	url.blur();
 }
 // 页面加载后自动打开
 document.addEventListener("DOMContentLoaded",function(){
@@ -59,7 +68,7 @@ document.addEventListener("DOMContentLoaded",function(){
 },false);
 // 页面跳转完成事件
 function onBrowserLoading(){
-	document.getElementById("url").value=embed.getURL();
+	//document.getElementById("url").value=embed.getURL();
 }
 		</script>
 		<link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8"/>
@@ -79,7 +88,8 @@ function onBrowserLoading(){
 	</head>
 	<body>
 		<header id="header" class="mui-bar mui-bar-nav">
-			<div class="nvbt iback" onclick="back(),plus.nativeUI.closeWaiting();"></div>
+			<!--<div class="nvbt iback" onclick="back(),plus.nativeUI.closeWaiting();"></div>-->
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 		<h1 class="mui-title">全景图</h1>	
 			<a id="icon-menu"  onclick="openBrowser();" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right departColor"></a>
 			<!--<div class="nvtt">
@@ -87,7 +97,7 @@ function onBrowserLoading(){
 				<form action="?" method="get" onsubmit="openUrl();return false;">
 			<h1 class="mui-title">全景图</h1>-->
 				
-			<!--	<input id="url" type="url" value="http://weibo.com/dhnetwork"/>-->
+<!--				<input id="url" type="url" value="http://weibo.com/dhnetwork"/>-->
 				<!--</form>
 			</div>-->
 		<!--	<div class="nvbt" onclick="openUrl();">Go</div>-->
