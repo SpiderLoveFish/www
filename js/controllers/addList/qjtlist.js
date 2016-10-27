@@ -58,10 +58,10 @@ function getquestionnairelist() {
 		cid: common.getQueryString("cid"),
 		uid:getUserInfo().ID
 	};
-	 alert(JSON.stringify(data))
+	 //alert(JSON.stringify(data))
 	common.postApi('GetQJT', data, function(response) {
 		dataArray = eval(response.data);
-		 alert(JSON.stringify(response))
+		// alert(JSON.stringify(response))
 			for (var i = 0; i < dataArray[0].length; i++) {
 			var obj = dataArray[0][i];
 			list.innerHTML += html_CanYu.replace('@ID', obj.id).replace('@STheme', obj.DyGraphicsName).replace('@SContext', obj.Remarks).replace('@ReleaseTime', ChangeDateFormat(obj.DoTime)).replace('@flag', obj.lx).replace('@url', obj.DyUrl); 
@@ -79,20 +79,17 @@ function getquestionnairelist() {
 var detailPage = null;
 mui.plusReady(function() {
 	mui('#list').on('tap', '.sc_cell', function(e) {
-		var id = this.getAttribute('id');
-		//mui.alert('暂无')
-		//var webview = common.getTemplate('page1');
-		//webview.loadURL('cldetail.html?id=' + id);
-		search.blur();
-		if(!detailPage) {
-			detailPage.setStyle({
-				left: '100%',
-				zindex: 9999
+		var href = this.getAttribute('href');
+		 mui.openWindow({
+			    url:'show.html',
+			    id:'show.html',
+			    extras:{
+			        ID:href
+			    }
 			});
-		}
-		//var id = this.getAttribute('data-value');
-		detailPage.loadURL('cldetail.html?id=' + id);
-		openMenu();
+	//var webview = common.getTemplate('show',"show.html?a="+href);
+		//detailPage.loadURL(href);
+	//	openMenu();
 	});
 	 
 

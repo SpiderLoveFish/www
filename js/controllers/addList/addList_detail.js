@@ -67,14 +67,14 @@ mui.plusReady(function() {
 	});
 	//效果图
 		document.getElementById("xgt").addEventListener('tap', function() {
- 	alert("后续添加！"); return;
+ 	 
 		currentWebViewHide();
-		var template = common.getTemplate('page2', '../approve/projecthour/yslist.html?id=' + id);
+		var template = common.getTemplate('xgtlist', 'xgtlist.html?type=XGT&tel=' + tel+'&cid='+id);
 	});
 	//全景tu
 		document.getElementById("qjt").addEventListener('tap', function() {
 		currentWebViewHide();	 
-		var template = common.getTemplate('page2', 'qjtlist.html?type=QJT&tel=' + tel+'&cid='+id);
+		var template = common.getTemplate('qjtlist', 'qjtlist.html?type=QJT&tel=' + tel+'&cid='+id);
 	});
 	//window.addEventListener('dataInit', function(event) {
 	//获取从父页面传过来的数据
