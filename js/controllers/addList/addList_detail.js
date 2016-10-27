@@ -5,6 +5,7 @@ mui.init({
 	//	}
 });
 var isCollect = '0';
+var	 tel="";
 	// 1收藏，0没收藏
 mui.plusReady(function() {
 	mui.previewImage();
@@ -66,15 +67,14 @@ mui.plusReady(function() {
 	});
 	//效果图
 		document.getElementById("xgt").addEventListener('tap', function() {
-	alert(1);
+ 	alert("后续添加！"); return;
 		currentWebViewHide();
 		var template = common.getTemplate('page2', '../approve/projecthour/yslist.html?id=' + id);
 	});
 	//全景tu
 		document.getElementById("qjt").addEventListener('tap', function() {
-	alert(1);
-		currentWebViewHide();
-		var template = common.getTemplate('page2', '../approve/projecthour/yslist.html?id=' + id);
+		currentWebViewHide();	 
+		var template = common.getTemplate('page2', 'qjtlist.html?type=QJT&tel=' + tel+'&cid='+id);
 	});
 	//window.addEventListener('dataInit', function(event) {
 	//获取从父页面传过来的数据
@@ -101,6 +101,7 @@ mui.plusReady(function() {
 			document.getElementById("Customer").innerText = obj.Customer;
 			document.getElementById("address").innerText = obj.address;
 			document.getElementById("tel").innerText = obj.tel;
+			tel=obj.tel;
 			document.getElementById("CustomerType").innerText = obj.CustomerType;
 			//document.getElementById("Remarks").innerText = obj.Remarks == null ? "备注：" : "备注：" + obj.Remarks;
 			document.getElementById("Createname").innerText = obj.Create_name;
