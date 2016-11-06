@@ -37,7 +37,7 @@ function getActivityList() {
 				var itemhtml = html.replace('@id', obj.ID).replace('@Title', (obj.Name)).replace('@Description',jf ).replace('@score',obj.Jf );
 				//.replace('@ReleaseDateTime', obj.ReleaseDateTime.substring(0, 10)).replace('@IsHostPic', obj.Sex);
 //				if (obj.Flag == "2") {
-	     	itemhtml = itemhtml.replace('@flag', '员工').replace('@ReleaseDateTime', obj.tel).replace('@IsHostPic', img);
+	     	itemhtml = itemhtml.replace('@flag', '员工').replace('@ReleaseDateTime', obj.Tel).replace('@IsHostPic', img);
 //				} else {
 //					itemhtml = itemhtml.replace('@flag', '我已参与');
 //				}

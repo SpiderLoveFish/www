@@ -87,19 +87,20 @@
 										</div>
 									</div>
 								</li>
-							 <!--<li class="activ_input_list flexbox">
-								是否收藏客户
-								<div id="isfav"  class="mui-switch mui-switch-mini ">
-								<div class="mui-switch-handle"></div>
-							</div>-->
-								 
-							</li>
-							<!--<li id="icon-toUser" class="activ_input_list flexbox approve_pri_li">
-								<span class="activ_input_label10  approve_pri">负责人</span>
-								<p id="toUser" class="flexItem join_object text_right approve_per">
+							  <li class="activ_input_list flexbox">
+								<span class="activ_input_label8">创建时间</span>
+								<p class="activ_time flexItem">
+									<span id="pickStart" type="button">开始</span> ~
+									<span id="pickEnd" type="button">截止</span>
 								</p>
 							</li>
-							<li id="icon-ccUser" class="activ_input_list flexbox approve_pri_li">-->
+							<li class="activ_input_list flexbox">
+								<span class="activ_input_label7">综合</span>
+								<p class="flexItem text_right leave_num">
+									<input id="zhTitle" type="text" placeholder="姓名/小区/地址/电话/备注" value="" />
+								</p>
+							</li>
+							<!--<li id="icon-ccUser" class="activ_input_list flexbox approve_pri_li">-->
 								<!--<span class="activ_input_label11  approve_pri">相关人</span>
 								<p id="ccUser" class="flexItem join_object text_right approve_per">
 								</p>
@@ -161,19 +162,20 @@
 //			if (!leaveTitle) {
 //				return;
 			//}
-			var dzTitle=document.getElementById("dzTitle").value;
+			var dzTitle=document.getElementById("dzTitle").value;//地址
 			var selectjl=document.getElementById("jlTitle");
-			var jlTitle=selectjl.options[selectjl.selectedIndex].text;
-			var selectsjs=document.getElementById("sjsTitle");
-			var sjsTitle=selectsjs.options[selectsjs.selectedIndex].text;
+			var jlTitle=selectjl.options[selectjl.selectedIndex].value;//监理
+			var selectsjs=document.getElementById("sjsTitle");//监理
+			var sjsTitle=selectsjs.options[selectsjs.selectedIndex].value;//设计师
 //			var jlTitle=document.getElementById("jlTitle").value;
 //			var sjsTitle=document.getElementById("sjsTitle").value;
 			var select=document.getElementById("sltType");
-			var sltType=select.options[select.selectedIndex].value;
-				var telTitle=document.getElementById("telTitle").value;
-					var xmTitle=document.getElementById("xmTitle").value;
-			var Title=dzTitle+';'+jlTitle+';'+sjsTitle+';'+sltType+';'+telTitle+';'+fav+';'+xmTitle
-				//alert(Title)
+			var sltType=select.options[select.selectedIndex].value;//类型
+				var telTitle=document.getElementById("telTitle").value;//电话
+					var xmTitle=document.getElementById("xmTitle").value;//姓名
+				 var zhTitle=document.getElementById("zhTitle").value; //综合
+			var Title=dzTitle+';'+jlTitle+';'+sjsTitle+';'+sltType+';'+telTitle+';'+fav+';'+xmTitle+';'+startDate+';'+endDate+';'+zhTitle;
+				alert(Title)
 				currentWebViewHide(Title);
 		});
 		        var isfav = document.getElementById("isfav");
@@ -183,6 +185,96 @@
 							if(isActive) fav='fav';
 							else fav='';
 						});
+						
+			
+       var startDate='', startTime='', endDate='', endTime='';
+		//时间 开始
+		var pickStart = document.getElementById("pickStart");
+		pickStart.addEventListener('tap', function() {
+			plus.nativeUI.pickDate(function(e) {
+				//开始日期
+				var d = e.date;
+				startDate = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+				pickStart.innerText=startDate;
+				//开始时间
+//				startTimeChoose(function(time) {
+//					startTime = time;
+//					$('#pickStart').text((d.getMonth() + 1) + "-" + d.getDate() + ' ' + startTime);
+//				});
+			}, function(e) {
+
+			}, {
+				title: "开始日期"
+			});
+		});
+		//时间 结束
+		var pickEnd = document.getElementById("pickEnd");
+		pickEnd.addEventListener('tap', function() {
+			plus.nativeUI.pickDate(function(e) {
+				//开始日期
+				var d = e.date;
+				endDate = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+				
+					if(startDate>endDate)
+					{	mui.alert('开始时间大于结束时间！');}
+				else
+						pickEnd.innerText=endDate;
+				//截止时间
+//				endTimeChoose(function(time) {
+//					endTime = time;
+//					$('#pickEnd').text((d.getMonth() + 1) + "-" + d.getDate() + ' ' + endTime);
+//				});
+			}, function(e) {
+
+			}, {
+				title: "截止日期"
+			});
+		});
+			
+		function startTimeChoose(success) {
+			var dTime = new Date();
+			dTime.setHours(9, 0);
+			plus.nativeUI.pickTime(function(e) {
+				var d = e.date;
+				var minute;
+				if (d.getMinutes() < 10) {
+					minute = "0" + d.getMinutes();
+				} else {
+					minute = d.getMinutes();
+				}
+				//成功回调
+				success(d.getHours() + ":" + minute);
+			}, function(e) {
+				//pickTimeBtn.innerText = "请选择时间"
+			}, {
+				title: "开始时间",
+				is24Hour: true,
+				time: dTime
+			});
+		}
+	//截止时间选择
+		function endTimeChoose(success) {
+			var dTime = new Date();
+			dTime.setHours(18, 0);
+			plus.nativeUI.pickTime(function(e) {
+				var d = e.date;
+				var minute;
+				if (d.getMinutes() < 10) {
+					minute = "0" + d.getMinutes();
+				} else {
+					minute = d.getMinutes();
+				}
+				success(d.getHours() + ":" + minute);
+			}, function(e) { 
+				//pickTimeBtnEnd.innerText = "请选择时间"
+			}, {
+				title: "截止时间",
+				is24Hour: true,
+				time: dTime
+			});
+		}
+	
+						
 			//部门点击事件
 //			mui('#ulList').on('tap', 'li', function(e) {
 //				common.showWaiting(true);
@@ -201,6 +293,8 @@
 				});
 			}
 		});
+	
+	
 	</script>
 
 </html>

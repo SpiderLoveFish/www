@@ -104,7 +104,7 @@ mui.plusReady(function() {
 			tel=obj.tel;
 			document.getElementById("CustomerType").innerText = obj.CustomerType;
 			//document.getElementById("Remarks").innerText = obj.Remarks == null ? "备注：" : "备注：" + obj.Remarks;
-			document.getElementById("Createname").innerText = obj.Create_name;
+			document.getElementById("Createname").innerText = obj.Create_name+'('+obj.cd+')';
 			document.getElementById("sjs").innerText = obj.sjs;
 			document.getElementById("ywy").innerText = obj.ywy;
 			document.getElementById("sgjl").innerText = obj.sgjl; 

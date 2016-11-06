@@ -34,7 +34,13 @@ function getActivityList() {
 				var imgs=obj.news_content.split('.jpg');
 				var desc= substringAddPoint(imgs[imgs.length-1],20).trim().replace('</br>','');
 				//alert(desc)
-				var itemhtml = html.replace('@id', obj.ID).replace('@Title', (obj.Title)).replace('@Description',desc).replace('@ReleaseDateTime', obj.ReleaseTime).replace('@IsHostPic', ApiUrl+'images/upload/temp/'+obj.IsHostPic);
+				var hostimg='../../images/ScApp/news/mr.png';
+				 // alert(obj.IsHostPic)
+				if(obj.IsHostPic==''|| obj.IsHostPic=='null'||obj.IsHostPic==null)	{}
+				else
+				 hostimg=ApiUrl+'images/upload/temp/'+obj.IsHostPic;
+				 
+				var itemhtml = html.replace('@id', obj.ID).replace('@Title', (obj.Title)).replace('@Description',desc).replace('@ReleaseDateTime', obj.ReleaseTime).replace('@IsHostPic', hostimg);
 				if (obj.create_id == getUserInfo().ID) {
 					itemhtml = itemhtml.replace('@flag', '我发布');
 				} 

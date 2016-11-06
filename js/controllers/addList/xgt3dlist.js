@@ -1,5 +1,5 @@
 ﻿var currview;
-var picId;
+var picId='';
 var strurl = '';
 mui.plusReady(function() {
 	currview = plus.webview.currentWebview();
@@ -29,6 +29,7 @@ mui.plusReady(function() {
 			if(obj.picType == '1')
 				{
 				//strurl = panoLink;
+				if( obj.picId!=undefined&& obj.picId!=''& obj.picId!=null& obj.picId!='null'& obj.picId!='undefined')
 				picId = picId + ',' + obj.picId;
 				}
 		 
@@ -41,7 +42,7 @@ mui.plusReady(function() {
 
 		}
 			if (picId.substr(0,1)==',') picId=picId.substr(1);
-
+//alert(picId)
 		//document.getElementById("AContext").innerHTML += obj.IMG;
 		//		 	//document.getElementById("userCount").innerText = '活动已报名(' + dataArray[1].length + '人)';
 		common.closeWaiting();

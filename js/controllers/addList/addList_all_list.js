@@ -13,7 +13,7 @@ var temBody = '<li data-tags="@Header" class="mui-table-view-cell mui-indexed-li
 function GetUserList(selectType, departmentId, searchkey) {
 
 	document.getElementById("UserList").innerHTML = "";
-	document.getElementById("headerList").innerHTML = "";
+	 document.getElementById("headerList").innerHTML = "";
 	//字母头
 	var uType = 'ToOrCcUserList';
 	if(selectType) {
@@ -37,10 +37,10 @@ function GetUserList(selectType, departmentId, searchkey) {
 		searchkey: sk
 	};
 	//alert(JSON.stringify(data))
-	var db = common.openDatabase();
+	 var db = common.openDatabase();
 	if(!common.isNetWork()) {
 		//未联网
-		selectTable(db);
+		 selectTable(db);
 	} else {
 		common.postApi("GetCustomerList", data, function(response) {
 			dataArray = eval(response.data);
@@ -75,12 +75,12 @@ function GetUserList(selectType, departmentId, searchkey) {
 				insertTable(db, obj.header, obj.id, obj.tel, obj.id, obj.Customer, obj.address)
 			}
 			//duangduang();    
-			list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
+ 			list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
 			window.indexedList = new mui.IndexedList(list);
 			mui("#list").indexedList();
 			common.closeWaiting();
 			//通讯录加载完毕再关闭index页的waiting
-			//mui("#list").indexedList().findElements();
+			mui("#list").indexedList().findElements();
 		}, 'json');
 	}
 }
@@ -148,8 +148,10 @@ function selectTable(db) {
 	});
 }
 
+	var search = document.getElementById("search");
 mui.plusReady(function() {
 	//	list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
+	search.style.display="none";
 	GetUserList();
 	var detailPageId = 'addList_detail.html';
 	var detailPage = null;
@@ -165,7 +167,7 @@ mui.plusReady(function() {
 	});
 	//监听详情页面请求关闭
 	window.addEventListener('reloadfun', function() {
-		//document.getElementById("list").innerHTML = "";
+		document.getElementById("list").innerHTML = "";
 		statrCount = 0;
 		GetUserList();
 	});
@@ -223,12 +225,11 @@ mui.plusReady(function() {
 		msg.body = message;
 		plus.messaging.sendMessage(msg);
 	}
-	var search = document.getElementById("search");
 
 	//添加列表项的点击事件
 	mui('#UserList').on('tap', '.divClick', function(e) {
 		//移除焦点,为了隐藏软键盘
-		search.blur();
+		//search.blur();
 		if(!detailPage) {
 			detailPage.setStyle({
 				left: '100%',
@@ -242,14 +243,14 @@ mui.plusReady(function() {
  
 	mui('#UserList').on('tap', '.addlist_makecall', function(e) {
 		//移除焦点,为了隐藏软键盘
-		search.blur();
+		//search.blur();//
 		var href = this.getAttribute('data-mobile');
 		plus.device.dial(href);
 
 	});
 	mui('#UserList').on('tap', '.addlist_makemass', function(e) {
 		//移除焦点,为了隐藏软键盘
-		search.blur();
+		//search.blur();
 		var msg = "";
 		var href = this.getAttribute('data-mobile');
 		//smsTest(href, msg);
@@ -267,7 +268,7 @@ mui.plusReady(function() {
 	var departmentId = 'department.html';
 	mui('.mui-bar-nav').on("tap", '#icon-menu', function(e) {
 		//移除焦点,为了隐藏软键盘
-		document.getElementById("search").blur();
+		//document.getElementById("search").blur();
 		if(!departmentPage) {
 			departmentPage = plus.webview.getWebviewById(departmentId);
 			departmentPage.setStyle({

@@ -124,7 +124,7 @@ function uploadimg(imgurl) {
 }
 
 function getuser() {
-	common.showWaiting(true);
+	//common.showWaiting(true);
 	var user = getUserInfo();
 // 	alert(JSON.stringify(user))
 	var data = {
@@ -138,10 +138,11 @@ function getuser() {
 	var Position = document.getElementById("Position");
 	var Email = document.getElementById("Email");
 	var Address = document.getElementById("Address");
+		var jf = document.getElementById("jf");
 	common.postApi('GetUserClientId', data, function(response) {
 
 		dataArray = eval(response.data);
-//		alert(JSON.stringify(response))
+		//alert(JSON.stringify(response))
 		for (var i = 0; i < dataArray.length; i++) {
 			var obj = dataArray[i];
 			Avatar.src = obj.Avatar;
@@ -151,7 +152,84 @@ function getuser() {
 			Position.innerText = obj.zhiwu;
 			Email.innerText = obj.email;
 			Address.innerText = obj.Address;
+			jf.innerText = obj.jf; 
 		}
 		common.closeWaiting();
 	}, 'json');
+	
+	
+	var detailPage = null;
+	document.getElementById("lijf").addEventListener('tap', function() {
+		var id = getUserInfo().ID;
+		var score= jf.innerText;
+		//var template = common.getTemplate('page2', 'activity_detail.html?id=' + id+'&sfkh=NY&score='+score);
+			if(!detailPage) {
+			detailPage.setStyle({
+				left: '100%',
+				zindex: 9999
+			});
+		}
+	detailPage.loadURL('activity_detail.html?id=' + id+'&sfkh=NY&score='+score);
+		openMenu();
+	});
+	var detailPageId = 'activity_detail.html';
+	var mask = mui.createMask(_closeMenu);
+	//setTimeout的目的是等待窗体动画结束后，再执行create webview操作，避免资源竞争，导致窗口动画不流畅；
+	setTimeout(function() {
+		detailPage = common.getWebviewDetailById(detailPageId);
+	}, 150);
+	//监听详情页面请求关闭
+	window.addEventListener('hideDetailPage', function() {
+		_closeMenu();
+		mask.close();
+	});
+	/*
+	 * 显示菜单菜单
+	 */
+	function openMenu() {
+		//解决android 4.4以下版本webview移动时，导致fixed定位元素错乱的bug;
+		if(mui.os.android && parseFloat(mui.os.version) < 4.4) {
+			document.querySelector("header.mui-bar").style.position = "static";
+			//同时需要修改以下.mui-contnt的padding-top，否则会多出空白；
+			document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = "0px";
+		}
+		//侧滑菜单处于隐藏状态，则立即显示出来；
+		//显示完毕后，根据不同动画效果移动窗体；
+		setTimeout(function() {
+			detailPage.show('none', 0, function() {
+				detailPage.setStyle({
+					left: '15%',
+					transition: {
+						duration: 150
+					}
+				});
+			});
+			mask.show(); //遮罩
+		}, 350);
+	}
+	/**
+	 * 关闭侧滑菜单(业务部分)
+	 */
+
+	function _closeMenu() {
+		//解决android 4.4以下版本webview移动时，导致fixed定位元素错乱的bug;
+		if(mui.os.android && parseFloat(mui.os.version) < 4.4) {
+			document.querySelector("header.mui-bar").style.position = "fixed";
+			//同时需要修改以下.mui-contnt的padding-top，否则会多出空白；
+			document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = "44px";
+		}
+		//主窗体开始侧滑；
+		detailPage.setStyle({
+			left: '100%',
+			transition: {
+				duration: 150
+			}
+		});
+		//等窗体动画结束后，隐藏菜单webview，节省资源；
+		setTimeout(function() {
+			detailPage.hide();
+		}, 300);
+	}
+	/********部门侧滑end*****************************************/
+
 }
