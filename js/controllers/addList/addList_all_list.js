@@ -4,6 +4,7 @@ var showCount = 10;
 var count = 0;
 var list = document.getElementById('list');
 var header = document.querySelector('header.mui-bar');
+var news_hint = document.getElementsByClassName("news_botton_hint");
 var headLetter;
 var temHead = '<li data-group="@headLetter" class="mui-table-view-divider mui-indexed-list-group">@headLetter</li>';
 //数据体
@@ -47,9 +48,12 @@ function GetUserList(selectType, departmentId, searchkey) {
 			//alert(JSON.stringify(response))
 			createTable(db);
 			deleteTable(db);
+			news_hint[0].style.display = "block";
+ 				news_hint[0].innerText = dataArray.length;
 			for(var i = 0; i < dataArray.length; i++) {
 				var temp; //临时变量
 				var obj = dataArray[i];
+				
 				//创建websql 表
 				if(headLetter != obj.header) { //没有此头字母,插入头
 					headLetter = obj.header;

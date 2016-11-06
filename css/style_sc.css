@@ -321,6 +321,20 @@ header{
     padding: 0 4px;
     text-align: center;
 }
+.news_botton_hint{
+	position: absolute;
+	top: 15px;
+    right: -15px;
+	height: 16px;
+    min-width: 16px;
+    border-radius: 8px;
+    color: #fff;
+    background-color: #ea5514;
+    font-size: 1.2rem;
+    line-height: 16px;
+    padding: 0 4px;
+    text-align: center;
+}
 .text_hint{
 	margin: 10px 0 10px 0;
 	font-size: 1.3rem;
