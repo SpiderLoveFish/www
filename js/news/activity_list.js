@@ -34,7 +34,7 @@ function getActivityList() {
 				var imgs=obj.news_content.split('.jpg');
 				var desc= substringAddPoint(imgs[imgs.length-1],20).trim().replace('</br>','');
 				//alert(desc)
-				var hostimg='../../images/ScApp/news/mr.png';
+				var hostimg='../../images/ScApp/news/mr.jpg';
 				 // alert(obj.IsHostPic)
 				if(obj.IsHostPic==''|| obj.IsHostPic=='null'||obj.IsHostPic==null)	{}
 				else
