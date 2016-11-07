@@ -107,9 +107,10 @@
 							</li>-->
 						</ul>
 					</div>
+				 
 					<div id="btnSubmit" class="btn_woapply">搜索</div>
 					<div id="btnRest" class="btn_woapply">重置</div>
-					
+			 
 				</div>
 			</div>
 		</div>
@@ -158,17 +159,17 @@
  
 		common.click("btnRest", function()
 		{		
-			var dzTitle=document.getElementById("dzTitle").value;//地址
+			var dzTitle=document.getElementById("dzTitle");//地址
 			var selectjl=document.getElementById("jlTitle");
-			var jlTitle=selectjl.options[selectjl.selectedIndex].value;//监理
+			//监理
 			var selectsjs=document.getElementById("sjsTitle");//监理
-			var sjsTitle=selectsjs.options[selectsjs.selectedIndex].value;//设计师
+			//设计师
 			var selecttype=document.getElementById("sltType");
-			var sltType=selecttype.options[selecttype.selectedIndex].value;//类型
-			var telTitle=document.getElementById("telTitle").value;//电话
-			var xmTitle=document.getElementById("xmTitle").value;//姓名
-			var zhTitle=document.getElementById("zhTitle").value; //综合
-			dzTitle.value=telTitle.value=xmTitle.value=startDate=endDate=zhTitle.value='';
+			//类型
+			var telTitle=document.getElementById("telTitle");//电话
+			var xmTitle=document.getElementById("xmTitle");//姓名
+			var zhTitle=document.getElementById("zhTitle"); //综合
+			dzTitle.value=telTitle.value=xmTitle.value=zhTitle.value=startDate=endDate='';
 			selectjl.options[0].selected = true;
 			selectsjs.options[0].selected = true;
 			selecttype.options[0].selected = true;	
