@@ -1,4 +1,4 @@
-var list = document.getElementById("list");
+﻿var list = document.getElementById("list");
  //"javascript:;"
 var html_CanYu = '<a href=@url  class="sc_cell sc_padding mui-table-view-cell" id="@ID">' +
 	//	'		<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' +

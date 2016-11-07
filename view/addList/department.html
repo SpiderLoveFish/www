@@ -107,8 +107,9 @@
 							</li>-->
 						</ul>
 					</div>
-
 					<div id="btnSubmit" class="btn_woapply">搜索</div>
+					<div id="btnRest" class="btn_woapply">重置</div>
+					
 				</div>
 			</div>
 		</div>
@@ -152,8 +153,40 @@
 			}
 			common.closeWaiting();
 		}, 'json');
+		
+		
+ 
+		common.click("btnRest", function()
+		{		
+			var dzTitle=document.getElementById("dzTitle").value;//地址
+			var selectjl=document.getElementById("jlTitle");
+			var jlTitle=selectjl.options[selectjl.selectedIndex].value;//监理
+			var selectsjs=document.getElementById("sjsTitle");//监理
+			var sjsTitle=selectsjs.options[selectsjs.selectedIndex].value;//设计师
+			var selecttype=document.getElementById("sltType");
+			var sltType=selecttype.options[selecttype.selectedIndex].value;//类型
+			var telTitle=document.getElementById("telTitle").value;//电话
+			var xmTitle=document.getElementById("xmTitle").value;//姓名
+			var zhTitle=document.getElementById("zhTitle").value; //综合
+			dzTitle.value=telTitle.value=xmTitle.value=startDate=endDate=zhTitle.value='';
+			selectjl.options[0].selected = true;
+			selectsjs.options[0].selected = true;
+			selecttype.options[0].selected = true;	
+			pickStart.innerText='开始';pickEnd.innerText='截止';
+		});
+		
 				//提交
-		common.click("btnSubmit", function() {
+		common.click("btnSubmit", function() {		
+			var dzTitle=document.getElementById("dzTitle").value;//地址
+			var selectjl=document.getElementById("jlTitle");
+			var jlTitle=selectjl.options[selectjl.selectedIndex].value;//监理
+			var selectsjs=document.getElementById("sjsTitle");//监理
+			var sjsTitle=selectsjs.options[selectsjs.selectedIndex].value;//设计师
+			var select=document.getElementById("sltType");
+			var sltType=select.options[select.selectedIndex].value;//类型
+			var telTitle=document.getElementById("telTitle").value;//电话
+			var xmTitle=document.getElementById("xmTitle").value;//姓名
+			var zhTitle=document.getElementById("zhTitle").value; //综合
 //		var dzTitle = common.textValiAlert(document.getElementById("dzTitle").value, "请填写查询条件");
 //			if (!dzTitle) {
 //				return;
@@ -162,18 +195,10 @@
 //			if (!leaveTitle) {
 //				return;
 			//}
-			var dzTitle=document.getElementById("dzTitle").value;//地址
-			var selectjl=document.getElementById("jlTitle");
-			var jlTitle=selectjl.options[selectjl.selectedIndex].value;//监理
-			var selectsjs=document.getElementById("sjsTitle");//监理
-			var sjsTitle=selectsjs.options[selectsjs.selectedIndex].value;//设计师
+			
 //			var jlTitle=document.getElementById("jlTitle").value;
 //			var sjsTitle=document.getElementById("sjsTitle").value;
-			var select=document.getElementById("sltType");
-			var sltType=select.options[select.selectedIndex].value;//类型
-				var telTitle=document.getElementById("telTitle").value;//电话
-					var xmTitle=document.getElementById("xmTitle").value;//姓名
-				 var zhTitle=document.getElementById("zhTitle").value; //综合
+			
 			var Title=dzTitle+';'+jlTitle+';'+sjsTitle+';'+sltType+';'+telTitle+';'+fav+';'+xmTitle+';'+startDate+';'+endDate+';'+zhTitle;
 				//alert(Title)
 				currentWebViewHide(Title);
@@ -195,7 +220,10 @@
 				//开始日期
 				var d = e.date;
 				startDate = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
-				pickStart.innerText=startDate;
+				if(comptime(startDate,endDate)==1)
+					{	mui.alert('开始时间'+startDate+'大于结束时间'+endDate);}
+				else
+						pickStart.innerText=startDate;
 				//开始时间
 //				startTimeChoose(function(time) {
 //					startTime = time;
@@ -215,8 +243,8 @@
 				var d = e.date;
 				endDate = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
 				
-					if(startDate>endDate)
-					{	mui.alert('开始时间大于结束时间！');}
+					if(comptime(startDate,endDate)==1)
+					{	mui.alert('开始时间'+startDate+'大于结束时间'+endDate);}
 				else
 						pickEnd.innerText=endDate;
 				//截止时间
@@ -230,6 +258,18 @@
 				title: "截止日期"
 			});
 		});
+			
+			//比较时间
+			function comptime(a,b)   
+					{   
+					if( a==''||b=='') return null;   
+					var dateA =  (new Date(a.replace(/-/g,"\/"))) ;   
+					var dateB =  (new Date(b.replace(/-/g,"\/"))) ;   
+					if(isNaN(dateA) || isNaN(dateB)) return null;   
+					if(dateA > dateB) return 1;   
+					if(dateA < dateB) return -1;   
+					return 0;   
+					}   
 			
 		function startTimeChoose(success) {
 			var dTime = new Date();
