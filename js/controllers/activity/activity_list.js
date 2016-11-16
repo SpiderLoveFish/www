@@ -19,8 +19,9 @@ function getActivityList() {
 		sfkh: selecttype,
 		nowindex:  starIndex
 	};
+	//alert(JSON.stringify(data))
 	common.postApi('GetScore', data, function(response) {
-		//alert(JSON.stringify(response))
+		
 		dataArray = eval(response.data);
 		
 		for (var i = 0; i < dataArray.length; i++) {

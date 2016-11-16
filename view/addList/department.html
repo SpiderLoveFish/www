@@ -120,8 +120,12 @@
 	<script>
 		mui.init();
 		mui.plusReady(function() {
+			var islocksjs=false;
+			var sislockgjl=false;
+		 
 			//common.showWaiting(true);
 			//绑定下拉列表
+			
 		common.postApi("GetCustomerType", {
 			'url': ApiUrl
 		}, function(response) {
@@ -130,9 +134,11 @@
 				var obj = dataArray[i];
 				document.getElementById('sltType').options.add(new Option(obj.CustomerType, obj.cid));
 			}
+		
 			common.closeWaiting();
 		}, 'json');
 			//设计师
+			if(!islocksjs)
 			common.postApi("GetCustomerType", {
 			'url': 'sjs'
 		}, function(response) {
@@ -141,9 +147,11 @@
 				var obj = dataArray[i];
 				document.getElementById('sjsTitle').options.add(new Option(obj.CustomerType, obj.cid));
 			}
+			islocksjs=true;
 			common.closeWaiting();
 		}, 'json');
 			//施工监理 
+			if(!sislockgjl)
 			common.postApi("GetCustomerType", {
 			'url': 'sgjl'
 		}, function(response) {
@@ -152,6 +160,7 @@
 				var obj = dataArray[i];
 				document.getElementById('jlTitle').options.add(new Option(obj.CustomerType, obj.cid));
 			}
+			sislockgjl=true;
 			common.closeWaiting();
 		}, 'json');
 		
