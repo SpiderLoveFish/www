@@ -110,7 +110,7 @@ function getquestionnairelist() {
 			//		endIndex: endIndex,
 			//type: selecttype,
 	};
-	///	alert(search)
+	//alert(JSON.stringify(data))
 	common.postApi('GetBudge', data, function(response) {
 		dataArray = eval(response.data);
 //alert(JSON.stringify(response))

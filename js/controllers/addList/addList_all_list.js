@@ -65,7 +65,7 @@ function GetUserList(selectType, departmentId, searchkey) {
 				}
 				var avatar = obj.Avatar;
 				if(avatar == '' || avatar == null || avatar == 'null')
-					avatar = '../../images/ScApp/icon/deadline.png';
+					avatar = '../../images/ScApp/general/headimg/headimg_02.png';
 				temp = temBody;
 				temp = temp.replace("@id", obj.id);
 				temp = temp.replace("@Header", obj.header + obj.Customer + obj.tel + obj.address);

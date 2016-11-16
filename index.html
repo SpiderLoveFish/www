@@ -156,10 +156,10 @@
 				plus.push.addEventListener("receive", function(msg) {
 					var userInfo = app.getUserInfo();
 					//判断登录
-					if (!userInfo.UserId || !userInfo.CorpId || !userInfo.ClientId) {
-						common.jump("login.html", "login.html", {}, false, false);
-						return;
-					}
+//					if (!userInfo.UserId || !userInfo.CorpId || !userInfo.ClientId) {
+//						common.jump("login.html", "login.html", {}, false, false);
+//						return;
+//					}
 					if (mui.os.ios) {
 						//ios设备应用在线接收到推送消息
 						if (msg && msg.payload) {

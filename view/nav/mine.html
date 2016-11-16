@@ -58,9 +58,9 @@
 						<!--<li id="changeStyle" class="mine_list_right">
 							<i class="mine_list_13">更换app风格</i>
 						</li>-->
-						<li id="updateVers" class="mine_list_right">
+						<!--<li id="updateVers" class="mine_list_right">
 							<i class="mine_list_4">检查更新</i>
-						</li>
+						</li>-->
 					</ul>
 				</div>
 				<div id="loginQuit" class="log_out">退出登录</div>
@@ -119,34 +119,34 @@
 //				common.loadUrl('../myPage/newstyle/change_style.html');
 //			});
 //
-			common.click("updateVers", function() {
-				//common.loadUrl('../myPage/newstyle/change_style.html');
-				var wgtinfoVersion = null;
-				plus.runtime.getProperty(plus.runtime.appid, function(wgtinfo) {
-					wgtinfoVersion = wgtinfo.version;
-					common.postglobalUrlApi('GetAppVersion', {
-						ver: wgtinfoVersion
-					}, function(response) {
-						 var data=eval(response.data);
-						//alert(data)
-						if(data) {
-							var updateUrl = data[0].updateUrl;
-							//获取到更新地址  
-							var btnArray = ['是', '否'];
-							mui.confirm('检测到新版本,是否立即更新？'+data[0].logcontent, '提示', btnArray, function(e) {
-								if(e.index == 0) {
-									common.loadUrl('../../view/common/progress.html?url=' + updateUrl);
-									//downWgt(updateUrl);
-								} else {
-									return;
-								}
-							});
-						}
-					});
-
-				});
-			});
-//			
+//			common.click("updateVers", function() {
+//				//common.loadUrl('../myPage/newstyle/change_style.html');
+//				var wgtinfoVersion = null;
+//				plus.runtime.getProperty(plus.runtime.appid, function(wgtinfo) {
+//					wgtinfoVersion = wgtinfo.version;
+//					common.postglobalUrlApi('GetAppVersion', {
+//						ver: wgtinfoVersion
+//					}, function(response) {
+//						 var data=eval(response.data);
+//						//alert(data)
+//						if(data) {
+//							var updateUrl = data[0].updateUrl;
+//							//获取到更新地址  
+//							var btnArray = ['是', '否'];
+//							mui.confirm('检测到新版本,是否立即更新？'+data[0].logcontent, '提示', btnArray, function(e) {
+//								if(e.index == 0) {
+//									common.loadUrl('../../view/common/progress.html?url=' + updateUrl);
+//									//downWgt(updateUrl);
+//								} else {
+//									return;
+//								}
+//							});
+//						}
+//					});
+//
+//				});
+//			});
+////			
 			common.click("loginQuit", function() {
 				var btnArray = ['是', '否'];
 				mui.confirm('确认退出当前账号?', '确认操作', btnArray, function(e) {

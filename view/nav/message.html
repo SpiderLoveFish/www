@@ -147,16 +147,16 @@
 				});
 				//审批
 				setBadgeNumber('approveCount', s[1].length);
-				//document.getElementById("approveCount").innerText = s[1].length;
+//				document.getElementById("approveCount").innerText = s[1].length;
 				//新闻
 				setBadgeNumber('newCount', s[2].length);
-				//document.getElementById("newCount").innerText = s[2].length;
+				document.getElementById("newCount").innerText = s[2].length;
 				//调查问卷
 				setBadgeNumber('surveyCount', s[3].length);
-				//document.getElementById("surveyCount").innerText = s[3].length;
+				document.getElementById("surveyCount").innerText = s[3].length;
 				//活动
 				setBadgeNumber('activityCount', s[4].length);
-				//document.getElementById("activityCount").innerText = s[4].length;
+//				document.getElementById("activityCount").innerText = s[4].length;
 				document.getElementsByClassName("index_mess_list")[0].style.display = "";
 			}, 'json');
 		}
