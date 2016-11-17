@@ -143,6 +143,7 @@
 			'url': 'sjs'
 		}, function(response) {
 			dataArray = eval(response.data);
+			//alert(JSON.stringify(dataArray))
 			for(var i = 0; i < dataArray.length; i++) {
 				var obj = dataArray[i];
 				document.getElementById('sjsTitle').options.add(new Option(obj.CustomerType, obj.cid));
