@@ -64,7 +64,7 @@
 					</ul>
 				</div>
 				<div id="loginQuit" class="log_out">退出登录</div>
-				<div id="ver" class="log_out">版本</div>
+				<!--<div id="ver" class="log_out">版本</div>-->
 			</div>
 		</div>
 	</body>
@@ -84,11 +84,11 @@
 			var avatar = document.getElementById("avatar");
 			var username = document.getElementById("username");
 			var mobile = document.getElementById("mobile");
-			var	ver= document.getElementById("ver");	
+			//var	ver= document.getElementById("ver");	
 			var	vip= document.getElementById("vip");	
 			vip.src='../../images/vip.png'; 
-			plus.runtime.getProperty(plus.runtime.appid, function(wgtinfo) {
-				ver.innerHTML='版本:'+wgtinfo.version; });
+			//plus.runtime.getProperty(plus.runtime.appid, function(wgtinfo) {
+				//ver.innerHTML='版本:'+wgtinfo.version; });
 			
 			common.postApi('GetUserClientId', data, function(response) {
 				dataArray = eval(response.data);
