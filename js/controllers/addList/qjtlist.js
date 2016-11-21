@@ -69,7 +69,7 @@ function getquestionnairelist() {
 		}
 		for (var i = 0; i < dataArray[1].length; i++) {
 			var obj = dataArray[1][i];
-		list.innerHTML += html_CanYu.replace('@ID', obj.key).replace('@STheme', obj.title).replace('@SContext', obj.title).replace('@ReleaseTime', ChangeDateFormat(obj.addtime)).replace('@flag', '酷家乐').replace('@url', obj.link);
+		list.innerHTML += html_CanYu.replace('@ID', obj.key).replace('@STheme', obj.title).replace('@SContext', obj.title).replace('@ReleaseTime', ChangeDateFormat(obj.addtime)).replace('@flag', '全景').replace('@url', obj.link);
 			}
 	 
  		mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
