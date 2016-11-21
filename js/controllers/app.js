@@ -14,7 +14,7 @@
 				user: loginname,
 				pwd: pwd,
 				ClientId: clientid
-				,version:version
+				,version:version+'/phone'
 			}, function(response) {
 	//alert(JSON.stringify(response))
 				if (response.data.length > 0) {

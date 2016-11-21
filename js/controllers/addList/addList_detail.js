@@ -1,4 +1,4 @@
-mui.init({
+﻿mui.init({
 	//	gestureConfig: {
 	//		tap: true, //默认为true
 	//		longtap: true //长按事件 默认为false
@@ -63,7 +63,7 @@ mui.plusReady(function() {
 	//预算信息
 	document.getElementById("ysxx").addEventListener('tap', function() {
 		currentWebViewHide();
-		var template = common.getTemplate('page2', '../approve/projecthour/yslist.html?id=' + id);
+		var template = common.getTemplate('page2', '../approve/projecthour/yslist.html?id=' + id );
 	});
 	//效果图
 		document.getElementById("xgt").addEventListener('tap', function() {
