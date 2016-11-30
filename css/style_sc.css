@@ -664,6 +664,12 @@ header{
 .workstand_list6{
 	background:url(../images/ScApp/nav/aixinjuanzu.png) no-repeat center 28%;
 }
+.workstand_list7{
+	background:url(../images/ScApp/nav/Shenpi-02.png) no-repeat center 28%;
+}
+.workstand_list8{
+	background:url(../images/ScApp/nav/Shenpi-03.png) no-repeat center 28%;
+}
 .approve_lists a{
 	position:relative;
 }

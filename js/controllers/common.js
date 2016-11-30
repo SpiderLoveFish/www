@@ -19,6 +19,8 @@ var r_myys_sh = 9;
 var r_myys_qr = 10;
 var r_cor_news = 3;
 var r_send_cor_news = 4;
+var r_view_gj = 11;
+var r_jdal = 12;
 //--结束权限全局变量
 
 (function(mui, common) {

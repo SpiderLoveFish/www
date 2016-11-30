@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/list.css" />
+		<link rel="stylesheet" href="../../css/style_sc.css" />
+		<link rel="stylesheet" href="../../css/reset.css" />
+		<title>经典案例</title>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">经典案例</h1>
+		</header>
+		<div class="mui-content">
+			<div class="container">
+				<div class="approve_nav">
+					<!--<div class="approve_lists">
+						<a>
+							<div id="gai" class="approve_list approve_list0">
+								<p>该我审批</p>
+							</div>
+							<i class="posi_hint h"></i>
+						</a>
+						<a>
+							<div id="chao" class="approve_list approve_list1">
+								<p>抄送我的</p>
+							</div>
+						</a>
+						<a>
+							<div id="my" class="approve_list approve_list2">
+								<p>我发起的</p>
+							</div>
+						</a>
+					</div>-->
+					<div class="approve_module">
+						<a>
+							<div id="qjt" class="approve_list approve_list4">
+								<p>全景图</p>
+							</div>
+						</a>
+						<a>
+							<div id="qjfy" class="approve_list approve_list4">
+								<p>全景放样</p>
+							</div>
+						</a>
+						<a> 
+							<div id="sgt" class="approve_list approve_list4">
+								<p>施工图</p>
+							</div>
+						</a>
+						<a>
+							<div id="jgt" class="approve_list approve_list6">
+								<p>竣工图</p>
+							</div>
+						</a>
+						<a>
+							<div id="more" class="approve_list approve_list7">
+								<p class="approve_addmore">添加更多</p>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../js/mui/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/controllers/common.js"></script>
+		<script type="text/javascript" src="../../js/common/zepto.min.js"></script>
+		<script type="text/javascript">
+			 
+			//该我审批
+//			common.click('gai', function() {
+//				var webview = common.getTemplate('page2', 'list/list_waitforme.html'); //第二层webview
+//			});
+//			//抄送我的
+//			common.click('chao', function() {
+//				var webview = common.getTemplate('page2', 'list/list_sendme.html'); //第二层webview
+//			});
+//			//我发起的
+//			common.click('my', function() {
+//				var webview = common.getTemplate('page2', 'list/list_launched.html'); //第二层webview
+//			});
+//			//审核
+			common.click('qjt', function() {
+				common.Verifauthority(r_points, function(result) { //积分
+				 	if(result)
+				 		var webview = common.getTemplate('qjt', '../activity/activity_list.html'); //第二层webview			
+					//common.loadUrl('../activity/activity_list.html');
+			});
+				 //var webview = common.getTemplate('page2', 'projecthour/yslist.html'); //第二层webview
+			});
+			//确认
+			common.click('qjfy', function() {
+				common.Verifauthority(r_points, function(result) { //积分
+				 	if(result)
+				 		var webview = common.getTemplate('qjfy', '../activity/activity_list.html?sfkh=N'); //第二层webview			
+					//common.loadUrl('../activity/activity_list.html');
+			});
+			});
+			//客户积分
+			common.click('sgt', function() {
+				common.Verifauthority(r_points, function(result) { //积分
+				 	if(result)
+				 		var webview = common.getTemplate('sgt', '../activity/activity_list.html?sfkh=Y'); //第二层webview			
+					//common.loadUrl('../activity/activity_list.html');
+			});
+				
+			});
+			//通用
+			common.click('jgt', function() {
+				var webview = common.getTemplate('jgt', 'generalapprove/generalapprove_apply.html'); //第二层webview
+			});
+			//更多
+			common.click('more', function() {
+				common.toast('更多应用请联系提供商..');
+			});
+			common.backOfHideCurrentWebview();
+		</script>
+	</body>
+
+</html>

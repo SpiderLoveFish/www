@@ -45,16 +45,16 @@
 								<p>材料查询</p>
 							</div>
 						</a>
-						<!--<a>
-							<div id="payment" class="approve_list workstand_list6">
-								<p>爱心捐赠</p>
+						<a>
+							<div id="viewgj" class="approve_list workstand_list7">
+								<p>跟进查询</p>
 							</div>
-						</a>-->
-						<!--<a>
-							<div id="test" class="approve_list workstand_list6">
-								<p>新增</p>
+						</a>
+						 <a>
+							<div id="jdal" class="approve_list workstand_list8">
+								<p>经典案例</p>
 							</div>
-						</a>-->
+						</a> 
 						<a>
 							<div id="more" class="approve_list approve_list7">
 								<p class="approve_addmore">添加更多</p>
@@ -91,11 +91,8 @@
 				// common.toast('此功能待完善！');
 			});
 			document.getElementById("activity").addEventListener('tap', function() {
-				//if(getUserInfo().Level=="1")	
-			common.Verifauthority(r_points, function(result) { //积分
-				 	if(result)
-					common.loadUrl('../activity/activity_list.html');
-			});
+				common.loadUrl('../approve/approve_nav_jfgl.html');
+			
 				// common.toast('此功能待完善！');
 			});
 			document.getElementById("calendar").addEventListener('tap', function() {
@@ -105,12 +102,17 @@
 					common.getTemplate('page2', '../calendar/cllist.html');
 				});
 			});
-			//			document.getElementById("payment").addEventListener('tap', function() {
-			//				common.loadUrl('../payment/payment.html');
-			//			});
-			//			document.getElementById("test").addEventListener('tap', function() {
-			//				common.loadUrl('test.html');
-			//			});
+			document.getElementById("viewgj").addEventListener('tap', function() {
+				common.Verifauthority(r_view_gj, function(result) { //跟进
+				 	if(result)
+				 	common.loadUrl('../approve/view/viewgj.html');
+				 	});
+			});
+			document.getElementById("jdal").addEventListener('tap', function() {
+			common.Verifauthority(r_jdal, function(result) { //经典案例
+				common.loadUrl('../approve/approve_nav_jdal.html');
+					});
+			});
 			document.getElementById("more").addEventListener('tap', function() {
 				common.toast('更多功能请联系服务提供商');
 			});

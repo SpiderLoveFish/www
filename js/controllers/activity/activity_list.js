@@ -1,9 +1,9 @@
 var list = document.getElementById("list");
 var starIndex = 10;
 var endIndex = 1000;
-var selecttype = 'N';
+var selecttype = 'M';
 var news_hint = document.getElementsByClassName("news_hint");
-
+var sfkh = common.getQueryString("sfkh");
 function getpullupRefresh() {
 	setTimeout(function() {
 		getActivityList();
@@ -16,11 +16,12 @@ function getActivityList() {
 	'<a id="@id" name="@score" class="sc_cell sc_padding mui-table-view-cell">' +'<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' +  '<div class="sc_cell_bd sc_cell_primary">' + '<p>@Title</p>' + '<p class="label_describe">@Description</p>' + '<span class="sc_comment">@ReleaseDateTime</span>' + '</div>' + '<div class="sc_cell_data">@flag</div></a>';
 	var data = {
 		strwhere: '',
-		sfkh: selecttype,
-		nowindex:  starIndex
+		sfkh: sfkh,
+		nowindex:  starIndex,
+		type:selecttype
 	};
 	//alert(JSON.stringify(data))
-	common.postApi('GetScore', data, function(response) {
+	common.postApi('GetScoreList', data, function(response) {
 		
 		dataArray = eval(response.data);
 		
@@ -77,16 +78,16 @@ $(function() {
 				} else {
 					return;
 				}
-				selecttype = 'N';
+				selecttype = 'M';
 			} else if (i == 1) {
 				starIndex = 10;
 				endIndex = 10;
-				if (selecttype != "Y") {
+				if (selecttype != "Q") {
 					list.innerHTML = "";
 				} else {
 					return;
 				}
-				selecttype = 'Y';
+				selecttype = 'Q';
 			} else {
 				starIndex = 10;
 				endIndex = 10;
@@ -108,11 +109,11 @@ mui.plusReady(function() {
 	mui('.container').on('tap', 'a', function(e) {
 		var id = this.getAttribute('id');
 		var score= this.getAttribute('name');
-		var template = common.getTemplate('page2', 'activity_detail.html?id=' + id+'&sfkh='+selecttype+'&score='+score);
+		var template = common.getTemplate('jfdetail', 'activity_detail.html?id=' + id+'&sfkh='+selecttype+'&score='+score);
 
 	});
 	mui('.mui-bar-nav').on('tap', '.btn_post_activ', function(e) {
-		var template = common.getTemplate('page2', 'activity_apply.html?');
+		var template = common.getTemplate('jfapp', 'activity_apply.html?');
 	});
 
 	if (plus.os.name != "Android") {
