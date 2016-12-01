@@ -670,6 +670,21 @@ header{
 .workstand_list8{
 	background:url(../images/ScApp/nav/Shenpi-03.png) no-repeat center 28%;
 }
+.workstand_listT1{
+	background:url(../images/ScApp/nav/T1.png) no-repeat center 28%;
+}
+.workstand_listT2{
+	background:url(../images/ScApp/nav/T2.png) no-repeat center 28%;
+}
+.workstand_listT3{
+	background:url(../images/ScApp/nav/T3.png) no-repeat center 28%;
+}
+.workstand_listT4{
+	background:url(../images/ScApp/nav/T4.png) no-repeat center 28%;
+}
+.workstand_listT5{
+	background:url(../images/ScApp/nav/T5.png) no-repeat center 28%;
+}
 .approve_lists a{
 	position:relative;
 }
