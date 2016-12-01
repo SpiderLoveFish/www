@@ -82,12 +82,12 @@ $(function() {
 			} else if (i == 1) {
 				starIndex = 10;
 				endIndex = 10;
-				if (selecttype != "Q") {
+				if (selecttype != "S") {
 					list.innerHTML = "";
 				} else {
 					return;
 				}
-				selecttype = 'Q';
+				selecttype = 'S';
 			} else {
 				starIndex = 10;
 				endIndex = 10;
@@ -109,7 +109,7 @@ mui.plusReady(function() {
 	mui('.container').on('tap', 'a', function(e) {
 		var id = this.getAttribute('id');
 		var score= this.getAttribute('name');
-		var template = common.getTemplate('jfdetail', 'activity_detail.html?id=' + id+'&sfkh='+selecttype+'&score='+score);
+		var template = common.getTemplate('jfdetail', 'activity_detail.html?id=' + id+'&sfkh='+sfkh+'&score='+score);
 
 	});
 	mui('.mui-bar-nav').on('tap', '.btn_post_activ', function(e) {

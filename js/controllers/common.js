@@ -10,17 +10,17 @@ var aniHide = "auto"; //fade-out,zoom-in,slide-out-right,pop-out
 var aniSecond = "250";
 var CommonTop = '101px';
 //--开始权限全局变量
-var r_addfollow = 2;
-var r_birthday = 5;
-var r_material = 7;
+var r_addfollow = 2;//跟进发送
+var r_birthday = 5;//生日
+var r_material = 7;//材料
 var r_points = 6; //积分
-var r_myys = 8;
-var r_myys_sh = 9;
-var r_myys_qr = 10;
-var r_cor_news = 3;
-var r_send_cor_news = 4;
-var r_view_gj = 11;
-var r_jdal = 12;
+var r_myys = 8;//我的预算
+var r_myys_sh = 9;//预算审核
+var r_myys_qr = 10;//预算确定
+var r_cor_news = 3;//企业新闻
+var r_send_cor_news = 4;//发送新闻
+var r_view_gj = 11;//跟进详细
+var r_jdal = 12;//经典案例
 //--结束权限全局变量
 
 (function(mui, common) {
