@@ -113,13 +113,13 @@ $(function() {
 mui.plusReady(function() {
 	mui('.container').on('tap', 'a', function(e) {
 		var id = this.getAttribute('id');
-		var template = common.getTemplate('page2', 'activity_detail.html?id=' + id);
+		var template = common.getTemplate('activity_detail', 'activity_detail.html?id=' + id);
 
 	});
 	mui('.mui-bar-nav').on('tap', '.btn_post_activ', function(e) {
-		 common.Verifauthority(4, function(result) { //生日
+		 common.Verifauthority(r_send_cor_news, function(result) { //生日
 				 	if(result)
-				var template = common.getTemplate('page2', 'activity_apply.html?');
+				var template = common.getTemplate('activity_apply', 'activity_apply.html?');
 					});//新闻发布权限
 		
 	});

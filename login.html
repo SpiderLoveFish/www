@@ -75,7 +75,10 @@
 					<div class="link-area">
 						<!--<p>登陆帐号请联系it管理员</p>-->
 						<a id='reg'>
-							选择你的服务器
+							选择服务器
+						</a>
+						<a id='reg2'>
+							|注册
 						</a>
 					</div>
 				</div>
@@ -97,7 +100,14 @@
 						common.toast('检测到您尚未联网,请联网后重试..');
 					}
 					if(JSON.stringify(getServerUrls('$ServerUrls')) != '[]') {
-						document.getElementById("reg").innerHTML = getServerUrls('$ServerUrls').Name;
+						
+					var tempStr =getServerUrls('$ServerUrls').Name;
+					document.getElementById("reg").innerHTML = tempStr;	
+				
+					if(tempStr.indexOf("试用")>=0)
+					reg2.style.display="block";
+							else reg2.style.display="none";
+							
 						document.getElementById("idwww").innerHTML = getServerUrls('$ServerUrls').ApiUrl;
 						document.getElementById("logo").src = getServerUrls('$ServerUrls').Logo;
 					}
@@ -146,6 +156,10 @@
 						common.jump('view/myPage/userinfo/servers_apply.html');
 						//							common.getTemplate('serverapply','view/myPage/userinfo/servers_apply.html' )
 						//'shortcuts_apply.html?type=' + id);
+					});
+					common.click('reg2', function() {
+						common.loadUrl('reg2.html');
+						
 					});
 					//开启快捷键
 					localStorage.setItem('$shortcuts_switch', true);

@@ -2,6 +2,7 @@ var list = document.getElementById("list");
 var starIndex = 10;
 var endIndex = 1000;
 var selecttype = 'M';
+var strwhere = '';
 var news_hint = document.getElementsByClassName("news_hint");
 var sfkh = common.getQueryString("sfkh");
 function getpullupRefresh() {
@@ -9,21 +10,68 @@ function getpullupRefresh() {
 		getActivityList();
 	}, 500);
 }
+//加班日期
+	var pickDateBtnClickb = document.getElementById("pickDateBtnClickb");
+	var pickDateBtnb = document.getElementById("pickDateBtnb");
+	pickDateBtnClickb.addEventListener('tap', function() {
+			plus.nativeUI.pickDate(function(e) {
+				var d = e.date;
+				pickDateBtnb.innerText = pickDateBtnb.value = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+			}, function(e) {
+				//pickDateBtn.innerText = "请选择日期";
+			}, {
+				title: "请选择日期"
+			});
+		})
+	
+	var pickDateBtnClicke = document.getElementById("pickDateBtnClicke");
+	var pickDateBtne = document.getElementById("pickDateBtne");
+	pickDateBtnClicke.addEventListener('tap', function() {
+			plus.nativeUI.pickDate(function(e) {
+				var d = e.date;
+				pickDateBtne.innerText = pickDateBtne.value = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+			}, function(e) {
+				//pickDateBtn.innerText = "请选择日期";
+			}, {
+				title: "请选择日期"
+			});
+		})
+		//提交
+		common.click("btnSubmit", function() {		
+			var pickDateBtnb = document.getElementById("pickDateBtnb").innerHTML;
+		if (pickDateBtnb == "") {
+				mui.alert("请选择开始日期");
+			return;
+		}
+			var pickDateBtne = document.getElementById("pickDateBtne").innerHTML;
+		if (pickDateBtne == "请选择日期") {
+			mui.alert("请选择结束日期");
+			return;
+		}
+		starIndex=10;
+		selecttype = 'Z';
+		strwhere=pickDateBtnb+';'+pickDateBtne;
+		getActivityList();
+		oClose();
+		
+		})
 
 function getActivityList() {
 	//'<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' +
 	var html = // '<li data-tags="@id" class="mui-table-view-cell mui-indexed-list-item addlist_stafflist"><div data-value="@id" class="divClick"><img src="@IsHostPic"><div class="addlist_staffname"><div class="addlist_name">@Title</div><span class="addlist_post">@Description</span></div></div><div class="addlist_makecall" data-mobile="@Mobilemsg"></div><div class="addlist_makemass" data-mobile="@Mobilecall"></div></li>';
 	'<a id="@id" name="@score" class="sc_cell sc_padding mui-table-view-cell">' +'<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' +  '<div class="sc_cell_bd sc_cell_primary">' + '<p>@Title</p>' + '<p class="label_describe">@Description</p>' + '<span class="sc_comment">@ReleaseDateTime</span>' + '</div>' + '<div class="sc_cell_data">@flag</div></a>';
 	var data = {
-		strwhere: '',
+		strwhere:strwhere,
 		sfkh: sfkh,
 		nowindex:  starIndex,
 		type:selecttype
 	};
 	//alert(JSON.stringify(data))
 	common.postApi('GetScoreList', data, function(response) {
-		
+		if(starIndex<10)
+		list.innerHTML="";
 		dataArray = eval(response.data);
+		//alert(JSON.stringify(response))
 		
 		for (var i = 0; i < dataArray.length; i++) {
 			var obj = dataArray[i];
@@ -104,7 +152,23 @@ $(function() {
 			}, 50);
 		})
 	});
+	
+	//筛选
+	$('.filtrate_btn').click(function() {
+	$("#diolog_shade").show();
+	$("#eat_diolog").show();
+	});
+	$('.oClose').click(function() {
+		oClose();
+	})
+
+
 })
+function oClose() {	
+		$("#diolog_shade").hide();
+		$("#eat_diolog").hide();
+	}
+
 mui.plusReady(function() {
 	mui('.container').on('tap', 'a', function(e) {
 		var id = this.getAttribute('id');
@@ -154,6 +218,6 @@ mui.plusReady(function() {
 	});
 	//返回
 	common.backOfHideCurrentWebview(function() {
-		common.initMessage();
+		//common.initMessage();
 	});
 });

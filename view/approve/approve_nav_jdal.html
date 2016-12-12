@@ -97,7 +97,7 @@
 			common.click('qjfy', function() {
 				common.Verifauthority(r_points, function(result) { //积分
 				 	if(result)
-				 		var webview = common.getTemplate('qjfy', '../activity/activity_list.html?sfkh=N'); //第二层webview			
+				 		var webview = common.getTemplate('qjfy', '../activity/activity_list.html?type=qjfy'); //第二层webview			
 					//common.loadUrl('../activity/activity_list.html');
 			});
 			});
@@ -105,14 +105,14 @@
 			common.click('sgt', function() {
 				common.Verifauthority(r_points, function(result) { //积分
 				 	if(result)
-				 		var webview = common.getTemplate('sgt', '../activity/activity_list.html?sfkh=Y'); //第二层webview			
+				 		var webview = common.getTemplate('sgt', '../activity/activity_list.html?type=sgt'); //第二层webview			
 					//common.loadUrl('../activity/activity_list.html');
 			});
 				
 			});
 			//通用
 			common.click('jgt', function() {
-				var webview = common.getTemplate('jgt', 'generalapprove/generalapprove_apply.html'); //第二层webview
+				var webview = common.getTemplate('jgt', 'activity/activity_list.html?type=sgt'); //第二层webview
 			});
 			//更多
 			common.click('more', function() {

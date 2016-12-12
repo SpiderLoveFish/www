@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../../css/mui.css" rel="stylesheet" />
+		<link href="../../css/default.css" rel="stylesheet" />
+		<link href="../../css/lobster_1.css" rel="stylesheet" />
+		<script src="../../js/mui.js"></script>、
+	</head>
+
+	<body style="overflow-y: hidden;">
+		<div id="lobster-v2-body">
+			<div class="mui-content lobster-v2-content" style="background:transparent;margin-top: 0;padding-top: 0;top:-2px;">
+			 
+				<div id="lobster-body-content" style="background-color:#fff;">
+					<div id="content-swiper" class="content-swiper">
+						
+						<div id="product_list" class="lobster-v2-tabgroup-content" style="padding-bottom: 20px;">
+							<div>
+							<!--<div class="mui-slider" style="box-shadow: 2px 1px 15px #222;">-->
+							<div class="mui-slider">
+								<div id="banners_area" class="mui-slider-group" style="line-height: 0px;">
+									
+								</div>
+								<div class="mui-slider-indicator mui-text-center" id="slider-indicator">
+								</div>
+							</div>
+							<div style="text-align: center;height: 62px; line-height: 62px;position: relative;" class="swiper-area">
+								 	</div>
+							<div id="products_list" class="swiper-area" style="padding-bottom:50px;">
+
+							</div>
+							</div>
+						</div>
+ 						<div id="my_activity" class="lobster-v2-tabgroup-content swiper-area" style="line-height: 21px; vertical-align: top;">
+							<div id="activity_append"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		  
+		</div>
+		
+	 
+		 
+		<div class="lobster-v2-nav-bar">
+			<img id="click_cart" style="width:66px; position: absolute;right:0; bottom: -1px;z-index: 900;" src="../../images/cart.png">
+			<div id="cart_bar" class="lobster-v2-cart-bar">
+				<div style="position: absolute;left: 10px;line-height: 36px;">
+					<span style="font-size: 0.7em;color:#fff">￥</span>
+					<span style="font-family: number sans-serif;font-size: 1.4em;color:#fff" id="total_fee">0</span>
+					<span style="font-family: yuanti sans-serif;font-size: 0.8em;color: #FFF;" id="delivery_fee_wrapper">
+						<span id="delivery_fee"></span>
+					</span>
+				</div>
+			</div>
+		</div>
+	 
+	
+		<script src="../../js/mini-template.js"></script>
+		<script src="../../js/zepto.min.js"></script>
+		<script src="../../js/cart.js"></script>
+		<script src="../../js/geo.js"></script>
+		<script src="../../js/common/common.js"></script>
+		<script src="../../js/common/md5.js"></script>
+		<script src="../../js/common/polygon.js"></script>
+		<script src="../../js/index.js"></script>
+
+
+		 
+		
+		<script>
+		 /*
+		 {
+				pullRefresh :{
+					container:'#content-swiper',
+					down : {
+						contentdown: '刷新',
+						contentover: '释放刷新',
+						contentrefresh: '正在刷新...',
+						callback: function() {
+							load_products();
+						}
+					}
+				}
+			}
+		   * */
+			mui.init();		
+			mui.plusReady(function() {
+				 
+			  
+			 
+			});
+			mui.ready(function() {
+				// 切到后台超过5分钟则重新切到前台时刷新产品列表信息
+				document.addEventListener("pause", function(){
+					window.localStorage.setItem('pause_time', new Date().getTime()+'');
+				});
+				document.addEventListener("resume", function(){
+					var pause_time = window.localStorage.getItem('pause_time');
+					var current_time = new Date().getTime();
+					if (pause_time && current_time - pause_time > 300000) {
+						load_products();
+					}
+				});
+ 
+
+				mui('.lobster-v2-tabgroup-item').each(function(idx, e) {
+					e.addEventListener('tap', function() {
+						var idx = this.getAttribute('data-idx-value');
+						toggle_idx(parseInt(idx));
+					});
+				});
+				//提交订单
+				document.getElementById("click_cart").addEventListener('tap', function() {   
+					 alert('提交订单')
+				});
+		 
+			 
+			
+		 	mui.back = function() {
+			 
+			};
+		</script>
+	 
+		<script type="text/html" id="template_products">
+			<% for ( var i = 0; i < products.length; i++) { %>
+				<% if (i % 2 == 0) {%>
+					<div class="lobster-v2-product-list">
+						<%}%>
+							<div class="lobster-v2-product-item" data-id="<%=products[i].productId%>">
+								<div class="lobster-v2-product-cover lobster-cart-selected">
+									<div style="color: #fff; margin: 5px;">
+										<%=products[i].productName%>
+									</div>
+									<div style="position: absolute;top:36%; color: #fff;text-align: right;width: 100%;font-family: arial; right: 10px;">
+										<span style="font-size: 2em;">x </span><span class="lobster-v2-product-price" id="arrData" style="font-size: 5em;">0</span>
+									</div>
+								</div>
+								<div>
+									<%if (products[i].flagPicture){ %>
+									<img src="<%=products[i].flagPicture%>" style="position: absolute;width: 70px;top: 0;right: 0">
+									<% }%>
+									<img class="product-img" src="<%=products[i].hrefUrl%>" data-id="<%=products[i].productId%>" data-stopStatus="<%=products[i].stopStatus%>" data-quantity="<%=products[i].quantity%>"/>
+								</div>
+								<div class="lobster-v2-product-description">
+										<%if (products[i].stopStatus ==1) {%>
+											<div style="position: absolute; right: 10px; top: 20px;color: #FF3F3F;">今日估清</div>
+										<%}%>
+										<%if (products[i].stopStatus ==0) {%>
+											<img class="lobster-v2-minus lobster-cart-selected" data-id="<%=products[i].productId%>" src="image/minus.png" />
+											<div class="lobster-cart-selected" data-id="<%=products[i].productId%>" style="border: 0.5px solid #959595; position: absolute; height: 50px; bottom: 8px; z-index: 300; right: 55px;"></div>
+											<img class="lobster-v2-plus" data-id="<%=products[i].productId%>" src="image/plus.png" />
+										<%}%>
+										<%if (products[i].stopStatus ==2) {%>
+											<%if (products[i].quantity <=0) {%>
+											<div style="position: absolute; right: 10px; top: 20px;color: #FF3F3F;">暂时无货</div>
+											<%} else {%>
+											<img class="lobster-v2-minus lobster-cart-selected" data-id="<%=products[i].productId%>" src="image/minus.png" />
+											<div class="lobster-cart-selected" data-id="<%=products[i].productId%>" style="border: 0.5px solid #959595; position: absolute; height: 50px; bottom: 8px; z-index: 300; right: 55px;"></div>
+											<img class="lobster-v2-plus" data-id="<%=products[i].productId%>" src="image/plus.png" />
+											<%}%>
+										<%}%>
+										<!--去除分类标签-->
+										<!--<div <%if (products[i].productCategory.categoryPic) {%>style="background: url(<%=products[i].productCategory.categoryPic%>) 0 center no-repeat;background-size: 19px;padding-left: 25px;"<% }%>>-->
+										<div style="font-family: yuanti sans-serif ; font-size: 14px;">	
+											<%=products[i].productName%>
+										</div>
+										<div style="font-size: 12px;color: #aaa;">
+											<%=products[i].description%>
+										</div>
+										<div style="line-height: 12px;" >
+											<span style="font-family: number sans-serif;font-size: 12px; color:#aaa;text-decoration: line-through;">￥<%=products[i].promotionPrice%></span>
+											<span style="font-family: number sans-serif;font-size: 13px; color:rgba(255, 63, 63, 0.94)" class="danjia">￥<%=products[i].price%></span>
+										</div>
+								</div>
+							</div>
+							<% if (i % 2 == 1) {%>
+					</div>
+					<%}%>
+						<% } %>
+		</script>
+ </body>
+
+</html>

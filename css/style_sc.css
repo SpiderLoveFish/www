@@ -1544,6 +1544,17 @@ select option {
 	font-size: 1.6rem;
 	color: #000;
 	padding-left: 20px;
+	 
+	
+	background-size: 20px;
+	line-height: 50px;
+}
+.eat_allowance_diolog1 p{
+	height:50px;
+	width: 100%;
+	font-size: 1.6rem;
+	color: #000;
+	padding-left: 20px;
 	border-top:1px solid #ddd;
 	background: url(../images/ScApp/icon/Option_01.png) no-repeat  95% center;
 	background-size: 20px;

@@ -34,7 +34,8 @@ function GetUserList(selectType, departmentId, searchkey) {
 		keyword: key,
 		ID: uID,
 		url: ApiUrl,
-		topnumber: 50,
+		index:50,
+		//topnumber: 50,
 		searchkey: sk
 	};
 	//alert(JSON.stringify(data))
@@ -43,25 +44,25 @@ function GetUserList(selectType, departmentId, searchkey) {
 		//未联网
 		 selectTable(db);
 	} else {
-		common.postApi("GetCustomerList", data, function(response) {
+		common.postApi("GetCustomerList_Page", data, function(response) {
 			dataArray = eval(response.data);
-			//alert(JSON.stringify(response))
+			//alert(JSON.stringify(dataArray[0]))
 			createTable(db);
 			deleteTable(db);
 			news_hint[0].style.display = "block";
- 				news_hint[0].innerText = dataArray.length;
-			for(var i = 0; i < dataArray.length; i++) {
+ 				news_hint[0].innerText = dataArray[1].Total;
+			for(var i = 0; i < dataArray[0].length; i++) {
 				var temp; //临时变量
-				var obj = dataArray[i];
-				
+				var obj = dataArray[0][i];
+				var head=obj.header;
 				//创建websql 表
-				if(headLetter != obj.header) { //没有此头字母,插入头
-					headLetter = obj.header;
+				if(headLetter != head) { //没有此头字母,插入头
+					headLetter = head;
 					//列表右侧字母列表
-					document.getElementById("headerList").innerHTML += "<a>" + obj.header + "</a>";
+					document.getElementById("headerList").innerHTML += "<a>" + head + "</a>";
 					//主列表字母头
 					temp = temHead;
-					document.getElementById("UserList").innerHTML += temp.replace("@headLetter", obj.header).replace("@headLetter", obj.header);
+					document.getElementById("UserList").innerHTML += temp.replace("@headLetter", head).replace("@headLetter", head);
 				}
 				var avatar = obj.Avatar;
 				if(avatar == '' || avatar == null || avatar == 'null')
@@ -261,7 +262,7 @@ mui.plusReady(function() {
 		//	document.getElementById("sendMessage").addEventListener('tap', function() {
 		//		currentWebViewHide();
 
-		var template = common.getTemplate('page2', 'addfollow.html?id=' + href);
+		var template = common.getTemplate('addfollow_list', 'addfollow.html?id=' + href);
 		//	});
 	});
   
@@ -314,7 +315,13 @@ mui.plusReady(function() {
 //
 //			}
 		});
- 
+ 		mui('.mui-bar-nav').on('tap', '.btn_post_activ', function(e) {
+		 common.Verifauthority(r_add_custmer, function(result) { //生日
+				 	if(result)
+				var template = common.getTemplate('add_custmer_apply', 'activity_apply.html?');
+					});//新闻发布权限
+		
+	});
 
 	});
 	/*

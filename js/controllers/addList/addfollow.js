@@ -56,7 +56,7 @@ mui.plusReady(function() {
 				 	if(!result)
 		return;
 		});
-		common.showWaiting();
+		//common.showWaiting();
 		var param = {
 			id:common.getQueryString("id"),	
 			name: getUserInfo().UserName,

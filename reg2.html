@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html class="ui-page-login">
+<html>
 
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
 		<title></title>
-		<link href="css/mui.min.css" rel="stylesheet" />
-		<link href="css/style.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/mui.min.css" />
+		<!--<link rel="stylesheet" href="css/my.css" />-->	
 		<style>
 			.area {
 				margin: 20px auto 0px auto;
@@ -34,7 +34,7 @@
 			}
 			
 		</style>
-	</head>
+		</head>
 
 	<body>
 		<header class="mui-bar mui-bar-nav">
@@ -42,81 +42,157 @@
 			<h1 class="mui-title">申请试用</h1>
 		</header>
 		<div class="mui-content">
-			<form class="mui-input-group">
+				<div class="mui-input-group">
 				<div class="mui-input-row">
 					<label>手机号码</label>
-					<input id='account' type="text" class="mui-input-clear mui-input" placeholder="收验证码手机">
+					<input id='phone' type="text" class="mui-input-clear mui-input" placeholder="收验证码手机">
 				</div>
 				<div class="mui-input-row">
 					<label>申 请 人</label>
-					<input id='password' type="text" class="mui-input-clear mui-input" placeholder="申请人姓名">
+					<input id='username' type="text" class="mui-input-clear mui-input" placeholder="申请人姓名">
 				</div>
 				<div class="mui-input-row">
 					<label>公司名称</label>
-					<input id='password_confirm' type="text" class="mui-input-clear mui-input" placeholder="所在公司名称">
+					<input id='company' type="text" class="mui-input-clear mui-input" placeholder="所在公司名称">
 				</div>
 				
 				
-			</form>
-			<div class="mui-content-padded">
-				<button id='reg' class="mui-btn mui-btn-block mui-btn-primary">发送验证码</button>
 			</div>
-
-
-			<form class="mui-input-group">
+			<div class="mui-content-padded">
+				<button id='sendvcode' class="mui-btn mui-btn-block mui-btn-primary">发送验证码</button>
+			</div>
+<div class="mui-input-group">
 				<div class="mui-input-row">
 					<label>验证码</label>
-					<input id='account' type="text" class="mui-input-clear mui-input" placeholder="输入收到的验证码">
+					<input id='vcode' type="text" class="mui-input-clear mui-input" placeholder="输入收到的验证码">
 				</div>
 				
-			</form>
+			</div>
 			<div class="mui-content-padded">
 				<button id='reg' class="mui-btn mui-btn-block mui-btn-primary">申请试用</button>
 			</div>
 			<div class="mui-content-padded">
-				<p>我们不会向任何人透露您的手机号码信息，此操作仅为了生成您的试用帐号供您登录试用系统。</p>
+				<p>我们不会向任何人透露您的手机号码信息，此操作仅为了生成您的试用帐号供您登录试用系统。注册成功后，帐号位手机号，密码位后6位。</p>
 			</div>
 		</div>
-		<script src="js/mui.min.js"></script>
-		<script src="js/app.js"></script>
+		<script src="js/mui/mui.min.js"></script>
+		<script type="text/javascript" src="js/controllers/common.js"></script>
 		<script>
-			(function($, doc) {
-				$.init();
-				$.plusReady(function() {
-					var settings = app.getSettings();
-					var regButton = doc.getElementById('reg');
-					var accountBox = doc.getElementById('account');
-					var passwordBox = doc.getElementById('password');
-					var passwordConfirmBox = doc.getElementById('password_confirm');
-					var emailBox = doc.getElementById('email');
-					regButton.addEventListener('tap', function(event) {
-						var regInfo = {
-							account: accountBox.value,
-							password: passwordBox.value,
-							email: emailBox.value
-						};
-						var passwordConfirm = passwordConfirmBox.value;
-						if (passwordConfirm != regInfo.password) {
-							plus.nativeUI.toast('密码两次输入不一致');
-							return;
-						}
-						app.reg(regInfo, function(err) {
-							if (err) {
-								plus.nativeUI.toast(err);
-								return;
-							}
-							plus.nativeUI.toast('注册成功');
-							$.openWindow({
-								url: 'login.html',
-								id: 'login',
-								show: {
-									aniShow: 'pop-in'
+			mui.init();
+			common.backOfHideCurrentWebview();
+			mui.plusReady(function() {
+				var sendvcodeButton = document.getElementById('sendvcode');
+				var regButton = document.getElementById('reg');
+				var vcodeBox = document.getElementById('vcode');
+				 
+				var usernameBox = document.getElementById('username');
+				var companyBox = document.getElementById('company');
+				var phoneBox = document.getElementById('phone');
+				//随机6位数
+				var Num=""; 
+				
+				sendvcodeButton.addEventListener('tap', function() {
+					var regex = /^1[3|4|5|8][0-9]\d{4,8}$/;
+					if (!(regex.test(phoneBox.value))) {
+						common.alert('手机号格式不正确');
+						return;
+					}
+					MathRand();//产生随机6位数
+					sendvcodeButton.disabled = true;
+							sendvcodeButton.innerHTML = '重新发送<span id="resend_interval" class="flexItem">59</span>';
+							vcodeBox.focus();
+								window.setInterval(function() {
+								var resend = document.getElementById('resend_interval');
+								var count = parseInt(resend.innerHTML);
+								if (count <= 1) {
+									window.clearInterval();						
+									sendvcodeButton.disabled = false;
+									sendvcodeButton.innerHTML = '重新发送<span id="resend_interval" class="flexItem" style="display: none;">0</span>';
 								}
-							});
-						});
-					});
+								count--;
+								resend.innerHTML = count;
+							}, 1000);
+						var p= {'code':Num};
+						var data = {
+						tel: phoneBox.value,
+						type: 2,
+						para: JSON.stringify(p)
+					};
+					//alert(JSON.stringify(data))
+					 postajax(data,'Send_aliyunSendSMS','发送成功！请检查手机短信！')
+				})
+				
+				regButton.addEventListener('tap', function(event) {
+					if (!vcodeBox.value) {
+						common.alert('验证码不能为空');
+						return;
+					}
+					if (!companyBox.value) {
+						common.alert('公司名称不能为空');
+						return;
+					}
+					if (!usernameBox.value) {
+						common.alert('申请人不能为空');
+						return;
+					}
+					if (!phoneBox.value) {
+						common.alert('电话不能为空');
+						return;
+					}
+				 
+					var regex = /^1[3|4|5|8][0-9]\d{4,8}$/;
+					if (!(regex.test(phoneBox.value))) {
+						common.alert('手机号格式不正确');
+						return;
+					}
+					var regexvcode= /^[0-9]{6}$/;
+					if (!regexvcode.test(vcodeBox.value)) {
+						common.alert('验证码输错了,应该是6位数字 :D');
+						return;
+						}
+				 
+					if (Num != vcodeBox.value) {
+					common.alert('啊哦, 好像验证码输错了 :D');
+						return;
+					}
+					
+					
+					var p= {'userid':phoneBox.value,'passw':phoneBox.value.substring(phoneBox.value.length-6, phoneBox.value.length)};
+						var data = {
+						tel: phoneBox.value,
+						type: 3,
+						para: JSON.stringify(p)
+					};
+                 // alert(JSON.stringify(data))
+                 postajax(data,'Send_aliyunSendSMS','注册成功！请用短信提示帐号登陆！')
 				});
-			}(mui, document));
+				
+				function postajax(data,postapi,toasttip)
+				{				
+					//commitLock = false;
+					//common.showWaiting();
+					common.postglobalUrlApi(postapi, data, function(response) {
+						//alert(JSON.stringify(response))
+						if (response.data == "200") {
+							common.toast(toasttip);
+							//common.currentWebviewHide();
+						} else {
+							common.toast("服务器异常，请稍候重试..");
+						}
+						//commitLock = true;
+						//common.closeWaiting();
+					}, 'json');
+				}
+			
+				function MathRand()
+						{ 					
+						for(var i=0;i<6;i++) 
+						{ 
+						Num+=Math.floor(Math.random()*10); 
+						}  
+						} 
+				
+			});
 		</script>
 	</body>
 

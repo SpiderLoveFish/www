@@ -1,6 +1,6 @@
 mui.init();
 var id = "";
-var newsStr = "";
+var strwhere = "";
 var isEdit = false;
 var status = '2';
 var commitLock = true;
@@ -16,7 +16,7 @@ var CommentPageCount = 10;
 var currentUserId = getUserInfo().UserId; //当前人
 var CommtempHtml = '<li class="comment_list">' +
 	'<img class="comment_head" src="@headImage" alt="" />' +
-	'<div class="comment_name">@commentUser</div>' +
+	'<div class="comment_name">@commentUser(@customer)</div>' +
 	'<div class="comment_time">@commentTime</div>' +
 	'<i class="comment_reply" style="display: none;">回复</i>' +
 	'<p class="comment_container">@commentContent</p>' +
@@ -39,21 +39,22 @@ mui.plusReady(function() {
  
 	//获取评论列表
 	function FetPinglunList() {
-   //alert(common.getQueryString("id"))
-  
+   
 		if (!commitPinglunLock) {
 			return;
 		}
 		commitPinglunLock = false;
 		var param = {
 			nowindex:CommstartIndex+10,
-			strwhere:'',
+			strwhere:strwhere,
 			url:ApiUrl,
 			userid:getUserInfo().ID
 		}; 
    //alert(JSON.stringify(param))
 		common.postApi('GetFollowList', param, function(response) {	
-			
+			if(CommstartIndex<10)
+			document.getElementById("comments").innerHTML='';
+			//alert(JSON.stringify(response))
 			var data =  eval(response.data);//eval(response.data)[0];
 		 	if (data) {
 				//allCount = data[0].TotalCount;
@@ -80,7 +81,7 @@ mui.plusReady(function() {
 				}
 
 				temp = temp.replace("@headImage", titleimg);
-				temp = temp.replace("@commentUser", data[i].employee_name);
+				temp = temp.replace("@commentUser", data[i].employee_name).replace("@customer", data[i].Customer_name);
 				temp = temp.replace("@commentTime", getDateDiff(getDateTimeStamp(data[i].Follow_date)));
 				temp = temp.replace("@commentContent", data[i].Follow);
 
@@ -152,4 +153,88 @@ mui.plusReady(function() {
 		plus_btns.hide();
 		emoji_list.hide();
 	}
+	
+	setTimeout(function() {
+			mui.preload({
+				id: departmentId,
+				url: 'search.html',
+				styles: {
+					right: "20%",
+					width: '80%',
+					zindex: 9997
+				}
+			});
+		}, 150);
+		//监听部门页面请求关闭
+		window.addEventListener('hidedepartmentPage', function(event) {
+			_closeMenuDepartment();
+			maskDepartment.close();
+			id = event.detail.id;
+			CommstartIndex=0;
+			strwhere=id	;
+			FetPinglunList();
+			//GetUserList("search", 'search', id);
+		});
+ 
 });
+
+var maskDepartment = mui.createMask(_closeMenuDepartment);
+	var departmentPage = null;
+	var departmentId = 'search.html';
+	mui('.mui-bar-nav').on("tap", '#icon-menu', function(e) {
+		//移除焦点,为了隐藏软键盘
+		//document.getElementById("search").blur();
+		if(!departmentPage) {
+			departmentPage = plus.webview.getWebviewById(departmentId);
+			departmentPage.setStyle({
+				right: '100%',
+				zindex: 9999
+			});
+		}
+		openMenuDepartment();
+	});
+		/*
+	 * 显示菜单菜单
+	 */
+	function openMenuDepartment() {
+		//解决android 4.4以下版本webview移动时，导致fixed定位元素错乱的bug;
+		if(mui.os.android && parseFloat(mui.os.version) < 4.4) {
+			document.querySelector("header.mui-bar").style.position = "static";
+			//同时需要修改以下.mui-contnt的padding-top，否则会多出空白；
+			document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = "0px";
+		}
+		//侧滑菜单处于隐藏状态，则立即显示出来；
+		//显示完毕后，根据不同动画效果移动窗体；
+		departmentPage.show('none', 0, function() {
+			departmentPage.setStyle({
+				right: '20%',
+				transition: {
+					duration: 150
+				}
+			});
+		});
+		maskDepartment.show(); //遮罩
+	}
+	/**
+	 * 关闭侧滑菜单(业务部分)
+	 */
+	function _closeMenuDepartment() {
+		//解决android 4.4以下版本webview移动时，导致fixed定位元素错乱的bug;
+		if(mui.os.android && parseFloat(mui.os.version) < 4.4) {
+			document.querySelector("header.mui-bar").style.position = "fixed";
+			//同时需要修改以下.mui-contnt的padding-top，否则会多出空白；
+			document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = "44px";
+		}
+		//主窗体开始侧滑；
+		departmentPage.setStyle({
+			right: '100%',
+			transition: {
+				duration: 100
+			}
+		});
+		//等窗体动画结束后，隐藏菜单webview，节省资源；
+		setTimeout(function() {
+			departmentPage.hide();
+		}, 100);
+	}
+	/***********************************部门侧滑end*****************************************/

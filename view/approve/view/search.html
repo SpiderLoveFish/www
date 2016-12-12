@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>客户类型</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../../css/list.css" />
+		<link rel="stylesheet" href="../../../css/style_sc.css" />
+		<link rel="stylesheet" href="../../../css/reset.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+
+			<h1 class="mui-title">查询条件</h1>
+		</header>
+	<div class="mui-content container">
+			<div class="news_container">
+				<div class="news_container_1 bs approve_general">
+					<div class="activ_input_edit">
+						<ul>
+							
+						<li class="activ_input_list  flexbox">
+								<span class="activ_input_label6">类型</span>
+								<p class="flexItem join_object leave_type">
+									<select id="sltType" class="" placeholder="请选择">
+										<option value="">请选择</option>
+									</select>
+								</p>
+							</li>
+							<li class="activ_input_list flexbox">
+								<span class="activ_input_label7">姓名</span>
+								<p class="flexItem text_right leave_num">
+									<input id="xmTitle" type="text" placeholder="" value="" />
+								</p>
+							</li>
+							<li class="activ_input_list flexbox">
+								<span class="activ_input_label7">地址</span>
+								<p class="flexItem text_right leave_num">
+									<input id="dzTitle" type="text" placeholder="" value="" />
+								</p>
+							</li>
+								<li class="activ_input_list  flexbox">
+								<span class="activ_input_label6">设计师</span>
+								<p class="flexItem join_object leave_type">
+									<select id="sjsTitle" class="" placeholder="请选择">
+										<option value="">请选择</option>
+									</select>
+								</p>
+							</li>
+							<!--<li class="activ_input_list flexbox">
+								<span class="activ_input_label7">设计师</span>
+								<p class="flexItem text_right leave_num">
+									<input id="sjsTitle" type="text" placeholder="" value="" />
+								</p>
+							</li>-->
+							<li class="activ_input_list  flexbox">
+								<span class="activ_input_label6">监理</span>
+								<p class="flexItem join_object leave_type">
+									<select id="jlTitle" class="" placeholder="请选择">
+										<option value="">请选择</option>
+									</select>
+								</p>
+							</li>
+						 <!--<li class="activ_input_list flexbox">
+								<span class="activ_input_label7">监理</span>
+								<p class="flexItem text_right leave_num">
+									<input id="jlTitle" type="text" placeholder="" value="" />
+								</p>
+							</li>-->
+							 <li class="activ_input_list flexbox">
+								<span class="activ_input_label7">电话</span>
+								<p class="flexItem text_right leave_num">
+									<input id="telTitle" type="text" placeholder="" value="" />
+								</p>
+							</li>
+								<li class="activ_input_list flexbox">
+									<span class="activ_input_label7">是否收藏客户</span>
+									<div class="flexItem">
+										<div id="isfav"  class="mui-switch mui-switch-mini ">
+											<div class="mui-switch-handle"></div>
+										</div>
+									</div>
+								</li>
+							  <li class="activ_input_list flexbox">
+								<span class="activ_input_label8">创建时间</span>
+								<p class="activ_time flexItem">
+									<span id="pickStart" type="button">开始</span> ~
+									<span id="pickEnd" type="button">截止</span>
+								</p>
+							</li>
+							<li class="activ_input_list flexbox">
+								<span class="activ_input_label7">综合</span>
+								<p class="flexItem text_right leave_num">
+									<input id="zhTitle" type="text" placeholder="姓名/小区/地址/电话/备注" value="" />
+								</p>
+							</li>
+							<!--<li id="icon-ccUser" class="activ_input_list flexbox approve_pri_li">-->
+								<!--<span class="activ_input_label11  approve_pri">相关人</span>
+								<p id="ccUser" class="flexItem join_object text_right approve_per">
+								</p>
+							</li>-->
+						</ul>
+					</div>
+				 
+					<div id="btnSubmit" class="btn_woapply">搜索</div>
+					<div id="btnRest" class="btn_woapply">重置</div>
+			 
+				</div>
+			</div>
+		</div>
+			</body>
+	<script type="text/javascript" src="../../../js/mui/mui.min.js"></script>
+	<script type="text/javascript" src="../../../js/controllers/common.js"></script>
+	<script>
+		mui.init();
+		mui.plusReady(function() {
+			var islocksjs=false;
+			var sislockgjl=false;
+		 
+			//common.showWaiting(true);
+			//绑定下拉列表
+			
+		common.postApi("GetCustomerType", {
+			'url': ApiUrl
+		}, function(response) {
+			dataArray = eval(response.data);
+			for(var i = 0; i < dataArray.length; i++) {
+				var obj = dataArray[i];
+				document.getElementById('sltType').options.add(new Option(obj.CustomerType, obj.cid));
+			}
+		
+			common.closeWaiting();
+		}, 'json');
+			//设计师
+			if(!islocksjs)
+			common.postApi("GetCustomerType", {
+			'url': 'sjs'
+		}, function(response) {
+			dataArray = eval(response.data);
+			//alert(JSON.stringify(dataArray))
+			for(var i = 0; i < dataArray.length; i++) {
+				var obj = dataArray[i];
+				document.getElementById('sjsTitle').options.add(new Option(obj.CustomerType, obj.cid));
+			}
+			islocksjs=true;
+			common.closeWaiting();
+		}, 'json');
+			//施工监理 
+			if(!sislockgjl)
+			common.postApi("GetCustomerType", {
+			'url': 'sgjl'
+		}, function(response) {
+			dataArray = eval(response.data);
+			for(var i = 0; i < dataArray.length; i++) {
+				var obj = dataArray[i];
+				document.getElementById('jlTitle').options.add(new Option(obj.CustomerType, obj.cid));
+			}
+			sislockgjl=true;
+			common.closeWaiting();
+		}, 'json');
+		
+		
+ 
+		common.click("btnRest", function()
+		{		
+			var dzTitle=document.getElementById("dzTitle");//地址
+			var selectjl=document.getElementById("jlTitle");
+			//监理
+			var selectsjs=document.getElementById("sjsTitle");//监理
+			//设计师
+			var selecttype=document.getElementById("sltType");
+			//类型
+			var telTitle=document.getElementById("telTitle");//电话
+			var xmTitle=document.getElementById("xmTitle");//姓名
+			var zhTitle=document.getElementById("zhTitle"); //综合
+			dzTitle.value=telTitle.value=xmTitle.value=zhTitle.value=startDate=endDate='';
+			selectjl.options[0].selected = true;
+			selectsjs.options[0].selected = true;
+			selecttype.options[0].selected = true;	
+			pickStart.innerText='开始';pickEnd.innerText='截止';
+		});
+		
+				//提交
+		common.click("btnSubmit", function() {		
+			var dzTitle=document.getElementById("dzTitle").value;//地址
+			var selectjl=document.getElementById("jlTitle");
+			var jlTitle=selectjl.options[selectjl.selectedIndex].value;//监理
+			var selectsjs=document.getElementById("sjsTitle");//监理
+			var sjsTitle=selectsjs.options[selectsjs.selectedIndex].value;//设计师
+			var select=document.getElementById("sltType");
+			var sltType=select.options[select.selectedIndex].value;//类型
+			var telTitle=document.getElementById("telTitle").value;//电话
+			var xmTitle=document.getElementById("xmTitle").value;//姓名
+			var zhTitle=document.getElementById("zhTitle").value; //综合
+//		var dzTitle = common.textValiAlert(document.getElementById("dzTitle").value, "请填写查询条件");
+//			if (!dzTitle) {
+//				return;
+//			}
+//			var jlTitle = common.textValiAlert(document.getElementById("jlTitle").value, "请填写条件");
+//			if (!leaveTitle) {
+//				return;
+			//}
+			
+//			var jlTitle=document.getElementById("jlTitle").value;
+//			var sjsTitle=document.getElementById("sjsTitle").value;
+			
+			var Title=dzTitle+';'+jlTitle+';'+sjsTitle+';'+sltType+';'+telTitle+';'+fav+';'+xmTitle+';'+startDate+';'+endDate+';'+zhTitle;
+				//alert(Title)
+				currentWebViewHide(Title);
+		});
+		        var isfav = document.getElementById("isfav");
+				var fav='';
+				isfav.addEventListener('toggle', function(event) {
+							 var isActive = event.detail.isActive;
+							if(isActive) fav='fav';
+							else fav='';
+						});
+						
+			
+       var startDate='', startTime='', endDate='', endTime='';
+		//时间 开始
+		var pickStart = document.getElementById("pickStart");
+		pickStart.addEventListener('tap', function() {
+			plus.nativeUI.pickDate(function(e) {
+				//开始日期
+				var d = e.date;
+				startDate = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+				if(comptime(startDate,endDate)==1)
+					{	mui.alert('开始时间'+startDate+'大于结束时间'+endDate);}
+				else
+						pickStart.innerText=startDate;
+				//开始时间
+//				startTimeChoose(function(time) {
+//					startTime = time;
+//					$('#pickStart').text((d.getMonth() + 1) + "-" + d.getDate() + ' ' + startTime);
+//				});
+			}, function(e) {
+
+			}, {
+				title: "开始日期"
+			});
+		});
+		//时间 结束
+		var pickEnd = document.getElementById("pickEnd");
+		pickEnd.addEventListener('tap', function() {
+			plus.nativeUI.pickDate(function(e) {
+				//开始日期
+				var d = e.date;
+				endDate = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+				
+					if(comptime(startDate,endDate)==1)
+					{	mui.alert('开始时间'+startDate+'大于结束时间'+endDate);}
+				else
+						pickEnd.innerText=endDate;
+				//截止时间
+//				endTimeChoose(function(time) {
+//					endTime = time;
+//					$('#pickEnd').text((d.getMonth() + 1) + "-" + d.getDate() + ' ' + endTime);
+//				});
+			}, function(e) {
+
+			}, {
+				title: "截止日期"
+			});
+		});
+			
+			//比较时间
+			function comptime(a,b)   
+					{   
+					if( a==''||b=='') return null;   
+					var dateA =  (new Date(a.replace(/-/g,"\/"))) ;   
+					var dateB =  (new Date(b.replace(/-/g,"\/"))) ;   
+					if(isNaN(dateA) || isNaN(dateB)) return null;   
+					if(dateA > dateB) return 1;   
+					if(dateA < dateB) return -1;   
+					return 0;   
+					}   
+			
+		function startTimeChoose(success) {
+			var dTime = new Date();
+			dTime.setHours(9, 0);
+			plus.nativeUI.pickTime(function(e) {
+				var d = e.date;
+				var minute;
+				if (d.getMinutes() < 10) {
+					minute = "0" + d.getMinutes();
+				} else {
+					minute = d.getMinutes();
+				}
+				//成功回调
+				success(d.getHours() + ":" + minute);
+			}, function(e) {
+				//pickTimeBtn.innerText = "请选择时间"
+			}, {
+				title: "开始时间",
+				is24Hour: true,
+				time: dTime
+			});
+		}
+	//截止时间选择
+		function endTimeChoose(success) {
+			var dTime = new Date();
+			dTime.setHours(18, 0);
+			plus.nativeUI.pickTime(function(e) {
+				var d = e.date;
+				var minute;
+				if (d.getMinutes() < 10) {
+					minute = "0" + d.getMinutes();
+				} else {
+					minute = d.getMinutes();
+				}
+				success(d.getHours() + ":" + minute);
+			}, function(e) { 
+				//pickTimeBtnEnd.innerText = "请选择时间"
+			}, {
+				title: "截止时间",
+				is24Hour: true,
+				time: dTime
+			});
+		}
+	
+						
+			//部门点击事件
+//			mui('#ulList').on('tap', 'li', function(e) {
+//				common.showWaiting(true);
+//				var id = this.getAttribute('id');
+//				currentWebViewHide(id);
+//			});
+			mui.back = function() {
+				currentWebViewHide();
+			}
+
+			function currentWebViewHide(id) {
+				var fatherView = plus.webview.currentWebview().opener(); //父页面
+				//closeMenu 是C页面自定义事件的名称
+				mui.fire(fatherView, 'hidedepartmentPage', {
+					id: id
+				});
+			}
+		});
+	
+	
+	</script>
+
+</html>

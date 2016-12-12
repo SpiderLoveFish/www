@@ -409,47 +409,6 @@ mui.plusReady(function() {
 			}
 		}, 'json');
 	}
-	//---------------------------------------------------  
-	// 日期格式化  
-	// 格式 YYYY/yyyy/YY/yy 表示年份  
-	// MM/M 月份  
-	// W/w 星期  
-	// dd/DD/d/D 日期  
-	// hh/HH/h/H 时间  
-	// mm/m 分钟  
-	// ss/SS/s/S 秒  
-	//alert(DateFormat('YYYY-MM-dd hh:mm 星期w'));
-	//---------------------------------------------------  
-	function DateFormat(mDate, formatStr) {
-
-
-		var myDate = new Date(mDate); //正确
-
-		//alert(date.getFullYear());
-		var str = formatStr;
-		var Week = ['日', '一', '二', '三', '四', '五', '六'];
-
-		str = str.replace(/yyyy|YYYY/, myDate.getFullYear());
-		str = str.replace(/yy|YY/, (myDate.getYear() % 100) > 9 ? (myDate.getYear() % 100).toString() : '0' + (myDate.getYear() % 100));
-
-		str = str.replace(/MM/, parseInt(myDate.getMonth()) + 1 > 9 ? (parseInt(myDate.getMonth()) + 1).toString() : '0' + (parseInt(myDate.getMonth()) + 1));
-		str = str.replace(/M/g, parseInt(myDate.getMonth()) + 1);
-
-		str = str.replace(/w|W/g, Week[myDate.getDay()]);
-
-		str = str.replace(/dd|DD/, myDate.getDate() > 9 ? myDate.getDate().toString() : '0' + myDate.getDate());
-		str = str.replace(/d|D/g, myDate.getDate());
-
-		str = str.replace(/hh|HH/, myDate.getHours() > 9 ? myDate.getHours().toString() : '0' + myDate.getHours());
-		str = str.replace(/h|H/g, myDate.getHours());
-		str = str.replace(/mm/, myDate.getMinutes() > 9 ? myDate.getMinutes().toString() : '0' + myDate.getMinutes());
-		str = str.replace(/m/g, myDate.getMinutes());
-
-		str = str.replace(/ss|SS/, myDate.getSeconds() > 9 ? myDate.getSeconds().toString() : '0' + myDate.getSeconds());
-		str = str.replace(/s|S/g, myDate.getSeconds());
-
-		return str;
-	}
 
 	function strformatdata(str) {
 		str = str.replace(/-/g, "/");
