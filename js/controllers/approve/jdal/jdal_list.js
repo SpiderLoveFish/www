@@ -1,6 +1,6 @@
 var list = document.getElementById("list");
 var starIndex =10;
- 
+var type = common.getQueryString('type');
 function getpullupRefresh() {
 	setTimeout(function() {
 		getActivityList();
@@ -17,25 +17,23 @@ function getActivityList() {
 //		endIndex: endIndex,
 	//};
 		var data = {
-		strwhere: '',
+		strwhere: ' and img_style=79',
 		nowindex:  starIndex,
 		url:ApiUrl
 	};
-	common.postApi('GetLastListScoreShop', data, function(response) {
+	common.postApi('GetLastListClassicCase', data, function(response) {
 	
 		dataArray = eval(response.data);
 		//alert(JSON.stringify(response))
 		for (var i = 0; i < dataArray.length; i++) {
-			var obj = dataArray[i];
-			//if (selecttype == "getActivityList_All") {
-				 
+			var obj = dataArray[i];				 
 				var hostimg='../../images/ScApp/news/mr.jpg';
 				 // alert(obj.IsHostPic)
-				if(obj.img==''||obj.img=='null'||obj.img==null)	{}
+				if(obj.thumimg==''||obj.thumimg=='null'||obj.thumimg==null)	{}
 				else
-				 hostimg=ApiUrl+obj.img;
+				 hostimg=obj.thumimg;
 				 
-				var itemhtml = html.replace('@id', obj.ID).replace('@Title', (obj.ScoreName)).replace('@Description',obj.ScoreDescribe).replace('@ReleaseDateTime',  ChangeDateFormat(obj.DoTime)).replace('@IsHostPic', hostimg).replace('@flag', obj.NeedScore);;
+				var itemhtml = html.replace('@id', obj.ID).replace('@Title', (obj.c_title)).replace('@Description',obj.customer_name).replace('@IsHostPic', hostimg);
 				 
 				 
 				list.innerHTML += itemhtml.replace('@IsHostPic', hostimg);
@@ -81,7 +79,7 @@ $(function() {
 		 
 })
 mui.plusReady(function() {
-	 	
+	
 mui('.container').on('tap', 'a', function(e) {
 		var id = this.getAttribute('data-img');
 	//var webview = common.getTemplate('showjdal',"show.html?img="+id);
@@ -93,7 +91,7 @@ mui('.container').on('tap', 'a', function(e) {
 								}
 							});
 	});
-
+	
 	if (plus.os.name != "Android") {
 		var pullrefreshAll = document.getElementById("pullrefresh");
 		//pullrefreshAll.style.marginTop = CommonTop;
@@ -120,6 +118,8 @@ mui('.container').on('tap', 'a', function(e) {
 		});
 	 
 	}
+	;
+	
 	window.addEventListener('refresh1', function() {
 
 //		if (selecttype == "getActivityList_NoRead") {

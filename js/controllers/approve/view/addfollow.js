@@ -50,17 +50,18 @@ mui.plusReady(function() {
 			url:ApiUrl,
 			userid:getUserInfo().ID
 		}; 
-   //alert(JSON.stringify(param))
+  		// alert(JSON.stringify(param))
 		common.postApi('GetFollowList', param, function(response) {	
-			if(CommstartIndex<10)
+			if(CommstartIndex==0)
 			document.getElementById("comments").innerHTML='';
-			//alert(JSON.stringify(response))
+		  //alert(CommstartIndex+JSON.stringify(response))
 			var data =  eval(response.data);//eval(response.data)[0];
 		 	if (data) {
+		 		//alert(data[1].Total+JSON.stringify(data[1]))
 			var allCount = data[1].Total;
 				//document.getElementsByClassName('comment_title')[0].innerHTML = '跟进 (' + allCount + '条)';
 				//var oddCount = allCount - (CommstartIndex + 10); //没显示的评论数
-				if (allCount=10) {
+				if (allCount==10) {
 					document.getElementById("comment_hint").style.display = 'block';
 					document.getElementById("comment_hint").innerHTML = '默认加载10条，其余隐藏<i>显示更多';
 				} else {
@@ -71,10 +72,12 @@ mui.plusReady(function() {
 					common.closeWaiting();
 			commitPinglunLock = true; return;
 			}
+			
     		//输出列表
 			for (var i = 0; i < allCount; i++) {
-				
+				//if(data[0][i]=='undefined')continue;
 				var temp = CommtempHtml;
+			//	alert(JSON.stringify(data[0][i]))
 				var titleimg = data[0][i].Avatar;
 				if (titleimg == '') {
 					titleimg = '../images/testImg.png';
@@ -88,7 +91,7 @@ mui.plusReady(function() {
 				document.getElementById("comments").innerHTML += temp;
 			}
 			//判断 更多 
-			if (allCount = 10) {
+			if (allCount == 10) {
 				common.click('comment_hint', FetPinglunList);
 				CommstartIndex += 10;
 			}

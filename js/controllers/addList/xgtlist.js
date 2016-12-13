@@ -84,7 +84,7 @@ mui.plusReady(function() {
 //			    }
 //			});
 			//alert(href)
-	var webview = common.getTemplate('show',"show3d.html?desid="+href);
+	var webview = common.getTemplate('show3d',"show3d.html?desid="+href);
 		//detailPage.loadURL(href);
 	//	openMenu();
 	});

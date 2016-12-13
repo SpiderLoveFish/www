@@ -50,12 +50,12 @@
 						</a>
 						<a> 
 							<div id="sgt" class="approve_list workstand_listT4">
-								<p>施工图</p>
+								<p>竣工图</p>
 							</div>
 						</a>
 						<a>
 							<div id="jgt" class="approve_list workstand_listT5">
-								<p>竣工图</p>
+								<p>施工图</p>
 							</div>
 						</a>
 						<a>
@@ -88,7 +88,7 @@
 			common.click('qjt', function() {
 				common.Verifauthority(r_points, function(result) { //积分
 				 	if(result)
-				 		var webview = common.getTemplate('qjt', '../activity/activity_list.html'); //第二层webview			
+				 		var webview = common.getTemplate('qjt', '../approve/jdal/jdal_list_qjt.html'); //第二层webview			
 					//common.loadUrl('../activity/activity_list.html');
 			});
 				 //var webview = common.getTemplate('page2', 'projecthour/yslist.html'); //第二层webview
@@ -97,7 +97,7 @@
 			common.click('qjfy', function() {
 				common.Verifauthority(r_points, function(result) { //积分
 				 	if(result)
-				 		var webview = common.getTemplate('qjfy', '../activity/activity_list.html?type=qjfy'); //第二层webview			
+				 		var webview = common.getTemplate('qjfy', '../approve/jdal/jdal_list_qjfy.html'); //第二层webview			
 					//common.loadUrl('../activity/activity_list.html');
 			});
 			});
@@ -105,14 +105,14 @@
 			common.click('sgt', function() {
 				common.Verifauthority(r_points, function(result) { //积分
 				 	if(result)
-				 		var webview = common.getTemplate('sgt', '../activity/activity_list.html?type=sgt'); //第二层webview			
+				 		var webview = common.getTemplate('sgt', '../approve/jdal/jdal_list_sgt.html'); //第二层webview			
 					//common.loadUrl('../activity/activity_list.html');
 			});
 				
 			});
 			//通用
 			common.click('jgt', function() {
-				var webview = common.getTemplate('jgt', 'activity/activity_list.html?type=sgt'); //第二层webview
+				var webview = common.getTemplate('jgt', '../approve/jdal/jdal_list_jgt.html'); //第二层webview
 			});
 			//更多
 			common.click('more', function() {
