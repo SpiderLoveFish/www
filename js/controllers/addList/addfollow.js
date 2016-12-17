@@ -106,8 +106,7 @@ mui.plusReady(function() {
 			
 			var data =  eval(response.data);//eval(response.data)[0];
 			//alert(JSON.stringify(data))
-			if (data) {
-
+			if (data&&data.length>0) {
 				allCount = data[0].TotalCount;
 				document.getElementsByClassName('comment_title')[0].innerHTML = '跟进 (' + allCount + '条)';
 				var oddCount = allCount - (CommstartIndex + 10); //没显示的评论数

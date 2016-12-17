@@ -172,8 +172,6 @@ mui.plusReady(function() {
 	});
 	//监听详情页面请求关闭
 	window.addEventListener('reloadfun', function() {
-		document.getElementById("list").innerHTML = "";
-		statrCount = 0;
 		GetUserList();
 	});
 	/*
@@ -316,7 +314,7 @@ mui.plusReady(function() {
 //			}
 		});
  		mui('.mui-bar-nav').on('tap', '.btn_post_activ', function(e) {
-		 common.Verifauthority(r_add_custmer, function(result) { //生日
+		 common.Verifauthority(r_add_custmoer, function(result) { //生日
 				 	if(result)
 				var template = common.getTemplate('add_custmer_apply', 'activity_apply.html?');
 					});//新闻发布权限

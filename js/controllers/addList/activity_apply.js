@@ -1,3 +1,4 @@
+mui.init();
 mui.plusReady(function() {
 	//设计师
  common.postApi("GetCustomerType", {
@@ -14,13 +15,13 @@ mui.plusReady(function() {
 		}, 'json');
 		//客户类型（默认）
 		 common.postApi("GetCustomerType", {
-			'url': ''
+			'url': 'url'
 		}, function(response) {
 			dataArray = eval(response.data);
 			//alert(JSON.stringify(dataArray))
 			for(var i = 0; i < dataArray.length; i++) {
 				var obj = dataArray[i];
-				document.getElementById('sjsType').options.add(new Option(obj.CustomerType, obj.cid));
+				document.getElementById('khlxType').options.add(new Option(obj.CustomerType, obj.cid));
 			}
 			islocksjs=true;
 			common.closeWaiting();
@@ -35,11 +36,11 @@ mui.plusReady(function() {
 		if (!khmc) {
 			return;
 		}
-		var tel = common.numberValue(document.getElementById("tel").value, "请填写客户电话");
+		var tel = common.numValiAlert(document.getElementById("telTitle").value, "请填写客户电话");
 		if (!tel) {
 			return;
 		}
-	var address = common.textValiAlert(document.getElementById("addressTitle").value, "请填写地址");
+	var address = common.textValiAlert(document.getElementById("adressTitle").value, "请填写地址");
 		if (!address) {
 			return;
 		}
@@ -52,7 +53,7 @@ mui.plusReady(function() {
  	 		 var xq=document.getElementById("xqTitle").value; //小区
  	 		 var hx=document.getElementById("hxTitle").value; //户型
  	 		 var bzContent=document.getElementById("bzContent").value; //户型
-			datastr+=khmc';'+address+';'+tel+';'+khlx+';'+khlxTitle+';'+xq+';'+hx+';'+sjs+';'+sjsTitle+';'+bzContent;
+			datastr=khmc+';'+address+';'+tel+';'+khlx+';'+khlxTitle+';'+xq+';'+hx+';'+sjs+';'+sjsTitle+';'+bzContent+';'+getUserInfo().UserName;
 		var data = {
 			 data:datastr
 		};
@@ -81,9 +82,10 @@ mui.plusReady(function() {
 	function go() {
 		var fatherView = plus.webview.currentWebview().opener(); //父页面
 				//closeMenu 是C页面自定义事件的名称
-				mui.fire(fatherView, 'hidedepartmentPage', {
-					id: id
+				mui.fire(fatherView, 'reloadfun', {
+					id: ''
 				});
+				mui.back();
 	}
  
  common.backOfHideCurrentWebview();
