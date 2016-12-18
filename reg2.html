@@ -175,17 +175,21 @@
 						//alert(JSON.stringify(response))
 						if (response.data == "200") {
 							common.toast(toasttip);
+							//common.currentWebviewHide();
 							if(type=='2')
 							{
-								common.currentWebviewHide();
+								
 								var datas = {
 											tel: phoneBox.value,
 											compname: companyBox.value,
-											username: usernameBox.value
+											username: usernameBox.value,
+											userid:phoneBox.value,
+											pwd:phoneBox.value.substring(phoneBox.value.length-6, phoneBox.value.length)
 										};
-								common.postApi('addcustomer',datas, function(response) )
+								common.postApi('addcustomer',datas, function(response)
 								{
 									if (response.data == "success") {
+										common.currentWebviewHide();
 								}
 									
 								}, 'json');

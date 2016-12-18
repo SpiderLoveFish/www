@@ -118,7 +118,7 @@ function getActivityList() {
 		if(starIndex<=10)
 		list.innerHTML="";
 		dataArray = eval(response.data);
-		//alert(JSON.stringify(response))
+		alert(JSON.stringify(response))
 		
 		for (var i = 0; i < dataArray.length; i++) {
 			var obj = dataArray[i];
@@ -127,7 +127,7 @@ function getActivityList() {
 	      if(obj.Sex=="女")img='../../images/ScApp/general/headimg/headimg_02.png';
  			
  			
-			if (selecttype == "N") {	
+			if (sfkh == "N") {	
 				if(obj.title==''){}else
 				img=ApiUrl+'images/upload/portrait/'+obj.title;
 			 
