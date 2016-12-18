@@ -22,10 +22,10 @@
 				<div class="list_news">
 					<div class="news_title activ_title">
 						<ul>
-							<li class="unread read_active" id="NRed">当月<i class="news_hint h"></i></li>
-							<li class="all_acti">当季</li>
-							<li class="mine_acti">当年</li>
-							<div class="filtrate_btn">筛选
+							<li class="unread read_active" id="NRed">默认<i class="news_hint h"></i></li>
+							<!--<li class="all_acti">当季</li>
+							<li class="mine_acti">当年</li>-->
+							<div class="filtrate_btn">排名
 								</div>
 							<!--<li class="mine_acti">我发布的</li>-->
 						</ul>
@@ -47,12 +47,25 @@
 			<div class="eat_allowance_diolog">
 				<h4 id="">选择日期</h4>
 				<div class="eat_close oClose"></div>
+				
+				
 					<div class="mui-content container">
 			<div class="news_container">
 				<div class="news_container_1 bs approve_general">
 					<div class="activ_input_edit">
-						<ul>						
+						<ul>
+								<li class="activ_input_list  flexbox">
+				<p id="pThree" style="width: 50%;"  class="choose_eattime">默认</p>
+				<p id="pTwo" style="width: 50%;" class="">当年</p>
+				
+						</li>
+					<li class="activ_input_list  flexbox">
+						<p id="pNone" style="width: 50%;" class="">当月</p>
+				<p id="pOne" style="width: 50%;">当季</p>
+						</li>
+					
 				<li class="activ_input_list  flexbox">
+					
 								<span class="activ_input_label2"> 开始日期</span>
 								<p id="pickDateBtnClickb" class="flexItem">
 									<span id="pickDateBtnb" type="button"></span>
@@ -68,7 +81,7 @@
 						
 						</div>
 						</div>
-						<div id="btnSubmit" class="btn_woapply">搜索</div>
+						<div id="btnSubmit" class="btn_woapply">自定义搜索</div>
 						</div>
 			</div>
 		</div>

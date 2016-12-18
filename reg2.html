@@ -119,7 +119,7 @@
 						para: JSON.stringify(p)
 					};
 					//alert(JSON.stringify(data))
-					 postajax(data,'Send_aliyunSendSMS','发送成功！请检查手机短信！')
+					 postajax(data,'Send_aliyunSendSMS','发送成功！请检查手机短信！','1')
 				})
 				
 				regButton.addEventListener('tap', function(event) {
@@ -164,10 +164,10 @@
 						para: JSON.stringify(p)
 					};
                  // alert(JSON.stringify(data))
-                 postajax(data,'Send_aliyunSendSMS','注册成功！请用短信提示帐号登陆！')
+                 postajax(data,'Send_aliyunSendSMS','注册成功！请用短信提示帐号登陆！',2)
 				});
 				
-				function postajax(data,postapi,toasttip)
+				function postajax(data,postapi,toasttip,type)
 				{				
 					//commitLock = false;
 					//common.showWaiting();
@@ -175,7 +175,22 @@
 						//alert(JSON.stringify(response))
 						if (response.data == "200") {
 							common.toast(toasttip);
-							//common.currentWebviewHide();
+							if(type=='2')
+							{
+								common.currentWebviewHide();
+								var datas = {
+											tel: phoneBox.value,
+											compname: companyBox.value,
+											username: usernameBox.value
+										};
+								common.postApi('addcustomer',datas, function(response) )
+								{
+									if (response.data == "success") {
+								}
+									
+								}, 'json');
+							}
+							
 						} else {
 							common.toast("服务器异常，请稍候重试..");
 						}

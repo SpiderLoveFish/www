@@ -10,6 +10,53 @@ function getpullupRefresh() {
 		getActivityList();
 	}, 500);
 }
+
+	//月，季，年
+	var pNone = document.getElementById("pNone");
+	var pOne = document.getElementById("pOne");
+	var pTwo = document.getElementById("pTwo");
+	var pThree = document.getElementById("pThree");
+	$("#pNone").click(function() {
+		pNone.className = 'choose_eattime';
+		pOne.className = '';
+		pTwo.className = '';
+		pThree.className = '';
+		starIndex=10;
+		selecttype = 'M';
+		getActivityList();
+		oClose();
+	});
+	$("#pOne").click(function() {
+		pNone.className = '';
+		pOne.className = 'choose_eattime';
+		pTwo.className = '';
+		pThree.className = '';
+		starIndex=10;
+		selecttype = 'S';
+		getActivityList();
+		oClose();
+	});
+	$('#pTwo').click(function() {
+		pNone.className = '';
+		pOne.className = '';
+		pThree.className = '';
+		pTwo.className = 'choose_eattime';
+		starIndex=10;
+		selecttype = 'Y';
+		getActivityList();
+		oClose();
+	});
+	$('#pThree').click(function() {
+		pNone.className = '';
+		pOne.className = '';
+		pTwo.className = '';
+		pThree.className = 'choose_eattime';
+		starIndex=10;
+		selecttype = 'N';
+		getActivityList();
+		oClose();
+	});
+
 //加班日期
 	var pickDateBtnClickb = document.getElementById("pickDateBtnClickb");
 	var pickDateBtnb = document.getElementById("pickDateBtnb");
@@ -68,7 +115,7 @@ function getActivityList() {
 	};
 	//alert(JSON.stringify(data))
 	common.postApi('GetScoreList', data, function(response) {
-		if(starIndex<10)
+		if(starIndex<=10)
 		list.innerHTML="";
 		dataArray = eval(response.data);
 		//alert(JSON.stringify(response))
@@ -126,7 +173,7 @@ $(function() {
 				} else {
 					return;
 				}
-				selecttype = 'M';
+				selecttype = 'N';
 			} else if (i == 1) {
 				starIndex = 10;
 				endIndex = 10;
