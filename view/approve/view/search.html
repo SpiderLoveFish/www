@@ -34,7 +34,7 @@
 								</p>
 							</li>
 							<li class="activ_input_list flexbox">
-								<span class="activ_input_label7">姓名</span>
+								<span class="activ_input_label7">录入人</span>
 								<p class="flexItem text_right leave_num">
 									<input id="xmTitle" type="text" placeholder="" value="" />
 								</p>
@@ -53,12 +53,14 @@
 									</select>
 								</p>
 							</li>
-							<!--<li class="activ_input_list flexbox">
-								<span class="activ_input_label7">设计师</span>
-								<p class="flexItem text_right leave_num">
-									<input id="sjsTitle" type="text" placeholder="" value="" />
+							<li class="activ_input_list  flexbox">
+								<span class="activ_input_label6">业务员</span>
+								<p class="flexItem join_object leave_type">
+									<select id="ywyTitle" class="" placeholder="请选择">
+										<option value="">请选择</option>
+									</select>
 								</p>
-							</li>-->
+							</li>
 							<li class="activ_input_list  flexbox">
 								<span class="activ_input_label6">监理</span>
 								<p class="flexItem join_object leave_type">
@@ -88,7 +90,7 @@
 									</div>
 								</li>
 							  <li class="activ_input_list flexbox">
-								<span class="activ_input_label8">创建时间</span>
+								<span class="activ_input_label8">跟进日期</span>
 								<p class="activ_time flexItem">
 									<span id="pickStart" type="button">开始</span> ~
 									<span id="pickEnd" type="button">截止</span>
@@ -165,7 +167,17 @@
 			common.closeWaiting();
 		}, 'json');
 		
-		
+				common.postApi("GetCustomerType", {
+			'url': 'ywy'
+		}, function(response) {
+			dataArray = eval(response.data);
+			for(var i = 0; i < dataArray.length; i++) {
+				var obj = dataArray[i];
+				document.getElementById('ywyTitle').options.add(new Option(obj.CustomerType, obj.cid));
+			}
+			sislockgjl=true;
+			common.closeWaiting();
+		}, 'json');
  
 		common.click("btnRest", function()
 		{		
@@ -175,6 +187,7 @@
 			var selectsjs=document.getElementById("sjsTitle");//监理
 			//设计师
 			var selecttype=document.getElementById("sltType");
+				var ywyTitle=document.getElementById("ywyTitle");
 			//类型
 			var telTitle=document.getElementById("telTitle");//电话
 			var xmTitle=document.getElementById("xmTitle");//姓名
@@ -182,7 +195,8 @@
 			dzTitle.value=telTitle.value=xmTitle.value=zhTitle.value=startDate=endDate='';
 			selectjl.options[0].selected = true;
 			selectsjs.options[0].selected = true;
-			selecttype.options[0].selected = true;	
+			selecttype.options[0].selected = true;
+				ywyTitle.options[0].selected = true;	
 			pickStart.innerText='开始';pickEnd.innerText='截止';
 		});
 		
@@ -195,6 +209,8 @@
 			var sjsTitle=selectsjs.options[selectsjs.selectedIndex].value;//设计师
 			var select=document.getElementById("sltType");
 			var sltType=select.options[select.selectedIndex].value;//类型
+				var selectywy=document.getElementById("ywyTitle");
+			var ywyTitle=selectywy.options[selectywy.selectedIndex].value;//业务员
 			var telTitle=document.getElementById("telTitle").value;//电话
 			var xmTitle=document.getElementById("xmTitle").value;//姓名
 			var zhTitle=document.getElementById("zhTitle").value; //综合
@@ -210,7 +226,7 @@
 //			var jlTitle=document.getElementById("jlTitle").value;
 //			var sjsTitle=document.getElementById("sjsTitle").value;
 			
-			var Title=dzTitle+';'+jlTitle+';'+sjsTitle+';'+sltType+';'+telTitle+';'+fav+';'+xmTitle+';'+startDate+';'+endDate+';'+zhTitle;
+			var Title=dzTitle+';'+jlTitle+';'+sjsTitle+';'+sltType+';'+telTitle+';'+fav+';'+xmTitle+';'+startDate+';'+endDate+';'+zhTitle+';'+ywyTitle;
 				//alert(Title)
 				currentWebViewHide(Title);
 		});

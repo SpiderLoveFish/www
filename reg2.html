@@ -169,14 +169,9 @@
 				
 				function postajax(data,postapi,toasttip,type)
 				{				
-					//commitLock = false;
+					 commitLock = false;
 					//common.showWaiting();
-					common.postglobalUrlApi(postapi, data, function(response) {
-						//alert(JSON.stringify(response))
-						if (response.data == "200") {
-							common.toast(toasttip);
-							//common.currentWebviewHide();
-							if(type=='2')
+						if(type=='2')
 							{
 								
 								var datas = {
@@ -186,14 +181,25 @@
 											userid:phoneBox.value,
 											pwd:phoneBox.value.substring(phoneBox.value.length-6, phoneBox.value.length)
 										};
-								common.postApi('addcustomer',datas, function(response)
+								common.postApi('addtrialcustomer',datas, function(response)
 								{
+									if (response.data == "tel") {
+										common.toast('电话号码已经申请！');
+									}
 									if (response.data == "success") {
 										common.currentWebviewHide();
+										commitLock=true	;
 								}
 									
 								}, 'json');
-							}
+							}else	commitLock=true;
+					if(commitLock)	
+					common.postglobalUrlApi(postapi, data, function(response) {
+						//alert(JSON.stringify(response))
+						if (response.data == "200") {
+							common.toast(toasttip);
+							//common.currentWebviewHide();
+						
 							
 						} else {
 							common.toast("服务器异常，请稍候重试..");

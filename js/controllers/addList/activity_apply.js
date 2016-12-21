@@ -53,7 +53,7 @@ mui.plusReady(function() {
  	 		 var xq=document.getElementById("xqTitle").value; //小区
  	 		 var hx=document.getElementById("hxTitle").value; //户型
  	 		 var bzContent=document.getElementById("bzContent").value; //户型
-			datastr=khmc+';'+address+';'+tel+';'+khlx+';'+khlxTitle+';'+xq+';'+hx+';'+sjs+';'+sjsTitle+';'+bzContent+';'+getUserInfo().UserName;
+			datastr=khmc+';'+address+';'+tel+';'+khlx+';'+khlxTitle+';'+xq+';'+hx+';'+sjs+';'+sjsTitle+';'+bzContent+';'+getUserInfo().ID;
 		var data = {
 			 data:datastr
 		};
