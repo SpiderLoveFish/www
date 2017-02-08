@@ -22,7 +22,8 @@ function getpullupRefresh() {
 		pTwo.className = '';
 		pThree.className = '';
 		starIndex=10;
-		selecttype = 'M';
+		selecttype = 'M';		
+		$("#NRed").text("当月");
 		getActivityList();
 		oClose();
 	});
@@ -33,6 +34,7 @@ function getpullupRefresh() {
 		pThree.className = '';
 		starIndex=10;
 		selecttype = 'S';
+		$("#NRed").text("当季");
 		getActivityList();
 		oClose();
 	});
@@ -43,6 +45,7 @@ function getpullupRefresh() {
 		pTwo.className = 'choose_eattime';
 		starIndex=10;
 		selecttype = 'Y';
+		$("#NRed").text("当年");	
 		getActivityList();
 		oClose();
 	});
@@ -53,6 +56,7 @@ function getpullupRefresh() {
 		pThree.className = 'choose_eattime';
 		starIndex=10;
 		selecttype = 'N';
+		$("#NRed").text("默认");	
 		getActivityList();
 		oClose();
 	});
@@ -97,6 +101,7 @@ function getpullupRefresh() {
 		}
 		starIndex=10;
 		selecttype = 'Z';
+			$("#NRed").text("自定义");
 		strwhere=pickDateBtnb+';'+pickDateBtne;
 		getActivityList();
 		oClose();
@@ -118,7 +123,7 @@ function getActivityList() {
 		if(starIndex<=10)
 		list.innerHTML="";
 		dataArray = eval(response.data);
-		alert(JSON.stringify(response))
+		//alert(JSON.stringify(response))
 		
 		for (var i = 0; i < dataArray.length; i++) {
 			var obj = dataArray[i];

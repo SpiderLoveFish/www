@@ -113,6 +113,7 @@
 			//获取数据
 			common.postApi('GetMessage', data, function(response) {
 				var s = eval(response.data);
+				//alert(JSON.stringify(s))
 				var dataArray = s[0];
 				if (dataArray.length <= 0) {
 					$('#slider').hide();
