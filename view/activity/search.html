@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>积分商城查询条件</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/list.css" />
+		<link rel="stylesheet" href="../../css/style_sc.css" />
+		<link rel="stylesheet" href="../../css/reset.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+
+			<h1 class="mui-title">商城查询条件</h1>
+		</header>
+	<div class="mui-content container">
+			<div class="news_container">
+				<div class="news_container_1 bs approve_general">
+					<div class="activ_input_edit">
+						<ul>
+						
+							<li class="activ_input_list flexbox">
+								<span class="activ_input_label7">商品名称</span>
+								<p class="flexItem text_right leave_num">
+									<input id="spmc" type="text" placeholder="" value="" />
+								</p>
+							</li>
+						  
+							 <li class="activ_input_list flexbox">
+								<span class="activ_input_label7">商品描述</span>
+								<p class="flexItem text_right leave_num">
+									<input id="spms" type="text" placeholder="" value="" />
+								</p>
+							</li>
+						  
+							  <li class="activ_input_list flexbox">
+								<span class="activ_input_label8">积分区间</span>
+								<p class="activ_time flexItem">
+									<input id="pickStart" style="width: 45%;" type="text" placeholder="" value="00" />~
+									<input id="pickEnd" style="width: 45%;" type="text" placeholder="" value="00" />
+									 
+								</p>
+							</li>
+							
+							<!--<li id="icon-ccUser" class="activ_input_list flexbox approve_pri_li">-->
+								<!--<span class="activ_input_label11  approve_pri">相关人</span>
+								<p id="ccUser" class="flexItem join_object text_right approve_per">
+								</p>
+							</li>-->
+						</ul>
+					</div>
+				 
+					<div id="btnSubmit" class="btn_woapply">搜索</div>
+					<div id="btnRest" class="btn_woapply">重置</div>
+			 
+				</div>
+			</div>
+		</div>
+			</body>
+	<script type="text/javascript" src="../../js/mui/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/controllers/common.js"></script>
+	<script>
+		mui.init();
+		mui.plusReady(function() {
+			 
+			 
+		 
+		
+ 
+		common.click("btnRest", function()
+		{		
+			var spms=document.getElementById("spms");//地址
+			var spmc=document.getElementById("spmc");
+			 var startDate = document.getElementById("pickStart");
+			 var endDate = document.getElementById("pickEnd");
+		 
+			spms.value=spmc.value=startDate.value=endDate.value='';
+			 
+		});
+		
+				//提交
+		common.click("btnSubmit", function() {		
+			var spms=document.getElementById("spms");//地址
+			var spmc=document.getElementById("spmc");
+			 var startDate = document.getElementById("pickStart");
+			 var endDate = document.getElementById("pickEnd");
+			var Title=spms.value+';'+spmc.value+';'+startDate.value+';'+endDate.value;
+				//alert(Title)
+				currentWebViewHide(Title);
+		});
+		        
+ 
+			mui.back = function() {
+				currentWebViewHide();
+			}
+
+			function currentWebViewHide(id) {
+				var fatherView = plus.webview.currentWebview().opener(); //父页面
+				//closeMenu 是C页面自定义事件的名称
+				mui.fire(fatherView, 'hidedepartmentPage', {
+					id: id
+				});
+			}
+		});
+	
+	
+	</script>
+
+</html>

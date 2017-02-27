@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>积分商城查询条件</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.css" />
+		<link rel="stylesheet" href="../../../css/list.css" />
+		<link rel="stylesheet" href="../../../css/style_sc.css" />
+		<link rel="stylesheet" href="../../../css/reset.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+
+			<h1 class="mui-title">案例查询条件</h1>
+		</header>
+	<div class="mui-content container">
+			<div class="news_container">
+				<div class="news_container_1 bs approve_general">
+					<div class="activ_input_edit">
+						<ul>
+						
+							<li class="activ_input_list flexbox">
+								<span class="activ_input_label7">案例标题</span>
+								<p class="flexItem text_right leave_num">
+									<input id="anbt" type="text" placeholder="" value="" />
+								</p>
+							</li>
+						  
+							 <li class="activ_input_list flexbox">
+								<span class="activ_input_label7">客户姓名</span>
+								<p class="flexItem text_right leave_num">
+									<input id="khxm" type="text" placeholder="" value="" />
+								</p>
+							</li>
+						   <li class="activ_input_list flexbox">
+								<span class="activ_input_label7">楼盘</span>
+								<p class="flexItem text_right leave_num">
+									<input id="lp" type="text" placeholder="" value="" />
+								</p>
+							</li>
+							 <li class="activ_input_list flexbox">
+								<span class="activ_input_label7">面积</span>
+								<p class="flexItem text_right leave_num">
+									<input id="mj" type="text" placeholder="" value="" />
+								</p>
+							</li>
+							 <li class="activ_input_list flexbox">
+								<span class="activ_input_label7">户型</span>
+								<p class="flexItem text_right leave_num">
+									<input id="hx" type="text" placeholder="" value="" />
+								</p>
+							</li>
+							 <li class="activ_input_list flexbox">
+								<span class="activ_input_label7">装修风格</span>
+								<p class="flexItem text_right leave_num">
+									<input id="zxfg" type="text" placeholder="" value="" />
+								</p>
+							</li>
+							 
+						 
+						</ul>
+					</div>
+				 
+					<div id="btnSubmit" class="btn_woapply">搜索</div>
+					<div id="btnRest" class="btn_woapply">重置</div>
+			 
+				</div>
+			</div>
+		</div>
+			</body>
+	<script type="text/javascript" src="../../js/mui/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/controllers/common.js"></script>
+	<script>
+		mui.init();
+		mui.plusReady(function() {
+			 
+			 
+		 
+		
+ 
+		common.click("btnRest", function()
+		{		
+			var albt=document.getElementById("albt");
+			var khxm=document.getElementById("khxm");
+			 var lp = document.getElementById("lp");
+			 var mj = document.getElementById("mj");
+		 	 var hx = document.getElementById("hx");
+			 var zxfg = document.getElementById("zxfg");
+			albt.value=khxm.value=lp.value=mj.value=hx.value=zxfg.value='';
+			 
+		});
+		
+				//提交
+		common.click("btnSubmit", function() {		
+		var albt=document.getElementById("albt");
+			var khxm=document.getElementById("khxm");
+			 var lp = document.getElementById("lp");
+			 var mj = document.getElementById("mj");
+		 	 var hx = document.getElementById("hx");
+			 var zxfg = document.getElementById("zxfg");
+			var Title=albt.value+';'+khxm.value+';'+lp.value+';'+mj.value+';'+hx.value+';'+zxfg.value;
+				//alert(Title)
+				currentWebViewHide(Title);
+		});
+		        
+ 
+			mui.back = function() {
+				currentWebViewHide();
+			}
+
+			function currentWebViewHide(id) {
+				var fatherView = plus.webview.currentWebview().opener(); //父页面
+				//closeMenu 是C页面自定义事件的名称
+				mui.fire(fatherView, 'hidedepartmentPage', {
+					id: id
+				});
+			}
+		});
+	
+	
+	</script>
+
+</html>
