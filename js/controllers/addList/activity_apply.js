@@ -28,7 +28,7 @@ mui.plusReady(function() {
 	 
 			var selectywy=document.getElementById("ywyType");  
 			var ywy=selectywy.options[selectywy.selectedIndex].value;//设计师
-			var ywyitle=selectywy.options[selectywy.selectedIndex].text;//设计师
+			var ywyTitle=selectywy.options[selectywy.selectedIndex].text;//设计师
 			var selectkhlx=document.getElementById("khlxType"); 
 			var khlx=selectkhlx.options[selectkhlx.selectedIndex].value;//客户类型
  	 		var khlxTitle=selectkhlx.options[selectkhlx.selectedIndex].text;//客户类型
@@ -52,9 +52,9 @@ mui.plusReady(function() {
 		});
 		commitLock = false;
 		//common.showWaiting();
-	alert(JSON.stringify(data))
+	   //alert(JSON.stringify(data))
 		common.postApi("AddCustomer", data, function(response) {
-			 alert(JSON.stringify(response.data))
+			 //alert(JSON.stringify(response.data))
 			if (response.data == "success") {
 				mui.toast("提交成功，自动跳转到列表界面..");
 				go();

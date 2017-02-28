@@ -1,5 +1,6 @@
 var list = document.getElementById("list");
 var starIndex =10;
+var str='';
 var type = common.getQueryString('type');
 function getpullupRefresh() {
 	setTimeout(function() {
@@ -45,7 +46,7 @@ function getActivityList() {
 	//var html = '<a id="@id" data-img=@IsHostPic class="sc_cell sc_padding mui-table-view-cell">' + '<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' + '<div class="sc_cell_bd sc_cell_primary">' + '<p>@Title</p>' + '<p class="label_describe_2">@Description</p>' + '<span class="sc_comment">@ReleaseDateTime</span>' + '</div>' + '<div class="sc_cell_data">@flag</div></a>';
 	var html='<li><a><i><em><img><p></p></img></em></i></a></li>';
 		var data = {
-		strwhere: ' and img_style=79',
+		strwhere: ' and img_style=79',//str
 		nowindex:  starIndex,
 		url:ApiUrl
 	};
@@ -74,7 +75,15 @@ function getActivityList() {
 	 
 	}, 'json');
 }
-
+//添加上一个页面自定义事件监听
+            window.addEventListener('DIY_DATA', function(event) {               
+                str = event.detail.strwhere;
+                type= event.detail.type;
+               // alert(str);
+               starIndex=10;
+                getActivityList();
+            }); 
+            
 function ChangeDateFormat(jsondate) {
 	jsondate = jsondate.replace("/Date(", "").replace(")/", "");
 	if(jsondate.indexOf("+") > 0) {

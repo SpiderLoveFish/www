@@ -28,7 +28,7 @@ function getpullupRefresh() {
 				g.setAttribute('data-delay', hostimg);
 				c.innerHTML = e.ScoreName+e.ScoreDescribe;
 				h.innerHTML = '积分：'+e.NeedScore;
-				m.innerHTML = '剩余：'e.RemainSum;
+				m.innerHTML = '剩余：'+e.RemainSum;
 				h.appendChild(m);
 				d.appendChild(g);
 				f.appendChild(d);
@@ -54,12 +54,15 @@ function getActivityList() {
 		nowindex: starIndex,
 		url: ApiUrl
 	};
-	alert(JSON.stringify(data))
+	//alert(JSON.stringify(data))
 	common.postApi('GetLastListScoreShop', data, function(response) {
-					c = document.createDocumentFragment();
-					
+		if(starIndex==10)
+		list.innerHTML ='';
+					c = document.createDocumentFragment();					
 		dataArray = eval(response.data);
-		 alert(JSON.stringify(response))
+		 //alert(dataArray.length)
+		if(dataArray.length==0)
+		list.innerHTML ='';
 		for(var i = 0; i < dataArray.length; i++) {
 			var obj = dataArray[i];
 			//if (selecttype == "getActivityList_All") {
@@ -76,7 +79,14 @@ function getActivityList() {
 
 	}, 'json');
 }
-
+ //添加上一个页面自定义事件监听
+            window.addEventListener('DIY_DATA', function(event) {               
+                str = event.detail.strwhere;
+                //alert(str);
+               starIndex=10;
+                getActivityList();
+            }); 
+            
 function ChangeDateFormat(jsondate) {
 	jsondate = jsondate.replace("/Date(", "").replace(")/", "");
 	if(jsondate.indexOf("+") > 0) {
@@ -110,9 +120,7 @@ $(function() {
 
 })
 mui.plusReady(function() {
-var self = plus.webview.currentWebview();
-  str = self.strwhere;
-  	alert(str)
+
 	mui('#list').on('tap', 'a', function(e) {
 		var id = this.getAttribute('data-img');
 		//var webview = common.getTemplate('showjdal',"show.html?img="+id);

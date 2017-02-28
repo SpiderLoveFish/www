@@ -74,14 +74,14 @@ mui.plusReady(function() {
 			_closeMenuDepartment();
 			maskDepartment.close();
 			para= event.detail.id;
-			alert(para)
-			setTimeout(function() {
-			location.reload();
+			setTimeout(function() {	
+				var page= plus.webview.getWebviewById('jfsc_sub.html');
+				  mui.fire(page, 'DIY_DATA', {
+                            entrance: 'mapDetail',
+                            strwhere: para
+                        });
+			//mui.openWindow({url:'jfsc_sub.html',extras:{strwhere:para}});
 			}, 150);
-//			id = event.detail.id;
-//			CommstartIndex=0;
-//			strwhere=id	;
-//			FetPinglunList();
 		});
  
 });
