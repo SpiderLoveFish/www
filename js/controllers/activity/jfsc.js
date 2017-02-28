@@ -1,5 +1,6 @@
 var list = document.getElementById("list");
 var starIndex = 10;
+var str='';
 
 function getpullupRefresh() {
 	setTimeout(function() {
@@ -26,8 +27,8 @@ function getpullupRefresh() {
 				g.src = hostimg;//"images/loading.gif";
 				g.setAttribute('data-delay', hostimg);
 				c.innerHTML = e.ScoreName+e.ScoreDescribe;
-				h.innerHTML = e.NeedScore;
-				m.innerHTML = e.NeedScore;
+				h.innerHTML = '积分：'+e.NeedScore;
+				m.innerHTML = '剩余：'e.RemainSum;
 				h.appendChild(m);
 				d.appendChild(g);
 				f.appendChild(d);
@@ -49,15 +50,16 @@ function getActivityList() {
 	//		endIndex: endIndex,
 	//};
 	var data = {
-		strwhere: '',
+		strwhere: str,
 		nowindex: starIndex,
 		url: ApiUrl
 	};
+	alert(JSON.stringify(data))
 	common.postApi('GetLastListScoreShop', data, function(response) {
 					c = document.createDocumentFragment();
 					
 		dataArray = eval(response.data);
-		//alert(JSON.stringify(response))
+		 alert(JSON.stringify(response))
 		for(var i = 0; i < dataArray.length; i++) {
 			var obj = dataArray[i];
 			//if (selecttype == "getActivityList_All") {
@@ -108,7 +110,9 @@ $(function() {
 
 })
 mui.plusReady(function() {
-
+var self = plus.webview.currentWebview();
+  str = self.strwhere;
+  	alert(str)
 	mui('#list').on('tap', 'a', function(e) {
 		var id = this.getAttribute('data-img');
 		//var webview = common.getTemplate('showjdal',"show.html?img="+id);

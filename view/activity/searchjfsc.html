@@ -42,8 +42,8 @@
 							  <li class="activ_input_list flexbox">
 								<span class="activ_input_label8">积分区间</span>
 								<p class="activ_time flexItem">
-									<input id="pickStart" style="width: 45%;" type="text" placeholder="" value="00" />~
-									<input id="pickEnd" style="width: 45%;" type="text" placeholder="" value="00" />
+									<input id="pickStart" style="width: 40%;" type="text" placeholder="" value="00" />~
+									<input id="pickEnd" style="width: 40%;" type="text" placeholder="" value="00" />
 									 
 								</p>
 							</li>
@@ -85,7 +85,15 @@
 		});
 		
 				//提交
-		common.click("btnSubmit", function() {		
+		common.click("btnSubmit", function() {	
+			var p = common.numValiAlert(document.getElementById("pickStart").value, "请填写数字");
+		if (!p) {
+			return;
+		}	
+		var e = common.numValiAlert(document.getElementById("pickEnd").value, "请填写数字");
+		if (!e) {
+			return;
+		}
 			var spms=document.getElementById("spms");//地址
 			var spmc=document.getElementById("spmc");
 			 var startDate = document.getElementById("pickStart");

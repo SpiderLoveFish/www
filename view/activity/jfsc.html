@@ -27,6 +27,7 @@
 	<script type="text/javascript" src="../../js/controllers/common.js"></script>
 	
 	<script type="text/javascript">
+		var para='';
 		//启用双击监听
 		mui.init({
 			gestureConfig:{
@@ -38,7 +39,8 @@
 				styles:{
 					top: '45px',
 					bottom: '0px', 
-				}
+				} 
+				,extras:{strwhere:para}
 			}] 
 		});
 	
@@ -56,11 +58,14 @@ mui.plusReady(function() {
 	setTimeout(function() {
 			mui.preload({
 				id: departmentId,
-				url: 'search.html',
+				url: 'searchjfsc.html',
 				styles: {
 					right: "20%",
 					width: '80%',
 					zindex: 9997
+				},
+				extras:{
+					strwhere:para
 				}
 			});
 		}, 150);
@@ -68,7 +73,11 @@ mui.plusReady(function() {
 		window.addEventListener('hidedepartmentPage', function(event) {
 			_closeMenuDepartment();
 			maskDepartment.close();
-			plus.webview.currentWebview.reload();
+			para= event.detail.id;
+			alert(para)
+			setTimeout(function() {
+			location.reload();
+			}, 150);
 //			id = event.detail.id;
 //			CommstartIndex=0;
 //			strwhere=id	;
@@ -79,7 +88,7 @@ mui.plusReady(function() {
 
 var maskDepartment = mui.createMask(_closeMenuDepartment);
 	var departmentPage = null;
-	var departmentId = 'search.html';
+	var departmentId = 'searchjfsc.html';
 	mui('.mui-bar-nav').on("tap", '#icon-menu', function(e) {
 		//移除焦点,为了隐藏软键盘
 		//document.getElementById("search").blur();
