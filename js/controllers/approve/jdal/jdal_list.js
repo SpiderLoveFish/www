@@ -54,6 +54,8 @@ function getActivityList() {
 		c = document.createDocumentFragment();
 		dataArray = eval(response.data);
 		//alert(JSON.stringify(response))
+		 if(starIndex==10||dataArray.length)
+		list.innerHTML ='';
 		for (var i = 0; i < dataArray.length; i++) {
 			var obj = dataArray[i];			
 				c.appendChild(fillGoodsLI(obj))

@@ -55,13 +55,11 @@ function getActivityList() {
 		url: ApiUrl
 	};
 	//alert(JSON.stringify(data))
-	common.postApi('GetLastListScoreShop', data, function(response) {
-		if(starIndex==10)
-		list.innerHTML ='';
-					c = document.createDocumentFragment();					
+	common.postApi('GetLastListScoreShop', data, function(response) {	
+		c = document.createDocumentFragment();					
 		dataArray = eval(response.data);
 		 //alert(dataArray.length)
-		if(dataArray.length==0)
+		 if(starIndex==10||dataArray.length)
 		list.innerHTML ='';
 		for(var i = 0; i < dataArray.length; i++) {
 			var obj = dataArray[i];
