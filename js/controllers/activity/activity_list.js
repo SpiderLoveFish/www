@@ -118,7 +118,7 @@ function getActivityList() {
 		nowindex:  starIndex,
 		type:selecttype
 	};
-	//alert(JSON.stringify(data))
+     //alert(JSON.stringify(data))
 	common.postApi('GetScoreList', data, function(response) {
 		if(starIndex<=10)
 		list.innerHTML="";

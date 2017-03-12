@@ -2,8 +2,8 @@ mui.init();
 mui.plusReady(function() {
 	
 	
-	//设计师
-	combGetCustomerType('ywy',document.getElementById('ywyType'));
+	//业务员
+	combGetCustomerType('addry',document.getElementById('ywyType'));
 		//客户类型（默认）
 	combGetCustomerType('url',document.getElementById('khlxType'));
 	//楼盘
