@@ -46,14 +46,15 @@ function getActivityList() {
 	//var html = '<a id="@id" data-img=@IsHostPic class="sc_cell sc_padding mui-table-view-cell">' + '<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' + '<div class="sc_cell_bd sc_cell_primary">' + '<p>@Title</p>' + '<p class="label_describe_2">@Description</p>' + '<span class="sc_comment">@ReleaseDateTime</span>' + '</div>' + '<div class="sc_cell_data">@flag</div></a>';
 	var html='<li><a><i><em><img><p></p></img></em></i></a></li>';
 		var data = {
-		strwhere: ' and img_style=79',//str
+		strwhere: str,//str
+		type:type,
 		nowindex:  starIndex,
 		url:ApiUrl
 	};
 	common.postApi('GetLastListClassicCase', data, function(response) {
 		c = document.createDocumentFragment();
 		dataArray = eval(response.data);
-		//alert(JSON.stringify(response))
+		//alert(JSON.stringify(data))
 		 if(starIndex==10||dataArray.length)
 		list.innerHTML ='';
 		for (var i = 0; i < dataArray.length; i++) {
@@ -85,7 +86,9 @@ function getActivityList() {
                starIndex=10;
                 getActivityList();
             }); 
-            
+   
+  
+   
 function ChangeDateFormat(jsondate) {
 	jsondate = jsondate.replace("/Date(", "").replace(")/", "");
 	if(jsondate.indexOf("+") > 0) {
@@ -125,12 +128,12 @@ mui('#list').on('tap', 'a', function(e) {
 		var id = this.getAttribute('data-img');
 	//var webview = common.getTemplate('showjdal',"show.html?img="+id);
 	mui.openWindow({
-								url: 'show.html',
-								id: 'showjdal',
-								extras: {
-									ID: id
-								}
-							});
+			url: 'show.html',
+			id: 'showjdal',
+			extras: {
+				ID: id
+			}
+		});
 	});
 	
 	if (plus.os.name != "Android") {

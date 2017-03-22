@@ -71,6 +71,7 @@ mui.plusReady(function() {
 			_closeMenuDepartment();
 			maskDepartment.close();
 			para= event.detail.id;
+			//alert(para)
 			setTimeout(function() {	
 				var page= plus.webview.getWebviewById('pullrefresh_sub.html');
 				  mui.fire(page, 'DIY_DATA', {
