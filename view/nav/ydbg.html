@@ -55,6 +55,11 @@
 								<p>经典案例</p>
 							</div>
 						</a> 
+						 <a>
+							<div id="jpgj" class="approve_list workstand_list8">
+								<p>金牌管家</p>
+							</div>
+						</a> 
 						<a>
 							<div id="more" class="approve_list approve_list7">
 								<p class="approve_addmore">添加更多</p>
@@ -112,6 +117,15 @@
 			common.Verifauthority(r_jdal, function(result) { //经典案例
 				common.loadUrl('../approve/approve_nav_jdal.html');
 					});
+			});
+			document.getElementById("jpgj").addEventListener('tap', function() {
+				//if(getUserInfo().Level=="1")
+				
+				 common.Verifauthority(r_jpgj, function(result) { //金牌管家
+				 	if(result)
+					common.loadUrl('../approve/jpgj/jpgj.html');
+					});
+				// common.toast('此功能待完善！');
 			});
 			document.getElementById("more").addEventListener('tap', function() {
 				common.toast('更多功能请联系服务提供商');

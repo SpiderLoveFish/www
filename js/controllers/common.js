@@ -22,6 +22,7 @@ var r_send_cor_news = 4;//发送新闻
 var r_view_gj = 11;//跟进详细
 var r_jdal = 12;//经典案例
 var r_add_custmoer = 13;//增加客户
+var r_jpgj = 14;//金牌管家
 //--结束权限全局变量
 
 (function(mui, common) {
