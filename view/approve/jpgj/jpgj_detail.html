@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<title>快捷键</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.css" />
+			<link href="../../../css/mui.indexedlist.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../../css/style_sc.css" />
+		<link rel="stylesheet" href="../../../css/reset.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">选择明细</h1>
+		</header>
+			<div class="mui-content address_list"> 
+			<div id='list' class="mui-indexed-list">   
+				<div class="mui-indexed-list-search mui-input-row mui-search">
+					<input id="search" type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索:明细名称">
+				</div>
+				<div id="headerList" class="mui-indexed-list-bar">
+				</div>
+				<div class="mui-indexed-list-alert"></div>
+				<div class="mui-indexed-list-inner  shortcuts_lists">
+					<div class="mui-indexed-list-empty-alert">没有数据</div>
+					<ul id="UserList" class="mui-table-view">
+
+					</ul>
+				</div>
+			</div>
+		</div>
+	 </body>
+	<script type="text/javascript" src="../../../js/mui/mui.min.js"></script>
+	<script type="text/javascript" src="../../../js/mui/mui.indexedlist.js"></script>
+		<script type="text/javascript" src="../../../js/controllers/common.js"></script>
+<script>
+		mui.init();
+		var id='';
+		function getdata() {
+			var data = {
+		type:'mx',
+		strwhere:' where  params_id='+id+' '
+			};
+			//alert(JSON.stringify(data))
+			var header = document.querySelector('header.mui-bar');
+			var list = document.getElementById('list');
+			var UserList = document.getElementById("UserList");
+			// var temBody = '<li data-tags="@Header" class="mui-table-view-cell mui-indexed-list-item addlist_stafflist"><div data-value="@id" class="divClick"><img src="@titleimg"><div class="addlist_staffname"><div class="addlist_name">@UserName</div><span class="addlist_post">@DepartmentName</span></div></div><div class="addlist_makecall" data-mobile="@Mobilecall"></div><div class="addlist_makemass"  data-mobile="@Mobilemsg"></div></li>';
+								var temp= ' <li  data-tags="@Header" class="mui-table-view-cell mui-indexed-list-item" > '+
+	' <img src=@avatar width="30px" /> '+
+					' <input type="hidden" value=@ApiUrl imgUrl=@UploadImageUrl name=@logo title=@code /> '+
+					' <span>@AppName</span>'+					
+				' </li>';
+				common.postglobalUrlApi('GetJPGL', data, function(response) {
+				dataArray = eval(response.data);
+				//alert(dataArray.length)
+				for(var i = 0; i < dataArray.length; i++) {
+					var obj = dataArray[i];
+					var img=obj.Avatar;
+				//	alert(img)
+					if(img=='null'||img==''||img==null)
+					img="../../../images/ScApp/icon/pull.png";
+					var modelname=substringAddPoint(obj.title,20);
+					UserList.innerHTML += temp.replace('@Header', modelname).replace('@AppName', modelname).replace('@ApiUrl', obj.ApiUrl).replace('@avatar',img).replace('@UploadImageUrl', obj.UploadImageUrl).replace('@logo', obj.Logo).replace('@code', obj.id);
+				}
+			list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
+			window.indexedList = new mui.IndexedList(list);
+			mui("#list").indexedList();
+			}, 'json');
+		}
+	 
+		mui('.mui-content').on("tap", 'li', function() {
+			 
+			var	 code=	this.querySelector('input').title;
+			var name = this.querySelector('span').innerText;
+			var openUrl = this.querySelector('input').value;
+			var imgUrl = this.querySelector('input').getAttribute("imgUrl");
+			var logo = this.querySelector('input').name;
+		common.jump('sendsms.html','jpgjdetail',{code:code})
+	
+//			var btnArray = ['确定', '取消'];
+//		mui.prompt('请输入你的Code代码：', 'code!', '输入密码', btnArray, function(e) {
+//			if (e.index == 0 && code == e.value) {
+//			//跳转页面
+//			
+//		 
+//			 
+//			}
+//		 
+//		});
+		
+		});
+		
+	 
+		
+		mui.plusReady(function() {
+			var sData = plus.webview.currentWebview();
+             id= sData.dataid;              
+		 
+				getdata();
+
+				});
+				
+</script>
+</html>

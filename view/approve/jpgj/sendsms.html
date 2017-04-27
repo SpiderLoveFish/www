@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<!--标准mui.css-->
+	<link rel="stylesheet" type="text/css" href="../../../css/mui.css" />
+			<link href="../../../css/mui.indexedlist.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../../css/style_sc.css" />
+		<link rel="stylesheet" href="../../../css/reset.css" />
+	</head>
+
+	<body>
+	<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">选择明细</h1>
+		</header>
+	<div class="mui-content container">
+			<div class="news_container">
+				<div class="news_container_1 bs approve_general">
+					<div class="activ_input_edit">
+						<ul>
+								<li class="activ_input_list flexbox">
+								<span class="activ_input_label7">样式</span>
+								 
+							</li>
+							 	
+								<div class="leave_reason">
+								<textarea id="modelname" readonly="readonly" rows="" " placeholder="请输入备注说明"></textarea>
+							 
+							</div>
+							 
+							 
+							<li class="activ_input_list flexbox">
+								<span class="activ_input_label7">参数1</span>
+								<p class="flexItem text_right leave_num">
+									<input id="p1" type="text" placeholder="" value="" />
+								</p>
+							</li>
+							<li class="activ_input_list flexbox">
+								<span class="activ_input_label7">参数2</span>
+								<p class="flexItem text_right leave_num">
+									<input id="p2" type="text" placeholder="" value="" />
+								</p>
+							</li>
+							<li class="activ_input_list flexbox">
+								<span class="activ_input_label7">参数3</span>
+								<p class="flexItem text_right leave_num">
+									<input id="p3" type="text" placeholder="" value="" />
+								</p>
+							</li>
+							<li class="activ_input_list flexbox">
+								<span class="activ_input_label7">参数4</span>
+								<p class="flexItem text_right leave_num">
+									<input id="p4" type="text" placeholder="" value="" />
+								</p>
+							</li>
+							<li class="activ_input_list flexbox">
+								<span class="activ_input_label7">参数5</span>
+								<p class="flexItem text_right leave_num">
+									<input id="p5" type="text" placeholder="" value="" />
+								</p>
+							</li>
+							<li class="activ_input_list flexbox">
+								<span class="activ_input_label7">参数6</span>
+								<p class="flexItem text_right leave_num">
+									<input id="p6" type="text" placeholder="" value="" />
+								</p>
+							</li>
+							  
+							 <li class="activ_input_list flexbox">
+								<span class="activ_input_label7">电话号码</span>
+								<p class="flexItem text_right leave_num">
+									<input id="tel" type="text" placeholder="" value="" />
+								</p>
+							</li>
+						  
+								 
+							  
+							<li class="activ_input_list flexbox">
+								<span class="activ_input_label7">内容</span>
+							 
+							</li>
+							 
+								<div class="leave_reason">
+								<textarea id="sendsms" readonly="readonly" rows="" placeholder="请输入备注说明"></textarea>
+							 
+							</div>
+							 
+						 
+						</ul>
+					</div>
+				 
+					<div id="btnSubmit" class="btn_woapply">发送短信</div>
+					<div id="btnRest" class="btn_woapply">分享</div>
+			 
+				</div>
+			</div>
+		</div>
+			</body>
+	<script type="text/javascript" src="../../../js/mui/mui.min.js"></script>
+	<script type="text/javascript" src="../../../js/controllers/common.js"></script>
+	<script>
+		mui.init();
+		var sms='';
+		function getdata() {
+			
+			var sData = plus.webview.currentWebview();
+          var   id= sData.code;
+			var data = {
+				type:'mx',
+				strwhere:' where  a.id='+id+' '
+			};
+				
+ 		common.postglobalUrlApi('GetJPGL', data, function(response) {
+				dataArray = eval(response.data);
+			//alert(JSON.stringify(dataArray))
+				for(var i = 0; i < dataArray.length; i++) {
+					var obj = dataArray[i];
+					var p1=document.getElementById("p1");
+					var p2=document.getElementById("p2");
+					var p3=document.getElementById("p3");
+					var p4=document.getElementById("p4");
+					var p5=document.getElementById("p5");
+					var p6=document.getElementById("p6");
+					var modelname=document.getElementById("modelname");
+					var sendsms=document.getElementById("sendsms");
+					p1.value=obj.para1;p2.value=obj.para2;p3.value=obj.para3;p4.value=obj.para4;p5.value=obj.para5;p6.value=obj.para6;
+				 modelname.innerHTML	=obj.modelname; sendsms.value=obj.modelname;
+				  sms=sendsms.value;
+				}
+					}, 'json');
+			};
+			
+		mui.plusReady(function() {
+				getdata();
+		 
+		common.click("btnRest", function()
+		{		
+		 
+		});
+		
+		document.getElementById("p1").addEventListener('input',function(){
+				var sendsms=document.getElementById("sendsms");
+				
+				sendsms.value=sms.replace('@p1',this.value);
+				});
+				document.getElementById("p2").addEventListener('input',function(){
+				var sendsms=document.getElementById("sendsms");
+				
+				sendsms.value=sms.replace('@p2',this.value);
+				});
+				document.getElementById("p3").addEventListener('input',function(){
+				var sendsms=document.getElementById("sendsms");
+				
+				sendsms.value=sms.replace('@p3',this.value);
+				});
+				document.getElementById("p4").addEventListener('input',function(){
+				var sendsms=document.getElementById("sendsms");
+				
+				sendsms.value=sms.replace('@p4',this.value);
+				});
+				document.getElementById("p5").addEventListener('input',function(){
+				var sendsms=document.getElementById("sendsms");
+				
+				sendsms.value=sms.replace('@p5',this.value);
+				});
+				document.getElementById("p6").addEventListener('input',function(){
+				var sendsms=document.getElementById("sendsms");
+				
+				sendsms.value=sms.replace('@p6',this.value);
+				});
+				 
+				//提交
+		common.click("btnSubmit", function() {	
+				var sendsms=document.getElementById("sendsms");
+				var phoneBox=document.getElementById("tel");
+				var p1=document.getElementById("p1");
+					var p2=document.getElementById("p2");
+					var p3=document.getElementById("p3");
+					var p4=document.getElementById("p4");
+					var p5=document.getElementById("p5");
+					var p6=document.getElementById("p5");
+				sendsms.value=sendsms.value.replace('@p1',p1.value).replace('@p2',p2.value).replace('@p3',p3.value).replace('@p4',p4.value).replace('@p5',p5.value).replace('@p6',p6.value);
+				var regex = /^1[3|4|5|8][0-9]\d{4,8}$/;
+					if (!(regex.test(phoneBox.value))) {
+						common.alert('手机号格式不正确');
+						return;
+					}
+			 var p= {'name':'山山erp','hdnr':sendsms.value};
+						var data = {
+						tel: phoneBox.value,
+						type: 4,
+						para: JSON.stringify(p)
+					};
+                 // alert(JSON.stringify(data))
+                 postajax(data,'Send_aliyunSendSMS','发送成功！！',2)
+		});
+		       			
+		});
+	
+	
+	</script>
+
+</html>

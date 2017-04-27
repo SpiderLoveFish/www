@@ -11,16 +11,16 @@ var html_No = '<a href="javascript:;" class="sc_cell sc_padding  mui-table-view-
 	'			<span class="sc_comment">@ReleaseTime</span>' +
 	'		</div>' +
 	'	</a>';
-var html_CanYu = '<a href="javascript:;"  class="sc_cell sc_padding mui-table-view-cell" id="@ID">' +
-	'		<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' +
+var html_CanYu = '<a href="javascript:;"  class="sc_cell sc_padding mui-table-view-cell" id="@ID" name="@name">' +
+//	'		<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' +
 	'		<div class="sc_cell_bd sc_cell_primary">' +
 	'			<p>@STheme</p>' +
-	'			<p class="label_describe_2"> @sr</p>' +//@SContext
-	'			<span class="sc_comment">@ReleaseTime</span>' +
+//	'			<p class="label_describe_2"> @sr</p>' +//@SContext
+//	'			<span class="sc_comment">@ReleaseTime</span>' +
 	'		</div>' +
-	'		<div class="sc_cell_data">' +
-	'			<p style="color:red">@ts</p>' +
-	'		</div>' +
+//	'		<div class="sc_cell_data">' +
+//	'			<p style="color:red">@ts</p>' +
+//	'		</div>' +
 	'	</a>';
 $(function() {
 	$('.news_title>ul>li').each(function(i, n) {
@@ -66,28 +66,19 @@ function getpullupRefresh() {
 
 function getquestionnairelist() {
 	var data = {
-		strWhere:'',
-		lx:'yg'
+		type:'lx',
+		strwhere:''
 	};
  
    
-	common.postApi('GetUserBirthday', data, function(response) {
+	common.postApi('GetJPGL', data, function(response) {
 		dataArray = eval(response.data);
+		//alert(JSON.stringify(dataArray))
 		for (var i = 0; i < dataArray.length; i++) {
 			var obj = dataArray[i];
 			
-			var bsr=obj.rqlx+':'+obj.birthday+' '+obj.age+'岁';
-		 var myDate = new Date();
-//		  var aP = document.getElementsByClassName('label_describe_2');
-//		  aP.style.color = 'red';
-			var bts='剩余：'+obj.ts+'天';
-			if(obj.ts=='0')bts='生日快乐'
-			var	 Avatar= '../../images/ScApp/general/headimg/headimg_01.png';
-			if(obj.Avatar!='')
-			 	 Avatar= ApiUrl+'images/upload/portrait/'+obj.Avatar;
-			//daysBetween(bsr,myDate.getFullYear()+'-'+myDate.getMonth()+'-'+myDate.getDate());
-		//	if (obj.Flag == '3') {//.replace('@SContext', (obj.DepartmentName))
-				list.innerHTML += html_CanYu.replace('@IsHostPic', Avatar).replace('@ID', obj.UserId).replace('@STheme', obj.UserName).replace('@ReleaseTime', obj.nearbir).replace('@ts', bts).replace('@sr',bsr);
+		
+				list.innerHTML += html_CanYu.replace('@name', obj.params_name).replace('@ID', obj.params_id).replace('@STheme', obj.params_name).replace('@ReleaseTime', '').replace('@ts', '').replace('@sr','');
 //			} else {
 //				list.innerHTML += html_No.replace('@IsHostPic', obj.IsHostPic).replace('@ID', obj.ID).replace('@STheme', obj.STheme).replace('@SContext', substringAddPoint(obj.SContext, 15)).replace('@ReleaseTime', obj.ReleaseTime.substring(0, 10));
 //			}
@@ -103,10 +94,11 @@ function getquestionnairelist() {
 var detailPage = null;
 mui.plusReady(function() {
 	mui('#list').on('tap', '.sc_cell', function(e) {
-//		var id = this.getAttribute('id');
-//		var webview = common.getTemplate('page1');
-//		webview.loadURL('questionnairedetail.html?id=' + id);
-mui.alert('无明细')
+		var id = this.getAttribute('id');
+		var dataname = this.getAttribute('name');
+	common.jump('jpgj_detail.html?','jpgj',{dataid:id,dataname:dataname})
+	//var template = common.getTemplate('jpgj', 'jpgj_detail.html?id=' + id+'&name='+id);
+
 	});
 	if (plus.os.name != "Android") {
 		var pullrefresh = document.getElementById("pullrefresh");
