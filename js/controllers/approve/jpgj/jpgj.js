@@ -69,8 +69,7 @@ function getquestionnairelist() {
 		type:'lx',
 		strwhere:''
 	};
- 
-   
+ 	//alert(JSON.stringify(data))    
 	common.postApi('GetJPGL', data, function(response) {
 		dataArray = eval(response.data);
 		//alert(JSON.stringify(dataArray))
