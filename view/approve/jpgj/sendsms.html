@@ -194,12 +194,30 @@
 						type: 4,
 						para: JSON.stringify(p)
 					};
-                 // alert(JSON.stringify(data))
+                  //alert(JSON.stringify(data))
                  postajax(data,'Send_aliyunSendSMS','发送成功！！',2)
 		});
 		       			
 		});
-	
+			
+				function postajax(data,postapi,toasttip,type)
+				{				
+				 
+					 
+					common.postglobalUrlApi(postapi, data, function(response) {
+						//alert(JSON.stringify(response))
+						if (response.data == "200") {
+							common.toast(toasttip);
+						 
+							
+						} else {
+							common.toast("服务器异常，请稍候重试..");
+						}
+					 
+					}, 'json');
+				}
+			
+		
 	
 	</script>
 
