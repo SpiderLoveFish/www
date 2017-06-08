@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../../css/list.css" />
+		<link rel="stylesheet" href="../../../css/style_sc.css" />
+		<link rel="stylesheet" href="../../../css/reset.css" />
+		<title>我的</title>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的</h1>
+		</header>
+		<div class="mui-content container">
+			<div class="mine_container">
+
+				<div class="mine_container_body mine_i">
+					<ul id='list'>
+						<!--<li class="mine_list_right">
+							<i class="mine_list_1">我的收藏</i>
+						</li>-->
+						<!--<li id="usergroup" class="mine_list_right">
+							<i class="mine_list_2">常用群组</i>
+						</li>
+						<li id="shortcuts" class="mine_list_right">
+							<i class="mine_list_3">快捷键</i>
+						</li>-->
+						<!--<li id="feedback" class="mine_list_right">
+							<i class="mine_list_4">提交反馈</i>
+						</li>-->
+						<!--<li id="changeStyle" class="mine_list_right">
+							<i class="mine_list_13">更换app风格</i>
+						</li>-->
+						<!--<li id="updateVers" class="mine_list_right">
+							<i class="mine_list_4">检查更新</i>
+						</li>-->
+					</ul>
+				</div>
+		
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../../js/mui/mui.min.js"></script>
+	<script type="text/javascript" src="../../../js/controllers/common.js"></script>
+	<script type="text/javascript" src="../../../js/controllers/app.js"></script>
+	<script>
+		mui.init();
+		var list = document.getElementById("list");
+      var temp= ' <li id="feedback" class="mui-table-view-cell">'+	
+						'	<i >@name:</i>'+	
+						'	<p class="mui-ellipsis" ">账号： @acc 密码：@pwd</p>'+	
+					'	</li>'+					
+				' </li>';
+
+		function getuser() {
+			var userid = getUserInfo().ID;
+			var data = { 
+				ID: userid
+			}; 
+			 //console.log(JSON.stringify(getUserInfo()))
+			 
+			common.postApi('GetAccountList', data, function(response) {
+				dataArray = eval(response.data);
+				console.log(JSON.stringify(dataArray))
+				list.innerHTML="";
+				for(var i = 0; i < dataArray.length; i++) {
+					var obj = dataArray[i];
+					var itemhtml = temp.replace('@name', obj.accountType).replace('@acc',obj.account).replace('@pwd',obj.pwd)
+					list.innerHTML += itemhtml;
+					
+				}
+			}, 'json'); 
+		}
+		mui.plusReady(function() {
+			getuser();
+			 
+		});
+	</script>
+
+</html>

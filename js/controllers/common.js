@@ -23,6 +23,7 @@ var r_view_gj = 11;//跟进详细
 var r_jdal = 12;//经典案例
 var r_add_custmoer = 13;//增加客户
 var r_jpgj = 14;//金牌管家
+var r_finance = 15;//财务管理
 //--结束权限全局变量
 
 (function(mui, common) {
@@ -570,6 +571,7 @@ var r_jpgj = 14;//金牌管家
 	 * @example common.textValiAlert('张三','请填写姓名')
 	 */
 	substringAddPoint = function(text, length) {
+		if(text==null) return "";
 		if(text.length > length) {
 			return text.substring(0, length) + "..";
 		} else {

@@ -249,6 +249,6 @@ mui.plusReady(function() {
 	});
 	//返回
 	common.backOfHideCurrentWebview(function() {
-		common.initMessage();
+		//common.initMessage();
 	});
 });

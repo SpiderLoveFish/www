@@ -28,6 +28,18 @@ mui.plusReady(function() {
 		strwhere:'' ,
 		pid:id
 	};
+	
+	function getServerUrls(setName) {
+					//获取快捷键
+					var shortcuts = JSON.parse(localStorage.getItem(setName) || "[]");
+					return shortcuts;
+				}
+		common.click('btnshare', function() {
+			console.log(common.getQueryString("id"))
+					var url=getServerUrls('$ServerUrls').ApiUrl+'view/product_view.aspx?id='+common.getQueryString("id");
+					shareHref('产品详情',url ,'产品详情','产品详情','')
+		});
+	
 	common.postApi('GetProductDetail', data, function(response) {
 		dataArray = eval(response.data);
 		for (var i = 0; i < dataArray.length; i++) {

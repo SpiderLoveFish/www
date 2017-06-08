@@ -35,10 +35,13 @@ function deleteComment(id) {
 	});
 
 }
+	 
 //$("#cancel").hide();
 //$("#gameOver").hide();
 mui.plusReady(function() {
+	
 
+	 
 	mui.back = function() {
 		var fatherView = plus.webview.currentWebview().opener(); //父页面
 		mui.fire(fatherView, 'refresh1', {});
@@ -228,6 +231,7 @@ mui.plusReady(function() {
 		}
 		signUp(status);
 	});
+	 
 	mui(".active_apply_btn").on("tap", '.btn_cnacelpub', function() {
 		var btnArray = ['是', '否'];
 		mui.confirm('是否结束活动？', '活动报名', btnArray, function(e) {
@@ -276,6 +280,8 @@ mui.plusReady(function() {
 
 	//alert("总数:"+count);
 	//	});
+	
+	//onclick="shareShow('预算明细','http://www.baidu.com','预算明细','预算明细','')"
 	//***************************************************评论*****************************************************
 	common.click("fabiao", function() {
 		document.getElementById("CommentText").blur();

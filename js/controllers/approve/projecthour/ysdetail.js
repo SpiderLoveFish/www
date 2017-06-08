@@ -35,11 +35,20 @@ mui.plusReady(function() {
 		
 		//业务数据
 		// alert(obj[0].ComponentName)
+		console.log(JSON.stringify(obj[0]))
 		//$('#project').text(obj[0].ComponentName);
-		$('#Workzje').text(obj[0].DiscountAmount.toFixed(2));
-		$('#Workjjje').text(obj[0].JJAmount.toFixed(2));
-		$('#Workzcje').text(obj[0].ZCAmount.toFixed(2));
-		$('#Workfjje').text(obj[0].FJAmount.toFixed(2));
+		var DiscountAmount=0;
+		if(obj[0].DiscountAmount==null)DiscountAmount=0;
+		$('#Workzje').text(DiscountAmount.toFixed(2));
+		var JJAmount=0;
+		if(obj[0].JJAmount==null)JJAmount=0;
+		$('#Workjjje').text(JJAmount.toFixed(2));
+		var ZCAmount=0;
+		if(obj[0].ZCAmount==null)ZCAmount=0;
+		$('#Workzcje').text(ZCAmount.toFixed(2));
+		var FJAmount=0;
+		if(obj[0].FJAmount==null)FJAmount=0;
+		$('#Workfjje').text(FJAmount.toFixed(2));
 
 		var data = s.detaildata;
 		// alert(JSON.stringify(data))

@@ -97,7 +97,7 @@
 		"Messaging": {
 			"description": "Messaging"
 		},
-		"Push": {}
+		"Push": {},"Share":{},"OAuth":{}
 	},
 	"plus": {
 		"distribute": {
@@ -165,7 +165,7 @@
 					"xxhdpi": "/Users/spider/Downloads/xczsapp/安卓/1008-1882.png"
 				}
 			},
-			"plugins": {
+			"plugins": {"share":{"weixin":{"appid":"wx7c8498c2cbea0738","appsecret":"56a98a8ef7203f7404949084b41577f0","description":"可选，微信分享"}},"oauth":{"weixin":{"appid":"wx7c8498c2cbea0738","appsecret":"56a98a8ef7203f7404949084b41577f0"}},
 				"push": {
 					"igexin": {
 						"appid": "hkcz6ujRg38Wgf1wBja1x2",

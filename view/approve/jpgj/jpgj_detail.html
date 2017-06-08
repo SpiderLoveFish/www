@@ -54,9 +54,9 @@
 					' <input type="hidden" value=@ApiUrl imgUrl=@UploadImageUrl name=@logo title=@code /> '+
 					' <span>@AppName</span>'+					
 				' </li>';
-				common.postglobalUrlApi('GetJPGL', data, function(response) {
+				common.postApi('GetJPGL', data, function(response) {
 				dataArray = eval(response.data);
-				//alert(dataArray.length)
+				//alert(JSON.stringify(dataArray))
 				for(var i = 0; i < dataArray.length; i++) {
 					var obj = dataArray[i];
 					var img=obj.Avatar;

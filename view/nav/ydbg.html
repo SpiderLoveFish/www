@@ -60,6 +60,11 @@
 								<p>金牌管家</p>
 							</div>
 						</a> 
+						 <a>
+							<div id="finance" class="approve_list workstand_list6">
+								<p>财务管理</p>
+							</div>
+						</a> 
 						<a>
 							<div id="more" class="approve_list approve_list7">
 								<p class="approve_addmore">添加更多</p>
@@ -124,6 +129,15 @@
 				 common.Verifauthority(r_jpgj, function(result) { //金牌管家
 				 	if(result)
 					common.loadUrl('../approve/jpgj/jpgj.html');
+					});
+				// common.toast('此功能待完善！');
+			});
+			document.getElementById("finance").addEventListener('tap', function() {
+				//if(getUserInfo().Level=="1")
+				
+				 common.Verifauthority(r_finance, function(result) { //财务管理
+				 	if(result)
+					common.loadUrl('../approve/finance_nav.html');
 					});
 				// common.toast('此功能待完善！');
 			});

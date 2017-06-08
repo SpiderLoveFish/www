@@ -96,10 +96,7 @@ document.getElementById('search').addEventListener('input', function() {
 	starIndex=10;
 	getquestionnairelist();
 	}, false);
-search.addEventListener('tap','mui-input-clear', function() {
-	alert(1)
-	}, false);
-	
+
 function getquestionnairelist() {
 	var data = {
 		strWhere: search.value,
@@ -144,7 +141,7 @@ mui.plusReady(function() {
 		var id = this.getAttribute('id');
 		var	type = common.getQueryString("selecttype");	
 		//var webview = common.getTemplate('page1');
-			var template = common.getTemplate('page2', 'ysdetail.html?id=' + id+'&selecttype='+type);
+			var template = common.getTemplate('yslist', 'ysdetail.html?id=' + id+'&selecttype='+type);
 //		webview.loadURL('ysdetail.html?id=' + id+'&selecttype='+type);
 	});
 	if(plus.os.name != "Android") {

@@ -156,7 +156,12 @@ function getuser() {
 		}
 		common.closeWaiting();
 	}, 'json');
+	document.getElementById("lizh").addEventListener('tap', function() {
+		
+		var id = getUserInfo().ID;
+		common.loadUrl('useraccount.html');
 	
+	});
 	
 	var detailPage = null;
 	document.getElementById("lijf").addEventListener('tap', function() {
