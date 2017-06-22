@@ -24,9 +24,8 @@ function  getlist(type,strwhere)
 		var cn = "";
 		var sum = 0;
 		// $.each(objs, function (i, data) {
-		for(var i = 0; i < data.length; i++) {
-			 
-			
+			$('#list tbody').html("");
+		for(var i = 0; i < data.length; i++) {		
 			if(data[i]['community'] == '合计') {
 //				item = "<tr><td  align='left' colspan='5' ><font size='2' ><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(合计：" + data[i]['BwSubTotal'] + ")</b></font></td></tr>" +
 //					"<tr><td ><a  class='sc' id='" + data[i]['xmid'] + "'>" + data[i]['brand'] + "</a></td>"
@@ -37,13 +36,13 @@ function  getlist(type,strwhere)
 //					+
 //					" </tr>";
 			} else {
-				item = "<tr><td><a class='sc' id='" + data[i]['community'] + "'>" + data[i]['community'] + "</a></td>"
-				                        +"<td align='left'>" + data[i]['ys'] + "</td>"+
+				item = "<tr><td><a class='sc' id='" + data[i]['Community_id'] + "'>" + data[i]['community'] + "</a></td>"
+				                        +"<td align='left'>" + data[i]['sl'] + "</td>"+
 					"<td align='left'>" + data[i]['ys'] + "</td><td align='left'>" +  data[i]['dj']+ "</td> " +
 					" <td align='left'>" + data[i]['zxk'] + "</td><td align='left'>" + data[i]['wsk'] + "</td> " 					 
 					" </tr>";
 			}
-			$('.table1').append(item);
+			$('.table1 tbody').append(item);
 			// alert(item)
 			//cn = data[i]['ComponentName'];
 		}

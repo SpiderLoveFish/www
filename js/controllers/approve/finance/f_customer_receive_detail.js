@@ -50,10 +50,10 @@ mui.plusReady(function() {
 //					+
 //					" </tr>";
 			} else {
-				item = "<tr><td><a class='sc' id='" + data[i]['community'] + "'>" + data[i]['community'] + "</a></td>"
+				item = "<tr><td><a class='sc' id='" + data[i]['customer_id'] + "'>" + data[i]['customer'] + "</a></td>"
 					//                         +"<td align='right'>" + data[i]['zc_price'] + "</td><td align='right'>" + data[i]['fc_price'] + "</td><td align='right'>" + data[i]['rg_price']  + "</td>"
 					+
-					"<td align='left'>" + data[i]['ys'] + "</td><td align='left'>" +  data[i]['dj']+ "</td> " +
+					"<td align='left'>" + data[i]['tel'] + "</td><td align='left'>" + data[i]['ys'] + "</td><td align='left'>" +  data[i]['dj']+ "</td> " +
 					" <td align='left'>" + data[i]['zxk'] + "</td><td align='left'>" + data[i]['wsk'] + "</td> " 					 
 					" </tr>";
 			}
@@ -70,7 +70,7 @@ mui.plusReady(function() {
 	var detailPage = null;
 	mui('#list').on('tap', '.sc', function(e) {
 		//移除焦点,为了隐藏软键盘		 
-		var id = common.getQueryString("id");
+		var id = this.getAttribute('id');
 			var template = common.getTemplate('f_customer_detail2', 'f_customer_detail.html?id=' + id);
 //		if(!detailPage) {
 //			detailPage.setStyle({

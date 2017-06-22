@@ -51,7 +51,7 @@ mui.plusReady(function() {
 //					" </tr>";
 			} else {
 				item ="<tr><td>" + data[i]['Customer'] + "</td>"
-				                        +"<td align='left'>" + data[i]['ys'] + "</td>"+
+				                        +"<td align='left'>" + data[i]['tel'] + "</td>"+
 					"<td align='left'>" + data[i]['ys'] + "</td><td align='left'>" +  data[i]['dj']+ "</td> " +
 					" <td align='left'>" + data[i]['zxk'] + "</td><td align='left'>" + data[i]['lb'] + "</td> " 					 
 					" </tr>";

@@ -14,7 +14,7 @@ function getlist(type,strwhere)
 		type:type,
 		strwhere:strwhere
 	};
-	//console.log(JSON.stringify(jsn))
+	console.log(JSON.stringify(jsn))
 	common.postApi('GetFinance', jsn, function(response) {
 		var data = eval(response.data);
 	 
@@ -25,6 +25,7 @@ function getlist(type,strwhere)
 		var cn = "";
 		var sum = 0;
 		// $.each(objs, function (i, data) {
+			$('#list tbody').html("");
 		for(var i = 0; i < data.length; i++) {
 			 
 			
@@ -38,14 +39,14 @@ function getlist(type,strwhere)
 //					+
 //					" </tr>";
 			} else {
-				item = "<tr><td><a class='sc' id='" + data[i]['ys'] + "'>" + data[i]['community'] + "</a></td>"
+				item = "<tr><td><a class='sc' id='" + data[i]['Community_id'] + "'>" + data[i]['community'] + "</a></td>"
 					//                         +"<td align='right'>" + data[i]['zc_price'] + "</td><td align='right'>" + data[i]['fc_price'] + "</td><td align='right'>" + data[i]['rg_price']  + "</td>"
 					+
-					"<td align='left'>" + data[i]['ys'] + "</td><td align='left'>" +  data[i]['dj']+ "</td> " +
+					"<td align='left'>" + data[i]['sl'] + "</td><td align='left'>" + data[i]['ys'] + "</td><td align='left'>" +  data[i]['dj']+ "</td> " +
 					" <td align='left'>" + data[i]['zxk'] + "</td><td align='left'>" + data[i]['wsk'] + "</td> " 					 
 					" </tr>";
 			}
-			$('.table1').append(item);
+			$('.table1 tbody').append(item);
 			// alert(item)
 			//cn = data[i]['ComponentName'];
 		}
@@ -86,7 +87,11 @@ mui.plusReady(function() {
 		//detailPage.loadURL('../../finance/f_customer_receive_detail.html?id=' + id);
 		//openMenu();
 	});
-	mui('.mui-bar-nav').on("tap", '#icon-menu', function(e) {
+
+	var detailPageId = '../../approve/finance/searchfinance2.html';
+	var detailPage = null;
+	var mask = mui.createMask(_closeMenu);
+		mui('.mui-bar-nav').on("tap", '#icon-menu', function(e) {
 			var id = this.getAttribute('id');
 				if(!detailPage) {
 			detailPage.setStyle({
@@ -94,12 +99,9 @@ mui.plusReady(function() {
 				zindex: 9999
 			});
 		}
-		detailPage.loadURL('../../approve/finance/searchfinance.html');	
+		detailPage.loadURL('../../approve/finance/searchfinance2.html');	
 		openMenu();
 		});
-	var detailPageId = '../../approve/finance/searchfinance.html';
-	var detailPage = null;
-	var mask = mui.createMask(_closeMenu);
 	//setTimeout的目的是等待窗体动画结束后，再执行create webview操作，避免资源竞争，导致窗口动画不流畅；
 	setTimeout(function() {
 		detailPage = common.getWebviewDetailById(detailPageId);

@@ -23,7 +23,7 @@ mui.plusReady(function() {
 	console.log(333)
 	//common.showWaiting(true);
 	var jsn = {
-		type: 'KHHz',
+		type: 'KHHZ',
 		strwhere:  common.getQueryString("id")
 	};
 	console.log(JSON.stringify(jsn))
@@ -50,8 +50,8 @@ mui.plusReady(function() {
 //					+
 //					" </tr>";
 			} else {
-				item = "<tr><td><a class='sc' id='" + data[i]['ys'] + "'>" + data[i]['community'] + "</a></td>"
-				                        +"<td align='left'>" + data[i]['ys'] + "</td>"+
+				item = "<tr><td><a class='sc' id='" + data[i]['customer_id'] + "'>" + data[i]['customer'] + "</a></td>"
+				                        +"<td align='left'>" + data[i]['tel'] + "</td>"+
 					"<td align='left'>" + data[i]['ys'] + "</td><td align='left'>" +  data[i]['dj']+ "</td> " +
 					" <td align='left'>" + data[i]['zxk'] + "</td><td align='left'>" + data[i]['wsk'] + "</td> " 					 
 					" </tr>";

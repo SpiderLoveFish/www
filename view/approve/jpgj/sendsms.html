@@ -103,7 +103,7 @@
 						</ul>
 					</div>
 				 <li><div id="btnSubmit" class="btn_woapply">发送短信</div>
-					<div id="btnRest" class="btn_woapply">分享</div></li>
+					<div id="btnshare" class="btn_woapply">分享</div></li>
 					
 			 
 				</div>
@@ -112,6 +112,8 @@
 			</body>
 	<script type="text/javascript" src="../../../js/mui/mui.min.js"></script>
 	<script type="text/javascript" src="../../../js/controllers/common.js"></script>
+		<script type="text/javascript" src="../../../js/controllers/share.js"></script>
+<script type="text/javascript" src="../../../js/controllers/sharecommon.js"></script>
 	<script>
 		mui.init();
 		var sms='';
@@ -148,8 +150,10 @@
 		mui.plusReady(function() {
 				getdata();
 		 
-		common.click("btnRest", function()
-		{		
+		common.click("btnshare", function()
+		{		var content=document.getElementById("sendsms").value;
+			//var url=getServerUrls('$ServerUrls').ApiUrl+'view/score_view.aspx?sfkh='+common.getQueryString("sfkh")+'&uid='+common.getQueryString("id");
+					shareShow(content,'' ,'金牌管家',content,'')
 		 
 		});
 		
