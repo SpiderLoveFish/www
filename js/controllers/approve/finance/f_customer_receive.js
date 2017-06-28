@@ -39,14 +39,14 @@ function getlist(type,strwhere)
 //					+
 //					" </tr>";
 			} else {
-				item = "<tr><td><a class='sc' id='" + data[i]['Community_id'] + "'>" + data[i]['community'] + "</a></td>"
+				item = "<tr><td class='text-primary'><a class='sc' id='" + data[i]['Community_id'] + "'>" + data[i]['community'] + "</a></td>"
 					//                         +"<td align='right'>" + data[i]['zc_price'] + "</td><td align='right'>" + data[i]['fc_price'] + "</td><td align='right'>" + data[i]['rg_price']  + "</td>"
 					+
-					"<td align='left'>" + data[i]['sl'] + "</td><td align='left'>" + data[i]['ys'] + "</td><td align='left'>" +  data[i]['dj']+ "</td> " +
-					" <td align='left'>" + data[i]['zxk'] + "</td><td align='left'>" + data[i]['wsk'] + "</td> " 					 
+					"<td align='left' class='text-success'>" + data[i]['sl'] + "</td><td align='left' class='text-success'>" + data[i]['ys'] + "</td><td align='left' class='text-success'>" +  data[i]['dj']+ "</td> " +
+					" <td align='left' class='text-danger'>" + data[i]['zxk'] + "</td><td align='left' class='text-danger'>" + data[i]['wsk'] + "</td> " 					 
 					" </tr>";
 			}
-			$('.table1 tbody').append(item);
+			$('.table tbody').append(item);
 			// alert(item)
 			//cn = data[i]['ComponentName'];
 		}
