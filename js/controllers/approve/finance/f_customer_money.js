@@ -36,10 +36,10 @@ function  getlist(type,strwhere)
 //					+
 //					" </tr>";
 			} else {
-				item = "<tr><td><a class='sc' id='" + data[i]['Community_id'] + "'>" + data[i]['community'] + "</a></td>"
-				                        +"<td align='left'>" + data[i]['sl'] + "</td>"+
-					"<td align='left'>" + data[i]['ys'] + "</td><td align='left'>" +  data[i]['dj']+ "</td> " +
-					" <td align='left'>" + data[i]['zxk'] + "</td><td align='left'>" + data[i]['wsk'] + "</td> " 					 
+				item = "<tr height=40px><th><a class='sc' id='" + data[i]['Community_id'] + "'>" + data[i]['community'] + "</a></th>"
+				                        +"<th class='text-center' >" + data[i]['sl'] + "</th>"+
+					"<th  class='text-primary text-right'>" + data[i]['ys'].toFixed(0) + "</th><th class='text-success text-right'>" +  data[i]['dj'].toFixed(0)+ "</th> " +
+					" <th  class='text-success text-right'>" + data[i]['zxk'].toFixed(0) + "</th><th  class='text-danger text-right'>" + data[i]['wsk'].toFixed(0) + "</th> " 					 
 					" </tr>";
 			}
 			$('.table1 tbody').append(item);

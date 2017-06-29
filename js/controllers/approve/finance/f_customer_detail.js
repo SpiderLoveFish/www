@@ -50,10 +50,8 @@ mui.plusReady(function() {
 //					+
 //					" </tr>";
 			} else {
-				item ="<tr><td>" + data[i]['Customer'] + "</td>"
-				                        +"<td align='left'>" + data[i]['tel'] + "</td>"+
-					"<td align='left'>" + data[i]['ys'] + "</td><td align='left'>" +  data[i]['dj']+ "</td> " +
-					" <td align='left'>" + data[i]['zxk'] + "</td><td align='left'>" + data[i]['lb'] + "</td> " 					 
+				item ="<tr><th class='text-primary text-right'>" + data[i]['ys'] + "</th><th class='text-primary text-right'>" +  data[i]['dj']+ "</th> " +
+					" <th class='text-success text-right'>" + data[i]['zxk'] + "</th><th class=' text-right'>" + ChangeDateFormat(data[i]['Order_date'])  + "</th> " 					 
 					" </tr>";
 			}
 			$('.table1').append(item);
@@ -150,5 +148,28 @@ mui.plusReady(function() {
 		//closeMenu 是C页面自定义事件的名称
 		mui.fire(fatherView, 'hideDetailPage', {});
 	}
+function ChangeDateFormat(jsondate) {
+	jsondate = jsondate.replace("/Date(", "").replace(")/", "");
+	if(jsondate.indexOf("+") > 0) {
+		jsondate = jsondate.substring(0, jsondate.indexOf("+"));
+	} else if(jsondate.indexOf("-") > 0) {
+		jsondate = jsondate.substring(0, jsondate.indexOf("-"));
+	}
+
+	var date = new Date(parseInt(jsondate, 10));
+	var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+	var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+
+	return date.getFullYear() +
+		"年" +
+		month +
+		"月" +
+		currentDate +
+		"日";
+	//  + " "
+	//  + date.getHours()
+	//  + ":"
+	//  + date.getMinutes();
+}
 
 });

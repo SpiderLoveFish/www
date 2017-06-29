@@ -50,12 +50,17 @@ mui.plusReady(function() {
 //					+
 //					" </tr>";
 			} else {
-				item = "<tr><td><a class='sc' id='" + data[i]['customer_id'] + "'>" + data[i]['customer'] + "</a></td>"
-					//                         +"<td align='right'>" + data[i]['zc_price'] + "</td><td align='right'>" + data[i]['fc_price'] + "</td><td align='right'>" + data[i]['rg_price']  + "</td>"
-					+
-					"<td align='left'>" + data[i]['tel'] + "</td><td align='left'>" + data[i]['ys'] + "</td><td align='left'>" +  data[i]['dj']+ "</td> " +
-					" <td align='left'>" + data[i]['zxk'] + "</td><td align='left'>" + data[i]['wsk'] + "</td> " 					 
+					item = "<tr height=40px><th><a class='sc' id='" + data[i]['customer_id'] + "'>" + data[i]['customer'] + "</a></th>"
+				                        +"<th class='text-center' >" + data[i]['tel'] + "</th>"+
+					"<th  class='text-primary text-right'>" + data[i]['ys'].toFixed(0) + "</th><th class='text-success text-right'>" +  data[i]['dj'].toFixed(0)+ "</th> " +
+					" <th  class='text-success text-right'>" + data[i]['zxk'].toFixed(0) + "</th><th  class='text-danger text-right'>" + data[i]['wsk'].toFixed(0) + "</th> " 					 
 					" </tr>";
+//				item = "<tr><td><a class='sc' id='" + data[i]['customer_id'] + "'>" + data[i]['customer'] + "</a></td>"
+//					//                         +"<td align='right'>" + data[i]['zc_price'] + "</td><td align='right'>" + data[i]['fc_price'] + "</td><td align='right'>" + data[i]['rg_price']  + "</td>"
+//					+
+//					"<td align='left'>" + data[i]['tel'] + "</td><td align='left'>" + data[i]['ys'] + "</td><td align='left'>" +  data[i]['dj']+ "</td> " +
+//					" <td align='left'>" + data[i]['zxk'] + "</td><td align='left'>" + data[i]['wsk'] + "</td> " 					 
+//					" </tr>";
 			}
 			$('.table1').append(item);
 			// alert(item)

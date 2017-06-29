@@ -5,20 +5,16 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link rel="stylesheet" type="text/css" href="../../../css/mui.min.css" />
-			<!--<link rel="stylesheet" href="../../../css/list.css" />
-		<link rel="stylesheet" href="../../../css/style_sc.css" />
-		<link rel="stylesheet" href="../../../css/reset.css" />-->
-<link rel="stylesheet" href="../../../css/bootstrap.min.css" />
-	
+		<link rel="stylesheet" href="../../../css/bootstrap.min.css" />
 
-		<title>工时详情</title>
+		<title>客户款项明细</title>
 		
 	</head>
 
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1  id='sharecontent' class="mui-title">客户款项报表</h1>
+			<h1  id='sharecontent' class="mui-title">客户款项明细</h1>
 			
 			<!--<a onclick="shareShow('预算明细','http://www.baidu.com','预算明细','预算明细','')" class="mui-pull-right">分享</a>-->
 		</header>
@@ -31,26 +27,30 @@
 							<!--<ul id="approveProcess">
 
 							</ul>-->
-						 
-  <TABLE   id="list"  class="table1 table-striped table-bordered table-condensed"border=1 cellSpacing=0 cellPadding=0 width="100%" style="border-collapse:collapse;font-size:12px" border-color="#999999" >
+	<table width="100%" border="0" height="50px">
+  <tr>
+    <td class='text-right' >客户：</td>
+    <td class='text-left' >张君</td>
+    <td >&nbsp;</td>
+    <td class='text-right'>电话：</td>
+    <td class='text-left'>18912688102 <a href="tel:18912688102">呼叫</a></td>
+  </tr>
+</table>				 
+  <TABLE   id="list" width="100%"  class="table1 table-striped ">
 <thead>
 	
   <TR > 
   
-     <th   width="25%">
+     <!--<th   width="25%">
       <DIV align=center><b><font size="0.8">客户</font></b></DIV></th>
    
                 <th   width="15%" >
-      <DIV align=center><b><font size="0.8">电话</font></b></DIV></th>
-       <th   width="15%" >
-      <DIV align=center><b><font size="0.8">应收金额</font></b></DIV></th>
+      <DIV align=center><b><font size="0.8">电话</font></b></DIV></th>-->
+       <th  class='text-right' >     应收金额</th>
     
-    <th   width="15%" >
-      <DIV align=center><b><font size="0.8">已收定金</font></b></DIV></th>
- <th   width="15%" >
- 	<DIV align=center><b><font size="0.8">已收装修款</font></b></DIV></th>
-    <th   width="15%" >
-      <DIV align=center><b><font size="0.8">类别</font></b></DIV></th>
+    <th   class='text-right' >      已收定金</th>
+ <th   class='text-right'>收装修款</th>
+    <th    class='text-right'>发生日期</th>
 
       
       
