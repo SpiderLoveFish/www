@@ -36,7 +36,7 @@ mui.plusReady(function() {
 				}
 		common.click('btnshare', function() {
 			console.log(common.getQueryString("id"))
-					var url=getServerUrls('$ServerUrls').ApiUrl+'view/product_view.aspx?id='+common.getQueryString("id");
+					var url=getServerUrls('$ServerUrls').ApiUrl+'crm/shareto/product_share.html?id='+common.getQueryString("id");
 					shareHref('产品详情',url ,'产品详情','产品详情','')
 		});
 	

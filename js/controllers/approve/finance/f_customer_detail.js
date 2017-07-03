@@ -39,16 +39,16 @@ mui.plusReady(function() {
 		// $.each(objs, function (i, data) {
 		for(var i = 0; i < data.length; i++) {
 			 
-			
+			if(i==0)
+			{
+			$('#tel').html(data[i]['tel']);
+			$('#htel').attr("href",data[i]['tel']); 
+			$('#address').html(data[i]['address']);
+			}
 			if(data[i]['community'] == '合计') {
-//				item = "<tr><td  align='left' colspan='5' ><font size='2' ><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(合计：" + data[i]['BwSubTotal'] + ")</b></font></td></tr>" +
-//					"<tr><td ><a  class='sc' id='" + data[i]['xmid'] + "'>" + data[i]['brand'] + "</a></td>"
-//					//                             +"<td align='right'>"+ data[i]['zc_price'] + "</td><td align='right'>" + data[i]['fc_price'] + "</td><td align='right'>" + data[i]['rg_price']  + "</td>"
-//					+
-//					"<td align='right'>" + data[i]['TotalPrice'] + "</td><td align='right'>" + sum + data[i]['unit']+"</td> " +
-//					" <td align='right'>" + data[i]['je'] + "</td>"//"<td>" + data[i]['unit'] + "</td> " //<td>" + data[i]['proremarks'] + "</td>
-//					+
-//					" </tr>";
+item ="<tr><th class='text-primary text-right'>" + data[i]['ys'] + "</th><th class='text-primary text-right'>" +  data[i]['dj']+ "</th> " +
+					" <th class='text-success text-right'>" + data[i]['zxk'] + "</th><th class=' text-right'>" + ChangeDateFormat(data[i]['Order_date'])  + "</th> " 					 
+					" </tr>";
 			} else {
 				item ="<tr><th class='text-primary text-right'>" + data[i]['ys'] + "</th><th class='text-primary text-right'>" +  data[i]['dj']+ "</th> " +
 					" <th class='text-success text-right'>" + data[i]['zxk'] + "</th><th class=' text-right'>" + ChangeDateFormat(data[i]['Order_date'])  + "</th> " 					 
@@ -161,11 +161,10 @@ function ChangeDateFormat(jsondate) {
 	var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
 
 	return date.getFullYear() +
-		"年" +
+		"-" +
 		month +
-		"月" +
-		currentDate +
-		"日";
+		"-" +
+		currentDate;
 	//  + " "
 	//  + date.getHours()
 	//  + ":"

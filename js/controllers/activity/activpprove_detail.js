@@ -199,7 +199,7 @@ function getServerUrls(setName) {
 					return shortcuts;
 				}
 common.click('btnshare', function() {
-					var url=getServerUrls('$ServerUrls').ApiUrl+'view/score_view.aspx?sfkh='+common.getQueryString("sfkh")+'&uid='+common.getQueryString("id");
+					var url=getServerUrls('$ServerUrls').ApiUrl+'crm/shareto/jifen_share.html?sfkh='+common.getQueryString("sfkh")+'&uid='+common.getQueryString("id");
 					shareHref('积分详情',url ,'积分详情','积分详情','')
 		});
 	var btnState = document.getElementById("btnState");

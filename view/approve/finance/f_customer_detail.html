@@ -6,7 +6,9 @@
 		<meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link rel="stylesheet" type="text/css" href="../../../css/mui.min.css" />
 		<link rel="stylesheet" href="../../../css/bootstrap.min.css" />
-
+		<!--<link rel="stylesheet" href="../../../css/list.css" />
+		<link rel="stylesheet" href="../../../css/style_sc.css" />
+		<link rel="stylesheet" href="../../../css/reset.css" />-->
 		<title>客户款项明细</title>
 		
 	</head>
@@ -24,19 +26,23 @@
 				
 					<div class="approve_process_content">
 						<div class="approve_state">
-							<!--<ul id="approveProcess">
-
-							</ul>-->
-	<table width="100%" border="0" height="50px">
+				<ul><li>			
+<table width="100%" border="0" height="50px" style="font-size: 16px;">
   <tr>
     <td class='text-right' >客户：</td>
     <td class='text-left' >张君</td>
     <td >&nbsp;</td>
     <td class='text-right'>电话：</td>
-    <td class='text-left'>18912688102 <a href="tel:18912688102">呼叫</a></td>
+    <td class='text-left'><span id='tel'></span> <a id='htel' href="">呼叫</a></td>
   </tr>
-</table>				 
-  <TABLE   id="list" width="100%"  class="table1 table-striped ">
+  <tr>
+    <td class='text-right' >地址：</td>
+    <td colspan="4" class='text-left' ><span id='address'></span></td>
+  </tr>
+</table>		
+</div></li></ul>
+		<div class="approve_state">	 
+  <TABLE   id="list" width="100%"  class="table1 table-striped " style="font-size: 14px;">
 <thead>
 	
   <TR > 

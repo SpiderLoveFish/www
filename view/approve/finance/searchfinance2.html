@@ -29,8 +29,8 @@
 							 <li class="activ_input_list flexbox">
 								<span class="activ_input_label8">收支日期</span>
 								<p class="activ_time flexItem">
-									<span id="pickStart2" type="button">开始</span> ~
-									<span id="pickEnd2" type="button">截止</span>
+									<span id="pickStart2" type="button">请选择年月</span> 
+									<span style="display:none" id="pickEnd2" type="button">截止</span>
 								</p>
 							</li>
 							  <li class="activ_input_list flexbox">
@@ -229,11 +229,11 @@
 			plus.nativeUI.pickDate(function(e) {
 				//开始日期
 				var d = e.date;
-				startDate2 = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+				startDate2 = d.getFullYear() + "-" + (d.getMonth() + 1) + "-1" ;//+ d.getDate();只要年月
 				if(comptime(startDate2,endDate1)==1)
 					{	mui.alert('开始时间'+startDate+'大于结束时间'+endDate);}
 				else
-						pickStart2.innerText=startDate2;
+						pickStart2.innerText=d.getFullYear() + "-" + (d.getMonth() + 1) ;
  
 			}, function(e) {
 

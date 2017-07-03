@@ -41,14 +41,11 @@ mui.plusReady(function() {
 			 
 			
 			if(data[i]['community'] == '合计') {
-//				item = "<tr><td  align='left' colspan='5' ><font size='2' ><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(合计：" + data[i]['BwSubTotal'] + ")</b></font></td></tr>" +
-//					"<tr><td ><a  class='sc' id='" + data[i]['xmid'] + "'>" + data[i]['brand'] + "</a></td>"
-//					//                             +"<td align='right'>"+ data[i]['zc_price'] + "</td><td align='right'>" + data[i]['fc_price'] + "</td><td align='right'>" + data[i]['rg_price']  + "</td>"
-//					+
-//					"<td align='right'>" + data[i]['TotalPrice'] + "</td><td align='right'>" + sum + data[i]['unit']+"</td> " +
-//					" <td align='right'>" + data[i]['je'] + "</td>"//"<td>" + data[i]['unit'] + "</td> " //<td>" + data[i]['proremarks'] + "</td>
-//					+
-//					" </tr>";
+					item = "<tr height=40px><th>" + data[i]['customer'] + "</th>"
+				                        +"<th class='text-center' >" + data[i]['tel'] + "</th>"+
+					"<th  class='text-primary text-right'>" + data[i]['ys'].toFixed(0) + "</th><th class='text-success text-right'>" +  data[i]['dj'].toFixed(0)+ "</th> " +
+					" <th  class='text-success text-right'>" + data[i]['zxk'].toFixed(0) + "</th><th  class='text-danger text-right'>" + data[i]['wsk'].toFixed(0) + "</th> " 					 
+					" </tr>";
 			} else {
 					item = "<tr height=40px><th><a class='sc' id='" + data[i]['customer_id'] + "'>" + data[i]['customer'] + "</a></th>"
 				                        +"<th class='text-center' >" + data[i]['tel'] + "</th>"+
