@@ -20,19 +20,18 @@ mui.plusReady(function() {
 	//获取从父页面传过来的数据
 	//id = event.detail.id;
 	
-	console.log(222)
+	
 	//common.showWaiting(true);
 	var jsn = {
 		type: 'KHMX',
 		strwhere:  common.getQueryString("id")
 	};
-	console.log(JSON.stringify(jsn))
+ 
 	common.postApi('GetFinance', jsn, function(response) {
 		var data = eval(response.data);
 	 
 		//业务数据
-		console.log(JSON.stringify(data))
-	 
+		
 		var item = "";
 		var cn = "";
 		var sum = 0;
@@ -47,7 +46,7 @@ mui.plusReady(function() {
 			$('#address').html(data[i]['address']);
 			}
 			if(data[i]['Community'] == '合计') {
-				console.log(11)
+			 
 					item ="<tr><th class='text-primary text-right'>" + data[i]['ys'] + "</th><th class='text-primary text-right'>" +  data[i]['dj']+ "</th> " +
 					" <th class='text-success text-right'>" + data[i]['zxk'] + "</th><th class=' text-right'>合计</th> " 					 
 					" </tr>";
@@ -151,7 +150,7 @@ mui.plusReady(function() {
 		mui.fire(fatherView, 'hideDetailPage', {});
 	}
 function ChangeDateFormat(jsondate) {
-	console.log(jsondate)
+	 
 	if(jsondate==''||jsondate==null)
 	{
 		return'';
