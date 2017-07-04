@@ -230,6 +230,7 @@
 				//开始日期
 				var d = e.date;
 				startDate2 = d.getFullYear() + "-" + (d.getMonth() + 1) + "-1" ;//+ d.getDate();只要年月
+				endDate2 = d.getFullYear() + "-" + (d.getMonth() + 2) +"-0";
 				if(comptime(startDate2,endDate1)==1)
 					{	mui.alert('开始时间'+startDate+'大于结束时间'+endDate);}
 				else

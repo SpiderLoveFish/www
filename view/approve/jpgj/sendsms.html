@@ -160,23 +160,36 @@
 		  
 			
 				 p1.addEventListener('focus',function(){
-					sendsms.value=sms.replace('@p1',p1.value).replace('@p2',p2.value).replace('@p3',p3.value).replace('@p4',p4.value).replace('@p5',p5.value).replace('@p6',p6.value);
-				})
+					//sendsms.value=sms.replace(/@p1/g,p1.value).replace(/@p2/g,p2.value).replace(/@p2/g,p3.value).replace('@p4',p4.value).replace('@p5',p5.value).replace('@p6',p6.value);
+				replace_p();
+				 })
 				 p2.addEventListener('focus',function(){
-					sendsms.value=sms.replace('@p2',p2.value).replace('@p1',p1.value).replace('@p3',p3.value).replace('@p4',p4.value).replace('@p5',p5.value).replace('@p6',p6.value);
-				})
+				 	
+					//sendsms.value=sms.replace(/@p2/g,p2.value).replace('@p1',p1.value).replace('@p3',p3.value).replace('@p4',p4.value).replace('@p5',p5.value).replace('@p6',p6.value);
+					replace_p();
+				 })
 				 p3.addEventListener('focus',function(){
-					sendsms.value=sms.replace('@p3',p3.value).replace('@p2',p2.value).replace('@p1',p1.value).replace('@p4',p4.value).replace('@p5',p5.value).replace('@p6',p6.value);
-				})
+					//sendsms.value=sms.replace(/@p3/g,p3.value).replace('@p2',p2.value).replace('@p1',p1.value).replace('@p4',p4.value).replace('@p5',p5.value).replace('@p6',p6.value);
+				replace_p();
+				 })
 				 p4.addEventListener('focus',function(){
-					sendsms.value=sms.replace('@p4',p4.value).replace('@p2',p2.value).replace('@p3',p3.value).replace('@p1',p1.value).replace('@p5',p5.value).replace('@p6',p6.value);
-				})
+					//sendsms.value=sms.replace(/@p4/g,p4.value).replace('@p2',p2.value).replace('@p3',p3.value).replace('@p1',p1.value).replace('@p5',p5.value).replace('@p6',p6.value);
+				replace_p();
+				 })
 				 p5.addEventListener('focus',function(){
-					sendsms.value=sms.replace('@p5',p5.value).replace('@p2',p2.value).replace('@p3',p3.value).replace('@p4',p4.value).replace('@p1',p1.value).replace('@p6',p6.value);
-				})
+					//sendsms.value=sms.replace(/@p5/g,p5.value).replace('@p2',p2.value).replace('@p3',p3.value).replace('@p4',p4.value).replace('@p1',p1.value).replace('@p6',p6.value);
+				replace_p();
+				 })
 				 p6.addEventListener('focus',function(){
-					sendsms.value=sms.replace('@p6',p6.value).replace('@p2',p2.value).replace('@p3',p3.value).replace('@p4',p4.value).replace('@p5',p5.value).replace('@p1',p1.value);
-				})
+					//sendsms.value=sms.replace('@p6',p6.value).replace('@p2',p2.value).replace('@p3',p3.value).replace('@p4',p4.value).replace('@p5',p5.value).replace('@p1',p1.value);
+				replace_p();
+				 })
+				 
+				 function replace_p()
+				 {
+				 		sendsms.value=sms.replace(/@p1/g,p1.value).replace(/@p2/g,p2.value).replace(/@p3/g,p3.value).replace(/@p4/g,p4.value).replace(/@p5/g,p5.value).replace(/@p6/g,p6.value);
+
+				 }
 				//提交
 		common.click("btnSubmit", function() {	
 				var sendsms=document.getElementById("sendsms");

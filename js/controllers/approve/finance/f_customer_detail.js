@@ -39,15 +39,17 @@ mui.plusReady(function() {
 		// $.each(objs, function (i, data) {
 		for(var i = 0; i < data.length; i++) {
 			 
-			if(i==0)
+			if(i==data.length-1)
 			{
+			$('#name').html(data[i]['Customer']);
 			$('#tel').html(data[i]['tel']);
 			$('#htel').attr("href",data[i]['tel']); 
 			$('#address').html(data[i]['address']);
 			}
-			if(data[i]['community'] == '合计') {
-item ="<tr><th class='text-primary text-right'>" + data[i]['ys'] + "</th><th class='text-primary text-right'>" +  data[i]['dj']+ "</th> " +
-					" <th class='text-success text-right'>" + data[i]['zxk'] + "</th><th class=' text-right'>" + ChangeDateFormat(data[i]['Order_date'])  + "</th> " 					 
+			if(data[i]['Community'] == '合计') {
+				console.log(11)
+					item ="<tr><th class='text-primary text-right'>" + data[i]['ys'] + "</th><th class='text-primary text-right'>" +  data[i]['dj']+ "</th> " +
+					" <th class='text-success text-right'>" + data[i]['zxk'] + "</th><th class=' text-right'>合计</th> " 					 
 					" </tr>";
 			} else {
 				item ="<tr><th class='text-primary text-right'>" + data[i]['ys'] + "</th><th class='text-primary text-right'>" +  data[i]['dj']+ "</th> " +
@@ -149,6 +151,11 @@ item ="<tr><th class='text-primary text-right'>" + data[i]['ys'] + "</th><th cla
 		mui.fire(fatherView, 'hideDetailPage', {});
 	}
 function ChangeDateFormat(jsondate) {
+	console.log(jsondate)
+	if(jsondate==''||jsondate==null)
+	{
+		return'';
+	}
 	jsondate = jsondate.replace("/Date(", "").replace(")/", "");
 	if(jsondate.indexOf("+") > 0) {
 		jsondate = jsondate.substring(0, jsondate.indexOf("+"));
