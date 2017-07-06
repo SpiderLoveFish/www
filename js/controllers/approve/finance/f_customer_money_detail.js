@@ -24,7 +24,7 @@ mui.plusReady(function() {
 	//common.showWaiting(true);
 	var jsn = {
 		type: 'KHHZ',
-		strwhere:  common.getQueryString("id")
+		strwhere:  common.getQueryString("id")+'|'+decodeURI(common.getQueryString("strwhere"))
 	};
 	console.log(JSON.stringify(jsn))
 	common.postApi('GetFinance', jsn, function(response) {
@@ -62,6 +62,29 @@ item = "<tr height=40px><th>" + data[i]['customer'] + "</th>"
 	
 		common.closeWaiting();
 	}, 'json');
+	
+	function tounicode(data)
+{
+   if(data == '') return '请输入汉字';
+   var str =''; 
+   for(var i=0;i<data.length;i++)
+   {
+      str+="\\u"+parseInt(data[i].charCodeAt(0),10).toString(16);
+   }
+   return str;
+}
+function tohanzi(data)
+{
+    if(data == ''||data==null) return ''//'请输入十六进制unicode';
+    data = data.split("\u");
+    var str ='';
+    for(var i=0;i<data.length;i++)
+    {
+        str+=String.fromCharCode(parseInt(data[i],16).toString(10));
+    }
+    return str;
+}
+	
 
 	var detailPage = null;
 	mui('#list').on('tap', '.sc', function(e) {

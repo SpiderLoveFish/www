@@ -24,7 +24,7 @@ mui.plusReady(function() {
 	//common.showWaiting(true);
 	var jsn = {
 		type: 'KHHZ',
-		strwhere:  common.getQueryString("id")
+		strwhere:  common.getQueryString("id")+'|'+decodeURI(common.getQueryString("strwhere"))
 	};
 	console.log(JSON.stringify(jsn))
 	common.postApi('GetFinance', jsn, function(response) {

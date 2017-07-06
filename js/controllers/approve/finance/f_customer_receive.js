@@ -1,9 +1,7 @@
 mui.init();
 var commitLock = true;
 var id; //主鍵
-var selecttype;
-var creator;
-var isLastApprover;
+var strwhere='';
 var approveOpinion = ''; //审批意见
 var status; //审批结果状态
 var leaveObj;
@@ -19,7 +17,7 @@ function getlist(type,strwhere)
 		var data = eval(response.data);
 	 
 		//业务数据
-		//console.log(JSON.stringify(data))
+		console.log(JSON.stringify(data))
 	 
 		var item = "";
 		var cn = "";
@@ -78,7 +76,7 @@ mui.plusReady(function() {
 	mui('#list').on('tap', '.sc', function(e) {
 		//移除焦点,为了隐藏软键盘		 
 		var id = this.getAttribute('id');
-			var template = common.getTemplate('f_customer_receive', 'f_customer_receive_detail.html?id=' + id);
+			var template = common.getTemplate('f_customer_receive', 'f_customer_receive_detail.html?id=' + id+'&strwhere='+encodeURI(encodeURI(strwhere)));
 //		if(!detailPage) {
 //			detailPage.setStyle({
 //				left: '100%',
@@ -113,6 +111,7 @@ mui.plusReady(function() {
 		_closeMenu();
 		mask.close();
 	var	id = event.detail.id;
+	strwhere=id;
 			getlist( 'XQHZ',id);
 	});
 	/*

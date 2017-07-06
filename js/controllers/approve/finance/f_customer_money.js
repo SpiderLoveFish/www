@@ -1,9 +1,7 @@
 mui.init();
 var commitLock = true;
 var id; //主鍵
-var selecttype;
-var creator;
-var isLastApprover;
+var strwhere='';
 var approveOpinion = ''; //审批意见
 var status; //审批结果状态
 var leaveObj;
@@ -71,7 +69,7 @@ mui.plusReady(function() {
 	mui('#list').on('tap', '.sc', function(e) {
 		//移除焦点,为了隐藏软键盘		 
 		var id = this.getAttribute('id');
-			var template = common.getTemplate('f_customer_money', 'f_customer_money_detail.html?id=' + id);
+			var template = common.getTemplate('f_customer_money', 'f_customer_money_detail.html?id=' + id+'&strwhere='+encodeURI(encodeURI(strwhere)));
 //		if(!detailPage) {
 //			detailPage.setStyle({
 //				left: '100%',
@@ -82,6 +80,29 @@ mui.plusReady(function() {
 		//detailPage.loadURL('../../finance/f_customer_receive_detail.html?id=' + id);
 		//openMenu();
 	});
+	
+	function tounicode(data)
+{
+   if(data == '') return '请输入汉字';
+   var str =''; 
+   for(var i=0;i<data.length;i++)
+   {
+      str+="\\u"+parseInt(data[i].charCodeAt(0),10).toString(16);
+   }
+   return str;
+}
+function tohanzi(data)
+{
+    if(data == '') return '请输入十六进制unicode';
+    data = data.split("\u");
+    var str ='';
+    for(var i=0;i<data.length;i++)
+    {
+        str+=String.fromCharCode(parseInt(data[i],16).toString(10));
+    }
+    return str;
+}
+	
 		mui('.mui-bar-nav').on("tap", '#icon-menu', function(e) {
 			var id = this.getAttribute('id');
 				if(!detailPage) {
@@ -105,7 +126,7 @@ mui.plusReady(function() {
 		_closeMenu();
 		mask.close();
 	var	id = event.detail.id;
-	console.log(id)
+	strwhere=id;
 		getlist('XQHZ',id);
 	});
 	/*
