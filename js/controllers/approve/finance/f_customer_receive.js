@@ -28,7 +28,8 @@ function getlist(type,strwhere)
 			 
 			
 			if(data[i]['community'] == '合计') {
-	item = "<tr height=40px><th>" + data[i]['community'] + "</th>"
+				
+	item = "<tr height=40px><th>" + data[i]['community'] +"</th>"
 				                        +"<th class='text-center' >" + data[i]['sl'] + "</th>"+
 					"<th  class='text-primary text-right'>" + data[i]['ys'].toFixed(0) + "</th><th class='text-success text-right'>" +  data[i]['dj'].toFixed(0)+ "</th> " +
 					" <th  class='text-success text-right'>" + data[i]['zxk'].toFixed(0) + "</th><th  class='text-danger text-right'>" + data[i]['wsk'].toFixed(0) + "</th> " 					 
