@@ -31,19 +31,23 @@ function getlist(type,strwhere)
 			
 				if(strwhere.length>3)
 					{	rq=strwhere.split(';')[8]
-				rq=rq.substring(0,rq.length-3)
+					console.log(rq)
+					if(rq=='')rq=new Date().Format("yyyy-MM");
+					else
+						rq=rq.substring(0,rq.length-3)
 					}
-					item = "<tr height=40px><th>" + data[i]['customer']+ "</th>"
-				                        +"<th class='text-center' >[" + rq  + "]</th>"+
+					item = "<tr height=40px><th>" + rq+ "</th>"
+				                        +"<th class='text-center' >[" + data[i]['customer']  + "]</th>"+
 					"<th  class='text-primary text-right'>" + data[i]['ys'].toFixed(0) + "</th><th class='text-success text-right'>" +  data[i]['dj'].toFixed(0)+ "</th> " +
-					" <th  class='text-success text-right'>" + data[i]['zxk'].toFixed(0) + "</th><th  class='text-danger text-right'>" + data[i]['wsk'].toFixed(0) + "</th> " 					 
+					" <th  class='text-success text-right'>" + data[i]['zxk'].toFixed(0) + "</th>" 					 
 					" </tr>";
 			} else {
 					item = "<tr height=40px><th><a class='sc' id='" + data[i]['customer_id'] + "'>" + data[i]['customer'] + "</a></th>"
-				                        +"<th class='text-center' >" + data[i]['tel'] + "</th>"+
+				                        +"<th class='text-center' >" + data[i]['community'] + "</th>"+
 					"<th  class='text-primary text-right'>" + data[i]['ys'].toFixed(0) + "</th><th class='text-success text-right'>" +  data[i]['dj'].toFixed(0)+ "</th> " +
-					" <th  class='text-success text-right'>" + data[i]['zxk'].toFixed(0) + "</th><th  class='text-danger text-right'>" + data[i]['wsk'].toFixed(0) + "</th> " 					 
+					" <th  class='text-success text-right'>" + data[i]['zxk'].toFixed(0) + "</th> " 					 
 					" </tr>";
+					
 //				item = "<tr><td><a class='sc' id='" + data[i]['Community_id'] + "'>" + data[i]['community'] + "</a></td>"
 //					//                         +"<td align='right'>" + data[i]['zc_price'] + "</td><td align='right'>" + data[i]['fc_price'] + "</td><td align='right'>" + data[i]['rg_price']  + "</td>"
 //					+
@@ -61,6 +65,7 @@ function getlist(type,strwhere)
 		common.closeWaiting();
 	}, 'json');
 }
+
 
 mui.plusReady(function() {
 	//后退键隐藏层

@@ -43,16 +43,17 @@ mui.plusReady(function() {
 			$('#name').html(data[i]['Customer']);
 			$('#tel').html(data[i]['tel']);
 			$('#htel').attr("href",data[i]['tel']); 
+			$('#dial').attr('aid', data[i]['tel']); 
 			$('#address').html(data[i]['address']);
 			}
 			if(data[i]['Community'] == '合计') {
 			 
-					item ="<tr><th class='text-primary text-right'>" + data[i]['ys'] + "</th><th class='text-primary text-right'>" +  data[i]['dj']+ "</th> " +
-					" <th class='text-success text-right'>" + data[i]['zxk'] + "</th><th class=' text-right'>合计</th> " 					 
+					item ="<tr height='50px'><th class=' text-right'>合计</th> <th class='text-primary text-right'>" + data[i]['ys'] + "</th><th class='text-success text-right'>" +  data[i]['dj']+ "</th> " +
+					" <th class='text-success text-right'>" + data[i]['zxk'] + "</th><th class=' text-danger text-right'>" +( data[i]['ys']-data[i]['dj'] -data[i]['zxk'] ) + "</th> " 					 
 					" </tr>";
 			} else {
-				item ="<tr><th class='text-primary text-right'>" + data[i]['ys'] + "</th><th class='text-primary text-right'>" +  data[i]['dj']+ "</th> " +
-					" <th class='text-success text-right'>" + data[i]['zxk'] + "</th><th class=' text-right'>" + ChangeDateFormat(data[i]['Order_date'])  + "</th> " 					 
+				item ="<tr height='30px'><th class=' text-right'>" + ChangeDateFormat(data[i]['Order_date'])  + "</th><th class='text-primary text-right'>" + data[i]['ys'] + "</th><th class='text-success text-right'>" +  data[i]['dj']+ "</th> " +
+					" <th class='text-success text-right'>" + data[i]['zxk'] + "</th> <th class=' text-right'>/</th>" 					 
 					" </tr>";
 			}
 			$('.table1').append(item);
@@ -64,6 +65,12 @@ mui.plusReady(function() {
 	
 		common.closeWaiting();
 	}, 'json');
+//电话
+	common.click('dial', function() {
+		var mobile=$('#dial').attr('aid');
+		console.log(mobile)
+		plus.device.dial(mobile);
+	});
 
 	var detailPage = null;
 	mui('#list').on('tap', '.sc', function(e) {

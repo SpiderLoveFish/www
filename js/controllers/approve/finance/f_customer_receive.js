@@ -24,13 +24,12 @@ function getlist(type,strwhere)
 		var sum = 0;
 		// $.each(objs, function (i, data) {
 			$('#list tbody').html("");
+			var zs=0;
 		for(var i = 0; i < data.length; i++) {
-			 
-			
 			if(data[i]['community'] == '合计') {
 				
 	item = "<tr height=40px><th>" + data[i]['community'] +"</th>"
-				                        +"<th class='text-center' >" + data[i]['sl'] + "</th>"+
+				                        +"<th class='text-center' >" + zs + "</th>"+
 					"<th  class='text-primary text-right'>" + data[i]['ys'].toFixed(0) + "</th><th class='text-success text-right'>" +  data[i]['dj'].toFixed(0)+ "</th> " +
 					" <th  class='text-success text-right'>" + data[i]['zxk'].toFixed(0) + "</th><th  class='text-danger text-right'>" + data[i]['wsk'].toFixed(0) + "</th> " 					 
 					" </tr>";
@@ -40,6 +39,8 @@ function getlist(type,strwhere)
 					"<th  class='text-primary text-right'>" + data[i]['ys'].toFixed(0) + "</th><th class='text-success text-right'>" +  data[i]['dj'].toFixed(0)+ "</th> " +
 					" <th  class='text-success text-right'>" + data[i]['zxk'].toFixed(0) + "</th><th  class='text-danger text-right'>" + data[i]['wsk'].toFixed(0) + "</th> " 					 
 					" </tr>";
+					zs=zs+data[i]['sl'];
+					console.log(data[i]['sl'])
 //				item = "<tr><td><a class='sc' id='" + data[i]['Community_id'] + "'>" + data[i]['community'] + "</a></td>"
 //					//                         +"<td align='right'>" + data[i]['zc_price'] + "</td><td align='right'>" + data[i]['fc_price'] + "</td><td align='right'>" + data[i]['rg_price']  + "</td>"
 //					+
