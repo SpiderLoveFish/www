@@ -72,22 +72,20 @@ mui.plusReady(function() {
 		plus.device.dial(mobile);
 	});
 
-	var detailPage = null;
-	mui('#list').on('tap', '.sc', function(e) {
-		//移除焦点,为了隐藏软键盘		 
-		var id = this.getAttribute('id');
-			var template = common.getTemplate('f_customer_receive', 'f_customer_receive_detail.html?id=' + id);
-//		if(!detailPage) {
-//			detailPage.setStyle({
-//				left: '100%',
-//				zindex: 9999
-//			});
-//		}
-		//var id = this.getAttribute('data-value');
-		//detailPage.loadURL('../../finance/f_customer_receive_detail.html?id=' + id);
-		//openMenu();
-	});
-	var detailPageId = '../../finance/f_customer_receive_detail.html';
+ 
+		mui('.mui-bar-nav').on("tap", '#icon-menu', function(e) {
+			var id = this.getAttribute('id');
+			console.log(common.getQueryString("id"))
+				if(!detailPage) {
+			detailPage.setStyle({
+				left: '100%',
+				zindex: 9999
+			});
+		}
+		detailPage.loadURL('../../addList/addList_detail.html?id=' + common.getQueryString("id"));	
+		openMenu();
+		});
+	var detailPageId = '../../addList/addList_detail.html?id=' + common.getQueryString("id");
 	var detailPage = null;
 	var mask = mui.createMask(_closeMenu);
 	//setTimeout的目的是等待窗体动画结束后，再执行create webview操作，避免资源竞争，导致窗口动画不流畅；
@@ -97,7 +95,7 @@ mui.plusReady(function() {
 	//监听详情页面请求关闭
 	window.addEventListener('hideDetailPage', function() {
 		_closeMenu();
-		mask.close();
+		mask.close();		 
 	});
 	/*
 	 * 显示菜单菜单
@@ -156,6 +154,9 @@ mui.plusReady(function() {
 		//closeMenu 是C页面自定义事件的名称
 		mui.fire(fatherView, 'hideDetailPage', {});
 	}
+
+ 
+ 
 function ChangeDateFormat(jsondate) {
 	 
 	if(jsondate==''||jsondate==null)
