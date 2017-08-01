@@ -36,7 +36,13 @@ mui.plusReady(function() {
 				}
 		common.click('btnshare', function() {
 			console.log(common.getQueryString("id"))
-					var url=getServerUrls('$ServerUrls').ApiUrl+'crm/shareto/product_share.html?id='+common.getQueryString("id");
+			var apiurl=getServerUrls('$ServerUrls').ApiUrl;
+	if(apiurl==undefined)
+	{
+		mui.alert("地址获取失败，请重新登陆！")
+		return;
+	}
+					var url=apiurl+'crm/shareto/product_share.html?id='+common.getQueryString("id");
 					shareHref('产品详情',url ,'产品详情','产品详情','')
 		});
 	

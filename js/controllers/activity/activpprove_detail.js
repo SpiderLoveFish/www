@@ -199,7 +199,13 @@ function getServerUrls(setName) {
 					return shortcuts;
 				}
 common.click('btnshare', function() {
-					var url=getServerUrls('$ServerUrls').ApiUrl+'crm/shareto/jifen_share.html?sfkh='+common.getQueryString("sfkh")+'&uid='+common.getQueryString("id");
+	var apiurl=getServerUrls('$ServerUrls').ApiUrl;
+	if(apiurl==undefined)
+	{
+		mui.alert("地址获取失败，请重新登陆！")
+		return;
+	}
+					var url=apiurl+'crm/shareto/jifen_share.html?sfkh='+common.getQueryString("sfkh")+'&uid='+common.getQueryString("id");
 					shareHref('积分详情',url ,'积分详情','积分详情','')
 		});
 	var btnState = document.getElementById("btnState");

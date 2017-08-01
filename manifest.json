@@ -2,7 +2,7 @@
 	"id": "xczsapp",
 	"name": "山山ERP",
 	"version": {
-		"name": "1.5.11",
+		"name": "1.5.21",
 		"code": "16"
 	},
 	"description": "山山ERP移动云办公",
@@ -165,7 +165,7 @@
 					"xxhdpi": "/Users/spider/Downloads/xczsapp/安卓/1008-1882.png"
 				}
 			},
-			"plugins": {"share":{"weixin":{"appid":"wx7c8498c2cbea0738","appsecret":"56a98a8ef7203f7404949084b41577f0","description":"可选，微信分享"}},"oauth":{"weixin":{"appid":"wx7c8498c2cbea0738","appsecret":"56a98a8ef7203f7404949084b41577f0"}},
+			"plugins": {"share":{"weixin":{"appid":"wx9ce94d25c90ff8bd","appsecret":"221c13fbd88cdae00c05e7f8cc2be3c0","description":"可选，微信分享"}},"oauth":{"weixin":{"appid":"wx9ce94d25c90ff8bd","appsecret":"221c13fbd88cdae00c05e7f8cc2be3c0"}},
 				"push": {
 					"igexin": {
 						"appid": "hkcz6ujRg38Wgf1wBja1x2",
