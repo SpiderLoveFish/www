@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/list.css" />
+		<link rel="stylesheet" href="../../css/style_sc.css" />
+		<link rel="stylesheet" href="../../css/reset.css" />
+		<title>采购单</title>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">采购单管理</h1>
+		</header>
+		<div class="mui-content">
+			<div class="container">
+				<div class="approve_nav">
+					 
+					<div class="approve_module">
+					 
+						<a>
+							<div id="cgdapr" class="approve_list approve_list3">
+								<p>采购单审核</p>
+							</div>
+						</a>
+						<a> 
+							<div id="cgdqr" class="approve_list approve_list4">
+								<p>采购单确认</p>
+							</div>
+						</a>
+						<!--<a>
+							<div id="tongyong" class="approve_list approve_list6">
+								<p>通用审批</p>
+							</div>
+						</a>-->
+						<a>
+							<div id="more" class="approve_list approve_list7">
+								<p class="approve_addmore">添加更多</p>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../js/mui/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/controllers/common.js"></script>
+		<script type="text/javascript" src="../../js/common/zepto.min.js"></script>
+		<script type="text/javascript">
+			//动态设置高度
+			var width = document.getElementById("cgdapr").offsetWidth;
+			var list = document.getElementsByClassName('approve_module')[0].getElementsByClassName('approve_list');
+			for (var i = 0; i < list.length; i++) {
+				var obj = list[i];
+				obj.style.height = width + 'px';
+			}
+			 
+		 
+//			//审核
+			common.click('cgdapr', function() {
+				 common.Verifauthority(r_cgd_sh, function(result) { //采购单审核	
+				 	if(result)
+			var webview = common.getTemplate('cgdsh', 'purchase/cgdlist.html?selecttype=cgdsh'); //第二层webview
+					});//var webview = common.getTemplate('page2', 'projecthour/yslist.html'); //第二层webview
+			});
+			//确认
+			common.click('cgdqr', function() {
+			 common.Verifauthority(r_cgd_qr, function(result) { //采购单确认
+				 	if(result)
+				 		//common.jump('purchase/cgdlist.html?selecttype=cgdqr','cgdsh',{name:'张三',age:'100'})
+			     var webview1 = common.getTemplate('cgdqr1', 'purchase/cgdlist.html?selecttype=cgdqr'); //第二层webview
+					});//
+				//var webview = common.getTemplate('page2', 'projecthour/yslist.html'); //第二层webview
+			});
+//			 
+//			//通用
+//			common.click('tongyong', function() {
+//				var webview = common.getTemplate('page2', 'generalapprove/generalapprove_apply.html'); //第二层webview
+//			});
+			//更多
+			common.click('more', function() {
+				common.toast('更多应用请联系提供商..');
+			});
+			common.backOfHideCurrentWebview();
+		</script>
+	</body>
+
+</html>

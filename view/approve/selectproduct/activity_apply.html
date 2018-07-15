@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../../css/list.css" />
+		<link rel="stylesheet" href="../../../css/style_sc.css" />
+		<link rel="stylesheet" href="../../../css/reset.css" />
+		<link rel="stylesheet" href="../../../css/preview_image.css" />
+		<style>
+			.mui-popover {
+				height: 300px;
+			}
+			.text-red{color:red}
+			.start-green{color:green;}
+		</style>
+		<title>明细修改</title>
+	</head>
+
+	<body class="addlist_detail_bg">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">明细修改</h1> 
+	 		</header>
+		<div class="mui-content container">
+			<div class="addlist_detail">
+				 
+					
+				<div class="mine_container_body addlist_detail_body">
+					<div class="addlist_detail_title">
+						<span>主要信息</span>
+						<span id="jg"><!--长按信息可复制--></span>
+					
+					</div>
+					<ul>
+						<!--<li class="flexbox">
+							<i class="mine_list_11">生日</i>
+							<span class="flexItem">2016-01-19</span>
+						</li>-->
+						<li class="flexbox">
+							<i class="activ_input_label2">名称</i>
+							<span id="product_name" class="flexItem"></span>
+										
+						</li>
+						<li class="flexbox">
+							<i class="activ_input_label2">规格</i>
+							<span id="specifications" class="flexItem"></span>
+						</li>
+						<li class="flexbox">
+							<i class="mine_list_7">类型</i>
+							<span id="category_name" class="flexItem"></span>
+						</li>
+						<li class="flexbox">
+							<i class="mine_list_7">品牌</i>
+							<span id="Brand" class="flexItem"></span>
+						</li>
+						
+					</ul>
+				</div>
+	 
+				
+				<div class="mine_container_body addlist_detail_body">
+					<div class="addlist_detail_title">
+						<span>其他信息</span>
+						<span><!--长按信息可复制--></span>
+					</div>
+					<ul>
+						<!--<li class="flexbox">
+							<i class="mine_list_11">生日</i>
+							<span class="flexItem">2016-01-19</span>
+						</li>-->
+						<li class="flexbox">
+							<i class="activ_input_label2">单位</i>
+							<span id="unit" class="flexItem"></span>
+						</li>
+					 
+						<li class="flexbox">
+							<i class="activ_input_label2">完成数量</i>
+							<span id="wcsl" class="flexItem"></span>
+						</li>
+						<li class="flexbox">
+							<i class="activ_input_label2">在途数量</i>
+							<span id="ztsl" class="flexItem"></span>
+						</li>
+						<li class="flexbox">
+							<i class="activ_input_label2">申请数量</i>
+							<div>
+							<div class="mui-numbox"style="width: 220px;height: 60px;">
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input id='sqsl' class="mui-input-numbox" type="number" />
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div></div>
+						</li>
+						 <li class="flexbox">
+							<i class="activ_input_label2">备注</i>
+							<p class="flexItem text_right leave_num">
+									<input id="bz" type="text" placeholder="" value="" />
+								</p>
+						</li>
+						 
+					</ul>
+					
+				</div>
+					<div class="approve_footer">
+				<div id="btnSubmit" class="btn_appr_agree">保存</div>
+				<div id="btnSubmit1" class="btn_appr_revoke">提交</div>
+				<!--<div id="btnBreak" class="btn_appr_revoke h">作废单据</div>-->
+			</div>
+			<!--<div class="btn_woapply" id="btnSubmit">修改</div>
+	 <div class="btn_woapply" id="btnSubmit1">提交/退回</div>-->
+			</div>
+			
+		</div>
+		<!--<div class="news_container">
+			<div class="btn_woapply" id="btnSubmit">立即提交</div>
+		</div>-->
+	</div>	 
+	 
+				 
+				 
+<script type="text/javascript" src="../../../js/mui/mui.min.js"></script>
+	<script type="text/javascript" src="../../../js/mui/mui.zoom.js"></script>
+	<script type="text/javascript" src="../../../js/mui/mui.previewimage.js"></script>
+	<script type="text/javascript" src="../../../js/common/zepto.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="../../../js/controllers/common.js"></script>
+	<script type="text/javascript" src="../../../js/common/canvasResize.js"></script>
+	<script type="text/javascript" src="../../../js/common/binaryajax.js"></script>
+	<script type="text/javascript" src="../../../js/common/exif.js"></script>
+	<script type="text/javascript" src="../../../js/controllers/approve/selectproduct/activity_apply.js"></script>  
+	</body>
+
+</html>

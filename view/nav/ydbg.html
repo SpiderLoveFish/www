@@ -65,6 +65,21 @@
 								<p>财务管理</p>
 							</div>
 						</a> 
+						 <a>
+							<div id="wxgl" class="approve_list workstand_list9">
+								<p>维修管理</p>
+							</div>
+						</a> 
+						 <a>
+							<div id="clfd" class="approve_list workstand_list7">
+								<p>材料发单</p>
+							</div>
+						</a> 
+						<a>
+							<div id="cgd" class="approve_list workstand_list8">
+								<p>采购单</p>
+							</div>
+						</a> 
 						<a>
 							<div id="more" class="approve_list approve_list7">
 								<p class="approve_addmore">添加更多</p>
@@ -138,6 +153,33 @@
 				 common.Verifauthority(r_finance, function(result) { //财务管理
 				 	if(result)
 					common.loadUrl('../approve/finance_nav.html');
+					});
+				// common.toast('此功能待完善！');
+			});
+				document.getElementById("wxgl").addEventListener('tap', function() {
+				//if(getUserInfo().Level=="1")
+				
+				 common.Verifauthority(r_wxgl, function(result) { //维修管理
+				 	if(result)
+					common.loadUrl('../approve/repair/activity_apply.html');
+					});
+				// common.toast('此功能待完善！');
+			});
+				document.getElementById("clfd").addEventListener('tap', function() {
+				//if(getUserInfo().Level=="1")
+				
+				 common.Verifauthority(r_clfd, function(result) { //材料发单
+				 	if(result)
+					common.loadUrl('../approve/selectproduct/CEStagelist.html');
+					});
+				// common.toast('此功能待完善！');
+			});
+				document.getElementById("cgd").addEventListener('tap', function() {
+				//if(getUserInfo().Level=="1")
+				
+				 common.Verifauthority(r_cgd, function(result) { //采购单
+				 	if(result)
+					common.loadUrl('../approve/purchase_nav.html');
 					});
 				// common.toast('此功能待完善！');
 			});

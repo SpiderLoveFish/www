@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../../css/list.css" />
+		<link rel="stylesheet" href="../../../css/style_sc.css" />
+		<link rel="stylesheet" href="../../../css/reset.css" />
+
+		<title>采购单明细</title>
+		
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1  id='sharecontent' class="mui-title">采购单明细</h1>
+			
+			<!--<a onclick="shareShow('预算明细','http://www.baidu.com','预算明细','预算明细','')" class="mui-pull-right">分享</a>-->
+		</header>
+		<div class="mui-content container">
+			<div class="work_details">
+			 
+				<div class="approve_process">
+					 
+					  
+							<!--<ul id="approveProcess">
+
+							</ul>-->
+ 						 
+								<div class="sc_cells sc_cells_access activ_content approve_overtime" id="list">
+
+								</div>
+						 
+  
+
+			</div>
+			<div class="approve_footer">
+				<div id="btnState" class="btn_appr_agree">同意</div>
+				<div id="btnNopass" class="btn_appr_refuse">拒绝</div>
+				<!--<div id="btnBreak" class="btn_appr_revoke h">作废单据</div>-->
+			</div>
+		</div>
+	</body>
+	<script src="../../../js/common/zepto.min.js"></script>
+	<script src="../../../js/common/app_gqe.js"></script>
+	<script type="text/javascript" src="../../../js/mui/mui.min.js"></script>
+	<script type="text/javascript" src="../../../js/controllers/common.js"></script>
+	<script src="../../../js/controllers/approve/purchase/cgdlistdetail.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="../../../js/controllers/share.js"></script>
+<script type="text/javascript" src="../../../js/controllers/sharecommon.js"></script>
+</html>

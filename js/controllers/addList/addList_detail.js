@@ -76,6 +76,13 @@ mui.plusReady(function() {
 		currentWebViewHide();	 
 		var template = common.getTemplate('qjtlist', 'qjtlist.html?type=QJT&tel=' + tel+'&cid='+id);
 	});
+	//款项查询
+	document.getElementById("kxcx").addEventListener('tap', function() {
+		currentWebViewHide();	 
+		var template = common.getTemplate('f_customer_detail', '../approve/finance/f_customer_detail.html?id=' + id);
+		//var template = common.getTemplate('kxcx', 'qjtlist.html?type=QJT&tel=' + tel+'&cid='+id);
+	});
+	
 	//window.addEventListener('dataInit', function(event) {
 	//获取从父页面传过来的数据
 	//id = event.detail.id;

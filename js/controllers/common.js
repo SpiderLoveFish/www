@@ -24,6 +24,11 @@ var r_jdal = 12;//经典案例
 var r_add_custmoer = 13;//增加客户
 var r_jpgj = 14;//金牌管家
 var r_finance = 15;//财务管理
+var r_wxgl = 16;//维修管理
+var r_clfd = 17;//材料发单
+var r_cgd = 18;//采购单
+var r_cgd_sh = 19;//采购单审核
+var r_cgd_qr = 20;//采购单确认
 //--结束权限全局变量
 
 (function(mui, common) {
@@ -332,56 +337,56 @@ var r_finance = 15;//财务管理
 			UserId: '',
 			GroupID: ''
 		};
-		common.postApi('GetApp_Group', data, function(response) {
-			dataArray = eval(response.data);
-			//列表右侧字母列表
-			if(dataArray[0].length > 0) {
-				document.getElementById("headerList").innerHTML += "<a>常</a>";
-				document.getElementById("ulUserList").innerHTML += temHead.replace("@headLetter", '常').replace("@headLetter", '常用群组');
-			}
-			for(var i = 0; i < dataArray[0].length; i++) {
-				var obj = dataArray[0][i];
-
-				var userIdList = new Array();
-				var userNameList = new Array();
-				//获取群组中人员userid
-				for(var n = 0; n < dataArray[1].length; n++) {
-					var obj1 = dataArray[1][n];
-					if(obj.GroupID == obj1.GroupID) {
-						userIdList.push(obj1.GroupUserID);
-						userNameList.push(obj1.UserName);
-					}
-				}
-				var userIdString = userIdList.join(',');
-				var userNameString = userNameList.join(',');
-				//datatype=0为常用群组
-				document.getElementById("ulUserList").innerHTML += temBody.replace("@datatype", '0').replace("@dataValue", userIdString).replace("@dataTag", userNameString).replace("@dataName", userNameString).replace("@dataShow", obj.GroupName);
-			}
+//		common.postApi('GetApp_Group', data, function(response) {
+//			dataArray = eval(response.data);
+//			//列表右侧字母列表
+//			if(dataArray[0].length > 0) {
+//				document.getElementById("headerList").innerHTML += "<a>常</a>";
+//				document.getElementById("ulUserList").innerHTML += temHead.replace("@headLetter", '常').replace("@headLetter", '常用群组');
+//			}
+//			for(var i = 0; i < dataArray[0].length; i++) {
+//				var obj = dataArray[0][i];
+//
+//				var userIdList = new Array();
+//				var userNameList = new Array();
+//				//获取群组中人员userid
+//				for(var n = 0; n < dataArray[1].length; n++) {
+//					var obj1 = dataArray[1][n];
+//					if(obj.GroupID == obj1.GroupID) {
+//						userIdList.push(obj1.GroupUserID);
+//						userNameList.push(obj1.UserName);
+//					}
+//				}
+//				var userIdString = userIdList.join(',');
+//				var userNameString = userNameList.join(',');
+//				//datatype=0为常用群组
+//				document.getElementById("ulUserList").innerHTML += temBody.replace("@datatype", '0').replace("@dataValue", userIdString).replace("@dataTag", userNameString).replace("@dataName", userNameString).replace("@dataShow", obj.GroupName);
+//			}
 			//加载完群组再加载人员
 			//用户列表
-			common.postApi("GetUserList", {
-				url: ApiUrl
+			common.postApi("GetSelectProduct", {
+				strwhere:corpid //条件 
 			}, function(response) {
 				dataArray = eval(response.data);
 				for(var i = 0; i < dataArray.length; i++) {
 					var temp; //临时变量
 					var obj = dataArray[i];
-					if(headLetter != obj.Header) { //没有此头字母,插入头
-						headLetter = obj.Header;
+					if(headLetter != obj.header) { //没有此头字母,插入头
+						headLetter = obj.header;
 						//列表右侧字母列表
-						document.getElementById("headerList").innerHTML += "<a>" + obj.Header + "</a>";
+						document.getElementById("headerList").innerHTML += "<a>" + obj.header + "</a>";
 						//主列表字母头
 						temp = temHead;
-						document.getElementById("ulUserList").innerHTML += temp.replace("@headLetter", obj.Header).replace("@headLetter", obj.Header);
+						document.getElementById("ulUserList").innerHTML += temp.replace("@headLetter", obj.header).replace("@headLetter", obj.header);
 					}
 					temp = temBody;
 					//datatype=1为人员
-					document.getElementById("ulUserList").innerHTML += temp.replace("@datatype", '1').replace("@dataValue", obj.UserId).replace("@dataTag", obj.Header).replace("@dataName", obj.UserName).replace("@dataShow", obj.UserName);
+					document.getElementById("ulUserList").innerHTML += temp.replace("@datatype", '1').replace("@dataValue", obj.product_id).replace("@dataTag", obj.product_name).replace("@dataName", obj.product_name).replace("@dataShow", obj.product_name);
 				}
 				fun();
 			}, 'json');
 
-		}, 'json');
+	//	}, 'json');
 
 		//mui.getJSON
 	};

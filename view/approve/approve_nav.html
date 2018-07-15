@@ -115,7 +115,7 @@
 			common.click('ysqr', function() {
 			 common.Verifauthority(r_myys_qr, function(result) { //我的预算		
 				 	if(result)
-			var webview = common.getTemplate('page2', 'projecthour/yslist.html?selecttype=ys_dqr'); //第二层webview
+			var webview = common.getTemplate('yslist1', 'projecthour/yslist.html?selecttype=ys_dqr'); //第二层webview
 					});//
 				//var webview = common.getTemplate('page2', 'projecthour/yslist.html'); //第二层webview
 			});
@@ -123,7 +123,7 @@
 			common.click('gongshi', function() {
 			 common.Verifauthority(r_myys, function(result) { //我的预算		
 				 	if(result)
-			var webview = common.getTemplate('page2', 'projecthour/yslist.html'); //第二层webview
+			var webview = common.getTemplate('yslist', 'projecthour/yslist.html'); //第二层webview
 					});//
 				
 			});

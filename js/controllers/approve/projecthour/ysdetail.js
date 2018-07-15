@@ -20,34 +20,34 @@ mui.plusReady(function() {
 	//获取从父页面传过来的数据
 	//id = event.detail.id;
 	id = common.getQueryString("id");
-	selecttype= common.getQueryString("selecttype");
+	selecttype = common.getQueryString("selecttype");
 	//common.showWaiting(true);
 	var jsn = {
 		strWhere: '',
 		bid: id
-			//		startIndex: '',
-			//		endIndex: ''
+		//		startIndex: '',
+		//		endIndex: ''
 	};
 	common.postApi('GetBudgeDetail', jsn, function(response) {
 		var s = eval(response.data);
 		//		var dataArray = s[0];
 		var obj = s.jhdata;
-		
+
 		//业务数据
 		// alert(obj[0].ComponentName)
 		console.log(JSON.stringify(obj[0]))
 		//$('#project').text(obj[0].ComponentName);
-		var DiscountAmount=0;
-		if(obj[0].DiscountAmount==null)DiscountAmount=0;
+		var DiscountAmount = 0;
+		if(obj[0].DiscountAmount == null) DiscountAmount = 0;
 		$('#Workzje').text(DiscountAmount.toFixed(2));
-		var JJAmount=0;
-		if(obj[0].JJAmount==null)JJAmount=0;
+		var JJAmount = 0;
+		if(obj[0].JJAmount == null) JJAmount = 0;
 		$('#Workjjje').text(JJAmount.toFixed(2));
-		var ZCAmount=0;
-		if(obj[0].ZCAmount==null)ZCAmount=0;
+		var ZCAmount = 0;
+		if(obj[0].ZCAmount == null) ZCAmount = 0;
 		$('#Workzcje').text(ZCAmount.toFixed(2));
-		var FJAmount=0;
-		if(obj[0].FJAmount==null)FJAmount=0;
+		var FJAmount = 0;
+		if(obj[0].FJAmount == null) FJAmount = 0;
 		$('#Workfjje').text(FJAmount.toFixed(2));
 
 		var data = s.detaildata;
@@ -65,16 +65,16 @@ mui.plusReady(function() {
 					"<tr><td ><a  class='sc' id='" + data[i]['xmid'] + "'>" + data[i]['brand'] + "</a></td>"
 					//                             +"<td align='right'>"+ data[i]['zc_price'] + "</td><td align='right'>" + data[i]['fc_price'] + "</td><td align='right'>" + data[i]['rg_price']  + "</td>"
 					+
-					"<td align='right'>" + data[i]['TotalPrice'] + "</td><td align='right'>" + sum + data[i]['unit']+"</td> " +
-					" <td align='right'>" + data[i]['je'] + "</td>"//"<td>" + data[i]['unit'] + "</td> " //<td>" + data[i]['proremarks'] + "</td>
+					"<td align='right'>" + data[i]['TotalPrice'] + "</td><td align='right'>" + sum + data[i]['unit'] + "</td> " +
+					" <td align='right'>" + data[i]['je'] + "</td>" //"<td>" + data[i]['unit'] + "</td> " //<td>" + data[i]['proremarks'] + "</td>
 					+
 					" </tr>";
 			} else {
 				item = "<tr><td><a class='sc' id='" + data[i]['xmid'] + "'>" + data[i]['brand'] + "</a></td>"
 					//                         +"<td align='right'>" + data[i]['zc_price'] + "</td><td align='right'>" + data[i]['fc_price'] + "</td><td align='right'>" + data[i]['rg_price']  + "</td>"
 					+
-					"<td align='right'>" + data[i]['TotalPrice'] + "</td><td align='right'>" + sum + data[i]['unit']+ "</td> " +
-					" <td align='right'>" + data[i]['je'] + "</td>"//""<td>" + data[i]['unit'] + "</td> " //<td>" + data[i]['proremarks'] + "</td>
+					"<td align='right'>" + data[i]['TotalPrice'] + "</td><td align='right'>" + sum + data[i]['unit'] + "</td> " +
+					" <td align='right'>" + data[i]['je'] + "</td>" //""<td>" + data[i]['unit'] + "</td> " //<td>" + data[i]['proremarks'] + "</td>
 					+
 					" </tr>";
 			}
@@ -83,26 +83,25 @@ mui.plusReady(function() {
 			cn = data[i]['ComponentName'];
 		}
 
-		var	fjdetail=s.fjdata;
+		var fjdetail = s.fjdata;
 		//alert(JSON.stringify(fjdetail))
 		for(var i = 0; i < fjdetail.length; i++) {
-				if(i==0)
-				{
-				item ="<tr><td style='background:#ccc'; align='center' ><font size='2' ><b>&nbsp;&nbsp;附加费名称&nbsp;</b></font></td>"
-				+"<td style='background:#ccc' align='center'  colspan='1' ><font size='2' ><b>&nbsp;&nbsp;费率&nbsp;</b></font></td>"
-				+"<td style='background:#ccc' align='center'  colspan='2' ><font size='2' ><b>&nbsp;&nbsp;金额&nbsp;</b></font></td></tr>"
-				+"<tr><td  align='left' >" + fjdetail[i]['RateName'] + "</td>"
-				+"<td align='right'  colspan='1' >" + fjdetail[i]['rate'] + "</td>"
-				+"<td align='right'  colspan='2' >" + fjdetail[i]['RateAmount'] + "</td></tr>";
-				
+			if(i == 0) {
+				item = "<tr><td style='background:#ccc'; align='center' ><font size='2' ><b>&nbsp;&nbsp;附加费名称&nbsp;</b></font></td>" +
+					"<td style='background:#ccc' align='center'  colspan='1' ><font size='2' ><b>&nbsp;&nbsp;费率&nbsp;</b></font></td>" +
+					"<td style='background:#ccc' align='center'  colspan='2' ><font size='2' ><b>&nbsp;&nbsp;金额&nbsp;</b></font></td></tr>" +
+					"<tr><td  align='left' >" + fjdetail[i]['RateName'] + "</td>" +
+					"<td align='right'  colspan='1' >" + fjdetail[i]['rate'] + "</td>" +
+					"<td align='right'  colspan='2' >" + fjdetail[i]['RateAmount'] + "</td></tr>";
+
 			} else {
-				item ="<tr><td align='left' >" + fjdetail[i]['RateName'] + "</td>"
-				+"<td align='right'  colspan='1' >" + fjdetail[i]['rate'] + "</td>"
-				+"<td align='right'  colspan='2' >" + fjdetail[i]['RateAmount'] + "</td></tr>";
-				
+				item = "<tr><td align='left' >" + fjdetail[i]['RateName'] + "</td>" +
+					"<td align='right'  colspan='1' >" + fjdetail[i]['rate'] + "</td>" +
+					"<td align='right'  colspan='2' >" + fjdetail[i]['RateAmount'] + "</td></tr>";
+
 			}
-						$('.table1').append(item);
-			}
+			$('.table1').append(item);
+		}
 		//		 
 		//		$('#avatar').attr('src', obj.Avatar);
 		//		$('#userName').text(obj.UserName);
@@ -154,12 +153,11 @@ mui.plusReady(function() {
 		//		} else if (jsn.creator == "1") {
 		//			//负责人
 		//			if (jsn.canApprove) {
-		  if (selecttype == 'ys_dsh'||	selecttype == 'ys_dqr' ) 
-			{
-						$('.approve_footer').removeClass('h');
-						$('#btnState').removeClass('h');
-						$('#btnNopass').removeClass('h');
-			}
+		if(selecttype == 'ys_dsh' || selecttype == 'ys_dqr') {
+			$('.approve_footer').removeClass('h');
+			$('#btnState').removeClass('h');
+			$('#btnNopass').removeClass('h');
+		}
 		//		}
 		common.closeWaiting();
 	}, 'json');
@@ -256,12 +254,12 @@ mui.plusReady(function() {
 	var btnState = document.getElementById("btnState");
 	//审批通过
 	btnState.addEventListener("tap", function(e) {
-//		if(isLastApprover) {
-//			//是最后审批人
-//			status = "AllPass";
-//		} else {
-//			status = 'Pass';
-//		}
+		//		if(isLastApprover) {
+		//			//是最后审批人
+		//			status = "AllPass";
+		//		} else {
+		//			status = 'Pass';
+		//		}
 		e.detail.gesture.preventDefault(); //修复iOS 8.x平台存在的bug，使用plus.nativeUI.prompt会造成输入法闪一下又没了
 		var btnArray = ['确定', '取消'];
 		mui.prompt('请输入你的审批意见：', '同意!', '审批意见', btnArray, function(e) {
@@ -272,7 +270,7 @@ mui.plusReady(function() {
 					approveOpinion = '审批意见:同意!';
 				}
 				approve();
-				
+
 			}
 
 		});
@@ -280,7 +278,7 @@ mui.plusReady(function() {
 	var btnNopass = document.getElementById("btnNopass");
 	//审批不通过
 	btnNopass.addEventListener("tap", function(e) {
-	selecttype= 'NoPass';
+		selecttype = 'NoPass';
 		e.detail.gesture.preventDefault(); //修复iOS 8.x平台存在的bug，使用plus.nativeUI.prompt会造成输入法闪一下又没了
 		var btnArray = ['确定', '取消'];
 		mui.prompt('请输入你的审批意见：', '不同意!', '审批意见', btnArray, function(e) {
@@ -300,45 +298,45 @@ mui.plusReady(function() {
 			return;
 		}
 		var argu;
-//		var pushTitle, pushContent;
-//		if(status == "Pass") {
-//			//流转到下一个审批人,点击消息跳转该我审批
-//			argu = "{'vid':'projecthour','pid':'1'}";
-//			pushTitle = getUserInfo().UserName + ":工时填报";
-//			pushContent = leaveObj.WorkContent;
-//		} else {
-//			//点击消息跳转我发起的
-//			argu = "{'vid':'projecthour','pid':'0'}";
-//			pushTitle = "你的:工时填报";
-//			pushContent = approveOpinion;
-//		}
-     
+		//		var pushTitle, pushContent;
+		//		if(status == "Pass") {
+		//			//流转到下一个审批人,点击消息跳转该我审批
+		//			argu = "{'vid':'projecthour','pid':'1'}";
+		//			pushTitle = getUserInfo().UserName + ":工时填报";
+		//			pushContent = leaveObj.WorkContent;
+		//		} else {
+		//			//点击消息跳转我发起的
+		//			argu = "{'vid':'projecthour','pid':'0'}";
+		//			pushTitle = "你的:工时填报";
+		//			pushContent = approveOpinion;
+		//		}
+
 		var data = {
-		 selecttype:selecttype,
-		 id:id,
-		 remarks:approveOpinion,
-		 username:getUserInfo().UserName
-//			ProjectCode: '',
-//			WorkHour: '',
-//			WorkContent: approveOpinion,
-//			UserName: '',
-//			WorkDate: leaveObj.WorkDate,
-//			SendState: status,
-//			hidToUser: '',
-//			hidCcUser: '',
-//			AddOrUpdate: 'UpdateAudit',
-//			id: id,
-//			pushTitle: pushTitle,
-//			pushContent: pushContent,
-//			param: argu
+			selecttype: selecttype,
+			id: id,
+			remarks: approveOpinion,
+			username: getUserInfo().UserName
+			//			ProjectCode: '',
+			//			WorkHour: '',
+			//			WorkContent: approveOpinion,
+			//			UserName: '',
+			//			WorkDate: leaveObj.WorkDate,
+			//			SendState: status,
+			//			hidToUser: '',
+			//			hidCcUser: '',
+			//			AddOrUpdate: 'UpdateAudit',
+			//			id: id,
+			//			pushTitle: pushTitle,
+			//			pushContent: pushContent,
+			//			param: argu
 		};
 		commitLock = false;
 		//common.showWaiting(); 
-		
-		common.postApi('UpdateBudge', data, function(response) {	
-			if(response.data == "success") {			
+
+		common.postApi('UpdateBudge', data, function(response) {
+			if(response.data == "success") {
 				common.toast("提交成功");
-					currentViewHide();
+				currentViewHide();
 			} else {
 				common.toast("服务器异常，请稍候重试..");
 			}
@@ -346,18 +344,18 @@ mui.plusReady(function() {
 			common.closeWaiting();
 		}, 'json');
 	}
-//	function go() {
-//		var listWebview = plus.webview.currentWebview();
-//		listWebview.loadURL('yslist.html');
-//	}
+	//	function go() {
+	//		var listWebview = plus.webview.currentWebview();
+	//		listWebview.loadURL('yslist.html');
+	//	}
 	//隐藏当前页面
 
 	function currentViewHide() {
-	//alert(2)
-	     plus.webview.currentWebview().back();
+	 
 		var fatherView = plus.webview.currentWebview().opener(); //父页面
-		//closeMenu 是C页面自定义事件的名称
-		mui.fire(fatherView, 'hideDetailPage', {});
+		mui.fire(fatherView, 'refresh1', {selecttype: selecttype});
+		common.currentWebviewHide();
+	 
 	}
 
 });

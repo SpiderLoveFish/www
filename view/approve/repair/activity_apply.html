@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<title>新增维修信息</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.css" />
+		<link rel="stylesheet" href="../../../css/list.css" />
+		<link rel="stylesheet" href="../../../css/style_sc.css" />
+		<link rel="stylesheet" href="../../../css/reset.css" />
+		<link rel="stylesheet" href="../../../css/preview_image.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">新增维修信息</h1>
+		</header>
+		<div class="mui-content">
+			<div class="container">
+				<div class="news_container">
+					<div class="news_container_1 bs">
+						<div class="activ_apply_edit" id="first">
+							 <div class="activ_theme">
+								<input type="text"class="mui-input-speech mui-input-clear"  name="" id="ATheme" value="" placeholder="维修登记（第一步，请填写客户电话）" />
+							</div>
+							<div class="leave_reason"> 
+								<p class="flexItem text_right leave_num">
+									<input id="telTitle" type="text" placeholder="" value="" />
+								</p>
+					 		</div>
+					 		<div class="btn_woapply" id="btnnext">下一步</div>
+						</div>
+						 <div class="activ_input_edit"  id="next" style="display: none;">
+						 	<div class="btn_woapply" id="btnpre">上一步</div>
+						 	 <div class="activ_theme">
+								<p type="text" class="mui-h6 mui-ellipsis" name="" id="ATheme" value="" placeholder="维修登记（第二步，请填写维修信息）" />
+							</div>
+							<ul>
+								<li class="activ_input_list flexbox">
+									<span class="activ_input_label4">.</span>
+									<p class="flexItem text_right leave_num">
+									<input id="xm" type="text" placeholder="姓名" value="" />
+								</p>
+								<!--<span id="xm" class="flexItem">/姓名/</span>-->
+								</li>
+								<li class="activ_input_list flexbox">
+									<span class="activ_input_label3">.</span>
+									<p class="flexItem text_right leave_num">
+									<input id="dz" type="text" placeholder="地址" value="" />
+								</p>
+								<!--<span id="dz" class="flexItem">地址</span>-->
+								</li> 
+								<li class="activ_input_list  flexbox">
+									<span class="activ_input_label1">希望维修日期</span>
+									<p class="flexItem">
+										<span id="pickDateBtn" type="button">请选择日期</span>
+									</p>
+								</li>
+								<li class="activ_input_list  flexbox">
+									<span class="activ_input_label1">维修时间</span>
+									<p class="flexItem join_object leave_type">
+									<select id="wxsj" class="" placeholder="请选择">
+										<option value="">请选择</option>
+									</select>
+								</p>
+								</li>
+								<li class="activ_input_list  flexbox">
+									<span class="activ_input_label1">维修类别</span>
+									<p class="flexItem join_object leave_type">
+									<select id="wxlb" class="" placeholder="请选择">
+										<option value="">请选择</option>
+									</select>
+								</p>
+								</li>
+								 <li class="activ_input_list  flexbox">
+									<span class="activ_input_label1">是否客户</span>
+									<p class="flexItem join_object leave_type">
+									<select id="sfkh" class="" placeholder="请选择">
+										<option value="">请选择</option>
+									</select>
+								</p>
+								</li>
+								
+								
+								<!--<li class="activ_input_list flexbox">
+								<span class="activ_input_label5">参与对象</span>
+								<p class="flexItem join_object">公司全体人员</p>
+							</li>-->
+							</ul>
+							<div class="leave_reason">
+								<textarea type="" class="" name="" id="AContext" value="" placeholder="请输入维修原因"></textarea>
+							</div>
+							<div class="btn_woapply" id="btnSubmit">立即报修</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../../js/mui/mui.min.js"></script>
+	<script type="text/javascript" src="../../../js/mui/mui.zoom.js"></script> 
+	<script type="text/javascript" src="../../../js/common/zepto.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="../../../js/controllers/common.js"></script>  
+	<script type="text/javascript" src="../../../js/controllers/approve/repair/activity_apply.js"></script>
+
+</html>
