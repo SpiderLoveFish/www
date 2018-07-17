@@ -1,5 +1,6 @@
 mui.plusReady(function() {
 	mui.previewImage();
+	
 	//获取日期
 //	var startDate, startTime, endDate, endTime, overDate, overTime;
 //

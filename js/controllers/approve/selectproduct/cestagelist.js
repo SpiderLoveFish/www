@@ -2,18 +2,7 @@ var list = document.getElementById("list");
 var starIndex = 10;
 var endIndex = 1000;
 var selecttype = 'dqr';
-var news_hint = document.getElementsByClassName("news_hint");
-var html_No = '<a href="javascript:;" class="sc_cell sc_padding  mui-table-view-cell"  id="@ID">' +
-	//	'		<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' +
-	'		<div class="sc_cell_bd sc_cell_primary">' +
-	'			<p>@STheme</p>' +
-	'			<p class="label_describe_2">@SContext@djbh</p>' +
-	'			<span class="sc_comment">@ReleaseTime</span>' +
-	'		</div>' +
-	'		<div class="sc_cell_data">' +
-	'			<p>@flag</p>' +
-	'		</div>' +
-	'	</a>';
+ 
 var html_CanYu = '<a href="javascript:;"  class="sc_cell sc_padding mui-table-view-cell" id="@ID">' +
 	//	'		<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' +
 	'		<div class="sc_cell_bd sc_cell_primary">' +
@@ -26,39 +15,7 @@ var html_CanYu = '<a href="javascript:;"  class="sc_cell sc_padding mui-table-vi
 	'		</div>' +
 	'	</a>';
 $(function() {
-	$('.news_title>ul>li').each(function(i, n) {
-		$(n).click(function() {
-			$(this).addClass('read_active').siblings().removeClass('read_active');
-			$('.container .sc_cells_access').each(function(x, y) {
-
-				if(i == 0) {
-					starIndex = 10;
-					endIndex = 1000;
-					if(selecttype != "dqr") { //待确认
-						list.innerHTML = "";
-					} else {
-						return;
-					}
-					selecttype = 'dqr';
-				} else {
-					starIndex = 10;
-					endIndex = 10;
-					if(selecttype != "yqr") { //已确认
-						list.innerHTML = "";
-					} else {
-						return;
-					}
-					selecttype = 'yqr';
-				}
-				setTimeout(function() {
-					mui('#pullrefresh').pullRefresh().refresh(true);
-					mui('#pullrefresh').pullRefresh().pullupLoading();
-				}, 50);
-			});
-		})
-	});
-
-	//news_hint[0].style.display = "none";
+	 
 });
 
 function getpullupRefresh() {
@@ -91,21 +48,24 @@ function ChangeDateFormat(jsondate) {
 	//  + date.getMinutes();
 }
 
-//document.getElementById('search').addEventListener('input', function() {
-//	list.innerHTML = "";
-//	starIndex=10;
-//	getquestionnairelist();
-//});
-//var search = document.getElementById("search");
+document.getElementById('search').addEventListener('input', function() {
+	
+	list.innerHTML = "";
+	starIndex=10;
+	getquestionnairelist();	
+});
+var search = document.getElementById("search");
 function getquestionnairelist() {
 	var data = {
 		uid: getUserInfo().ID, 
-		startindex: starIndex  
+		startindex:starIndex,
+		strwhere:search.value
 	};
-	//alert(starIndex)
+//alert(JSON.stringify(data))
 	common.postApi('GetCEStage', data, function(response) {
 		dataArray = eval(response.data);
 		//alert(JSON.stringify(response))
+		if(starIndex==10)list.innerHTML="";
 		for(var i = 0; i < dataArray.length; i++) {
 			var obj = dataArray[i];
 			//if (obj.DoPerson == getUserInfo().ID) {

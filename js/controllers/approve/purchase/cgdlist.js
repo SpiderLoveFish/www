@@ -45,25 +45,21 @@ function ChangeDateFormat(jsondate) {
 	//  + ":"
 	//  + date.getMinutes();
 }
-//var search = document.getElementById("search");
-//document.getElementById('search').addEventListener('input', function() {
-//	list.innerHTML = "";
-//	starIndex=10;
-//	getquestionnairelist();
-//	}, false);
+var search = document.getElementById("search");
+document.getElementById('search').addEventListener('input', function() {
+	list.innerHTML = "";
+	starIndex=10;
+	getquestionnairelist();
+	}, false);
 
 function getquestionnairelist() {
 	// selecttype = common.getQueryString("selecttype");	
 	if(selecttype == "cgdsh") status = 1;
 	else if(selecttype == "cgdqr") status = 2;
-	var data = {
-		//		lx: selecttype,
-		//		uid: getUserInfo().ID,
+	var data = { 
 		nowindex: starIndex,
-		strWhere: ' and isNode=' + status + '', //search.value
-		//		starIndex: starIndex,
-		//		endIndex: endIndex,
-		//type: selecttype,
+		isnode: status,
+		strWhere: search.value//' and isNode=' + status + '',  
 	};
 	//alert(JSON.stringify(data))
 	common.postApi('GetPurchase', data, function(response) {

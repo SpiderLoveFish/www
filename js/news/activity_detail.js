@@ -40,6 +40,8 @@ var CommentPageCount = 10;
 //$("#gameOver").hide();
 mui.plusReady(function() {
 
+//var ue = UE.getEditor('AContext');
+
 	mui.back = function() {
 		var fatherView = plus.webview.currentWebview().opener(); //父页面
 		mui.fire(fatherView, 'refresh1', {});
@@ -88,6 +90,7 @@ var data = {
 				document.getElementById("ReleaseName").innerText = getUserInfo().UserName;
 				document.getElementById("ATheme").innerText = obj.Title;
 				conText = obj.news_content;
+				
 //				document.getElementById("SignUpEndTime").innerText = '报名截至：' + obj.SignUpEndTime.substring(0, 10);
 //				document.getElementById("AAdress").innerText = obj.AAdress;
 //				BMUserAllCount = parseInt(obj.ASum);
@@ -112,6 +115,7 @@ var data = {
 //			}
 //			for (var t = 0; t < dataArray[2].length; t++) {
 //				var obj = dataArray[2][t];
+//ue.setContent(obj.news_content);
 var	imgs=conText.split('.jpg')
 if(imgs.length>1)
 for (var t = 0; t < imgs.length-1; t++)

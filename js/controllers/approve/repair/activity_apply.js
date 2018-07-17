@@ -160,13 +160,15 @@ var khbh='';
 	
 	var commitLock = true;
 	common.click("btnSubmit", function() {
+	
 		if (!commitLock) {
 			return;
 		}
 		 if(!khbh)
-		 	return;
+		 	khbh="0";
 		var AContextType = common.textValiAlert(document.getElementById("AContext").value, "请填写维修内容");
 		if (!AContextType) {
+				alert("请填写备注");
 			return;
 		}
  
@@ -202,7 +204,7 @@ var khbh='';
 		};
 		commitLock = false;
 		//common.showWaiting();
-//		alert(JSON.stringify(data))
+		//alert(JSON.stringify(data))
 		common.postApi("AddCRM_Repair", data, function(response) {
 			// alert(JSON.stringify(response.data))
 			if (response.data == "success") {

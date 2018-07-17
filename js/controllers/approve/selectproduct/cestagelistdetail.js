@@ -257,7 +257,7 @@ mui.plusReady(function() {
 				list.innerHTML = "";	 
 				getquestionnairelist();
 			} else {
-				mui.toast("提交成功,检查是否有重复，请稍候重试..");
+				mui.toast("提交失败,检查是否有重复，请稍候重试..");
 			}
 			//commitLock = true;
 			 common.closeWaiting();
