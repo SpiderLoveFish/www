@@ -70,8 +70,9 @@ var data = {
 				startIndex: '0',
 				endIndex:ID
 			};
-		//document.getElementById("UserList").innerHTML = '';
+		
 		document.getElementById("AContext").innerHTML = '';
+		var ac=document.getElementById("AContext");
 		common.postApi('GetMessage', data, function(response) { 
 			var isEnd = false; //是否结束活动
 			var isMe = false; //是否自己发布
@@ -83,6 +84,7 @@ var data = {
 			var BMUser = '';
 				var	dataArray=eval(response.data);
 			//	alert(JSON.stringify(dataArray))
+			ac.innerHTML="";
 			for (var i = 0; i < dataArray[0].length; i++) {
 				var obj = dataArray[0][i];
 				document.getElementById("ReleaseDateTime").innerText = DateFormat(getDateTimeStamp(obj.ReleaseTime.substring(0, 19)), 'yyyy-MM-dd 星期W HH:mm');
@@ -91,135 +93,39 @@ var data = {
 				document.getElementById("ATheme").innerText = obj.Title;
 				conText = obj.news_content;
 				
-//				document.getElementById("SignUpEndTime").innerText = '报名截至：' + obj.SignUpEndTime.substring(0, 10);
-//				document.getElementById("AAdress").innerText = obj.AAdress;
-//				BMUserAllCount = parseInt(obj.ASum);
-//				if (obj.ReleaseName == getUserInfo().UserName) {
-//					isMe = true;
-//				}
-//				if (obj.ISEnd == '1') {
-//					isEnd = true;
-//				}
+				// var content = myFWBtoString(obj.news_content);
+                    var imgs = obj.news_content.split('.jpg');
+                 // console.log(imgs.length)
+                    if(imgs.length>1){
+                        for (var t = 0; t < imgs.length - 1; t++) {
+                         // console.log(imgs[0]);
+                            if (imgs[t].indexOf("http") < 0)
+                            {                           
+                                var imags2 = imgs[t].split("../../../");
+                               //console.log(t+imags2[1]);
+                                ac.innerHTML += myHTMLDeCode(imags2[0]);
+                                if (imags2.length >= 1)
+                                ac.innerHTML += '<img src="'+getServerUrls('$ServerUrls').ApiUrl + imags2[1] + '.jpg' + '" data-preview-src="" data-preview-group="1"/>';
+//                                  ac.append(" < img src='http://mb.xczs.co/" + imags2[1]+ ".jpg' />");
+                            }
+                            else {
+                            	 ac.innerHTML += '<img src="' +imgs[t]+ '.jpg' + '" data-preview-src="" data-preview-group="1"/>';
+//                              ac.append(" < img src='" + imgs[t].replace('  </br>', '').replace(' ', '') + ".jpg' />");
+                            }
+                        }
+                     }
+                        
+//				var	imgs=conText.split('.jpg')
+//				if(imgs.length>1)
+//				for (var t = 0; t < imgs.length-1; t++)
+//				{
+//					//alert(imgs[t])
+//								document.getElementById("AContext").innerHTML += '<img src="' + imgs[t].replace('</br>', '') + '.jpg' + '" data-preview-src="" data-preview-group="1"/>';
+//					}		
+ 
+			ac.innerHTML +=myHTMLDeCode(imgs[imgs.length-1]);
+			//imgs[imgs.length-1].replace('&lt;','<').replace('&gt;','>');
 			}
-//			count = dataArray[1].length;
-//			for (var n = 0; n < dataArray[1].length; n++) {
-//				var obj = dataArray[1][n];
-//				//				if (n < 4) {
-//				document.getElementById("UserList").innerHTML += html.replace('@Avatar', obj.Avatar).replace('@UserName', obj.UserName);
-//				//				} else {
-//				//					document.getElementById("UserList").innerHTML += htmlHide.replace('@Avatar', obj.Avatar).replace('@UserName', obj.UserName);
-//				//				}
-//				if (obj.UserId == getUserInfo().UserId) {
-//					issign = true;
-//				}
-//			}
-//			for (var t = 0; t < dataArray[2].length; t++) {
-//				var obj = dataArray[2][t];
-//ue.setContent(obj.news_content);
-var	imgs=conText.split('.jpg')
-if(imgs.length>1)
-for (var t = 0; t < imgs.length-1; t++)
-{
-	//alert(imgs[t])
-				document.getElementById("AContext").innerHTML += '<img src="' + imgs[t].replace('</br>', '') + '.jpg' + '" data-preview-src="" data-preview-group="1"/>';
-	}		
-	//document.getElementById("AContext").innerHTML += '<img src="' + ApiUrl+'images/upload/temp/'+obj.IsHostPic + '" data-preview-src="" data-preview-group="1"/>';
-//			}
-//			redCount = dataArray[3].length;
-			document.getElementById("AContext").innerHTML += imgs[imgs.length-1].replace('&lt;','<').replace('&gt;','>');
-//			BMUserCount = dataArray[1].length;
-
-			//--判断开始
-			//			if(判断是否结束){
-			//				//结束逻辑
-			//			}else{
-			//				//未结束逻辑
-			//				if（判断是否是本人）{
-			//					//是本人发布,显示结束按钮
-			//				}
-			//				if(当前人是否报名了){
-			//					//已经报名，显示取消报名按钮
-			//				}else{
-			//					//未报名 开始逻辑
-			//					if(当前报名人数是否达到了上线){
-			//						//已经满了，显示已达上线
-			//					}else{
-			//						//显示报名按钮
-			//					}
-			//				}
-			//			}
-			//			//--判断结束
-			//			
-
-//			//活动是否结束
-//			if (isEnd) {
-//				$("#cancel").hide();
-//				$("#signUp").hide();
-//				$("#gameOver").show();
-//			} else {
-//				if (isMe) {
-//					$("#cancel").show();
-//				}
-//				if (issign) {
-//					$("#signUp").show();
-//					document.getElementById("signUp").innerText = '取消报名';
-//				} else {
-//					if (BMUserAllCount == 0) {
-//						$("#signUp").show();
-//						document.getElementById("signUp").innerText = '我要报名';
-//					} else if (BMUserCount >= BMUserAllCount) {
-//						$("#gameOver").show();
-//						document.getElementById("gameOver").innerText = '已达上限';
-//					} else {
-//						$("#signUp").show();
-//						document.getElementById("signUp").innerText = '我要报名';
-//					}
-//				}
-
-				//				if (BMUserAllCount == 0) {
-				//					//是否是自己发布的
-				//					if (isMe) {
-				//						$("#cancel").show();
-				//						$("#signUp").show();
-				//						$("#gameOver").hide();
-				//					} else {
-				//						$("#cancel").hide();
-				//						$("#signUp").show();
-				//						$("#gameOver").hide();
-				//					}
-				//					//alert(issign);
-				//					//是否报名
-				//					if (issign) {
-				//						document.getElementById("signUp").innerText = '取消报名';
-				//					} else {
-				//						document.getElementById("signUp").innerText = '我要报名';
-				//					}
-				//				} else {
-				//					if (BMUserCount >= BMUserAllCount) {
-				//						$("#cancel").hide();
-				//						$("#signUp").hide();
-				//						$("#gameOver").show();
-				//						document.getElementById("gameOver").innerText = '已达上限';
-				//					} else {
-				//						//是否是自己发布的
-				//						if (isMe) {
-				//							$("#cancel").show();
-				//							$("#signUp").show();
-				//							$("#gameOver").hide();
-				//						} else {
-				//							$("#cancel").hide();
-				//							$("#signUp").show();
-				//							$("#gameOver").hide();
-				//						}
-				//						//是否报名
-				//						if (issign) {
-				//							document.getElementById("signUp").innerText = '取消报名';
-				//						} else {
-				//							document.getElementById("signUp").innerText = '我要报名';
-				//						}
-				//					}
-				//				}
-			//}
 		//	document.getElementById("ReadCount").innerText = '已阅读' + redCount + '次';
 			//document.getElementById("userCount").innerText = '活动已报名(' + dataArray[1].length + '人)';
 			common.closeWaiting();
@@ -229,6 +135,14 @@ for (var t = 0; t < imgs.length-1; t++)
 			//FetPinglunList();
 		}, 'json');
 	}
+	
+	//获取服务器地址
+				function getServerUrls(setName) {
+					//获取快捷键
+					var shortcuts = JSON.parse(localStorage.getItem(setName) || "[]");
+					return shortcuts;
+				}
+				
 //	mui(".active_apply_btn").on("tap", '.btn_woapply', function() {
 //		common.showWaiting(true);
 //		var sigup = document.getElementById("signUp").innerText;

@@ -104,15 +104,21 @@ common.click("btnSubmit", function() {
 			document.getElementById("wcsl").innerText = obj.wcsl;
 			document.getElementById("ztsl").innerText = obj.ztsl;  
 			document.getElementById("bz").value = obj.b1;  
-			var btnSubmit1=document.getElementById("btnSubmit1");
+			var btnSubmit=document.getElementById("btnSubmit");
 				   var btnSubmit1=document.getElementById("btnSubmit1");
-				   if(tag==0){  	btnSubmit1.innerHTML="提交";status=1;}
-				   if(tag==1){
+				 console.log(tag);
+				 if(tag==0){  
+				 	btnSubmit1.innerHTML="提交";status=1;
+				 
+				 }
+				  else if(tag==1){
+				  	 btnSubmit.style.display="none";//隐藏
 				   	btnSubmit1.innerHTML="退回";status=0;
 				   }
 				  // alert(obj.AmountSum>(obj.wcsl+obj.ztsl))
-				   if(tag==7&&obj.AmountSum>(obj.wcsl+obj.ztsl)){
+				 else  if(tag==7&&obj.AmountSum>(obj.wcsl+obj.ztsl)){
 				   btnSubmit1.innerHTML="再次提交";status=1;
+				 
 				   }
 				   else{
 				   	btnSubmit1.style.display="none";//隐藏

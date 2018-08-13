@@ -7,13 +7,15 @@ var status = "999";
 var html_CanYu = '<a href="javascript:;"  class="sc_cell sc_padding mui-table-view-cell" id="@ID">' +
 	//	'		<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' +
 	'		<div class="sc_cell_bd sc_cell_primary">' +
-	'			<p>@STheme</p>' +
-	'			<p class="label_describe_2">@SContext</p>' +
-	'			<span class="sc_comment">@ReleaseTime</span>' +
+	'			<p>【供方】@STheme-@djbh</p>' +
+	'			<p class="label_describe_2">@nr</p>' +
+	'			<span class="sc_comment"></span>' +
+	'			<span class="sc_comment">@SContext-@ReleaseTime</span>' +
 	'		</div>' +
 	'		<div class="sc_cell_data">' +
-	'			<p>@flag</br>@djbh</p>' +
+	'			<p></br></p>' +
 	'		</div>' +
+	
 	'	</a>';
 
 function getpullupRefresh() {
@@ -69,7 +71,7 @@ function getquestionnairelist() {
 			// alert(i)
 			var obj = dataArray[i];
 			//if (obj.DoPerson == getUserInfo().ID) {
-			list.innerHTML += html_CanYu.replace('@IsHostPic', obj.n).replace('@ID', obj.Purid).replace('@STheme', obj.supplier_name).replace('@SContext', substringAddPoint(obj.materialman, 15)).replace('@ReleaseTime', ChangeDateFormat(obj.purdate)).replace('@flag', obj.isNode).replace('@djbh', obj.customid);
+			list.innerHTML += html_CanYu.replace('@IsHostPic', obj.n).replace('@ID', obj.Purid).replace('@STheme', obj.supplier_name).replace('@SContext', substringAddPoint(obj.materialman, 15)).replace('@ReleaseTime', ChangeDateFormat(obj.purdate)).replace('@flag', obj.isNode).replace('@djbh', obj.Purid).replace('@nr', obj.nr);
 			//			} else {
 			//				list.innerHTML += html_No.replace('@IsHostPic', obj.IsHostPic).replace('@ID', obj.id).replace('@STheme', obj.BudgetName).replace('@SContext', substringAddPoint(obj.address, 15)).replace('@ReleaseTime', ChangeDateFormat(obj.DoTime));
 			//			}

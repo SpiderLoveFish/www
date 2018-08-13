@@ -821,6 +821,23 @@ function base64_encode(str) {
 	}
 	return string
 }
+///富文本转文字
+function myHTMLDeCode(str) {
+    var s = "";
+    if (str == null) return "";
+    else
+        if (str.length == 0) return "";
+        else {
+            s = str.replace(/&amp;/g, "&");
+            s = s.replace(/&lt;/g, "<");
+            s = s.replace(/&gt;/g, ">");
+            //s = s.replace(/&nbsp;/g, " ");
+            s = s.replace(/&#39;/g, "\'");
+            s = s.replace(/&quot;/g, "\"");
+            s = s.replace(/<br>/g, "\n");
+            return s;
+        }
+}
 
 //去除左右空格
 function trimLR(sendComment) {
