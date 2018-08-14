@@ -43,7 +43,10 @@ mui.plusReady(function() {
 		for(var i = 0; i < dataArray.length; i++) {
 			var obj = dataArray[i];
 			//if (obj.DoPerson == getUserInfo().ID) {
-			list.innerHTML += html_CanYu.replace('@ID', obj.Purid).replace('@tag', obj.Customer_id).replace('@STheme', obj.material_name).replace('@SContext', obj.material_name).replace('@ReleaseTime', obj.unit).replace('@flag', obj.pursum);
+				var remarks="";
+				if(obj.remarks!="")
+				remarks="备注："+obj.remarks;
+			list.innerHTML += html_CanYu.replace('@ID', obj.Purid).replace('@tag', obj.Customer_id).replace('@STheme', obj.material_name).replace('@SContext', obj.material_name+remarks).replace('@ReleaseTime', obj.unit).replace('@flag', obj.pursum);
 			//			} else {
 			//				list.innerHTML += html_No.replace('@IsHostPic', obj.IsHostPic).replace('@ID', obj.id).replace('@STheme', obj.BudgetName).replace('@SContext', substringAddPoint(obj.address, 15)).replace('@ReleaseTime', ChangeDateFormat(obj.DoTime));
 			//			}

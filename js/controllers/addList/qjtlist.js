@@ -87,6 +87,7 @@ mui.plusReady(function() {
 			        ID:href
 			    }
 			});
+		
 	//var webview = common.getTemplate('show',"show.html?a="+href);
 		//detailPage.loadURL(href);
 	//	openMenu();

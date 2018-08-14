@@ -111,7 +111,8 @@ common.click("btnSubmit", function() {
 				 	btnSubmit1.innerHTML="提交";status=1;
 				 
 				 }
-				  else if(tag==1){
+				  else if(tag==1&&obj.AmountSum<(obj.wcsl+obj.ztsl))
+				  {
 				  	 btnSubmit.style.display="none";//隐藏
 				   	btnSubmit1.innerHTML="退回";status=0;
 				   }

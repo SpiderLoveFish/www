@@ -13,7 +13,7 @@
 var ws=null,embed=null;var strurl=null;
 // 扩展API加载完毕，现在可以正常调用扩展API 
 function plusReady(){
-
+//console.log(11111)
 	ws=plus.webview.currentWebview();
 	var fdStart = ws.ID.indexOf("http://");
 		if(fdStart == 0){
@@ -54,9 +54,9 @@ function openBrowser() {
 }
 // 打开网址
 function openUrl(){
-//	var url=document.getElementById("url");
-//	embed.loadURL(url.value);
-//	url.blur();
+	var url=document.getElementById("url");
+	embed.loadURL(url.value);
+	url.blur();
 }
 // 页面加载后自动打开
 document.addEventListener("DOMContentLoaded",function(){

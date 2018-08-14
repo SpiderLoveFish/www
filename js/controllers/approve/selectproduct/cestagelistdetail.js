@@ -95,15 +95,16 @@ function ChangeDateFormat(jsondate) {
 	//  + date.getMinutes();
 }
 
-//document.getElementById('search').addEventListener('input', function() {
-//	list.innerHTML = "";
-//	starIndex=10;
-//	getquestionnairelist();
-//});
-//var search = document.getElementById("search");
+document.getElementById('search').addEventListener('input', function() {
+	list.innerHTML = "";
+	starIndex=10;
+	getquestionnairelist();
+});
+var search = document.getElementById("search");
 function getquestionnairelist() {
 	var data = {
 		cid:cid,
+		strwhere:search.value,
 		id:'',
 		uid: getUserInfo().ID 
 	};

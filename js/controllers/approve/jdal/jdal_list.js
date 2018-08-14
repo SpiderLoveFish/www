@@ -25,6 +25,7 @@ function getpullupRefresh() {
 					m = k.createElement("del");
 				j.setAttribute("eid", e.ID);
 				j.setAttribute("data-img", hostimg);
+				j.setAttribute("data-value", e.viewurl);
 				g.setAttribute("class", "mui-media-object");
 				g.src = hostimg;//"images/loading.gif";
 				g.setAttribute('data-delay', hostimg);
@@ -54,7 +55,7 @@ function getActivityList() {
 	common.postApi('GetLastListClassicCase', data, function(response) {
 		c = document.createDocumentFragment();
 		dataArray = eval(response.data);
-		//alert(JSON.stringify(data))
+		//alert(JSON.stringify(dataArray))
 		 if(starIndex==10||dataArray.length)
 		list.innerHTML ='';
 		for (var i = 0; i < dataArray.length; i++) {
@@ -126,12 +127,14 @@ mui.plusReady(function() {
 	
 mui('#list').on('tap', 'a', function(e) {
 		var id = this.getAttribute('data-img');
+		var viewurl = this.getAttribute('data-value');
 	//var webview = common.getTemplate('showjdal',"show.html?img="+id);
 	mui.openWindow({
 			url: 'show.html',
 			id: 'showjdal',
 			extras: {
-				ID: id
+				ID: id,
+				url:viewurl
 			}
 		});
 	});
