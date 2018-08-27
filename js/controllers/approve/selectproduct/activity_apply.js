@@ -83,6 +83,7 @@ common.click("btnSubmit", function() {
 	//common.showWaiting(true);
 	var data = {
 		cid:cid,
+		strwhere:'',
 		id:id,
 		uid: getUserInfo().ID 
 	};
@@ -91,6 +92,7 @@ common.click("btnSubmit", function() {
 	
 	common.postApi('GetPurchaseList', data, function(response) {
 		dataArray = eval(response.data);
+		//alert(JSON.stringify(dataArray))
 		for (var i = 0; i < dataArray.length; i++) {
 			var obj = dataArray[i];
  	 

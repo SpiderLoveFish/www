@@ -111,7 +111,7 @@ function getquestionnairelist() {
 	//alert(starIndex)
 	common.postApi('GetPurchaseList', data, function(response) {
 		dataArray = eval(response.data);
-		//alert(JSON.stringify(response))
+		//alert(JSON.stringify(dataArray))
 		for(var i = 0; i < dataArray.length; i++) {
 			var obj = dataArray[i];
 			//if (obj.DoPerson == getUserInfo().ID) {
