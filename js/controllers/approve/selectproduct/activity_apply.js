@@ -109,23 +109,30 @@ common.click("btnSubmit", function() {
 			var btnSubmit=document.getElementById("btnSubmit");
 				   var btnSubmit1=document.getElementById("btnSubmit1");
 				 console.log(tag);
+				 if(obj.AmountSum<=(obj.wcsl+obj.ztsl))
+				 {
+					 btnSubmit.style.display="none";//隐藏
+					 btnSubmit1.style.display="none";//隐藏
+				 }
+				 else{
 				 if(tag==0){  
 				 	btnSubmit1.innerHTML="提交";status=1;
 				 
 				 }
-				  else if(tag==1&&obj.AmountSum<(obj.wcsl+obj.ztsl))
+				  else if(tag==1)//&&obj.AmountSum<(obj.wcsl+obj.ztsl)
 				  {
 				  	 btnSubmit.style.display="none";//隐藏
 				   	btnSubmit1.innerHTML="退回";status=0;
 				   }
 				  // alert(obj.AmountSum>(obj.wcsl+obj.ztsl))
-				 else  if(tag==7&&obj.AmountSum>(obj.wcsl+obj.ztsl)){
+				 else  if(tag==7){//&&obj.AmountSum>(obj.wcsl+obj.ztsl)
 				   btnSubmit1.innerHTML="再次提交";status=1;
 				 
 				   }
 				   else{
 				   	btnSubmit1.style.display="none";//隐藏
 				   }
+					 }
 			//userName = obj.Customer;
 			//Avatar = obj.Avatar;
 		}
