@@ -27,8 +27,8 @@
 		</header>
 		<div class="mui-content container">
 			<div class="mui-content nav_message">
-				<div id="slider" class="mui-slider h">
-					<div id="bannerList" class="mui-slider-group mui-slider-loop">
+			<!-- 	<div id="slider" class="mui-slider h">
+				<!-- 	<div id="bannerList" class="mui-slider-group mui-slider-loop">
 						<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
 						<!--<div class="mui-slider-item mui-slider-item-duplicate">
 							<a href="#">
@@ -36,12 +36,12 @@
 								<p class="mui-slider-title">静静看这世界</p>
 							</a>
 						</div>-->
-					</div>
+					<!-- </div> -->  
 					<div id="sliderBtn" class="mui-slider-indicator mui-text-right">
 
 					</div>
 				</div>
-
+ 
 				<div class="index_mess_list" style="display:none;">
 					<ul>
 						<li id="approve" class="flexbox index_right mui-table-view-cell">
@@ -121,26 +121,26 @@
 					return;
 				}
 				$('#slider').show();
-				document.getElementById("bannerList").innerHTML = '';
+//				document.getElementById("bannerList").innerHTML = '';
 				document.getElementById("sliderBtn").innerHTML = '';
 				//banner
 				var temp = '<div id="@id" listtype="@listtype" class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="@picurl"><p class="mui-slider-title">@title</p></a></div>';
-				if (dataArray.length > 0) {
-					//额外增加的一个节点(循环轮播：第一个节点是最后一张轮播)
-					document.getElementById("bannerList").innerHTML += temp.replace('@id', dataArray[dataArray.length - 1].ID).replace('@picurl', ApiUrl+'images/upload/temp/'+dataArray[dataArray.length - 1].IsHostPic).replace('@title', dataArray[dataArray.length - 1].ReleaseTime + ' ' + substringAddPoint(dataArray[dataArray.length - 1].Title, 9));
-					//主循环
-					for (var i = 0; i < dataArray.length; i++) {
-						var obj = dataArray[i];
-						document.getElementById("bannerList").innerHTML += temp.replace('@id', obj.ID).replace('@picurl', ApiUrl+'images/upload/temp/'+obj.IsHostPic).replace('@title', obj.ReleaseTime + ' ' + substringAddPoint(obj.Title, 9)).replace('@listtype', obj.ListType);
-						if (i == 0) {
-							document.getElementById("sliderBtn").innerHTML += '<div class="mui-indicator mui-active"></div>';
-						} else {
-							document.getElementById("sliderBtn").innerHTML += '<div class="mui-indicator"></div>';
-						}
-					}
-					//额外增加的一个节点(循环轮播：最后一个节点是第一张轮播)
-					document.getElementById("bannerList").innerHTML += temp.replace('@id', dataArray[0].ID).replace('@picurl', ApiUrl+'images/upload/temp/'+dataArray[0].IsHostPic).replace('@title', dataArray[0].ReleaseTime + ' ' + substringAddPoint(dataArray[0].Title, 9));
-				}
+// 				if (dataArray.length > 0) {
+// 					//额外增加的一个节点(循环轮播：第一个节点是最后一张轮播)
+// 					document.getElementById("bannerList").innerHTML += temp.replace('@id', dataArray[dataArray.length - 1].ID).replace('@picurl', ApiUrl+'images/upload/temp/'+dataArray[dataArray.length - 1].IsHostPic).replace('@title', dataArray[dataArray.length - 1].ReleaseTime + ' ' + substringAddPoint(dataArray[dataArray.length - 1].Title, 9));
+// 					//主循环
+// 					for (var i = 0; i < dataArray.length; i++) {
+// 						var obj = dataArray[i];
+// 						document.getElementById("bannerList").innerHTML += temp.replace('@id', obj.ID).replace('@picurl', ApiUrl+'images/upload/temp/'+obj.IsHostPic).replace('@title', obj.ReleaseTime + ' ' + substringAddPoint(obj.Title, 9)).replace('@listtype', obj.ListType);
+// 						if (i == 0) {
+// 							document.getElementById("sliderBtn").innerHTML += '<div class="mui-indicator mui-active"></div>';
+// 						} else {
+// 							document.getElementById("sliderBtn").innerHTML += '<div class="mui-indicator"></div>';
+// 						}
+// 					}
+// 					//额外增加的一个节点(循环轮播：最后一个节点是第一张轮播)
+// 					document.getElementById("bannerList").innerHTML += temp.replace('@id', dataArray[0].ID).replace('@picurl', ApiUrl+'images/upload/temp/'+dataArray[0].IsHostPic).replace('@title', dataArray[0].ReleaseTime + ' ' + substringAddPoint(dataArray[0].Title, 9));
+// 				}
 				//轮播
 				var slider = mui("#slider");
 				slider.slider({

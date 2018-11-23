@@ -4,13 +4,20 @@ mui.plusReady(function() {
 	
 	//业务员
 	combGetCustomerType('addry',document.getElementById('ywyType'));
+	var user = getUserInfo();
+	console.log(user.ID); 
+
+		//document.getElementById('ywyType').value=user.ID;
+		
+		// var ywy=selectywy.options[selectywy.selectedIndex].value;//设计师
 		//客户类型（默认）
 	combGetCustomerType('url',document.getElementById('khlxType'));
 	//楼盘
 	combGetComboxType('city',document.getElementById('lpType'));	
 	//户型
-	combGetComboxType(9,document.getElementById('hxType'));	
-	
+	combGetComboxType(9,document.getElementById('hxType'));
+		
+
 	var commitLock = true;
 	common.click("btnSubmit", function() {
 		if (!commitLock) {
@@ -88,7 +95,25 @@ mui.plusReady(function() {
 				var obj = dataArray[i];
 				dgid.options.add(new Option(obj.CustomerType, obj.cid));
 			}
-		 
+			if(type=="addry")
+			{
+				
+				// var dgid=document.getElementById('ywyType');
+				 for(i=0;i<dgid.options.length;i++)
+				 {
+				// console.log(user.ID+"||"+dgid.options[i].value);
+
+				 if(dgid.options[i].value!="")
+				 if( dgid.options[i].value==user.ID)
+				 {   
+				// console.log(2222);   
+					dgid.options[i].defaultSelected = true;
+					dgid.options[i].selected = true; 
+				 break;
+				 }
+				 }
+		 }
+		
 			common.closeWaiting();
 		}, 'json');
      	
@@ -110,7 +135,7 @@ mui.plusReady(function() {
 		}, 'json');
      	
      }
- 
+
  
  common.backOfHideCurrentWebview();
 });

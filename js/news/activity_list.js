@@ -40,7 +40,7 @@ function getActivityList() {
 				else
 				 hostimg=ApiUrl+'images/upload/temp/'+obj.IsHostPic;
 				 
-				var itemhtml = html.replace('@id', obj.ID).replace('@Title', (obj.Title)).replace('@Description',desc).replace('@ReleaseDateTime', obj.ReleaseTime).replace('@IsHostPic', hostimg);
+				var itemhtml = html.replace('@id', obj.ID).replace('@Title', (obj.Title)).replace('@Description',myHTMLDeCode(desc)).replace('@ReleaseDateTime', obj.ReleaseTime).replace('@IsHostPic', hostimg);
 				if (obj.create_id == getUserInfo().ID) {
 					itemhtml = itemhtml.replace('@flag', '我发布');
 				} 
