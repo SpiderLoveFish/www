@@ -9,7 +9,7 @@ var status=0;
 	var btnSubmit1=document.getElementById("btnSubmit1");
    if(tag==0){  	btnSubmit1.innerHTML="提交";status=1;}
    if(tag==1){
-   	btnSubmit1.innerHTML="退回";status=0;
+   	btnSubmit1.innerHTML="撤回";status=0;
    }
 // if(tag==7){
 // 	btnSubmit1.style.display="none";//隐藏
@@ -111,7 +111,7 @@ common.click("btnSubmit", function() {
 				 console.log(tag);
 				 if(obj.AmountSum<=(obj.wcsl+obj.ztsl))
 				 {
-					 btnSubmit.style.display="none";//隐藏
+					 // btnSubmit.style.display="none";//隐藏
 					 btnSubmit1.style.display="none";//隐藏
 				 }
 				 else{
@@ -122,7 +122,7 @@ common.click("btnSubmit", function() {
 				  else if(tag==1)//&&obj.AmountSum<(obj.wcsl+obj.ztsl)
 				  {
 				  	 btnSubmit.style.display="none";//隐藏
-				   	btnSubmit1.innerHTML="退回";status=0;
+				   	btnSubmit1.innerHTML="撤回";status=0;
 				   }
 				  // alert(obj.AmountSum>(obj.wcsl+obj.ztsl))
 				 else  if(tag==7){//&&obj.AmountSum>(obj.wcsl+obj.ztsl)
