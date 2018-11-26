@@ -6,9 +6,9 @@ var selecttype = 'dqr';
 var html_CanYu = '<a href="javascript:;"  class="sc_cell sc_padding mui-table-view-cell" id="@ID">' +
 	//	'		<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' +
 	'		<div class="sc_cell_bd sc_cell_primary">' +
-	'			<p>@STheme</p>' +
-	'			<p class="label_describe_2">@SContext</p>' +
-	'			<span class="sc_comment">@ReleaseTime</span>' +
+	'			<p>@STheme【@address】</p>' +
+	'			<p class="label_describe_2">施工监理：@SContext</p>' +
+	'			<span class="sc_comment">开工日期:@ReleaseTime</span>' +
 	'		</div>' +
 	'		<div class="sc_cell_data">' +
 	'			<p>@flag</p>' +
@@ -69,7 +69,7 @@ function getquestionnairelist() {
 		for(var i = 0; i < dataArray.length; i++) {
 			var obj = dataArray[i];
 			//if (obj.DoPerson == getUserInfo().ID) {
-			list.innerHTML += html_CanYu.replace('@ID', obj.CustomerID).replace('@STheme', obj.CustomerName).replace('@SContext', obj.sgjl).replace('@ReleaseTime', ChangeDateFormat(obj.Jh_date)).replace('@flag', obj.tel);
+			list.innerHTML += html_CanYu.replace('@ID', obj.CustomerID).replace('@STheme', obj.CustomerName).replace('@SContext', obj.sgjl).replace('@ReleaseTime', ChangeDateFormat(obj.btime)).replace('@flag', obj.tel).replace('@address', obj.address);
 			//			} else {
 			//				list.innerHTML += html_No.replace('@IsHostPic', obj.IsHostPic).replace('@ID', obj.id).replace('@STheme', obj.BudgetName).replace('@SContext', substringAddPoint(obj.address, 15)).replace('@ReleaseTime', ChangeDateFormat(obj.DoTime));
 			//			}

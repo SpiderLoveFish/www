@@ -14,8 +14,13 @@ var status=0;
 // if(tag==7){
 // 	btnSubmit1.style.display="none";//隐藏
 // }
+   //提交/撤回
    common.click("btnSubmit1", function() {
+	   var bz=document.getElementById("bz").value;
+   	var sqsl=document.getElementById("sqsl").value;
    	var data1={
+		 sum:sqsl,
+		 remarks:bz,
    		status:status,
    		cid:cid,
    		id:id
@@ -35,6 +40,7 @@ var status=0;
 	
 });
    	
+   //b保存
 common.click("btnSubmit", function() {
 	var bz=document.getElementById("bz").value;
    	var sqsl=document.getElementById("sqsl").value;
@@ -50,8 +56,8 @@ common.click("btnSubmit", function() {
 			// alert(JSON.stringify(response.data))
 			if (response.data == "success") {
 				mui.toast("提交成功!!!");
-				Back();
-				mui.back();
+				//Back();
+				//mui.back();
 			} else {
 				mui.toast("服务器异常，请稍候重试..");
 			}
@@ -82,6 +88,7 @@ common.click("btnSubmit", function() {
 	//id = event.detail.id;
 	//common.showWaiting(true);
 	var data = {
+		starIndex:1,
 		cid:cid,
 		strwhere:'',
 		id:id,
@@ -101,10 +108,12 @@ common.click("btnSubmit", function() {
 			document.getElementById("category_name").innerText = obj.category_name;
 			document.getElementById("Brand").innerText = obj.Brand;
 			document.getElementById("jg").innerText = "￥"+obj.InternalPrice;
-			document.getElementById("unit").innerText = obj.unit;
+			//document.getElementById("unit").innerText = obj.unit;
 			document.getElementById("sqsl").value = obj.AmountSum;
-			document.getElementById("wcsl").innerText = obj.wcsl;
-			document.getElementById("ztsl").innerText = obj.ztsl;  
+			document.getElementById("wcsl").innerText = obj.wcsl+obj.unit;
+			document.getElementById("ztsl").innerText = obj.ztsl+obj.unit; 
+			 document.getElementById("ktjsl").innerText = obj.AmountSum-obj.wcsl-obj.ztsl+obj.unit; 
+
 			document.getElementById("bz").value = obj.b1;  
 			var btnSubmit=document.getElementById("btnSubmit");
 				   var btnSubmit1=document.getElementById("btnSubmit1");

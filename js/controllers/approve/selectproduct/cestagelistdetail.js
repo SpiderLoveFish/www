@@ -17,15 +17,20 @@ var html_CanYu =
 //					'	<a class="mui-btn mui-btn-red">删除</a>'+
 //				'	</div>'+
 //				'<div class="mui-slider-handle mui-table">'+
-'<a href="javascript:;"  class="sc_cell sc_padding mui-table-view-cell" id="@ID" tag="@tag">' +
-	//	'		<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' +
-	'		<div class="sc_cell_bd sc_cell_primary">' +
-	'			<p>@STheme</p>' +
-	'			<p class="label_describe_2">@SContext</p>' +
-	'			<span class="sc_comment">@ReleaseTime</span>' +
+'<a href="javascript:;"  class="sc_cell sc_padding mui-table-view-cell" id="@ID" tag="@tag">' + 
+	'  <div class="mui-table">'+
+	'		  <div class="mui-table-cell mui-col-xs-10">' +
+	' <h4 class="mui-ellipsis">@STheme【规格:@specifications，品牌:@Brand，单位:@unit】</h4>'+
+		'  </br><h5>备注:@bz【@zt】</h5>'+                  
+		  '<p class="mui-h6 mui-ellipsis">申请:@sqsl，采购中:@ztsl，在工地:@wcsl，可提交:@ktjsl</p>'+
+	 	              
+	// '     <h5 class="mui-ellipsis">@STheme</h5>   '+ 
+	// '			<p class="label_describe_2">@SContext</p>' +
+	// '			<span class="sc_comment">@ReleaseTime</span>' +
 	'		</div>' +
-	'		<div class="sc_cell_data">' +
-	'			<p>@flag</p>' +
+	//'		<div class="mui-table-cell mui-col-xs-2 mui-text-right">' +
+	//'			<p>@flag</p>' +
+	//'		</div>' +	 
 	'		</div>' +
 	'	</a>';
 //	' </div> </li>';
@@ -103,19 +108,26 @@ document.getElementById('search').addEventListener('input', function() {
 var search = document.getElementById("search");
 function getquestionnairelist() {
 	var data = {
+		starIndex:starIndex,
 		cid:cid,
 		strwhere:search.value,
 		id:'',
 		uid: getUserInfo().ID 
 	};
 	//alert(starIndex)
+	//alert(JSON.stringify(data))
 	common.postApi('GetPurchaseList', data, function(response) {
 		dataArray = eval(response.data);
-		//alert(JSON.stringify(dataArray))
+		 //alert(dataArray.length)
+		var zt="";
 		for(var i = 0; i < dataArray.length; i++) {
 			var obj = dataArray[i];
+			if(obj.IsStatus=="0")zt="待保存";
+			else if(obj.IsStatus=="1")zt="待提交";
+			else if(obj.IsStatus=="7")zt="已完成";
+			else zt="未知";
 			//if (obj.DoPerson == getUserInfo().ID) {
-			list.innerHTML += html_CanYu.replace('@ID', obj.id ).replace('@tag', obj.IsStatus ).replace('@STheme', obj.product_name).replace('@SContext', obj.name).replace('@ReleaseTime', obj.category_name).replace('@flag', obj.C_code);
+			list.innerHTML += html_CanYu.replace('@ID', obj.id ).replace('@tag', obj.IsStatus ).replace('@zt',zt).replace('@STheme', obj.product_name).replace('@SContext', obj.name).replace('@ReleaseTime', obj.category_name).replace('@flag', obj.C_code).replace('@wcsl', obj.wcsl).replace('@sqsl', obj.AmountSum).replace('@ztsl', obj.ztsl).replace('@ktjsl', obj.AmountSum-obj.wcsl-obj.ztsl).replace('@specifications', obj.specifications).replace('@Brand', obj.Brand).replace('@unit', obj.unit).replace('@bz', obj.b1);
 			//			} else {
 			//				list.innerHTML += html_No.replace('@IsHostPic', obj.IsHostPic).replace('@ID', obj.id).replace('@STheme', obj.BudgetName).replace('@SContext', substringAddPoint(obj.address, 15)).replace('@ReleaseTime', ChangeDateFormat(obj.DoTime));
 			//			}
@@ -305,9 +317,9 @@ mui.plusReady(function() {
 	window.addEventListener('refresh1', function() {
 //		if(selecttype == "dqr") {
 //			list.innerHTML = "";
-//			starIndex = 10;
+ 			starIndex = 10;
 //			endIndex = 1000;
-//			getquestionnairelist();
+		getquestionnairelist();
 //		}
 
 	});
