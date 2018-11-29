@@ -21,8 +21,8 @@ var html_CanYu =
 	'  <div class="mui-table">'+
 	'		  <div class="mui-table-cell mui-col-xs-10">' +
 	' <h4 class="mui-ellipsis">@STheme【规格:@specifications，品牌:@Brand，单位:@unit】</h4>'+
-		'  </br><h5>备注:@bz【@zt】</h5>'+                  
-		  '<p class="mui-h6 mui-ellipsis">申请:@sqsl，采购中:@ztsl，在工地:@wcsl，可提交:@ktjsl</p>'+
+		'  </br><h5>备注:@bz【】</h5>'+                  
+		  '<p class="mui-h6 mui-ellipsis">【@zt】申请:@sqsl，采购中:@ztsl，在工地:@wcsl，可提交:@ktjsl，</p>'+
 	 	              
 	// '     <h5 class="mui-ellipsis">@STheme</h5>   '+ 
 	// '			<p class="label_describe_2">@SContext</p>' +
@@ -122,9 +122,10 @@ function getquestionnairelist() {
 		var zt="";
 		for(var i = 0; i < dataArray.length; i++) {
 			var obj = dataArray[i];
-			if(obj.IsStatus=="0")zt="待保存";
-			else if(obj.IsStatus=="1")zt="待提交";
-			else if(obj.IsStatus=="7")zt="已完成";
+			if(obj.IsStatus=="0")zt="<font color='#FF0000'>待提交</font>";
+			else if(obj.IsStatus=="1")zt="<font color='#0000FF'>已提交</font>";
+			else if(obj.IsStatus=="7"&obj.AmountSum-obj.wcsl-obj.ztsl>0)zt="<font color='#FF0000'>再提交</font>";
+			else if(obj.IsStatus=="7")zt="<font color='#008000'>已完成</font>";
 			else zt="未知";
 			//if (obj.DoPerson == getUserInfo().ID) {
 			list.innerHTML += html_CanYu.replace('@ID', obj.id ).replace('@tag', obj.IsStatus ).replace('@zt',zt).replace('@STheme', obj.product_name).replace('@SContext', obj.name).replace('@ReleaseTime', obj.category_name).replace('@flag', obj.C_code).replace('@wcsl', obj.wcsl).replace('@sqsl', obj.AmountSum).replace('@ztsl', obj.ztsl).replace('@ktjsl', obj.AmountSum-obj.wcsl-obj.ztsl).replace('@specifications', obj.specifications).replace('@Brand', obj.Brand).replace('@unit', obj.unit).replace('@bz', obj.b1);
@@ -316,7 +317,7 @@ mui.plusReady(function() {
 	}
 	window.addEventListener('refresh1', function() {
 //		if(selecttype == "dqr") {
-//			list.innerHTML = "";
+			list.innerHTML = "";
  			starIndex = 10;
 //			endIndex = 1000;
 		getquestionnairelist();
