@@ -2,7 +2,7 @@
 	"id": "xczsapp",
 	"name": "山山ERP",
 	"version": {
-		"name": "1.5.21",
+		"name": "1.6",
 		"code": "16"
 	},
 	"description": "山山ERP移动云办公",
@@ -113,7 +113,7 @@
 						"spotlight-retina": "unpackage/res/icons/58x58.png",
 						"spotlight-normal": "unpackage/res/icons/29x29.png",
 						"settings-retina8": "unpackage/res/icons/87x87.png",
-						"spotlight-retina7": "unpackage/res/icons/80x80.png"
+						"spotlight-retina7": "unpackage/res/icons/80x80.png","spotlight@3x":"unpackage/res/icons/120x120.png","notification@3x":"unpackage/res/icons/60x60.png","notification@2x":"unpackage/res/icons/40x40.png"
 					},
 					"ipad": {
 						"retina": "unpackage/res/icons/144x144.png",
@@ -125,15 +125,15 @@
 						"spotlight-retina": "unpackage/res/icons/100x100.png",
 						"spotlight-normal": "unpackage/res/icons/50x50.png",
 						"spotlight-normal7": "unpackage/res/icons/40x40.png",
-						"spotlight-retina7": "unpackage/res/icons/80x80.png"
-					}
+						"spotlight-retina7": "unpackage/res/icons/80x80.png","proapp@2x":"unpackage/res/icons/167x167.png","notification":"unpackage/res/icons/20x20.png","notification@2x":"unpackage/res/icons/40x40.png"
+					},"appstore":"unpackage/res/icons/1024x1024.png"
 				},
 				"android": {
 					"ldpi": "unpackage/res/icons/48x48.png",
 					"mdpi": "unpackage/res/icons/48x48.png",
 					"hdpi": "unpackage/res/icons/72x72.png",
 					"xhdpi": "unpackage/res/icons/96x96.png",
-					"xxhdpi": "unpackage/res/icons/144x144.png"
+					"xxhdpi": "unpackage/res/icons/144x144.png","xxxhdpi":"unpackage/res/icons/192x192.png"
 				}
 			},
 			"splashscreen": {
@@ -142,7 +142,7 @@
 						"default": "/Users/spider/Downloads/xczsapp/苹果/320-480.png",
 						"retina55": "/Users/spider/Downloads/xczsapp/苹果/1242-2208.png",
 						"retina47": "/Users/spider/Downloads/xczsapp/苹果/750-1334.png",
-						"retina40": "/Users/spider/Downloads/xczsapp/苹果/750-1334.png",
+						"retina40": "/Users/spider/Downloads/xczsapp/苹果/640-1136.png",
 						"retina35": "/Users/spider/Downloads/xczsapp/苹果/640-960.png",
 						"retina55l": "/Users/spider/Downloads/rar/APPPIC/2208-1242.png"
 					},
@@ -162,7 +162,7 @@
 					"ldpi": "/Users/spider/Downloads/xczsapp/安卓/320-442.png",
 					"mdpi": "/Users/spider/Downloads/xczsapp/安卓/240-282.png",
 					"xhdpi": "/Users/spider/Downloads/xczsapp/安卓/720-1242.png",
-					"xxhdpi": "/Users/spider/Downloads/xczsapp/安卓/1008-1882.png"
+					"xxhdpi": "/Users/spider/Downloads/xczsapp/安卓/1080-1882.png"
 				}
 			},
 			"plugins": {"share":{"weixin":{"appid":"wx9ce94d25c90ff8bd","appsecret":"221c13fbd88cdae00c05e7f8cc2be3c0","description":"可选，微信分享"}},"oauth":{"weixin":{"appid":"wx9ce94d25c90ff8bd","appsecret":"221c13fbd88cdae00c05e7f8cc2be3c0"}},

@@ -48,7 +48,10 @@
 								<p>收支报表</p>
 							</div>
 						</a>
-					 
+					 	<div id="skqr" class="approve_list workstand_listT4">
+					 		<p>收款确认</p>
+					 	</div>
+					 </a>
 						<a>
 							<div id="more" class="approve_list approve_list7">
 								<p class="approve_addmore">添加更多</p>
@@ -78,7 +81,13 @@
 					//common.loadUrl('../activity/activity_list.html');
 			//});
 			});
-			 
+			 	common.click('skqr', function() {
+			 //				common.Verifauthority(r_points, function(result) { //积分
+			 //				 	if(result)
+			 				 		var webview = common.getTemplate('skqr', '../approve/finance/f_skrq.html'); //第二层webview			
+			 					//common.loadUrl('../activity/activity_list.html');
+			 			//});
+			 			});
 			//更多
 			common.click('more', function() {
 				common.toast('更多应用请联系提供商..');
