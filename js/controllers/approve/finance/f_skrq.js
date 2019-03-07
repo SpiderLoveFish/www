@@ -7,8 +7,8 @@ var status = "999";
 var html_CanYu = '<a href="javascript:;"  class="sc_cell sc_padding mui-table-view-cell" id="@ID">' +
 	//	'		<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' +
 	'		<div class="sc_cell_bd sc_cell_primary">' +
-	'			<p>【客户】@skkh</p>' +
-	'			<p class="label_describe_2">@dz</p>' +
+	'			<p>【@skkh】@dz</p>' +
+	'			<p class="label_describe_2">金额￥：@flag</p>' +
 	'			<span class="sc_comment"></span>' +
 	'			<span class="sc_comment">@SContext-@ReleaseTime</span>' +
 	'		</div>' +
@@ -67,10 +67,11 @@ function getquestionnairelist() {
 		dataArray = eval(response.data);
 		//alert(JSON.stringify(response.data))
 		for(var i = 0; i < dataArray.length; i++) {
-			// alert(i)
+		 
 			var obj = dataArray[i];
+			// alert(JSON.stringify(obj))
 			//if (obj.DoPerson == getUserInfo().ID) {
-			list.innerHTML += html_CanYu.replace('@ID', obj.id).replace('@skkh', obj.Customer).replace('@dz', substringAddPoint(obj.address, 15)).replace('@ReleaseTime', ChangeDateFormat(obj.create_date)).replace('@SContext',obj.create_name);
+			list.innerHTML += html_CanYu.replace('@ID', obj.id).replace('@skkh', obj.Customer).replace('@dz', substringAddPoint(obj.address, 15)).replace('@ReleaseTime', ChangeDateFormat(obj.create_date)).replace('@SContext',obj.create_name).replace('@flag', obj.receive_real).replace('@remarks',myHTMLDeCode(obj.remarks));
 			//			} else {
 			//				list.innerHTML += html_No.replace('@IsHostPic', obj.IsHostPic).replace('@ID', obj.id).replace('@STheme', obj.BudgetName).replace('@SContext', substringAddPoint(obj.address, 15)).replace('@ReleaseTime', ChangeDateFormat(obj.DoTime));
 			//			}

@@ -11,12 +11,12 @@ var html_CanYu =
  	'<a href="javascript:;"  class="sc_cell sc_padding mui-table-view-cell" id="@ID" tag="@tag">' +
 	//	'		<div class="sc_cell_hd sc_pic_txt"><img src="@IsHostPic"></div>' +
 	'		<div class="sc_cell_bd sc_cell_primary">' +
-	'			<p>@STheme</p>' +
-	'			<p class="label_describe_2">@SContext</p>' +
+	'			<p>【@STheme】@SContext</p>' +
+	'			<p class="sc_comment">@remarks</p>' +
 	'			<span class="sc_comment">@ReleaseTime</span>' +
 	'		</div>' +
 	'		<div class="sc_cell_data">' +
-	'			<p>@flag</p>' +
+	'			<p>金额￥：@flag</p>' +
 	'		</div>' +
 	'	</a>';
 mui.plusReady(function() {
@@ -37,7 +37,7 @@ mui.plusReady(function() {
 		for(var i = 0; i < dataArray.length; i++) {
 			var obj = dataArray[i];
 		 
-			list.innerHTML += html_CanYu.replace('@ID', obj.id).replace('@tag', obj.Customer_id).replace('@STheme', obj.Customer).replace('@SContext', obj.address).replace('@ReleaseTime', obj.Pay_type).replace('@flag', obj.receive_real);
+			list.innerHTML += html_CanYu.replace('@ID', obj.id).replace('@tag', obj.Customer_id).replace('@STheme', obj.Customer).replace('@SContext', obj.address).replace('@ReleaseTime', obj.Pay_type).replace('@flag', obj.receive_real).replace('@remarks',myHTMLDeCode(obj.remarks));
 			//			} else {
 			//				list.innerHTML += html_No.replace('@IsHostPic', obj.IsHostPic).replace('@ID', obj.id).replace('@STheme', obj.BudgetName).replace('@SContext', substringAddPoint(obj.address, 15)).replace('@ReleaseTime', ChangeDateFormat(obj.DoTime));
 			//			}

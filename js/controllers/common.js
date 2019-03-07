@@ -329,7 +329,7 @@ var r_cgd_qr = 20;//采购单确认
 		//数据体
 		var temBody = '<li data-name="@dataName" data-value="@dataValue" data-type="@datatype" data-type data-tags="@dataTag" class="mui-table-view-cell mui-indexed-list-item mui-checkbox mui-left"><input type="checkbox" />@dataShow</li>';
 		var headLetter;
-
+   			//console.log(getServerUrls('$ServerUrls').interfaceUrl );
 		//常用群组 
 		var data = {
 			url: ApiUrl,
@@ -364,7 +364,7 @@ var r_cgd_qr = 20;//采购单确认
 //			}
 			//加载完群组再加载人员
 			//用户列表
-			common.postApi("GetSelectProduct", {
+			common.postApi_product("GetSelectProduct", {
 				strwhere:corpid //条件 
 			}, function(response) {
 				dataArray = eval(response.data);
@@ -663,6 +663,30 @@ var r_cgd_qr = 20;//采购单确认
 			common.getTemplate('pushMsgPage', 'view/approve/list/list_sendme.html');
 		}
 	}
+	common.postApi_product = function(interfaceName, data, success, dataType) {
+		if(!dataType) {
+			//默认json格式
+			dataType = 'json';
+		}
+		var options = {
+			url: getServerUrls('$ServerUrls').interfaceUrl + interfaceName,
+			data: data,
+			success: success,
+			dataType: dataType
+		};
+		options.type = 'POST';
+		var headers = {};
+		var userinfo = getUserInfo();
+		//headers["sc_api"] = base64_encode(userinfo.CorpId + '/' + userinfo.UserId + '/' + userinfo.ClientId + '/' + Math.round(new Date().getTime() / 1000));
+		options.headers = headers;
+		//if(interfaceName=='GetAppVersion')
+		//alert(JSON.stringify(options))
+		var result = mui.ajax(options); //接口调用完成前不允许请求接口(防重复提交,低端机,网卡等连续点击请求接口)
+		return result;
+
+	};
+
+	
 	common.postApi = function(interfaceName, data, success, dataType) {
 		if(!dataType) {
 			//默认json格式
