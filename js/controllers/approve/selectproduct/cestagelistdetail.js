@@ -269,6 +269,7 @@ mui.plusReady(function() {
 			if (response.data == "success") {
 				mui.toast("提交成功!!!");
 				list.innerHTML = "";	 
+				starIndex = 10;
 				getquestionnairelist();
 			} else {
 				mui.toast("提交失败,检查是否有重复，请稍候重试..");
@@ -319,6 +320,7 @@ mui.plusReady(function() {
 //		if(selecttype == "dqr") {
 			list.innerHTML = "";
  			starIndex = 10;
+ 			
  		document.getElementById("search").value="";
 		getquestionnairelist();
 //		}

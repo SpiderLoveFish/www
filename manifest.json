@@ -2,7 +2,7 @@
 	"id": "xczsapp",
 	"name": "山山ERP",
 	"version": {
-		"name": "1.7",
+		"name": "1.8",
 		"code": "16"
 	},
 	"description": "山山ERP移动云办公",
@@ -144,7 +144,7 @@
 						"retina47": "/Users/spider/Downloads/xczsapp/苹果/750-1334.png",
 						"retina40": "/Users/spider/Downloads/xczsapp/苹果/640-1136.png",
 						"retina35": "/Users/spider/Downloads/xczsapp/苹果/640-960.png",
-						"retina55l": "/Users/spider/Downloads/rar/APPPIC/2208-1242.png"
+						"retina55l": "/Users/spider/Downloads/rar/APPPIC/2208-1242.png","iphonex":"/Users/spider/Downloads/xczsapp/苹果/1536-2408.png","iphonexl":"/Users/spider/Downloads/xczsapp/苹果/2208-1242.png"
 					},
 					"ipad": {
 						"portrait": "/Users/spider/Downloads/xczsapp/苹果/760-1004.png",
