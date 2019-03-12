@@ -36,7 +36,7 @@
 				</div>
 				<div class="mui-indexed-list-search mui-input-row mui-search">
 					<!--<input id="checkPerson" type="text" readonly="readonly">-->
-					<input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索产品">
+					<input id='search' type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索产品">
 				</div>
 				<div id="headerList" class="mui-indexed-list-bar">
 
@@ -63,21 +63,20 @@
 			}
 			
 			//加载数据完毕之后再调用一次indexedList()
-			function duangduang() {
+			function duangduang() {				
 				window.indexedList = new mui.IndexedList(list);
-				//mui(document.getElementById('list')).indexedList();
 			}
-//			var search = document.getElementById('search');
-//				search.addEventListener('input',function(){
-//					list.innerHTML = "";	
-//					common.getUserList(search.value, duangduang);
-//				});
+			var search = document.getElementById('search');
+				search.addEventListener('input',function(){
+					//list.innerHTML = "";	
+					common.getUserList(search.value, duangduang);
+				});
 				
 			mui.ready(function() {
 				var header = document.querySelector('header.mui-bar');
 				var list = document.getElementById('list');
 				var done = document.getElementById('done');
-				
+				 
 
 
 				function B(checkedValues) {

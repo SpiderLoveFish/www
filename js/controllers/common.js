@@ -322,66 +322,45 @@ var r_cgd_qr = 20;//采购单确认
 	};
 
 	common.getUserList = function(corpid, fun) {
-		document.getElementById("headerList").innerHTML = '';
-		document.getElementById("ulUserList").innerHTML = '';
+	
 		//字母头
 		var temHead = '<li data-group="@headLetter" class="mui-table-view-divider mui-indexed-list-group">@headLetter</li>';
 		//数据体
 		var temBody = '<li data-name="@dataName" data-value="@dataValue" data-type="@datatype" data-type data-tags="@dataTag" class="mui-table-view-cell mui-indexed-list-item mui-checkbox mui-left"><input type="checkbox" />@dataShow</li>';
-		var headLetter;
+		var headLetter,bodytemp;
    			//console.log(getServerUrls('$ServerUrls').interfaceUrl );
-		//常用群组 
-		var data = {
-			url: ApiUrl,
-			CorpID: '',
-			UserId: '',
-			GroupID: ''
-		};
-//		common.postApi('GetApp_Group', data, function(response) {
-//			dataArray = eval(response.data);
-//			//列表右侧字母列表
-//			if(dataArray[0].length > 0) {
-//				document.getElementById("headerList").innerHTML += "<a>常</a>";
-//				document.getElementById("ulUserList").innerHTML += temHead.replace("@headLetter", '常').replace("@headLetter", '常用群组');
-//			}
-//			for(var i = 0; i < dataArray[0].length; i++) {
-//				var obj = dataArray[0][i];
-//
-//				var userIdList = new Array();
-//				var userNameList = new Array();
-//				//获取群组中人员userid
-//				for(var n = 0; n < dataArray[1].length; n++) {
-//					var obj1 = dataArray[1][n];
-//					if(obj.GroupID == obj1.GroupID) {
-//						userIdList.push(obj1.GroupUserID);
-//						userNameList.push(obj1.UserName);
-//					}
-//				}
-//				var userIdString = userIdList.join(',');
-//				var userNameString = userNameList.join(',');
-//				//datatype=0为常用群组
-//				document.getElementById("ulUserList").innerHTML += temBody.replace("@datatype", '0').replace("@dataValue", userIdString).replace("@dataTag", userNameString).replace("@dataName", userNameString).replace("@dataShow", obj.GroupName);
-//			}
+	 
 			//加载完群组再加载人员
 			//用户列表
 			common.postApi_product("GetSelectProduct", {
-				strwhere:corpid //条件 
+				strwhere:corpid, //条件
+				nowindex:10
 			}, function(response) {
-				dataArray = eval(response.data);
+				 	var dataArray = eval(response.data);
+				 
 				for(var i = 0; i < dataArray.length; i++) {
 					var temp; //临时变量
 					var obj = dataArray[i];
-					if(headLetter != obj.header) { //没有此头字母,插入头
-						headLetter = obj.header;
-						//列表右侧字母列表
-						document.getElementById("headerList").innerHTML += "<a>" + obj.header + "</a>";
-						//主列表字母头
-						temp = temHead;
-						document.getElementById("ulUserList").innerHTML += temp.replace("@headLetter", obj.header).replace("@headLetter", obj.header);
-					}
-					temp = temBody;
+					//if(obj.product_id==product_id) continue;
+//					if(headLetter != obj.header) { //没有此头字母,插入头
+//						headLetter = obj.header;
+//						//列表右侧字母列表
+//						document.getElementById("headerList").innerHTML += "<a>" + obj.header + "</a>";
+//						//主列表字母头
+//						temp = temHead;
+//						document.getElementById("ulUserList").innerHTML += temp.replace("@headLetter", obj.header).replace("@headLetter", obj.header);
+//					}
+					temp = temBody; 
 					//datatype=1为人员
-					document.getElementById("ulUserList").innerHTML += temp.replace("@datatype", '1').replace("@dataValue", obj.product_id).replace("@dataTag", obj.product_name).replace("@dataName", obj.product_name).replace("@dataShow", obj.product_name);
+					bodytemp=temp.replace("@datatype", '1').replace("@dataValue", obj.product_id).replace("@dataTag", obj.product_name).replace("@dataName", obj.product_name).replace("@dataShow", obj.product_name);
+					
+                    if(document.getElementById("ulUserList").innerHTML.indexOf(obj.product_id) == -1)
+                    {
+                    	console.log(11);
+                    	document.getElementById("ulUserList").innerHTML +=bodytemp;
+                    }
+					
+				//console.log(document.getElementById("headerList").innerHTML)
 				}
 				fun();
 			}, 'json');
@@ -668,6 +647,7 @@ var r_cgd_qr = 20;//采购单确认
 			//默认json格式
 			dataType = 'json';
 		}
+		console.log(getServerUrls('$ServerUrls').interfaceUrl )
 		var options = {
 			url: getServerUrls('$ServerUrls').interfaceUrl + interfaceName,
 			data: data,

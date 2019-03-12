@@ -319,7 +319,7 @@ mui.plusReady(function() {
 //		if(selecttype == "dqr") {
 			list.innerHTML = "";
  			starIndex = 10;
-//			endIndex = 1000;
+ 		document.getElementById("search").value="";
 		getquestionnairelist();
 //		}
 
