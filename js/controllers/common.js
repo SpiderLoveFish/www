@@ -326,7 +326,7 @@ var r_cgd_qr = 20;//采购单确认
 		//字母头
 		var temHead = '<li data-group="@headLetter" class="mui-table-view-divider mui-indexed-list-group">@headLetter</li>';
 		//数据体
-		var temBody = '<li data-name="@dataName" data-value="@dataValue" data-type="@datatype" data-type data-tags="@dataTag" class="mui-table-view-cell mui-indexed-list-item mui-checkbox mui-left"><input type="checkbox" />@dataShow</li>';
+		var temBody = '<li id="@ID" data-name="@dataName" data-value="@dataValue" data-type="@datatype" data-type data-tags="@dataTag" class="mui-table-view-cell mui-indexed-list-item mui-checkbox mui-left"><input type="checkbox" >@dataShow</input></li>';
 		var headLetter,bodytemp;
    			//console.log(getServerUrls('$ServerUrls').interfaceUrl );
 	 
@@ -334,10 +334,10 @@ var r_cgd_qr = 20;//采购单确认
 			//用户列表
 			common.postApi_product("GetSelectProduct", {
 				strwhere:corpid, //条件
-				nowindex:10
+				nowindex:50
 			}, function(response) {
 				 	var dataArray = eval(response.data);
-				 
+				//console.log(JSON.stringify(dataArray));
 				for(var i = 0; i < dataArray.length; i++) {
 					var temp; //临时变量
 					var obj = dataArray[i];
@@ -352,16 +352,13 @@ var r_cgd_qr = 20;//采购单确认
 //					}
 					temp = temBody; 
 					//datatype=1为人员
-					bodytemp=temp.replace("@datatype", '1').replace("@dataValue", obj.product_id).replace("@dataTag", obj.product_name).replace("@dataName", obj.product_name).replace("@dataShow", obj.product_name);
+					bodytemp=temp.replace("@ID",obj.product_id).replace("@datatype", '1').replace("@dataValue", obj.product_id).replace("@dataTag", obj.product_name).replace("@dataName", obj.product_name).replace("@dataShow", obj.product_name);
 					
                     if(document.getElementById("ulUserList").innerHTML.indexOf(obj.product_id) == -1)
-                    {
-                    	console.log(11);
+                    {                  
                     	document.getElementById("ulUserList").innerHTML +=bodytemp;
                     }
-					
-				//console.log(document.getElementById("headerList").innerHTML)
-				}
+			 	}
 				fun();
 			}, 'json');
 
