@@ -55,106 +55,109 @@
 		<script type="text/javascript" src="../../js/mui/mui.indexedlist.js"></script>
 		<script type="text/javascript" src="../../js/controllers/common.js"></script>
 		<script type="text/javascript" charset="utf-8">
-			mui.init();
+			var self = null;
+			mui.init({
+
+			});
 			getData();
 
 			function getData() {
 				common.getUserList('', duangduang);
 			}
-			
+
 			//加载数据完毕之后再调用一次indexedList()
-			function duangduang() {				
+			function duangduang() {
 				window.indexedList = new mui.IndexedList(list);
 			}
 			var search = document.getElementById('search');
-				search.addEventListener('input',function(){
-					//list.innerHTML = "";	
-					common.getUserList(search.value, duangduang);
-				});
-				
+			search.addEventListener('input', function() {
+				//list.innerHTML = "";	
+				common.getUserList(search.value, duangduang);
+			});
+
 			mui.ready(function() {
+				self = plus.webview.currentWebview();
+				//self.reload(true);
 				var header = document.querySelector('header.mui-bar');
 				var list = document.getElementById('list');
 				var done = document.getElementById('done');
-				 
-					
-	var detailPageId = '../calendar/cldetail.html';
-	var detailPage = null;
-		mui('#ulUserList').on('tap', '.mui-checkbox', function(e) {
-									var id = this.getAttribute('id'); 
-									console.log(id)
+
+				var detailPageId = '../calendar/cldetail.html';
+				var detailPage = null;
+				mui('#ulUserList').on('tap', '.mui-checkbox', function(e) {
+					var id = this.getAttribute('id');
+					console.log(id)
 					//	var template = common.getTemplate('productdetail' ,'../calendar/cldetail.html?id=' + id);
-				if(!detailPage) {
-			detailPage.setStyle({
-				left: '100%',
-				zindex: 9999
-			});
-		}
-		//var id = this.getAttribute('data-value');
-		detailPage.loadURL('../calendar/cldetail.html?id=' + id);
-		openMenu();
-		 });
-			
-	
-	var mask = mui.createMask(_closeMenu);
-	//setTimeout的目的是等待窗体动画结束后，再执行create webview操作，避免资源竞争，导致窗口动画不流畅；
-	setTimeout(function() {
-		detailPage = common.getWebviewDetailById(detailPageId);
-	}, 150);
-	//监听详情页面请求关闭
-	window.addEventListener('hideDetailPage', function() {
-		_closeMenu();
-		mask.close();
-	});
-	/*
-	 * 显示菜单菜单
-	 */
-	function openMenu() {
-		//解决android 4.4以下版本webview移动时，导致fixed定位元素错乱的bug;
-		if(mui.os.android && parseFloat(mui.os.version) < 4.4) {
-			document.querySelector("header.mui-bar").style.position = "static";
-			//同时需要修改以下.mui-contnt的padding-top，否则会多出空白；
-			document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = "0px";
-		}
-		//侧滑菜单处于隐藏状态，则立即显示出来；
-		//显示完毕后，根据不同动画效果移动窗体；
-		setTimeout(function() {
-			detailPage.show('none', 0, function() {
-				detailPage.setStyle({
-					left: '15%',
-					transition: {
-						duration: 150
+					if(!detailPage) {
+						detailPage.setStyle({
+							left: '100%',
+							zindex: 9999
+						});
 					}
+					//var id = this.getAttribute('data-value');
+					detailPage.loadURL('../calendar/cldetail.html?id=' + id);
+					openMenu();
 				});
-			});
-			mask.show(); //遮罩
-		}, 350);
-	}
-	/**
-	 * 关闭侧滑菜单(业务部分)
-	 */
 
-	function _closeMenu() {
-		//解决android 4.4以下版本webview移动时，导致fixed定位元素错乱的bug;
-		if(mui.os.android && parseFloat(mui.os.version) < 4.4) {
-			document.querySelector("header.mui-bar").style.position = "fixed";
-			//同时需要修改以下.mui-contnt的padding-top，否则会多出空白；
-			document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = "44px";
-		}
-		//主窗体开始侧滑；
-		detailPage.setStyle({
-			left: '100%',
-			transition: {
-				duration: 150
-			}
-		});
-		//等窗体动画结束后，隐藏菜单webview，节省资源；
-		setTimeout(function() {
-			detailPage.hide();
-		}, 300);
-	}
+				var mask = mui.createMask(_closeMenu);
+				//setTimeout的目的是等待窗体动画结束后，再执行create webview操作，避免资源竞争，导致窗口动画不流畅；
+				setTimeout(function() {
+					detailPage = common.getWebviewDetailById(detailPageId);
+				}, 150);
+				//监听详情页面请求关闭
+				window.addEventListener('hideDetailPage', function() {
+					_closeMenu();
+					mask.close();
 
-					
+				});
+
+				/*
+				 * 显示菜单菜单
+				 */
+				function openMenu() {
+					//解决android 4.4以下版本webview移动时，导致fixed定位元素错乱的bug;
+					if(mui.os.android && parseFloat(mui.os.version) < 4.4) {
+						document.querySelector("header.mui-bar").style.position = "static";
+						//同时需要修改以下.mui-contnt的padding-top，否则会多出空白；
+						document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = "0px";
+					}
+					//侧滑菜单处于隐藏状态，则立即显示出来；
+					//显示完毕后，根据不同动画效果移动窗体；
+					setTimeout(function() {
+						detailPage.show('none', 0, function() {
+							detailPage.setStyle({
+								left: '15%',
+								transition: {
+									duration: 150
+								}
+							});
+						});
+						mask.show(); //遮罩
+					}, 350);
+				}
+				/**
+				 * 关闭侧滑菜单(业务部分)
+				 */
+
+				function _closeMenu() {
+					//解决android 4.4以下版本webview移动时，导致fixed定位元素错乱的bug;
+					if(mui.os.android && parseFloat(mui.os.version) < 4.4) {
+						document.querySelector("header.mui-bar").style.position = "fixed";
+						//同时需要修改以下.mui-contnt的padding-top，否则会多出空白；
+						document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = "44px";
+					}
+					//主窗体开始侧滑；
+					detailPage.setStyle({
+						left: '100%',
+						transition: {
+							duration: 150
+						}
+					});
+					//等窗体动画结束后，隐藏菜单webview，节省资源；
+					setTimeout(function() {
+						detailPage.hide();
+					}, 300);
+				}
 
 				function B(checkedValues) {
 					var webViewC = plus.webview.currentWebview().opener(); //父页面
@@ -162,6 +165,7 @@
 					mui.fire(webViewC, 'transData', {
 						tableview: checkedValues
 					});
+					
 				}
 				//calc hieght
 				list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
@@ -170,41 +174,39 @@
 				//mui.IndexedList.init();
 				//done event
 				done.addEventListener('tap', function() {
-										var checkboxArray = [].slice.call(list.querySelectorAll('input[type="checkbox"]'));
-										var checkedValues = new Array();
-										checkboxArray.forEach(function(box) {
-											if (box.checked) {
-												var userId = box.parentNode.attributes["data-value"].value;
-												var userName = box.parentNode.innerText;
-												var user = new Object();
-												user.UserId = userId;
-												user.UserName = userName;
-												checkedValues.push(user);
-											}
-										});
-//					var json = JSON.stringify(checkedValues);
-//					B(json);
-										if (checkedValues.length > 0) {
-											var json = JSON.stringify(checkedValues);
-																//	mui.alert('你选择了: ' + json);
-											B(json);
-											//mui.currentWebview.close();
-										} else {
-											mui.alert('你没选择任何人');
-										}
+					var checkboxArray = [].slice.call(list.querySelectorAll('input[type="checkbox"]'));
+					var checkedValues = new Array();
+					checkboxArray.forEach(function(box) {
+						if(box.checked) {
+							var userId = box.parentNode.attributes["data-value"].value;
+							var userName = box.parentNode.innerText;
+							var user = new Object();
+							user.UserId = userId;
+							user.UserName = userName;
+							checkedValues.push(user);
+						}
+					});
+					//				 
+					if(checkedValues.length > 0) {
+						var json = JSON.stringify(checkedValues);
+						B(json);
+                        
+					} else {
+						mui.alert('你没选择任何人');
+					}
 				}, false);
 				var checkedValues = new Array();
 				mui('#ulUserList').on('tap', '.mui-indexed-list-item', function() {
 					//点选项的时候移除搜索框焦点,防止软键盘一直弹出 提升体验
 					document.getElementsByClassName('mui-indexed-list-search-input')[0].blur();
 					var check = this.querySelector('input[type="checkbox"]');
-					if (check.checked) {
+					if(check.checked) {
 						//点的时候是选中状态--说明点完是取消状态
 						var deleIdArray = this.getAttribute('data-value').split(',');
-						for (var j = 0; j < deleIdArray.length; j++) {
-							for (var i = 0; i < checkedValues.length; i++) {
+						for(var j = 0; j < deleIdArray.length; j++) {
+							for(var i = 0; i < checkedValues.length; i++) {
 								var arr = checkedValues[i];
-								if (arr.UserId == deleIdArray[j]) {
+								if(arr.UserId == deleIdArray[j]) {
 									checkedValues.remove(arr);
 									break;
 								}
@@ -214,20 +216,20 @@
 						var user;
 						var userIdArray = this.getAttribute('data-value').split(',');
 						var userNameArray = this.getAttribute('data-name').split(',');
-						for (var i = 0; i < userIdArray.length; i++) {
+						for(var i = 0; i < userIdArray.length; i++) {
 							user = new Object();
 							user.UserId = userIdArray[i];
 							user.UserName = userNameArray[i];
 							//checkedValues.push(user);
 							var flag = true;
-							for (var j = 0; j < checkedValues.length; j++) {
+							for(var j = 0; j < checkedValues.length; j++) {
 								//现有数组已包含
-								if (checkedValues[j].UserId == user.UserId) {
+								if(checkedValues[j].UserId == user.UserId) {
 									flag = false;
 									break;
 								}
 							}
-							if (flag) {
+							if(flag) {
 								checkedValues.push(user);
 							}
 						}
@@ -237,7 +239,7 @@
 
 				function checkPersonInit() {
 					document.getElementById("checkPerson").value = '';
-					for (var i = 0; i < checkedValues.length; i++) {
+					for(var i = 0; i < checkedValues.length; i++) {
 						var arr = checkedValues[i];
 						document.getElementById("checkPerson").value += arr.UserName + ',';
 					}
@@ -252,11 +254,12 @@
 					//var value = count ? "完成(" + count + ")" : "关闭";
 					var value = "完成(" + count + ")";
 					done.innerHTML = value;
-					if (count) {
-						if (done.classList.contains("mui-disabled")) {
+					if(count) {
+						if(done.classList.contains("mui-disabled")) {
 							done.classList.remove("mui-disabled");
 						}
 					}
+					//location.reload();
 				}
 				//监听userListInit事件
 				window.addEventListener("userListInit", function(event) {
@@ -264,19 +267,19 @@
 					//alert(JSON.stringify(userList));
 					var objs = document.getElementsByTagName("input");
 					//所有checkbox设为false
-					for (var i = 0; i < objs.length; i++) {
-						if (objs[i].type == "checkbox") {
+					for(var i = 0; i < objs.length; i++) {
+						if(objs[i].type == "checkbox") {
 							objs[i].checked = false;
 						}
 					}
 					checkedValues = new Array();
-					if (userList) {
+					if(userList) {
 						//选中传过来的userid
 						var lis = document.getElementsByClassName("mui-indexed-list-item");
-						for (var i = 0; i < lis.length; i++) {
+						for(var i = 0; i < lis.length; i++) {
 							var li = lis[i];
 							//为人员(不筛选常用群组)并且包含此userid
-							if (li.getAttribute("data-type") == '1' && userList.indexOf(li.getAttribute("data-value")) >= 0) {
+							if(li.getAttribute("data-type") == '1' && userList.indexOf(li.getAttribute("data-value")) >= 0) {
 								//数组userid包含了当前li的userid
 								li.firstChild.checked = true;
 								var user = new Object();
@@ -288,6 +291,9 @@
 					}
 					doneShow();
 					checkPersonInit();
+				});
+				common.backOfHideCurrentWebview(function() {
+					//common.initMessage();
 				});
 				//重写back方法 调用父页面的关闭层方法
 				mui.back = function(event) {

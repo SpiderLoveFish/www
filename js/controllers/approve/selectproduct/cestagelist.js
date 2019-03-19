@@ -94,20 +94,7 @@ var detailPage = null;
 mui.plusReady(function() {
 	mui('#list').on('tap', '.sc_cell', function(e) {
 		var id = this.getAttribute('id');
-			var template = common.getTemplate('CEStagelistDetail', 'CEStagelistDetail.html?cid='+id);
-		//mui.alert('暂无')
-		//var webview = common.getTemplate('page1');
-		//webview.loadURL('cldetail.html?id=' + id);
-		//search.blur();
-//		if(!detailPage) {
-//			detailPage.setStyle({
-//				left: '100%',
-//				zindex: 9999
-//			});
-//		}
-		//var id = this.getAttribute('data-value');
-		//detailPage.loadURL('cldetail.html?id=' + id);
-		//openMenu();
+			var template = common.getTemplate('CEStagelistDetail', 'CEStagelistDetail.html?cid='+id);	 
 	});
 	var detailPageId = 'cldetail.html';
 	var detailPage = null;

@@ -326,7 +326,7 @@ var r_cgd_qr = 20;//采购单确认
 		//字母头
 		var temHead = '<li data-group="@headLetter" class="mui-table-view-divider mui-indexed-list-group">@headLetter</li>';
 		//数据体
-		var temBody = '<li id="@ID" data-name="@dataName" data-value="@dataValue" data-type="@datatype" data-type data-tags="@dataTag" class="mui-table-view-cell mui-indexed-list-item mui-checkbox mui-left"><input type="checkbox" >@dataShow</input></li>';
+		var temBody = '<li id="@ID" data-name="@dataName" data-value="@dataValue" data-type="@datatype" data-type data-tags="@dataTag" class="mui-table-view-cell mui-indexed-list-item mui-checkbox mui-left"><input   type="checkbox" >@dataShow</input></li>';
 		var headLetter,bodytemp;
    			//console.log(getServerUrls('$ServerUrls').interfaceUrl );
 	 
@@ -334,7 +334,7 @@ var r_cgd_qr = 20;//采购单确认
 			//用户列表
 			common.postApi_product("GetSelectProduct", {
 				strwhere:corpid, //条件
-				nowindex:50
+				nowindex:20
 			}, function(response) {
 				 	var dataArray = eval(response.data);
 				//console.log(JSON.stringify(dataArray));

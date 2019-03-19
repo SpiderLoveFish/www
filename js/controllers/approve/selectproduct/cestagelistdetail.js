@@ -149,7 +149,7 @@ function getquestionnairelist() {
 //		}
 	}, 'json');
 }
-var detailPage = null;
+var detailPage = '../../common/product_list.html';
 mui.plusReady(function() {
 	mui('#list').on('tap', '.sc_cell', function(e) {
 					var id = this.getAttribute('id');
@@ -180,7 +180,7 @@ mui.plusReady(function() {
 	function openMenu() {
 		if (!showMenu) {
 			//侧滑菜单处于隐藏状态，则立即显示出来；
-			//显示完毕后，根据不同动画效果移动窗体；
+			//显示完毕后，根据不同动画效果移动窗体； 
 			menu.show('none', 0, function() {
 				menu.setStyle({
 					left: '0%',
@@ -192,6 +192,8 @@ mui.plusReady(function() {
 			//显示遮罩
 			mask.show();
 			showMenu = true;
+			  
+			 
 		}
 	}
 	
@@ -209,18 +211,23 @@ mui.plusReady(function() {
 					duration: 150
 				}
 			});
+			
 			setTimeout(function() {
 				menu.hide();
 			}, 200);
 			//改变标志位
 			showMenu = false;
+			// plus.webview.getWebviewByid('product_list').reload();
+			//var wobj = plus.webview.getWebviewById(detailPage).reload();
+            // wobj.reload(true);
+            // mask.hide();
 		}
 	}
 	setTimeout(function() {
 		//侧滑菜单默认隐藏，这样可以节省内存；
 		menu = mui.preload({
-			id: 'user_list',
-			url: '../../common/product_list.html',
+			id: 'product_list',
+			url: detailPage,
 			styles: {
 				left: '0%',
 				width: '100%',
@@ -233,14 +240,14 @@ mui.plusReady(function() {
 	window.addEventListener('transData1', transDataHandler1);
 	function transDataHandler1(event) {
 		list.innerHTML = "";	 
-				getquestionnairelist();
+		getquestionnairelist(); 
 	}
 	// transData是自定义事件的名称，由其他页面通过 mui.fire 触发
 	// transDataHandler 是处理自定义事件的函数名称 ，名字自己随便写
 	window.addEventListener('transData', transDataHandler);
 	//自定义事件处理逻辑 event参数不能少 
 	function transDataHandler(event) {
-	
+		//plus.webview.getWebviewById(detailPage).reload();
 		//获取从B页面传过来的数据
 		mask.close();
 		var tableview = eval(event.detail.tableview);
