@@ -55,10 +55,7 @@
 		<script type="text/javascript" src="../../js/mui/mui.indexedlist.js"></script>
 		<script type="text/javascript" src="../../js/controllers/common.js"></script>
 		<script type="text/javascript" charset="utf-8">
-			var self = null;
-			mui.init({
-
-			});
+			mui.init();
 			getData();
 
 			function getData() {
@@ -75,9 +72,7 @@
 				common.getUserList(search.value, duangduang);
 			});
 
-			mui.ready(function() {
-				self = plus.webview.currentWebview();
-				//self.reload(true);
+			mui.plusReady(function() {
 				var header = document.querySelector('header.mui-bar');
 				var list = document.getElementById('list');
 				var done = document.getElementById('done');
@@ -85,6 +80,7 @@
 				var detailPageId = '../calendar/cldetail.html';
 				var detailPage = null;
 				mui('#ulUserList').on('tap', '.mui-checkbox', function(e) {
+					//console.log(id);
 					var id = this.getAttribute('id');
 					console.log(id)
 					//	var template = common.getTemplate('productdetail' ,'../calendar/cldetail.html?id=' + id);
@@ -108,9 +104,7 @@
 				window.addEventListener('hideDetailPage', function() {
 					_closeMenu();
 					mask.close();
-
 				});
-
 				/*
 				 * 显示菜单菜单
 				 */
@@ -165,7 +159,6 @@
 					mui.fire(webViewC, 'transData', {
 						tableview: checkedValues
 					});
-					
 				}
 				//calc hieght
 				list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
@@ -186,11 +179,13 @@
 							checkedValues.push(user);
 						}
 					});
-					//				 
+					//					var json = JSON.stringify(checkedValues);
+					//					B(json);
 					if(checkedValues.length > 0) {
 						var json = JSON.stringify(checkedValues);
+						//	mui.alert('你选择了: ' + json);
 						B(json);
-                        
+						//mui.currentWebview.close();
 					} else {
 						mui.alert('你没选择任何人');
 					}
@@ -259,7 +254,6 @@
 							done.classList.remove("mui-disabled");
 						}
 					}
-					//location.reload();
 				}
 				//监听userListInit事件
 				window.addEventListener("userListInit", function(event) {
@@ -291,9 +285,6 @@
 					}
 					doneShow();
 					checkPersonInit();
-				});
-				common.backOfHideCurrentWebview(function() {
-					//common.initMessage();
 				});
 				//重写back方法 调用父页面的关闭层方法
 				mui.back = function(event) {
