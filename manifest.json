@@ -2,7 +2,7 @@
 	"id": "xczsapp",
 	"name": "山山ERP",
 	"version": {
-		"name": "1.9",
+		"name": "2.0",
 		"code": "16"
 	},
 	"description": "山山ERP移动云办公",
@@ -19,39 +19,19 @@
 		"Accelerometer": {
 			"description": "访问加速度感应器"
 		},
-		"Audio": {
-			"description": "访问麦克风"
-		},
+		 
 		"Cache": {
 			"description": "管理应用缓存"
 		},
-		"Camera": {
-			"description": "访问摄像头"
-		},
+		 
 		"Console": {
 			"description": "跟踪调试输出日志"
 		},
-		"Contacts": {
-			"description": "访问系统联系人信息"
-		},
-		"Device": {
-			"description": "访问设备信息"
-		},
-		"Downloader": {
-			"description": "文件下载管理"
-		},
+		  
 		"Events": {
 			"description": "应用扩展事件"
 		},
-		"File": {
-			"description": "访问本地文件系统"
-		},
-		"Gallery": {
-			"description": "访问系统相册"
-		},
-		"Geolocation": {
-			"description": "访问位置信息"
-		},
+		 
 		"Invocation": {
 			"description": "使用Native.js能力"
 		},
@@ -144,10 +124,10 @@
 						"retina47": "/Users/spider/Downloads/xczsapp/苹果/750-1334.png",
 						"retina40": "/Users/spider/Downloads/xczsapp/苹果/640-1136.png",
 						"retina35": "/Users/spider/Downloads/xczsapp/苹果/640-960.png",
-						"retina55l": "/Users/spider/Downloads/rar/APPPIC/2208-1242.png","iphonex":"/Users/spider/Downloads/xczsapp/苹果/1536-2408.png","iphonexl":"/Users/spider/Downloads/xczsapp/苹果/2208-1242.png"
+						"retina55l": "/Users/spider/Downloads/rar/APPPIC/2208-1242.png","iphonex":"/Users/spider/Downloads/xczsapp/苹果/1124_2436.png","iphonexl":"/Users/spider/Downloads/xczsapp/苹果/2436_1125.png"
 					},
 					"ipad": {
-						"portrait": "/Users/spider/Downloads/xczsapp/苹果/760-1004.png",
+						"portrait": "/Users/spider/Downloads/xczsapp/苹果/768-1024.png",
 						"portrait7": "/Users/spider/Downloads/xczsapp/苹果/768-1024.png",
 						"landscape": "/Users/spider/Downloads/xczsapp/苹果/1024-748.png",
 						"landscape7": "/Users/spider/Downloads/xczsapp/苹果/1024-748.png",
@@ -205,11 +185,7 @@
 					"<uses-permission android:name=\"android.permission.READ_SMS\"/>"
 				]
 			},
-			"orientation": [
-				"portrait-primary",
-				"landscape-primary",
-				"landscape-secondary"
-			]
+			"orientation": ["portrait-primary","portrait-secondary","landscape-primary","landscape-secondary"]
 		},
 		"splashscreen": {
 			"autoclose": true,
