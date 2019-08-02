@@ -83,7 +83,7 @@
 							 <li class="activ_input_list flexbox">
 								<span class="activ_input_label7">手机号码</span>
 								<p class="flexItem text_right leave_num">
-									<input id="tel" type="text" placeholder="" value="" /><input type="text" placeholder="普通输入框">
+									<input id="tel" type="text" placeholder="电话号码" value="" />
 								</p>
 							</li>
 						  
@@ -95,19 +95,29 @@
 							</li>
 							 
 								<div class="leave_reason">
-								<textarea id="sendsms" readonly="readonly" rows="10" placeholder="请输入备注说明"></textarea>
-							 
+								<!--<textarea id="test" readonly="readonly" rows="10" placeholder="请输入备注说明"></textarea>-->
+							 <div id="test" class="btn_woapply">预览</div>
 							</div>
 							 
 						 
 						</ul>
 					</div>
-				 <li><div id="btnSubmit" class="btn_woapply">发送短信</div>
-					<div id="btnshare" class="btn_woapply">分享</div></li>
-					
+				 <li>
+				 <div class="approve_footer">	
+				 	<button id="btnSubmit" style="width: 45%;" class="mui-btn mui-btn-success">发送短信</button>
+					<button id="btnshare" style="width: 45%;"  class="mui-btn mui-btn-warning">分享</button></li>
+					</div>
 			 
 				</div>
 			</div>
+		</div> 
+		<div id="div"></div>
+		<div id="popover" class="mui-popover" style="height: 250px;">
+			<div class="mui-popover-arrow"></div> 
+    		<div align="center">你的消息预览</div>
+    <br>
+    		<textarea style="overflow-y:scroll;font-size:8px;"  id="sendsms" readonly="readonly" rows="30" placeholder="请输入备注说明"></textarea>
+							 
 		</div>
 			</body>
 	<script type="text/javascript" src="../../../js/mui/mui.min.js"></script>
@@ -116,6 +126,10 @@
 <script type="text/javascript" src="../../../js/controllers/sharecommon.js"></script>
 	<script>
 		mui.init();
+		document.getElementById("test").addEventListener("tap", function () {
+        //调用隐藏/显示弹出层
+        mui("#popover").popover('toggle', document.getElementById("div"));
+   }) 
 		var sms='';
 		var p1=document.getElementById("p1");
 					var p2=document.getElementById("p2");
@@ -233,5 +247,20 @@
 		
 	
 	</script>
-
+<!--通过#div css的top与left控制弹出层的位置-->
+    <style type="text/css">
+        #div {
+            width: 0px;
+            height: 0px;
+            background: red;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+        }
+ 
+        /*移除底部或顶部三角,需要在删除此代码*/
+        .mui-popover .mui-popover-arrow:after {
+            width: 0px;
+        }
+    </style>
 </html>
