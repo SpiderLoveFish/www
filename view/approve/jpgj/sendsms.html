@@ -21,7 +21,8 @@
 				<ul class="mui-table-view">
 					<li class="mui-table-view-cell mui-collapse">
 						<a class="mui-navigate-right" href="#">模板原始内容</a>
-						<div class="mui-collapse-content">
+						 <div id="mbyl" class="btn_woapply">模版预览</div>
+						<!--<div class="mui-collapse-content">
 							
 								<div class="mui-input-row">
 																	<div class="leave_reason">
@@ -32,7 +33,7 @@
 								
 
 						</div>
-					</li>
+					</li>-->
 					
 				</ul>
 	
@@ -119,6 +120,13 @@
     		<textarea style="overflow-y:scroll;font-size:8px;"  id="sendsms" readonly="readonly" rows="30" placeholder="请输入备注说明"></textarea>
 							 
 		</div>
+		<div id="popover_mbyl" class="mui-popover" style="height: 250px;">
+			<div class="mui-popover-arrow"></div> 
+    		<div align="center">你的模版预览</div>
+    <br>
+    		<textarea style="overflow-y:scroll;font-size:8px;"  id="modelname" readonly="readonly" rows="30" placeholder="请输入备注说明"></textarea>
+							 
+		</div>
 			</body>
 	<script type="text/javascript" src="../../../js/mui/mui.min.js"></script>
 	<script type="text/javascript" src="../../../js/controllers/common.js"></script>
@@ -129,6 +137,10 @@
 		document.getElementById("test").addEventListener("tap", function () {
         //调用隐藏/显示弹出层
         mui("#popover").popover('toggle', document.getElementById("div"));
+   }) 
+   	document.getElementById("mbyl").addEventListener("tap", function () {
+        //调用隐藏/显示弹出层
+        mui("#popover_mbyl").popover('toggle', document.getElementById("div"));
    }) 
 		var sms='';
 		var p1=document.getElementById("p1");
